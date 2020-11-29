@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'dashboard' =>'Dashboard',
+    'main' =>'Main',
+    'products' =>'Products',
+    'products_list' =>'Products List',
+    'product_add' =>'Add Products',
+    'site_settings'=>'site settings',
+    'site_settings_list'=>'site settings list',
+    'site_settings_add'=>'add site settings',
+    'panel_name' => 'admin panel',
+    'id' => 'id',
+    'title' => 'title',
+    'priority' => 'priority',
+    'status' => 'status',
+    'actions' => 'actions',
+    'show' => 'show',
+    'edit' => 'edit',
+    'remove' => 'remove',
+    'create_product'=>'create product',
+    'description' => 'description',
+    'body' => 'body',
+    'price' => 'price',
+    'images' => 'images',
+    'tags' => 'tags',
+    'priority' => 'priority',
+    'status' => 'status',
+    'submit'=>'submit',
+
+];

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- Meta Tags -->
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+	<meta name="description" content="https://site.ir"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<meta name="theme-color" content="#3e42e9">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon_32.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="assets/icons/icon_48.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon_128.png">
+	<link rel="icon" type="image/png" sizes="256x256" href="assets/icons/icon_256.png">
+
+	<meta name="apple-mobile-web-app-title" content="site">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/icons/icon_152.png">
+
+	<meta name="msapplication-TileColor" content="#3e42e9">
+	<meta name="msapplication-TileImage" content="assets/icons/icon_144.png">
+
+	<!-- Title -->
+	<title>NOOR</title>
+
+	<!-- Shiv -->
+<!--[if lte IE 9]
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Stylesheets -->
+<link type="text/css" href="assets/css/normalize.css" rel="stylesheet" />
+<link type="text/css" href="assets/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet">
+<link type="text/css" href="assets/fonts/rtl/IRANYekan/css/iranyekan.css" rel="stylesheet" />
+<link type="text/css" href="assets/fonts/ltr/Poppins/css/poppins.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/Bootstrap-Offcanvas-master/css/bootstrap.offcanvas.min.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/OwlCarousel2-2.3.4/css/owl.carousel.min.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/OwlCarousel2-2.3.4/css/owl.theme.default.min.css" rel="stylesheet" />
+
+<!-- Main Stylesheet -->
+<link type="text/css" href="assets/css/style.css" rel="stylesheet" />
+
+<!-- JavaScript -->
+<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-migrate-1.4.1.min.js"></script>
+
+</head>
+<body>
+
+
+	<!-- Start: Main Wrapper -->
+	<div class="bu-wrapper" >
+
+		<div class="bu-overlay"></div>
+
+		<header class="main-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-header-cont">
+							<a href="" title="" rel="home" class="main-logo">
+								<img src="assets/img/theme/logo.svg" alt="" class="">
+							</a>
+							<div class="s-logo">
+								<img src="assets/img/theme/logo-s.png">
+							</div>
+
+							<div class="main-header-tc-search">
+								<div class="main-header-tc-topheader">
+									<div class="main-header-tct-item main-date">
+										<span class="main-header-tcti-date">یک شنبه 13 دی 1397</span>
+									</div>
+									<div class="main-header-tct-item">
+										<ul class="main-header-trs-list">
+											<li><a href=""><i class="fab fa-telegram"></i></a></li>
+											<li><a href=""><i class="fab fa-instagram"></i></a></li>
+										</ul>
+									</div>
+
+								</div>
+								<form class="main-header-tc-search-form" method="get" >
+									<i class="far fa-search main-header-tc-search-icon" id="main-search-btn"></i>
+									<div class="main-header-tc-search-box" id="main-search-box">
+										<div class="main-header-tc-search-close" id="main-search-close"><i class="fal fa-times"></i></div>
+										<input class="form-control main-header-tc-search-input main-search-placeholder" name="s" placeholder="جستجو کنید..." id="main-search-input" autocomplete="off">	
+										<button type="submit" class="main-header-tc-search-btn"><i class="far fa-search"></i></button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="main-header-nav-cont">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-menu navbar-offcanvas navbar-offcanvas-touch" id="js-bootstrap-offcanvas">
+							<ul class="main-menu-list">
+								<li class="active"><a href="">صفحه نخست</a></li>
+								
+								
+								<li><a href="">کلاس ها و طرح های آموزشی</a></li>
+								<li><a href="" id="dropdownMenuButton" data-toggle="dropdown">دوره ها<i class="fa fa-caret-down main-menu-arrow"></i></a>
+									<ul class="main-menu-dropmenu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<li><a href="">دوره تخصصی معلم القرآن</a></li>
+									</ul>
+								</li>
+								<li><a href="">آشنایی با نور موعود</a></li>
+								<li><a href="">اخبار و اطلاعیه</a></li>
+								<li><a href="">اخبار و اطلاعیه</a></li>
+								<li><a href="">ارتباط با ما</a></li>
+							</ul>
+						</div>
+						<button class="navbar-toggler offcanvas-toggle" type="button" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+							<a class="menu-btn menu-link" id="nav-icon">
+								<span></span>
+								<span></span> 
+								<span></span>
+							</a>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+			<!-- Start: Iconbox -->
+		<section class="main-iconbox">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bu-title bu-margin-bottom-20">
+							<div class="bu-title-cont">
+								<h3 class="bu-title-name">امکانات </h3>
+							</div>
+						</div>
+						<div class="main-iconbox-cont">
+							
+							 <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
+								<div class="main-iconbox-i-icon"></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a>
+							<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
+								<div class="main-iconbox-i-icon"></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس عنوان باکس عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a>
+							<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
+								<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a>
+							<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
+								<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End: Iconbox -->
+		
+
+		<!-- Start: Banner 
+		<section class="main-banner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-banner-slider owl-carousel owl-theme" >
+							<div class="main-banner-item"><img src="assets/img/dummy/banner-1.jpg" alt=""></div>
+							<div class="main-banner-item"><img src="assets/img/dummy/banner-2.jpg" alt=""></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		 End: Banner -->
+
+		<!-- Start: Events -->
+		<section class="main-events">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bu-title bu-margin-bottom-20">
+							<div class="bu-title-cont">
+								<h3 class="bu-title-name">آخرین اخبار</h3>
+							</div>
+						</div>
+						<div class="main-events-cont">
+							<div class="main-events-tab">
+								<ul class="nav nav-tabs" id="myTab" role="tablist">
+									<li class="nav-item">
+										<a class="nav-link active" id="home-tab" data-toggle="tab" href="#t1" role="tab" aria-selected="true">امور فرهنگی</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="profile-tab" data-toggle="tab" href="#t2" role="tab" aria-selected="false">امور آموزشی</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="contact-tab" data-toggle="tab" href="#t3" role="tab" aria-selected="false">امور فرهنگی و هنری</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="profile-tab" data-toggle="tab" href="#t4" role="tab" aria-selected="false">قرآنی</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="contact-tab" data-toggle="tab" href="#t5" role="tab" aria-selected="false">طلاعیه</a>
+									</li>
+								</ul>
+								<div class="tab-content" id="myTabContent">
+									<div class="tab-pane fade show active" id="t1" role="tabpanel">
+										<ul class="main-events-list bu-margin-bottom-30">
+											<li>
+												<h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع  مقدس توسط دانش زاری هفت مقدس توسط دانش زاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a></h2>
+												<span class="main-events-list-date">یک شنبه 13 دی 1397</span>
+											</li>
+											<li>
+												<h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a></h2>
+												<span class="main-events-list-date">یک شنبه 13 دی 1397</span>
+											</li>
+											<li>
+												<h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a></h2>
+												<span class="main-events-list-date">یک شنبه 13 دی 1397</span>
+											</li>
+											<li>
+												<h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a></h2>
+												<span class="main-events-list-date">یک شنبه 13 دی 1397</span>
+											</li>
+											<li>
+												<h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس توسط دانش زاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a></h2>
+												<span class="main-events-list-date">یک شنبه 13 دی 1397</span>
+											</li>
+										</ul>
+										<div class="main-events-more">
+											<a href="" class="bu-more">
+												<span>اخبار بیشتر</span>
+												<i class="fal fa-long-arrow-left"></i>
+											</a>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="t2" role="tabpanel">...</div>
+									<div class="tab-pane fade" id="t3" role="tabpanel">...</div>
+									<div class="tab-pane fade" id="t4" role="tabpanel">...</div>
+									<div class="tab-pane fade" id="t5" role="tabpanel">...</div>
+								</div>
+							</div>
+							<div class="main-events-ads">
+								<div class="main-events-ads-item">
+									<a href=""><img src="assets/img/dummy/ads-1.jpg" alt=""></a>
+								</div>
+								<div class="main-events-ads-item">
+									<a href=""><img src="assets/img/dummy/ads-2.jpg" alt=""></a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End: Events -->
+
+		<!-- Start: Iconbox -->
+		<section class="main-iconbox">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bu-title bu-margin-bottom-20">
+							<div class="bu-title-cont">
+								<h3 class="bu-title-name">امکانات </h3>
+							</div>
+						</div>
+						<div class="main-iconbox-cont">
+							<a href="" class="main-iconbox-item">
+								<img src="assets/img/dummy/ibox-1.png" alt="">
+							</a>
+							<a href="" class="main-iconbox-item">
+								<img src="assets/img/dummy/ibox-1.png" alt="">
+							</a>
+							<a href="" class="main-iconbox-item">
+								<img src="assets/img/dummy/ibox-1.png" alt="">
+							</a>
+							<a href="" class="main-iconbox-item">
+								<img src="assets/img/dummy/ibox-1.png" alt="">
+							</a>
+							
+							<!-- <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
+								<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a>
+							<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
+								<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس عنوان باکس عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a>
+							<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
+								<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a>
+							<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
+								<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>
+								<div class="main-iconbox-i-content">
+									<h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+									<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
+								</div>
+							</a> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End: Iconbox -->
+
+		<!-- Start: Footer -->
+		<footer class="main-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-footer-cont">
+							<div class="main-footer-logo">
+								<a href="" title="" rel="home" class="footer-logo">
+									<img src="assets/img/theme/logo-white.svg" alt="">
+								</a>
+							</div>
+							<div class="main-footer-links">
+								<div class="bu-title white bu-margin-bottom-20">
+									<div class="bu-title-cont">
+										<h3 class="bu-title-name">پیوند ها</h3>
+									</div>
+								</div>
+								<ul class="main-footer-links-list">
+									<li><a href="">دفتر مقام معظم رهبری</a></li>
+									<li><a href="">دفتر ریاست جمهوری</a></li>
+									<li><a href="">صندوق کارآفرینی</a></li>
+									<li><a href="">معاونت علمی و فناوری ریاست جمهوری</a></li>
+									<li><a href="">سامانه هم آوا</a></li>
+									<li><a href="">دانشگاه جامع علمی کاربردی</a></li>
+								</ul>
+							</div>
+							<div class="main-footer-contact">
+								<div class="bu-title white bu-margin-bottom-20">
+									<div class="bu-title-cont">
+										<h3 class="bu-title-name">تماس با ما</h3>
+									</div>
+								</div>
+								<ul class="main-footer-contact-list">
+									<li>
+										<i class="fal fa-location-arrow"></i>
+										<span>دفتر مرکزی: </span>
+										<span>ایران، تهران، میدان آرژانتین، خیابان بخارست، خیابان هفدهم، پلاک 16</span>
+									</li>
+									<li>
+										<i class="fal fa-envelope"></i>
+										<span>کدپستی</span>
+										<span>(30 خط) 021-45863</span>
+									</li>
+									<li>
+										<i class="fal fa-phone"></i>
+										<span>تلفن: </span>
+										<span>(30 خط) 021-45863</span>
+									</li>
+								</ul>
+								<ul class="main-header-trs-list">
+									<li><a href=""><i class="fab fa-telegram"></i></a></li>
+									<li><a href=""><i class="fab fa-instagram"></i></a></li>
+									<li><a href=""><img src="assets/img/theme/aparat-logo-white.svg"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End: Footer -->
+
+		<!-- Start: Copyright -->
+		<section class="main-copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-copyright-cont">
+							<div class="main-copyright-right">
+								<ul class="main-copyright-menu">
+									<li><a href="">صفحه نخست</a></li>
+									<li><a href="">معرفی</a></li>
+									<li><a href="">تماس با ما</a></li>
+									<li><a href="">امور آموزشی</a></li>
+									<li><a href="">رویدادها</a></li>
+									<li><a href="">دفتر کار آفرینی</a></li>
+									<li><a href="">مرکز نوآوری و رشد</a></li>
+								</ul>
+								<small class="main-copyright-text"> تمامی حقوق این وب سایت متعلق به مرکز آموزش علمی کاربردی فرهنگ و هنر واحد 11 تهران می باشد</small>
+							</div>
+							<div class="main-copyright-left">
+								<ul class="main-copyright-b-list">
+									<li>
+										<img src="assets/img/dummy/badge-1.png">
+									</li>
+									<li>
+										<img src="assets/img/dummy/badge-2.png">
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End: Copyright -->
+
+	</div>
+
+	<!-- Ends: Main Wrapper -->
+	<script src="assets/plg/bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/plg/Bootstrap-Offcanvas-master/js/bootstrap.offcanvas.min.js"></script>
+	<script src="assets/plg/easing/js/jquery.easing.min.js"></script>
+	<script src="assets/plg/OwlCarousel2-2.3.4/js/owl.carousel.min.js"></script>
+
+	<script src="assets/js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- Meta Tags -->
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+	<meta name="description" content="https://UAST.ir"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<meta name="theme-color" content="#3e42e9">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon_32.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="assets/icons/icon_48.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon_128.png">
+	<link rel="icon" type="image/png" sizes="256x256" href="assets/icons/icon_256.png">
+
+	<meta name="apple-mobile-web-app-title" content="UAST">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/icons/icon_152.png">
+
+	<meta name="msapplication-TileColor" content="#3e42e9">
+	<meta name="msapplication-TileImage" content="assets/icons/icon_144.png">
+
+	<!-- Title -->
+	<title>UAST</title>
+
+	<!-- Shiv -->
+<!--[if lte IE 9]
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Stylesheets -->
+<link type="text/css" href="assets/css/normalize.css" rel="stylesheet" />
+<link type="text/css" href="assets/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet">
+<link type="text/css" href="assets/fonts/rtl/IRANYekan/css/iranyekan.css" rel="stylesheet" />
+<link type="text/css" href="assets/fonts/ltr/Poppins/css/poppins.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/Bootstrap-Offcanvas-master/css/bootstrap.offcanvas.min.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/OwlCarousel2-2.3.4/css/owl.carousel.min.css" rel="stylesheet" />
+<link type="text/css" href="assets/plg/OwlCarousel2-2.3.4/css/owl.theme.default.min.css" rel="stylesheet" />
+
+<!-- Main Stylesheet -->
+<link type="text/css" href="assets/css/style.css" rel="stylesheet" />
+
+<!-- JavaScript -->
+<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-migrate-1.4.1.min.js"></script>
+
+</head>
+<body>
+
+	<!-- Start: Main Wrapper -->
+	<div class="ss-wrapper" >
+
+		<div class="ss-overlay"></div>
+
+		<!-- Start: Header -->
+		<header class="main-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-header-cont">
+							<a href="" title="" rel="home" class="main-logo">
+								<img src="assets/img/theme/logo.svg" alt="" class="">
+							</a>
+							<div class="s-logo">
+								<img src="assets/img/theme/logo-s.png">
+							</div>
+
+							<div class="main-header-tc-search">
+								<div class="main-header-tc-topheader">
+									<div class="main-header-tct-item main-date">
+										<span class="main-header-tcti-date">یک شنبه 13 دی 1397</span>
+									</div>
+									<div class="main-header-tct-item">
+										<ul class="main-header-trs-list">
+											<li><a href=""><i class="fab fa-telegram"></i></a></li>
+											<li><a href=""><i class="fab fa-instagram"></i></a></li>
+										</ul>
+									</div>
+
+								</div>
+								<form class="main-header-tc-search-form" method="get" >
+									<i class="far fa-search main-header-tc-search-icon" id="main-search-btn"></i>
+									<div class="main-header-tc-search-box" id="main-search-box">
+										<div class="main-header-tc-search-close" id="main-search-close"><i class="fal fa-times"></i></div>
+										<input class="form-control main-header-tc-search-input main-search-placeholder" name="s" placeholder="جستجو کنید..." id="main-search-input" autocomplete="off"> 
+										<button type="submit" class="main-header-tc-search-btn"><i class="far fa-search"></i></button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="main-header-nav-cont">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-menu navbar-offcanvas navbar-offcanvas-touch" id="js-bootstrap-offcanvas">
+							<ul class="main-menu-list">
+								<li class="active"><a href="">صفحه نخست</a></li>
+								<li><a href="" id="dropdownMenuButton" data-toggle="dropdown">معرفی<i class="fa fa-caret-down main-menu-arrow"></i></a>
+									<ul class="main-menu-dropmenu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<li><a href="">معرفی دانشگاه</a></li>
+										<li><a href="">معرفی واحد 1 تهران</a></li>
+										<li><a href="">رئیس و معاون</a></li>
+										<li><a href="">کارمندان</a></li>
+										<li><a href="">گالری</a></li>
+										<li><a href="">کانال ویدئویی</a></li>
+									</ul>
+								</li>
+								<li><a href="" id="dropdownMenuButton" data-toggle="dropdown">امور آموزشی<i class="fa fa-caret-down main-menu-arrow"></i></a>
+									<ul class="main-menu-dropmenu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<li><a href="">گروه آموزشی مدیران</a></li>
+										<li><a href="">امتحانات</a></li>
+										<li><a href="">دوره های کوتاه مدت</a></li>
+										<li><a href="">سامانه هم آوا</a></li>
+										<li><a href="">معرفی رشته و سرفصل</a></li>
+										<li><a href="">امور فارغ التحصیلان</a></li>
+										<li><a href="">فرم های دنشجویی</a></li>
+										<li><a href="">منشور حقوقی دانشجویی</a></li>
+									</ul>
+								</li>
+								<li><a href="" id="dropdownMenuButton" data-toggle="dropdown">امور فرهنگی و هنری<i class="fa fa-caret-down main-menu-arrow"></i></a>
+									<ul class="main-menu-dropmenu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<li><a href="">نشریه الکترونیک</a></li>
+										<li><a href="">پادکست</a></li>
+										<li><a href="">کانون هنرهای تجسمی</a></li>
+										<li><a href="">کانون امور فرهنگی محیط زیست</a></li>
+										<li><a href="">کانون مشاوره و سبک زندگی</a></li>
+										<li><a href="">انجمن ها</a></li>
+										<li><a href="">امور تربیت بدنی</a></li>
+										<li><a href="">بسیج دانشجویی</a></li>
+									</ul>
+								</li>
+								<li><a href="" id="dropdownMenuButton" data-toggle="dropdown">پژوهش و کارآفرینی<i class="fa fa-caret-down main-menu-arrow"></i></a>
+									<ul class="main-menu-dropmenu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<li><a href="">دفتر کارآفرینی</a></li>
+										<li><a href="">مرکز نوآوری</a></li>
+										<li><a href="">انتشارات</a></li>
+									</ul>
+								</li>
+								<li><a href="" id="dropdownMenuButton" data-toggle="dropdown">رویدادها<i class="fa fa-caret-down main-menu-arrow"></i></a>
+									<ul class="main-menu-dropmenu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<li><a href="">اطلاعیه ها</a></li>
+										<li><a href="">امور آموزشی</a></li>
+										<li><a href="">امور فرهنگی و هنری</a></li>
+										<li><a href="">امور پژوهشی</a></li>
+										<li><a href="">امور مالی و اداری</a></li>
+									</ul>
+								</li>
+								<li><a href="" id="dropdownMenuButton" data-toggle="dropdown">خدمات الکترونیک<i class="fa fa-caret-down main-menu-arrow"></i></a>
+									<ul class="main-menu-dropmenu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<li><a href="">سامانه هم آوا</a></li>
+										<li><a href="">پرداخت شهریه</a></li>
+										<li><a href="">درخواست های دانشجویی</a></li>
+										<li><a href="">دوره های آزاد</a></li>
+										<li><a href="">آموزش پورتلا</a></li>
+										<li><a href="">سامانه کارآموزی</a></li>
+										<li><a href="">فروشگاه کارآفرینی</a></li>
+									</ul>
+								</li>
+								<li><a href="">تماس با ما</a></li>
+							</ul>
+						</div>
+						<button class="navbar-toggler offcanvas-toggle" type="button" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+							<a class="menu-btn menu-link" id="nav-icon">
+								<span></span>
+								<span></span> 
+								<span></span>
+							</a>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End: Header -->
+
+		<!-- Start: Inner banner -->
+		<div class="main-inner-banner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-inner-banner-cont">
+							<div class="main-inner-banner-c-title">
+								<ul class="main-breadcrumb">
+									<li><a href="">صفحه نخست</a></li>
+									<li class="active">هتل های شیراز</li>
+								</ul>
+								<h1 class="main-inner-banner-ct-name">امور فرهنگی</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End: Inner banner -->
+
+		<!-- Start: Inner main -->
+		<section class="bu-inner-main">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bu-inner-main-cont">
+							<div class="bu-inner-mc-content">
+								<article class="bu-inner-news-single">
+									<h1 class="bu-inner-ns-title">اطلاعیه فوری آموزش در خصوص انتخاب واحدورودی مهر 1297</h1>
+									<div class="bu-inner-news-li-footer bu-inner-ns-footer">
+										<div class="bu-inner-news-li-meta bu-inner-ns-meta">
+											<span>یک شنبه 13 دی 1397</span>
+											<span>|</span>
+											<span>بازدید: 34</span>
+											<span>|</span>
+											<span>نظرات: 234</span>
+										</div>
+										<a href="" class="bu-inner-ns-like">
+											<i class="fal fa-heart"></i>
+											<span>67</span>
+										</a>
+										
+									</div>
+									<figure class="bu-inner-ns-figure">
+										<img src="assets/img/dummy/sample-img.jpg" alt="">
+									</figure>
+									<div class="bu-event-slider owl-carousel owl-theme" >
+										<div class="bu-event-slider-item"><img src="assets/img/dummy/sample-img.jpg" alt=""></div>
+										<div class="bu-event-slider-item"><img src="assets/img/dummy/sample-img.jpg" alt=""></div>
+									</div>
+									<div class="bu-inner-ns-text">
+										<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+										<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+									</div>
+									<div class="bu-inner-ns-detail">
+										<div class="bu-inner-ns-tags">
+											<i class="fal fa-tag bu-inner-nst-icon"></i>
+											<ul class="bu-inner-nst-list">
+												<li><a href="">امورآموزشی</a></li>
+												<li>|</li>
+												<li><a href="">امور فرهنگی</a></li>
+											</ul>
+										</div>
+										<div class="bu-inner-ns-source">
+											<span class="bu-inner-nss-name">منبع:</span>
+											<span>دانشگاه علمی کاربردی</span>
+										</div>
+									</div>
+									<div class="bu-inner-ns-related">
+										<div class="bu-title bu-margin-bottom-20">
+											<div class="bu-title-cont">
+												<span class="bu-title-icon sqaure"></span>
+												<h3 class="bu-title-name">عناوین مرنبط</h3>
+											</div>
+										</div>
+										<div class="bu-inner-nsr-list">
+											<div class="bu-inner-nsr-item">
+												<figure class="bu-inner-nsri-figure bu-item-hover">
+													<a href="" class="bu-latest-bif-overlay">
+														<span class="bu-latest-bifo-icon-cont">
+															<i class="fal fa-plus"></i>
+														</span>
+													</a>
+													<img src="assets/img/dummy/sample-img.jpg" alt="">
+												</figure>
+												<div class="bu-inner-nsri-content">
+													<h2 class="bu-inner-nsri-title">
+														<a href="">برگزاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a>
+													</h2>
+													<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+												</div>
+											</div>
+											<div class="bu-inner-nsr-item">
+												<figure class="bu-inner-nsri-figure bu-item-hover">
+													<a href="" class="bu-latest-bif-overlay">
+														<span class="bu-latest-bifo-icon-cont">
+															<i class="fal fa-plus"></i>
+														</span>
+													</a>
+													<img src="assets/img/dummy/sample-img.jpg" alt="">
+												</figure>
+												<div class="bu-inner-nsri-content">
+													<h2 class="bu-inner-nsri-title">
+														<a href="">برگزاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a>
+													</h2>
+													<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+												</div>
+											</div>
+											<div class="bu-inner-nsr-item">
+												<figure class="bu-inner-nsri-figure bu-item-hover">
+													<a href="" class="bu-latest-bif-overlay">
+														<span class="bu-latest-bifo-icon-cont">
+															<i class="fal fa-plus"></i>
+														</span>
+													</a>
+													<img src="assets/img/dummy/sample-img.jpg" alt="">
+												</figure>
+												<div class="bu-inner-nsri-content">
+													<h2 class="bu-inner-nsri-title">
+														<a href="">برگزاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a>
+													</h2>
+													<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="bu-inner-ns-comments">
+										<div class="bu-title bu-margin-bottom-20">
+											<div class="bu-title-cont">
+												<span class="bu-title-icon sqaure"></span>
+												<h3 class="bu-title-name">ارسال نظر</h3>
+											</div>
+											<div class="bu-inner-ns-comment-no">34 نظر</div>
+										</div>
+										<div class="bu-inner-ns-form">
+											<form>
+												<div class="form-group">
+													<div class="row">
+														<div class="col-md-6">
+															<label class="form-group-label">نام و نام خانوداگی</label>
+															<input class="form-control" type="text">
+														</div>
+														<div class="col-md-6">
+															<label>ایمیل</label>
+															<input class="form-control" type="text">
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="form-group-label">پیغام</label>
+													<textarea rows="4" class="form-control"></textarea>
+												</div>
+												<div class="form-group form-group-btn">
+													<button class="btn ss-btn ss-btn-large ss-btn-yellow">
+														<span>ارسال نظـر</span>
+														<i class="fal fa-long-arrow-left"></i>
+													</button>
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="bu-inner-ns-comments-list">
+										<div class="bu-title bu-margin-bottom-20">
+											<div class="bu-title-cont">
+												<span class="bu-title-icon sqaure"></span>
+												<h3 class="bu-title-name">نظرات شما</h3>
+											</div>
+										</div>
+										<div class="bu-inner-ns-comments-row">
+											<div class="bu-inner-ns-comments-item">
+												<figure class="bu-inner-nsci-avatar"></figure>
+												<div class="bu-inner-nsci-content">
+													<div class="bu-inner-nscc-head">
+														<div class="bu-inner-nscc-head-name">
+															<span class="bu-inner-nscch-name">مهرداد ایمان وند</span>
+															<span class="bu-inner-nsri-date">|</span>
+															<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+														</div>
+														<a class="bu-inner-nscch-reply" href=""><i class="fa fa-reply"></i></a>
+													</div>
+													<div class="bu-inner-nscc-txt">
+														<p>ورم ا  ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژییپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی م</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="bu-inner-ns-comments-row">
+											<div class="bu-inner-ns-comments-item">
+												<figure class="bu-inner-nsci-avatar"></figure>
+												<div class="bu-inner-nsci-content">
+													<div class="bu-inner-nscc-head">
+														<div class="bu-inner-nscc-head-name">
+															<span class="bu-inner-nscch-name">مهرداد ایمان وند</span>
+															<span class="bu-inner-nsri-date">|</span>
+															<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+														</div>
+														<a class="bu-inner-nscch-reply" href=""><i class="fa fa-reply"></i></a>
+													</div>
+													<div class="bu-inner-nscc-txt">
+														<p>ورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی م</p>
+													</div>
+												</div>
+											</div>
+											<div class="bu-inner-ns-comments-item reply">
+												<figure class="bu-inner-nsci-avatar"></figure>
+												<div class="bu-inner-nsci-content">
+													<div class="bu-inner-nscc-head">
+														<div class="bu-inner-nscc-head-name">
+															<span class="bu-inner-nscch-name">مهرداد ایمان وند</span>
+															<span class="bu-inner-nsri-date">|</span>
+															<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+														</div>
+													</div>
+													<div class="bu-inner-nscc-txt">
+														<p>ورم ا  ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="bu-inner-ns-comments-row">
+											<div class="bu-inner-ns-comments-item">
+												<figure class="bu-inner-nsci-avatar"></figure>
+												<div class="bu-inner-nsci-content">
+													<div class="bu-inner-nscc-head">
+														<div class="bu-inner-nscc-head-name">
+															<span class="bu-inner-nscch-name">مهرداد ایمان وند</span>
+															<span class="bu-inner-nsri-date">|</span>
+															<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+														</div>
+														<a class="bu-inner-nscch-reply" href=""><i class="fa fa-reply"></i></a>
+													</div>
+													<div class="bu-inner-nscc-txt">
+														<p>ورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی م</p>
+													</div>
+												</div>
+											</div>
+											<div class="bu-inner-ns-comments-item reply">
+												<figure class="bu-inner-nsci-avatar"></figure>
+												<div class="bu-inner-nsci-content">
+													<div class="bu-inner-nscc-head">
+														<div class="bu-inner-nscc-head-name">
+															<span class="bu-inner-nscch-name">مهرداد ایمان وند</span>
+															<span class="bu-inner-nsri-date">|</span>
+															<span class="bu-inner-nsri-date">یک شنبه 13 دی 1397</span>
+														</div>
+													</div>
+													<div class="bu-inner-nscc-txt">
+														<p>ورم ا  ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+							<div class="bu-inner-mc-side">
+								<div class="bu-inner-mcs-block">
+									<div class="bu-title bu-margin-bottom-20">
+										<div class="bu-title-cont">
+											<span class="bu-title-icon sqaure"></span>
+											<h3 class="bu-title-name">پربازدیدترین</h3>
+										</div>
+									</div>
+									<ul class="bu-inner-mcs-view-list">
+										<li>
+											<h2 class="bu-inner-mcs-view-title bu-title-effect"><a>برگزاری هفته دفاع  مقدس توسط دانش زاری هفت مقدس توسط دانش زاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a></h2>
+											<span class="bu-inner-mcs-view-date">یک شنبه 13 دی 1397</span>
+										</li>
+										<li>
+											<h2 class="bu-inner-mcs-view-title bu-title-effect"><a>برگزاری هفته دفا دانشجویان امور فرهنگی واحد 47</a></h2>
+											<span class="bu-inner-mcs-view-date">یک شنبه 13 دی 1397</span>
+										</li>
+										<li>
+											<h2 class="bu-inner-mcs-view-title bu-title-effect"><a>برگزاری هفته دفا دانشجویان امور فرهنگی واحد 47</a></h2>
+											<span class="bu-inner-mcs-view-date">یک شنبه 13 دی 1397</span>
+										</li>
+										<li>
+											<h2 class="bu-inner-mcs-view-title bu-title-effect"><a>برگزاری هفته دفا دانشجویان امور فرهنگی واحد 47</a></h2>
+											<span class="bu-inner-mcs-view-date">یک شنبه 13 دی 1397</span>
+										</li>
+										<li>
+											<h2 class="bu-inner-mcs-view-title bu-title-effect"><a>برگزاری هفته دفا دانشجویان امور فرهنگی واحد 47</a></h2>
+											<span class="bu-inner-mcs-view-date">یک شنبه 13 دی 1397</span>
+										</li>
+									</ul>
+								</div>
+								<div class="bu-inner-mcs-block">
+									<div class="bu-title  bu-margin-bottom-20">
+										<div class="bu-title-cont">
+											<span class="bu-title-icon sqaure"></span>
+											<h3 class="bu-title-name">دسته بندی</h3>
+										</div>
+									</div>
+									<ul class="bu-inner-mcs-cats-list">
+										<li>
+											<a href="">امور فرهنگی</a>
+										</li>
+										<li>
+											<a href="">امور آموزشی</a>
+										</li>
+										<li>
+											<a href=""> امور فرهنگی و هنری</a>
+										</li>
+										<li>
+											<a href="">دفتر کار آفرین</a>
+										</li>
+										<li>
+											<a href="">اطلاعیه</a>
+										</li>
+									</ul>
+								</div>
+								<div class="bu-inner-mcs-block">
+									<ul class="bu-inner-mcs-ads-list">
+										<li>
+											<a href=""><img src="assets/img/dummy/ads-1.jpg" alt=""></a>
+										</li>
+										<li>
+											<a href=""><img src="assets/img/dummy/ads-2.jpg" alt=""></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Start: Inner main -->
+
+		<!-- Start: Footer -->
+		<footer class="main-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-footer-cont">
+							<div class="main-footer-logo">
+								<a href="" title="" rel="home" class="footer-logo">
+									<img src="assets/img/theme/logo-white.svg" alt="">
+								</a>
+							</div>
+							<div class="main-footer-links">
+								<div class="bu-title white bu-margin-bottom-20">
+									<div class="bu-title-cont">
+										<h3 class="bu-title-name">پیوند ها</h3>
+									</div>
+								</div>
+								<ul class="main-footer-links-list">
+									<li><a href="">دفتر مقام معظم رهبری</a></li>
+									<li><a href="">دفتر ریاست جمهوری</a></li>
+									<li><a href="">صندوق کارآفرینی</a></li>
+									<li><a href="">معاونت علمی و فناوری ریاست جمهوری</a></li>
+									<li><a href="">سامانه هم آوا</a></li>
+									<li><a href="">دانشگاه جامع علمی کاربردی</a></li>
+								</ul>
+							</div>
+							<div class="main-footer-contact">
+								<div class="bu-title white bu-margin-bottom-20">
+									<div class="bu-title-cont">
+										<h3 class="bu-title-name">تماس با ما</h3>
+									</div>
+								</div>
+								<ul class="main-footer-contact-list">
+									<li>
+										<i class="fal fa-location-arrow"></i>
+										<span>دفتر مرکزی: </span>
+										<span>ایران، تهران، میدان آرژانتین، خیابان بخارست، خیابان هفدهم، پلاک 16</span>
+									</li>
+									<li>
+										<i class="fal fa-envelope"></i>
+										<span>کدپستی</span>
+										<span>(30 خط) 021-45863</span>
+									</li>
+									<li>
+										<i class="fal fa-phone"></i>
+										<span>تلفن: </span>
+										<span>(30 خط) 021-45863</span>
+									</li>
+								</ul>
+								<ul class="main-header-trs-list">
+									<li><a href=""><i class="fab fa-telegram"></i></a></li>
+									<li><a href=""><i class="fab fa-instagram"></i></a></li>
+									<li><a href=""><img src="assets/img/theme/aparat-logo-white.svg"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End: Footer -->
+
+		<!-- Start: Copyright -->
+		<section class="main-copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-copyright-cont">
+							<div class="main-copyright-right">
+								<ul class="main-copyright-menu">
+									<li><a href="">صفحه نخست</a></li>
+									<li><a href="">معرفی</a></li>
+									<li><a href="">تماس با ما</a></li>
+									<li><a href="">امور آموزشی</a></li>
+									<li><a href="">رویدادها</a></li>
+									<li><a href="">دفتر کار آفرینی</a></li>
+									<li><a href="">مرکز نوآوری و رشد</a></li>
+								</ul>
+								<small class="main-copyright-text"> تمامی حقوق این وب سایت متعلق به مرکز آموزش علمی کاربردی فرهنگ و هنر واحد 11 تهران می باشد</small>
+							</div>
+							<div class="main-copyright-left">
+								<ul class="main-copyright-b-list">
+									<li>
+										<img src="assets/img/dummy/badge-1.png">
+									</li>
+									<li>
+										<img src="assets/img/dummy/badge-2.png">
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End: Copyright -->
+
+
+
+	</div>
+
+	<!-- Ends: Main Wrapper -->
+	<script src="assets/plg/bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/plg/Bootstrap-Offcanvas-master/js/bootstrap.offcanvas.min.js"></script>
+	<script src="assets/plg/easing/js/jquery.easing.min.js"></script>
+	<script src="assets/plg/OwlCarousel2-2.3.4/js/owl.carousel.min.js"></script>
+
+	<script src="assets/js/custom.js"></script>
+</body>
+</html>
