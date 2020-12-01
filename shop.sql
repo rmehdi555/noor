@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2020 at 02:45 PM
+-- Generation Time: Dec 01, 2020 at 01:42 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -100,7 +100,9 @@ INSERT INTO `contact_us` (`id`, `name`, `family`, `email`, `phone`, `body`, `sta
 (1, 'تست 1', 'رضایی', 's@m.com', '09185507245', 'لات', 0, '2020-11-10 09:39:23', '2020-11-10 09:39:23', NULL),
 (2, 'sf', 'fdg', 'abas.alishirvani@yahoo.com', '09185507245', 'dfsgsdf', 0, '2020-11-10 10:18:52', '2020-11-10 10:18:52', NULL),
 (3, 'fgh', 'fgh', 'eli5555555eli@gmail.com', '09185507245', 'fgh', 0, '2020-11-10 10:24:16', '2020-11-10 10:24:16', NULL),
-(4, 'تست 1', 'رضایی', 'eli5555555eli@gmail.com', '09185507245', 'fdgh', 0, '2020-11-10 10:25:05', '2020-11-10 10:25:05', NULL);
+(4, 'تست 1', 'رضایی', 'eli5555555eli@gmail.com', '09185507245', 'fdgh', 0, '2020-11-10 10:25:05', '2020-11-10 10:25:05', NULL),
+(5, 'تست', 'تست', 'rezaie.mehdi555@gmail.com', '09185597245', 'تست', 0, '2020-12-01 08:57:50', '2020-12-01 08:57:50', NULL),
+(6, 'تست', 'تست', 'rezaie.mehdi555@gmail.com', '09185557245', 'sdfsdaf', 0, '2020-12-01 09:10:09', '2020-12-01 09:10:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -175,12 +177,16 @@ CREATE TABLE `menus` (
 
 INSERT INTO `menus` (`id`, `title`, `slug`, `user_id`, `menu_categories_id`, `parent_id`, `link`, `icon`, `priority`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'صفحه اصلی', 'صفحه-اصلی', 5, 1, 0, '/', 'i', 1, 1, '2020-11-10 05:43:58', '2020-11-10 05:43:58', NULL),
-(2, 'google', 'google', 5, 1, 0, 'https://www.google.com/', 'i', 2, 1, '2020-11-10 05:44:49', '2020-11-10 05:44:49', NULL),
-(3, 'دسته اصلی 1', 'دسته-اصلی-1', 5, 1, 0, 'https://www.maj.ir/', 'i', 3, 1, '2020-11-10 05:45:32', '2020-11-10 05:45:32', NULL),
-(4, 'دسته فرعی 1-1', 'دسته-فرعی-1-1', 5, 1, 3, '#', 'i', 1, 1, '2020-11-10 05:45:59', '2020-11-10 05:45:59', NULL),
-(5, 'دسته فرعی 2-1', 'دسته-فرعی-2-1', 5, 1, 3, 'http://isti.ir/', 'i', 2, 1, '2020-11-10 05:46:20', '2020-11-10 05:46:20', NULL),
-(6, 'سایت آهن آنلاین', 'سایت-آهن-آنلاین', 5, 2, 0, 'https://ahanonline.com/', 'i', 1, 1, '2020-11-10 08:23:46', '2020-11-10 08:23:46', NULL),
-(7, 'ورود به حساب کاربری', 'ورود-به-حساب-کاربری', 5, 3, 0, 'http://www.assen.ir/login', 'i', 1, 1, '2020-11-10 08:25:27', '2020-11-10 08:25:27', NULL);
+(2, 'سخنی با ما', 'سخنی-با-ما', 5, 1, 0, '/contact-us', 'i', 6, 1, '2020-11-10 05:44:49', '2020-12-01 03:53:28', NULL),
+(3, 'دسته اصلی 1', 'دسته-اصلی-1', 5, 1, 0, 'https://www.maj.ir/', 'i', 3, 1, '2020-11-10 05:45:32', '2020-12-01 03:53:34', '2020-12-01 03:53:34'),
+(4, 'دسته فرعی 1-1', 'دسته-فرعی-1-1', 5, 1, 3, '#', 'i', 1, 1, '2020-11-10 05:45:59', '2020-12-01 03:53:37', '2020-12-01 03:53:37'),
+(5, 'دسته فرعی 2-1', 'دسته-فرعی-2-1', 5, 1, 3, 'http://isti.ir/', 'i', 2, 1, '2020-11-10 05:46:20', '2020-12-01 03:53:39', '2020-12-01 03:53:39'),
+(6, 'سایت آهن آنلاین', 'سایت-آهن-آنلاین', 5, 2, 0, 'https://ahanonline.com/', 'i', 1, 1, '2020-11-10 08:23:46', '2020-12-01 03:53:43', '2020-12-01 03:53:43'),
+(7, 'ورود به حساب کاربری', 'ورود-به-حساب-کاربری', 5, 3, 0, 'http://www.assen.ir/login', 'i', 1, 1, '2020-11-10 08:25:27', '2020-12-01 03:53:45', '2020-12-01 03:53:45'),
+(8, 'آشنایی با ما', 'آشنایی-با-ما', 40, 1, 0, '/show/page/2', 'i', 5, 1, '2020-12-01 03:56:56', '2020-12-01 04:20:55', NULL),
+(9, 'ارتباط با ما', 'ارتباط-با-ما', 40, 1, 0, '/show/page/3', 'i', 4, 1, '2020-12-01 04:24:27', '2020-12-01 04:24:27', NULL),
+(10, 'دفتر نهاد رهبری', 'دفتر-نهاد-رهبری', 40, 2, 0, 'http://www.nahad.ir/', 'i', 1, 1, '2020-12-01 04:34:07', '2020-12-01 04:34:07', NULL),
+(11, 'پارس قرآن : جستجوي قرآن', 'پارس-قرآن-جستجوي-قرآن', 40, 2, 0, 'http://www.parsquran.com/', 'i', 2, 1, '2020-12-01 04:35:51', '2020-12-01 04:35:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -275,7 +281,7 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `user_id`, `news_categories_id`, `slug`, `description`, `body`, `type`, `images`, `tags`, `priority`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'خبر1 1', 40, 2, 'خبر1-1', 'خلاصه خبر1 1', '<p>متن خبر1 1</p>', 'normal', '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/news\\/5fc36ed8a6fe1.jpg\",\"50\":\"\\/upload\\/images\\/2020\\/11\\/news\\/50_5fc36ed8a6fe1.jpg\",\"66\":\"\\/upload\\/images\\/2020\\/11\\/news\\/66_5fc36ed8a6fe1.jpg\",\"200\":\"\\/upload\\/images\\/2020\\/11\\/news\\/200_5fc36ed8a6fe1.jpg\",\"350\":\"\\/upload\\/images\\/2020\\/11\\/news\\/350_5fc36ed8a6fe1.jpg\",\"500\":\"\\/upload\\/images\\/2020\\/11\\/news\\/500_5fc36ed8a6fe1.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/news\\/50_5fc36ed8a6fe1.jpg\"}', 'تگ خبری', 16, 1, '2020-11-29 17:49:54', '2020-11-29 17:50:17', NULL);
+(1, 'رونمایی از سایت جامع قرآنکده نور موعود (عج)', 40, 3, 'رونمایی-از-سایت-جامع-قرآنکده-نور-موعود-عج', 'رونمایی از سایت جامع قرآنکده نور موعود (عج)', '<p>به زودی سایت جامع قرآنکده نور موعود (عج) رونمایی و برای عموم قابل استفاده خواهد شد .</p>', 'normal', '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/12\\/news\\/5fc5f9ee6d45a.png\",\"50\":\"\\/upload\\/images\\/2020\\/12\\/news\\/50_5fc5f9ee6d45a.png\",\"66\":\"\\/upload\\/images\\/2020\\/12\\/news\\/66_5fc5f9ee6d45a.png\",\"200\":\"\\/upload\\/images\\/2020\\/12\\/news\\/200_5fc5f9ee6d45a.png\",\"350\":\"\\/upload\\/images\\/2020\\/12\\/news\\/350_5fc5f9ee6d45a.png\",\"500\":\"\\/upload\\/images\\/2020\\/12\\/news\\/500_5fc5f9ee6d45a.png\"},\"thumb\":\"\\/upload\\/images\\/2020\\/12\\/news\\/50_5fc5f9ee6d45a.png\"}', 'تگ خبری', 16, 1, '2020-11-29 17:49:54', '2020-12-01 04:38:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -306,8 +312,9 @@ CREATE TABLE `news_categories` (
 --
 
 INSERT INTO `news_categories` (`id`, `title`, `slug`, `user_id`, `description`, `body`, `parent_id`, `images`, `tags`, `icon`, `priority`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'خبر1 1', 'خبر1-1', 40, 'خلاصه خبر 1', '<p>متن خبر 11</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://localhost/userfiles/files/591f796e.jpg\" style=\"height:200px; width:100px\" /></p>', 0, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/5fc36c279991e.jpg\",\"300\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36c279991e.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/600_5fc36c279991e.jpg\",\"900\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/900_5fc36c279991e.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36c279991e.jpg\"}', 'تگ', 'i', 3, 1, '2020-11-29 17:38:29', '2020-11-29 17:39:11', NULL),
-(2, 'دسته خبر 1-1', 'دسته-خبر-1-1', 40, 'خلاصه دسته', '<p>متن دسته</p>', 1, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/5fc36cc7f0b10.jpg\",\"300\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36cc7f0b10.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/600_5fc36cc7f0b10.jpg\",\"900\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/900_5fc36cc7f0b10.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36cc7f0b10.jpg\"}', 'هزرزرطظریظطبر', 'i', 1, 1, '2020-11-29 17:41:28', '2020-11-29 17:41:28', NULL);
+(1, 'خبر1 1', 'خبر1-1', 40, 'خلاصه خبر 1', '<p>متن خبر 11</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://localhost/userfiles/files/591f796e.jpg\" style=\"height:200px; width:100px\" /></p>', 0, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/5fc36c279991e.jpg\",\"300\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36c279991e.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/600_5fc36c279991e.jpg\",\"900\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/900_5fc36c279991e.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36c279991e.jpg\"}', 'تگ', 'i', 3, 1, '2020-11-29 17:38:29', '2020-12-01 04:36:21', '2020-12-01 04:36:21'),
+(2, 'دسته خبر 1-1', 'دسته-خبر-1-1', 40, 'خلاصه دسته', '<p>متن دسته</p>', 1, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/5fc36cc7f0b10.jpg\",\"300\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36cc7f0b10.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/600_5fc36cc7f0b10.jpg\",\"900\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/900_5fc36cc7f0b10.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/newsCategories\\/300_5fc36cc7f0b10.jpg\"}', 'هزرزرطظریظطبر', 'i', 1, 1, '2020-11-29 17:41:28', '2020-12-01 04:36:19', '2020-12-01 04:36:19'),
+(3, 'خبرهای عمومی', 'خبرهای-عمومی', 40, 'خبرهای عمومی', '<p>خبرهای عمومی</p>', 0, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/12\\/newsCategories\\/5fc5f99fd1b24.png\",\"300\":\"\\/upload\\/images\\/2020\\/12\\/newsCategories\\/300_5fc5f99fd1b24.png\",\"600\":\"\\/upload\\/images\\/2020\\/12\\/newsCategories\\/600_5fc5f99fd1b24.png\",\"900\":\"\\/upload\\/images\\/2020\\/12\\/newsCategories\\/900_5fc5f99fd1b24.png\"},\"thumb\":\"\\/upload\\/images\\/2020\\/12\\/newsCategories\\/300_5fc5f99fd1b24.png\"}', 'i', 'i', 1, 1, '2020-12-01 04:36:56', '2020-12-01 04:36:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -479,19 +486,29 @@ CREATE TABLE `site_details` (
 
 INSERT INTO `site_details` (`id`, `title`, `key`, `user_id`, `value`, `images`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (4, 'logo', 'image_logo', 1, 'fa==rr@@en==rr', '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/4\\/product\\/5ea1b774e1954.jpg\",\"300\":\"\\/upload\\/images\\/2020\\/4\\/product\\/300_5ea1b774e1954.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/4\\/product\\/600_5ea1b774e1954.jpg\",\"900\":\"\\/upload\\/images\\/2020\\/4\\/product\\/900_5ea1b774e1954.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/4\\/product\\/300_5ea1b774e1954.jpg\"}', 'image', 1, '2020-04-17 13:05:04', '2020-04-23 11:12:45', NULL),
-(5, 'site_name', 'site_name', 1, 'noor', '[]', 'text', 1, '2020-04-17 14:52:44', '2020-11-29 20:44:08', NULL),
-(9, 'آدرس', 'address', 5, 'آدرس شرکت :', '[]', 'text', 1, '2020-11-10 07:59:15', '2020-11-10 07:59:15', NULL),
-(10, 'تلفن ثابت', 'phone', 5, 'تلفن ثابت :', '[]', 'text', 1, '2020-11-10 07:59:46', '2020-11-10 07:59:46', NULL),
-(11, 'تلفن همراه', 'mobile', 5, 'شماره همراه :', '[]', 'text', 1, '2020-11-10 08:00:30', '2020-11-10 08:00:30', NULL),
-(12, 'ایمیل', 'email', 5, 'ایمیل : mail.assen.ir', '[]', 'text', 1, '2020-11-10 08:00:55', '2020-11-11 10:42:45', NULL),
+(5, 'site_name', 'site_name', 1, 'قرآنکده نور موعود (عج)', '[]', 'text', 1, '2020-04-17 14:52:44', '2020-12-01 03:48:16', NULL),
+(9, 'آدرس', 'address', 5, 'آدرس : استان فارس، شهرستان ارسنجان، خیابان سعیدیه کوچه مهدیه طبقه پایین مهدیه مؤسسه فرهنگی قرآن و عترت گلشن نور موعود (عج) کد پستی: 7376161359', '[]', 'text', 1, '2020-11-10 07:59:15', '2020-12-01 03:45:22', NULL),
+(10, 'تلفن ثابت', 'phone', 5, 'شماره ثابت قرآنکده: 07143529198', '[]', 'text', 1, '2020-11-10 07:59:46', '2020-12-01 03:45:47', NULL),
+(11, 'تلفن همراه', 'mobile', 5, 'مدیریت: 09171260316\r\n<br>\r\nمعاونت: 09365366538\r\n<br>\r\nپشتیبان ثبت نام و کلاسداری آنلاین: 09176849783\r\n<br>\r\nمهد الرضا: 09338437102', '[]', 'text', 1, '2020-11-10 08:00:30', '2020-12-01 03:46:56', NULL),
+(12, 'ایمیل', 'email', 5, 'پست الکترونیکی: gnm.9198@gmail.com', '[]', 'text', 1, '2020-11-10 08:00:55', '2020-12-01 03:47:19', NULL),
 (13, 'تلگرام', 'telegram', 5, 'آدرس تلگرام', '[]', 'text', 1, '2020-11-10 08:01:20', '2020-11-10 08:01:20', NULL),
-(14, 'اینستاگرام', 'instagram', 5, 'آدرس اینستاگرام', '[]', 'text', 1, '2020-11-10 08:01:46', '2020-11-10 08:01:46', NULL),
+(14, 'اینستاگرام', 'instagram', 5, 'https://www.instagram.com/quran.golshannoormouood/', '[]', 'text', 1, '2020-11-10 08:01:46', '2020-12-01 03:44:52', NULL),
 (15, 'تست', 'df', 5, 'ddd', '[]', 'text', 1, '2020-11-10 09:03:27', '2020-11-10 09:04:36', '2020-11-10 09:04:36'),
 (16, 'تصویر بسم نور', 'image_header', 40, '', '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/product\\/5fc39828954f2.png\",\"300\":\"\\/upload\\/images\\/2020\\/11\\/product\\/300_5fc39828954f2.png\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/product\\/600_5fc39828954f2.png\",\"900\":\"\\/upload\\/images\\/2020\\/11\\/product\\/900_5fc39828954f2.png\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/product\\/300_5fc39828954f2.png\"}', 'image', 1, '2020-11-29 20:46:33', '2020-11-29 20:46:33', NULL),
 (17, 'عنوان حدیث روز', 'hadis_roz_title', 40, 'حدیث روز', '[]', 'text', 1, '2020-11-29 21:25:41', '2020-11-29 21:25:41', NULL),
 (18, 'متن حدیث روز', 'hadis_roz_body', 40, 'جایگاه علما بر روی زمین\r\n<br>\r\nامام علی علیه السلام:\r\n<br>\r\nالعُلَماءُ حُکّامٌ عَلَی النّاسِ\r\n<br>\r\nعالمان، فرمانروای بر مردمند.', '[]', 'text', 1, '2020-11-29 21:27:18', '2020-11-29 21:27:18', NULL),
 (19, 'عنوان باکس معرفی', 'box_info_title', 40, 'قرآنکده نور موعود (عج)', '[]', 'text', 1, '2020-11-29 21:32:56', '2020-11-29 21:35:17', NULL),
-(20, 'متن باکس معرفی', 'box_info_body', 40, 'نام کامل قرآنکده نور موعود (عج)، مؤسسه فرهنگی قرآن و عترت گلشن نور موعود (عج) است، که در استناد گلشن به نور موعود نیز، لطایفی نهفته شده که بر صاحبان بینش، پوشیده نیست.', '[]', 'text', 1, '2020-11-29 21:33:44', '2020-11-29 21:33:44', NULL);
+(20, 'متن باکس معرفی', 'box_info_body', 40, 'نام کامل قرآنکده نور موعود (عج)، مؤسسه فرهنگی قرآن و عترت گلشن نور موعود (عج) است، که در استناد گلشن به نور موعود نیز، لطایفی نهفته شده که بر صاحبان بینش، پوشیده نیست.', '[]', 'text', 1, '2020-11-29 21:33:44', '2020-11-29 21:33:44', NULL),
+(21, 'عنوان باکس 1', 'box_1_title', 40, 'کلاس ها و طرح های آموزشی', '[]', 'text', 1, '2020-12-01 04:39:55', '2020-12-01 04:39:55', NULL),
+(22, 'لینک باکس 1', 'box_1_link', 40, '#', '[]', 'text', 1, '2020-12-01 04:40:24', '2020-12-01 04:40:24', NULL),
+(27, 'عنوان باکس 2', 'box_2_title', 40, 'ثبت نام در قرآنکده آنلاین و حضوری', '[]', 'text', 1, '2020-12-01 04:39:55', '2020-12-01 04:39:55', NULL),
+(28, 'لینک باکس 2', 'box_2_link', 40, '#', '[]', 'text', 1, '2020-12-01 04:40:24', '2020-12-01 04:40:24', NULL),
+(29, 'عنوان باکس 3', 'box_3_title', 40, 'دوره تخصصی معلم القرآن', '[]', 'text', 1, '2020-12-01 04:39:55', '2020-12-01 04:39:55', NULL),
+(30, 'لینک باکس 3', 'box_3_link', 40, '#', '[]', 'text', 1, '2020-12-01 04:40:24', '2020-12-01 04:40:24', NULL),
+(31, 'عنوان باکس 4', 'box_4_title', 40, 'سهمی از نور', '[]', 'text', 1, '2020-12-01 04:39:55', '2020-12-01 04:39:55', NULL),
+(32, 'لینک باکس 4', 'box_4_link', 40, '#', '[]', 'text', 1, '2020-12-01 04:40:24', '2020-12-01 04:40:24', NULL),
+(33, 'عنوان معرفی سایت در فوتر', 'footer_about_title', 40, 'مختصری از قرآنکده نور موعود (عج)', '[]', 'text', 1, '2020-12-01 07:36:24', '2020-12-01 07:36:24', NULL),
+(34, 'متن معرفی سایت در فوتر', 'footer_about_body', 40, 'نام کامل قرآنکده نور موعود (عج)، <br>مؤسسه فرهنگی قرآن و عترت گلشن نور موعود (عج) است،<br> که در استناد گلشن به نور موعود نیز، لطایفی<br> نهفته شده که بر صاحبان بینش، پوشیده نیست', '[]', 'text', 1, '2020-12-01 07:38:46', '2020-12-01 07:41:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -586,7 +603,8 @@ CREATE TABLE `web_pages` (
 
 INSERT INTO `web_pages` (`id`, `title`, `slug`, `body`, `user_id`, `images`, `link`, `type`, `priority`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'dfg', 'dfg', '<p>cfd</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://127.0.0.1:8000/143a84dc-82c6-4d20-8f8d-e12314ed936f\" width=\"341\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<p>&nbsp;</p>', 5, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/5fb23a243ae3c.jpg\",\"920-380\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920-380_5fb23a243ae3c.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/600_5fb23a243ae3c.jpg\",\"920\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920_5fb23a243ae3c.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920-380_5fb23a243ae3c.jpg\"}', 'https://www.maj.ir/', 'index', 5, 1, '2020-11-16 05:06:53', '2020-11-16 05:06:56', '2020-11-16 05:06:56'),
-(2, 'cbgvv', 'cbgvv', '<p>gh</p>\r\n\r\n<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://127.0.0.1:8000/9d3f6c3a-27f4-4376-8539-dd7d35e2ccca\" width=\"341\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<p>fg</p>\r\n\r\n<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://127.0.0.1:8000/a752e63a-81f8-483c-a8ae-2d00375532e5\" width=\"284\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<p>&nbsp;</p>', 5, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/5fb23a39d5133.jpg\",\"920-380\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920-380_5fb23a39d5133.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/600_5fb23a39d5133.jpg\",\"920\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920_5fb23a39d5133.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920-380_5fb23a39d5133.jpg\"}', '#', 'index', 3, 1, '2020-11-16 05:07:14', '2020-11-16 05:17:47', NULL);
+(2, 'آشنایی با ما', 'آشنایی-با-ما', '<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">بسم الله الرحمن الرحیم</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\">&nbsp;</p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">قرآنکده نور موعود (عج)</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">ذات اقدس الهی در کتاب عزیزش، خود را نور معرفی کرده: &laquo;الله نور السماوات و الارض) و از نور محض، نور ساتع و نازل می گردد، بدین جهت است که قرآنی که حبل الله المتین است، نوریست که که به صوی عالم ما نازل گردیده: &laquo;انزلنا الیکم نور مبینا&raquo; و طبق فراز پر از راز زیارت جامعه کبیره، ذوات مقدسه معصومین علیهم السلام نیز نور هستند: &laquo;انتم نور&raquo; و شما خود حدیث مفصل بخوان از این مجمل که چرا نام قرآنکده، نور گشته و نام شریف حضرت موعود ارواحنا له الفداء، نور علی نور آن قرار گرفته است.</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">البته نام کامل قرآنکده نور موعود (عج)، مؤسسه فرهنگی قرآن و عترت گلشن نور موعود (عج) است، که در استناد گلشن به نور موعود نیز، لطایفی نهفته شده که بر صاحبان بینش، پوشیده نیست. </span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">بنابراین آستان مقدس و نورانی قرآن و عترت، گلشن و بهشتی هستند از جنس نور، که ندایشان، رهایی جهانیان است، از تاریکی های حاکم بر جهان و تعلق یافتن به عالم نور.</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">اصولا قرآن، کتابیست زندگی بخش که برای زنده ها نازل شده &laquo;لینذر من کان حی&raquo; و این کتاب عزیز همان است که به انسان، زیبایی های عالم درون و بیرون انسان را می شناساند، تا از زندگی خود بیشترین لذت را برده و به کم ها قانع نگردند. </span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">این بود نمایی کلی از جنس قرآنکده، تا قرآن آموزان بدانند که به کجا پا می نهند و قرار است به کجا پر کشند.</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\">&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"blob:http://127.0.0.1:8000/a752e63a-81f8-483c-a8ae-2d00375532e5\" style=\"width:284px\" /></p>\r\n\r\n<p>&nbsp;</p>', 5, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/5fb23a39d5133.jpg\",\"920-380\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920-380_5fb23a39d5133.jpg\",\"600\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/600_5fb23a39d5133.jpg\",\"920\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920_5fb23a39d5133.jpg\"},\"thumb\":\"\\/upload\\/images\\/2020\\/11\\/webPages\\/920-380_5fb23a39d5133.jpg\"}', '/show/page/2', 'index', 3, 1, '2020-11-16 05:07:14', '2020-12-01 04:20:12', NULL),
+(3, 'ارتباط با ما', 'ارتباط-با-ما', '<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">بسم الله الرحمن الرحیم</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">کاربر گرامی شما می توانید، از طرق ذیل با ما در ارتباط باشید:</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">آدرس: استان فارس، شهرستان ارسنجان، خیابان سعیدیه کوچه مهدیه طبقه پایین مهدیه مؤسسه فرهنگی قرآن و عترت گلشن نور موعود (عج) کد پستی: 7376161359</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">شماره ثابت قرآنکده: 07143529198</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">مدیریت: 09171260316</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">معاونت: 09365366538</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">پشتیبان ثبت نام و کلاسداری آنلاین: 09176849783</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">مهد الرضا: 09338437102</span></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">پست الکترونیکی:</span> <a href=\"mailto:gnm.9198@gmail.com\" style=\"color:#0563c1; text-decoration:underline\">gnm.9198@gmail.com</a></span></span></p>\r\n\r\n<p dir=\"RTL\" style=\"text-align:right\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\">اینستاگرام: </span><a href=\"https://www.instagram.com/quran.golshannoormouood/\" target=\"_blank\">quran.golshannoormouood</a></span></span></p>', 40, '{\"images\":{\"original\":\"\\/upload\\/images\\/2020\\/12\\/webPages\\/5fc5f69a36e8d.png\",\"920-380\":\"\\/upload\\/images\\/2020\\/12\\/webPages\\/920-380_5fc5f69a36e8d.png\",\"600\":\"\\/upload\\/images\\/2020\\/12\\/webPages\\/600_5fc5f69a36e8d.png\",\"920\":\"\\/upload\\/images\\/2020\\/12\\/webPages\\/920_5fc5f69a36e8d.png\"},\"thumb\":\"\\/upload\\/images\\/2020\\/12\\/webPages\\/920-380_5fc5f69a36e8d.png\"}', '#', 'index', 2, 1, '2020-12-01 04:24:03', '2020-12-01 04:26:32', NULL);
 
 --
 -- Indexes for dumped tables
@@ -736,7 +754,7 @@ ALTER TABLE `complaints`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `currency_converts`
@@ -754,7 +772,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `menu_categories`
@@ -778,7 +796,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `news_categories`
 --
 ALTER TABLE `news_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -802,7 +820,7 @@ ALTER TABLE `product_images`
 -- AUTO_INCREMENT for table `site_details`
 --
 ALTER TABLE `site_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `sliders`
@@ -820,7 +838,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `web_pages`
 --
 ALTER TABLE `web_pages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

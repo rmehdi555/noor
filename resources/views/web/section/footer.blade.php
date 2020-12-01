@@ -13,7 +13,7 @@
                         </div>
                     <ul class="main-footer-contact-list">
                         <li>
-                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["footer_about_body"]->value) !!}}
+                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["footer_about_body"]->value) !!}
                         </li>
                     </ul>
                     </div>
