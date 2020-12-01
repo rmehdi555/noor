@@ -13,8 +13,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-header-cont">
-                        <a href="" title="" rel="home" class="main-logo">
-                            <img src="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}" alt="" class="">
+
+                        <a href="{{ route('web.home') }}" title="" rel="home" class="main-logo">
+                            <h1 style="color: white ; width: auto">{{\App\Providers\MyProvider::_text($siteDetailsProvider["site_name"]->value)}}</h1>
+                            {{--<img src="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}" alt="" class="">--}}
                         </a>
                         <div class="s-logo">
                             <img src="{{$siteDetailsProvider["image_header"]->images["images"]["original"]}}">

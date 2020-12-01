@@ -40,34 +40,30 @@
                     </div>
                     <div class="main-iconbox-cont">
 
-                        <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
                             <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+                                <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_title"]->value)}}</h3>
                                 <span class="main-iconbox-ic-more">کلیک کنید<i
                                             class="fal fa-long-arrow-left"></i></span>
                             </div>
                         </a>
-                        <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
-                            <div class="main-iconbox-i-icon"></div>
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_2_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
                             <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس عنوان باکس عنوان باکس</h3>
+                                <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_2_title"]->value)}}</h3>
                                 <span class="main-iconbox-ic-more">کلیک کنید<i
                                             class="fal fa-long-arrow-left"></i></span>
                             </div>
                         </a>
-                        <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
-                            <div class="main-iconbox-i-icon"><i style="color: #fff;"
-                                                                class="fal fa-chalkboard-teacher"></i></div>
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
                             <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+                                <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_title"]->value)}}</h3>
                                 <span class="main-iconbox-ic-more">کلیک کنید<i
                                             class="fal fa-long-arrow-left"></i></span>
                             </div>
                         </a>
-                        <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
-                            <div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_4_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
                             <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس</h3>
+                                <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_4_title"]->value)}}</h3>
                                 <span class="main-iconbox-ic-more">کلیک کنید<i
                                             class="fal fa-long-arrow-left"></i></span>
                             </div>
@@ -110,80 +106,45 @@
                     </div>
                     <div class="main-events-cont">
                         <div class="main-events-tab">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <ul class="nav nav-tabs " id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#t1" role="tab"
-                                       aria-selected="true">امور فرهنگی</a>
+                                       aria-selected="true">اخبار عمومی</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#t2" role="tab"
-                                       aria-selected="false">امور آموزشی</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#t3" role="tab"
-                                       aria-selected="false">امور فرهنگی و هنری</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#t4" role="tab"
-                                       aria-selected="false">قرآنی</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#t5" role="tab"
-                                       aria-selected="false">طلاعیه</a>
-                                </li>
+
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="t1" role="tabpanel">
                                     <ul class="main-events-list bu-margin-bottom-30">
+                                        @foreach($news as $item)
+
                                         <li>
-                                            <h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس
-                                                    توسط دانش زاری هفت مقدس توسط دانش زاری هفته دفاع مقدس توسط دانشجویان
-                                                    امور فرهنگی واحد 47</a></h2>
-                                            <span class="main-events-list-date">یک شنبه 13 دی 1397</span>
+                                            <h2 class="main-events-list-title bu-title-effect"><a href="{{ route('web.show.news',$item->id) }}">  {{\App\Providers\MyProvider::_text($item->title)}} </a></h2>
+                                            <span class="main-events-list-date">{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j H:i')}}</span>
                                         </li>
-                                        <li>
-                                            <h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس
-                                                    توسط دانشجویان امور فرهنگی واحد 47</a></h2>
-                                            <span class="main-events-list-date">یک شنبه 13 دی 1397</span>
-                                        </li>
-                                        <li>
-                                            <h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس
-                                                    توسط دانشجویان امور فرهنگی واحد 47</a></h2>
-                                            <span class="main-events-list-date">یک شنبه 13 دی 1397</span>
-                                        </li>
-                                        <li>
-                                            <h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس
-                                                    توسط دانشجویان امور فرهنگی واحد 47</a></h2>
-                                            <span class="main-events-list-date">یک شنبه 13 دی 1397</span>
-                                        </li>
-                                        <li>
-                                            <h2 class="main-events-list-title bu-title-effect"><a>برگزاری هفته دفاع مقدس
-                                                    توسط دانش زاری هفته دفاع مقدس توسط دانشجویان امور فرهنگی واحد 47</a>
-                                            </h2>
-                                            <span class="main-events-list-date">یک شنبه 13 دی 1397</span>
-                                        </li>
+                                        @endforeach
                                     </ul>
-                                    <div class="main-events-more">
-                                        <a href="" class="bu-more">
-                                            <span>اخبار بیشتر</span>
-                                            <i class="fal fa-long-arrow-left"></i>
-                                        </a>
-                                    </div>
+                                    {{--<div class="main-events-more">--}}
+                                        {{--<a href="" class="bu-more">--}}
+                                            {{--<span>اخبار بیشتر</span>--}}
+                                            {{--<i class="fal fa-long-arrow-left"></i>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
                                 </div>
-                                <div class="tab-pane fade" id="t2" role="tabpanel">...</div>
-                                <div class="tab-pane fade" id="t3" role="tabpanel">...</div>
-                                <div class="tab-pane fade" id="t4" role="tabpanel">...</div>
-                                <div class="tab-pane fade" id="t5" role="tabpanel">...</div>
+                                {{--<div class="tab-pane fade" id="t2" role="tabpanel">...</div>--}}
+                                {{--<div class="tab-pane fade" id="t3" role="tabpanel">...</div>--}}
+                                {{--<div class="tab-pane fade" id="t4" role="tabpanel">...</div>--}}
+                                {{--<div class="tab-pane fade" id="t5" role="tabpanel">...</div>--}}
                             </div>
                         </div>
-                        <div class="main-events-ads">
-                            <div class="main-events-ads-item">
-                                <a href=""><img src="assets/img/dummy/ads-1.jpg" alt=""></a>
-                            </div>
-                            <div class="main-events-ads-item">
-                                <a href=""><img src="assets/img/dummy/ads-2.jpg" alt=""></a>
-                            </div>
-                        </div>
+                        {{--<div class="main-events-ads">--}}
+                            {{--<div class="main-events-ads-item">--}}
+                                {{--<a href=""><img src="assets/img/dummy/ads-1.jpg" alt=""></a>--}}
+                            {{--</div>--}}
+                            {{--<div class="main-events-ads-item">--}}
+                                {{--<a href=""><img src="assets/img/dummy/ads-2.jpg" alt=""></a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                     </div>
                 </div>
@@ -193,61 +154,61 @@
     <!-- End: Events -->
 
     <!-- Start: Iconbox -->
-    <section class="main-iconbox">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="bu-title bu-margin-bottom-20">
-                        <div class="bu-title-cont">
-                            <h3 class="bu-title-name">امکانات </h3>
-                        </div>
-                    </div>
-                    <div class="main-iconbox-cont">
-                        <a href="" class="main-iconbox-item">
-                            <img src="assets/img/dummy/ibox-1.png" alt="">
-                        </a>
-                        <a href="" class="main-iconbox-item">
-                            <img src="assets/img/dummy/ibox-1.png" alt="">
-                        </a>
-                        <a href="" class="main-iconbox-item">
-                            <img src="assets/img/dummy/ibox-1.png" alt="">
-                        </a>
-                        <a href="" class="main-iconbox-item">
-                            <img src="assets/img/dummy/ibox-1.png" alt="">
-                        </a>
+    {{--<section class="main-iconbox">--}}
+        {{--<div class="container">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-md-12">--}}
+                    {{--<div class="bu-title bu-margin-bottom-20">--}}
+                        {{--<div class="bu-title-cont">--}}
+                            {{--<h3 class="bu-title-name">امکانات </h3>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="main-iconbox-cont">--}}
+                        {{--<a href="" class="main-iconbox-item">--}}
+                            {{--<img src="assets/img/dummy/ibox-1.png" alt="">--}}
+                        {{--</a>--}}
+                        {{--<a href="" class="main-iconbox-item">--}}
+                            {{--<img src="assets/img/dummy/ibox-1.png" alt="">--}}
+                        {{--</a>--}}
+                        {{--<a href="" class="main-iconbox-item">--}}
+                            {{--<img src="assets/img/dummy/ibox-1.png" alt="">--}}
+                        {{--</a>--}}
+                        {{--<a href="" class="main-iconbox-item">--}}
+                            {{--<img src="assets/img/dummy/ibox-1.png" alt="">--}}
+                        {{--</a>--}}
 
-                        <!-- <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
-                            <div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>
-                            <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
-                            </div>
-                        </a>
-                        <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
-                            <div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>
-                            <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس عنوان باکس عنوان باکس</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
-                            </div>
-                        </a>
-                        <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
-                            <div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>
-                            <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
-                            </div>
-                        </a>
-                        <a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
-                            <div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>
-                            <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">عنوان باکس</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>
-                            </div>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">--}}
+                            {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>--}}
+                            {{--<div class="main-iconbox-i-content">--}}
+                                {{--<h3 class="main-iconbox-ic-title">عنوان باکس</h3>--}}
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">--}}
+                            {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>--}}
+                            {{--<div class="main-iconbox-i-content">--}}
+                                {{--<h3 class="main-iconbox-ic-title">عنوان باکس عنوان باکس عنوان باکس</h3>--}}
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">--}}
+                            {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>--}}
+                            {{--<div class="main-iconbox-i-content">--}}
+                                {{--<h3 class="main-iconbox-ic-title">عنوان باکس</h3>--}}
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">--}}
+                            {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>--}}
+                            {{--<div class="main-iconbox-i-content">--}}
+                                {{--<h3 class="main-iconbox-ic-title">عنوان باکس</h3>--}}
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>--}}
+                            {{--</div>--}}
+                        {{--</a> --}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- End: Iconbox -->
 @endsection

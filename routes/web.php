@@ -29,6 +29,8 @@ Route::middleware('language')->group(function (){
     Route::get('/category/{id}','HomeController@showCategory')->name('web.show.category');
     Route::get('/product/{id}','HomeController@showProduct')->name('web.show.product');
 
+    Route::get('/news/{id}','HomeController@showNews')->name('web.show.news');
+
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/user/active/email/{token}', 'UserController@activationAccountByEmail')->name('activation.account.by.email');
     Route::POST('/user/active/sme', 'UserController@activationAccountBySMS')->name('web.activation.account.by.sms');

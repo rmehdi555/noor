@@ -98,11 +98,11 @@
                         <br>
                         <br>
                         <i class="fa fa-phone"></i>
-                        <br>{{\App\Providers\MyProvider::_text($siteDetailsProvider["phone"]->value)}}
+                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["phone"]->value) !!}}
                         <br>
                         <br>
                         <i class="fa fa-phone"></i>
-                        <br>{{\App\Providers\MyProvider::_text($siteDetailsProvider["mobile"]->value)}}
+                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["mobile"]->value) !!}}
                         <br>
                         <br>
                         <i class="fa fa-envelope"></i>

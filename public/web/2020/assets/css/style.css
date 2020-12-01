@@ -1589,7 +1589,8 @@ padding: 0 5px;
 	width: 100%;
 }
 .main-events-tab{
-	width: calc(100% - 362px);
+	/*width: calc(100% - 362px);*/
+	width: calc(100% - 0px);
 	background-color: #fff;
 }
 .main-events-ads{
@@ -1961,7 +1962,7 @@ padding: 0 5px;
 /********************************************************************************/
 /* IE 11 */
 @media all and (-ms-high-contrast:none){
-	*::-ms-backdrop,{}
+	*::-ms-backdrop {}
 }
 @media print {}
 

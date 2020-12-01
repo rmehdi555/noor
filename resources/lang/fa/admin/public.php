@@ -68,7 +68,7 @@ return [
     'phone'=>'شماره همراه',
     'password'=>'پسورد',
     're_password'=>'تکرار پسورد',
-    'contact_us_list'=>'پیام های تماس با ما',
+    'contact_us_list'=>'پیام های سخنی با ما ',
     'complaint_list'=>'پیام های ثبت شکایت',
     'news' =>'اخبار',
     'news_list' =>'لیست اخبار',

@@ -79,7 +79,7 @@ return [
     'activation_email_title'=>'جهت فعال سازی حساب روی دکمه زیر کلیک کنید',
     'activation_email_button'=>'فعالسازی حساب',
     'continuation'=>'ادامه',
-    'contact_us'=>'تماس با ما',
+    'contact_us'=>'سخنی با ما ',
     'complaint'=>'ثبت شکایت',
     'about_us'=>'درباره ما',
     'links'=>'پیوند ها',

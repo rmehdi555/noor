@@ -39,9 +39,9 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $newsCategoriesProvider=NewsCategories::where('status','=','1')->with('parent')->get();
-            $webMenusHeader=Menu::where([['menu_categories_id','=','1'],['status','=','1'] ])->with('parent')->get();
-            $webMenusFooter1=Menu::where([['menu_categories_id','=','2'],['status','=','1'] ])->with('parent')->get();
-            $webMenusFooter2=Menu::where([['menu_categories_id','=','3'],['status','=','1'] ])->with('parent')->get();
+            $webMenusHeader=Menu::where([['menu_categories_id','=','1'],['status','=','1'] ])->with('parent')->orderBy('priority')->get();
+            $webMenusFooter1=Menu::where([['menu_categories_id','=','2'],['status','=','1'] ])->with('parent')->orderBy('priority')->get();
+            $webMenusFooter2=Menu::where([['menu_categories_id','=','3'],['status','=','1'] ])->with('parent')->orderBy('priority')->get();
             $view->with([
                 'siteDetailsProvider' => $siteDetails,
                 'newsCategoriesProvider'=>$newsCategoriesProvider,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use App\ProductCategories;
 use App\Products;
 use App\Providers\MyProvider;
@@ -20,12 +21,9 @@ class HomeController extends Controller
 //        $v=Verta::now();
 //        dd($v->formatWord('l').' '.$v->format('d').' '.$v->formatWord('F').' '.$v->format('Y'));
 
-        $slider=Slider::where('status','=','1')->orderBy('priority','desc')->get();
-       // محصولات ویژه
-        $specialProducts=Products::where([['type','=','special'],['status','=','1'] ])->limit(10)->get();
-        //جدید ترین محصولات
-        $newProducts=Products::where('status','=','1')->orderBy('created_at','desc')->limit(10)->get();
-        return view('web.pages.index',compact('slider','specialProducts','newProducts'));
+        $slider=Slider::where('status','=','1')->orderBy('priority')->get();
+        $news=News::where('status','=','1')->orderBy('priority')->get();
+        return view('web.pages.index',compact('slider','news'));
     }
     public function showCategory($id)
     {
@@ -48,6 +46,13 @@ class HomeController extends Controller
         //جدید ترین محصولات
         $newProducts=Products::where('status','=','1')->orderBy('created_at','desc')->limit(10)->get();
         return view('web.pages.product',compact('product','specialProducts','newProducts'));
+    }
+    public function showNews($id)
+    {
+        $news=News::find($id);
+        if(!isset($news) OR empty($news))
+            return redirect()->route('web.404');
+        return view('web.pages.news',compact('news'));
     }
     public function showPage($id)
     {
