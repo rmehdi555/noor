@@ -49,10 +49,12 @@ class HomeController extends Controller
     }
     public function showNews($id)
     {
+
         $news=News::find($id);
         if(!isset($news) OR empty($news))
             return redirect()->route('web.404');
-        return view('web.pages.news',compact('news'));
+        $allNews=News::where('status','=','1')->orderBy('priority')->get();
+        return view('web.pages.news',compact('news','allNews'));
     }
     public function showPage($id)
     {

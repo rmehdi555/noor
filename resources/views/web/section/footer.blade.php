@@ -25,7 +25,7 @@
                         </div>
                         <ul class="main-footer-links-list">
                             @foreach($webMenusFooter1Provider as $item)
-                                <li><a href="{{$item->link}}">{{\App\Providers\MyProvider::_text($item->title)}}</a></li>
+                                <li><a href="{{$item->link}}" target="_blank">{{\App\Providers\MyProvider::_text($item->title)}}</a></li>
                             @endforeach
                         </ul>
                     </div>
