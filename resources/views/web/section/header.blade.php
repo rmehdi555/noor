@@ -12,16 +12,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+
                     <div class="main-header-cont">
+                        <div class="col-md-4">
+                            <a href="{{ route('web.home') }}" title="" rel="home" class="main-logo">
+                                <h2 style="color: white ; width: auto">{{\App\Providers\MyProvider::_text($siteDetailsProvider["site_name"]->value)}}</h2>
+                                {{--<img src="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}" alt="" class="">--}}
+                            </a>
 
-                        <a href="{{ route('web.home') }}" title="" rel="home" class="main-logo">
-                            <h1 style="color: white ; width: auto">{{\App\Providers\MyProvider::_text($siteDetailsProvider["site_name"]->value)}}</h1>
-                            {{--<img src="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}" alt="" class="">--}}
-                        </a>
-                        <div class="s-logo">
-                            <img src="{{$siteDetailsProvider["image_header"]->images["images"]["original"]}}">
                         </div>
+                        <div class="col-md-4">
 
+                            <div class="s-logo">
+
+                                <img src="{{$siteDetailsProvider["image_header"]->images["images"]["original"]}}">
+                            </div>
+                        </div>
+                        <div class=" col-md-4">
                         <div class="main-header-tc-search">
                             <div class="main-header-tc-topheader">
                                 <div class="main-header-tct-item main-date">
@@ -43,6 +50,7 @@
                                     <button type="submit" class="main-header-tc-search-btn"><i class="far fa-search"></i></button>
                                 </div>
                             </form>
+                        </div>
                         </div>
                     </div>
                 </div>

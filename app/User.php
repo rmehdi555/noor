@@ -90,4 +90,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class);
     }
+    public function fields()
+    {
+        return $this->hasMany(Field::class);
+    }
 }

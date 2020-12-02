@@ -87,6 +87,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::get('/panel/upload-image','PanelCotroller@uploadImageSubject');
     Route::resource('newsCategories','NewsCategoriesController');
     Route::resource('news','NewsController');
+    Route::resource('fields','FieldController');
 });
 
 // end admin  route

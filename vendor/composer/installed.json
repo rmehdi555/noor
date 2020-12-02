@@ -1,6 +1,73 @@
 {
     "packages": [
         {
+            "name": "adlino/locations",
+            "version": "0.0.1",
+            "version_normalized": "0.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamadlino/locations.git",
+                "reference": "c3f7dd9da69bce1c7b2e2a626688d0f0f9dc798a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamadlino/locations/zipball/c3f7dd9da69bce1c7b2e2a626688d0f0f9dc798a",
+                "reference": "c3f7dd9da69bce1c7b2e2a626688d0f0f9dc798a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "time": "2018-05-27T12:43:09+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Adlino\\Locations\\LocationsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Locations": "Adlino\\Locations\\Facades\\Locations"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Adlino\\Locations\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alireza Hamedashki",
+                    "email": "a.hamedashki@gmail.com"
+                },
+                {
+                    "name": "Saman Moghimi",
+                    "email": "saman.moghimi@hotmail.com"
+                }
+            ],
+            "description": "Iran Provinces, Counties and Cities with a Google Map Location for Laravel.",
+            "keywords": [
+                "cities",
+                "counties",
+                "iran",
+                "laravel",
+                "latitude",
+                "locations",
+                "longitude",
+                "provinces"
+            ],
+            "support": {
+                "issues": "https://github.com/teamadlino/locations/issues",
+                "source": "https://github.com/teamadlino/locations/tree/0.0.1"
+            },
+            "install-path": "../adlino/locations"
+        },
+        {
             "name": "asm89/stack-cors",
             "version": "1.3.0",
             "version_normalized": "1.3.0.0",

@@ -14,16 +14,25 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => '28331078866cf5f122088a2c03e9a0c4b82e7426',
+    'reference' => '547e4b2efa4bcbb71414127984fb10fd46b2e5a6',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
   array (
+    'adlino/locations' => 
+    array (
+      'pretty_version' => '0.0.1',
+      'version' => '0.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c3f7dd9da69bce1c7b2e2a626688d0f0f9dc798a',
+    ),
     'asm89/stack-cors' => 
     array (
       'pretty_version' => '1.3.0',
@@ -502,12 +511,12 @@ private static $installed = array (
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => '28331078866cf5f122088a2c03e9a0c4b82e7426',
+      'reference' => '547e4b2efa4bcbb71414127984fb10fd46b2e5a6',
     ),
     'laravel/tinker' => 
     array (

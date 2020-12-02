@@ -1,7 +1,6 @@
 @extends('web.master')
 @section('content')
     <br>
-
     <section class="">
         <div class="container">
             <div class="row">
@@ -26,8 +25,6 @@
             </div>
         </div>
     </section>
-
-
     <!-- Start: Iconbox -->
     <section class="main-iconbox">
         <div class="container">

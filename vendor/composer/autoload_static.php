@@ -198,6 +198,7 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
             'Aws\\' => 4,
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'Adlino\\Locations\\' => 17,
         ),
     );
 
@@ -564,6 +565,10 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Adlino\\Locations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/adlino/locations/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -584,6 +589,11 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
     );
 
     public static $classMap = array (
+        'Adlino\\Locations\\Console\\InitCommand' => __DIR__ . '/..' . '/adlino/locations/src/Console/InitCommand.php',
+        'Adlino\\Locations\\LocationsServiceProvider' => __DIR__ . '/..' . '/adlino/locations/src/LocationsServiceProvider.php',
+        'Adlino\\Locations\\Models\\City' => __DIR__ . '/..' . '/adlino/locations/src/Models/City.php',
+        'Adlino\\Locations\\Models\\County' => __DIR__ . '/..' . '/adlino/locations/src/Models/County.php',
+        'Adlino\\Locations\\Models\\Province' => __DIR__ . '/..' . '/adlino/locations/src/Models/Province.php',
         'App\\ActivationCode' => __DIR__ . '/../..' . '/app/ActivationCode.php',
         'App\\Complaint' => __DIR__ . '/../..' . '/app/Complaint.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -592,11 +602,14 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'App\\Events\\UserActivation' => __DIR__ . '/../..' . '/app/Events/UserActivation.php',
         'App\\Events\\UserActivationSms' => __DIR__ . '/../..' . '/app/Events/UserActivationSms.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Field' => __DIR__ . '/../..' . '/app/Field.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Admin\\ComplaintController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ComplaintController.php',
         'App\\Http\\Controllers\\Admin\\ContactUsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContactUsController.php',
         'App\\Http\\Controllers\\Admin\\MenuCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MenuCategoriesController.php',
         'App\\Http\\Controllers\\Admin\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MenuController.php',
+        'App\\Http\\Controllers\\Admin\\NewsCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/NewsCategoriesController.php',
+        'App\\Http\\Controllers\\Admin\\NewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/NewsController.php',
         'App\\Http\\Controllers\\Admin\\PanelController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PanelController.php',
         'App\\Http\\Controllers\\Admin\\ProductCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductCategoriesController.php',
         'App\\Http\\Controllers\\Admin\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductsController.php',
@@ -635,6 +648,8 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'App\\Http\\Requests\\ContactUsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ContactUsRequest.php',
         'App\\Http\\Requests\\MenuCategoriesRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MenuCategoriesRequest.php',
         'App\\Http\\Requests\\MenuRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MenuRequest.php',
+        'App\\Http\\Requests\\NewsCategoriesRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NewsCategoriesRequest.php',
+        'App\\Http\\Requests\\NewsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NewsRequest.php',
         'App\\Http\\Requests\\ProductCategoriesRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductCategoriesRequest.php',
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
         'App\\Http\\Requests\\SiteDetailsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SiteDetailsRequest.php',
@@ -646,7 +661,7 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'App\\Menu' => __DIR__ . '/../..' . '/app/Menu.php',
         'App\\MenuCategories' => __DIR__ . '/../..' . '/app/MenuCategories.php',
         'App\\News' => __DIR__ . '/../..' . '/app/News.php',
-        'App\\NewsCategory' => __DIR__ . '/../..' . '/app/NewsCategory.php',
+        'App\\NewsCategories' => __DIR__ . '/../..' . '/app/NewsCategories.php',
         'App\\Notifications\\ResetPasswordNotification' => __DIR__ . '/../..' . '/app/Notifications/ResetPasswordNotification.php',
         'App\\ProductCategories' => __DIR__ . '/../..' . '/app/ProductCategories.php',
         'App\\ProductImages' => __DIR__ . '/../..' . '/app/ProductImages.php',
@@ -1596,6 +1611,7 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CitiesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CitiesTableSeeder.php',
         'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyFacade' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyFacade.php',
         'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyServiceProvider.php',
         'Cocur\\Slugify\\Bridge\\Latte\\SlugifyHelper' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Latte/SlugifyHelper.php',
@@ -1616,6 +1632,7 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'Cocur\\Slugify\\Slugify' => __DIR__ . '/..' . '/cocur/slugify/src/Slugify.php',
         'Cocur\\Slugify\\SlugifyInterface' => __DIR__ . '/..' . '/cocur/slugify/src/SlugifyInterface.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'CountiesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CountiesTableSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -4907,6 +4924,7 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'Prophecy\\Prophet' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Prophet.php',
         'Prophecy\\Util\\ExportUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/ExportUtil.php',
         'Prophecy\\Util\\StringUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/StringUtil.php',
+        'ProvincesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ProvincesTableSeeder.php',
         'Psr\\Cache\\CacheException' => __DIR__ . '/..' . '/psr/cache/src/CacheException.php',
         'Psr\\Cache\\CacheItemInterface' => __DIR__ . '/..' . '/psr/cache/src/CacheItemInterface.php',
         'Psr\\Cache\\CacheItemPoolInterface' => __DIR__ . '/..' . '/psr/cache/src/CacheItemPoolInterface.php',

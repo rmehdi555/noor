@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "adlino/locations": "^0.0.1",
         "ckfinder/ckfinder-laravel-package": "v3.5.1.6",
         "cviebrock/eloquent-sluggable": "^7.0",
         "fideloper/proxy": "^4.2",

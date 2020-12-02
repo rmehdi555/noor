@@ -77,6 +77,9 @@ return [
     'news_categories'=>'لیست دسته بندی اخبار',
     'news_categories_add'=>'اضافه کردن دسته خبری جدید',
     'news_categories_id'=>'انتخاب دسته خبر ',
+    'fields_list'=>'لیست رشته ها',
+    'fields'=>'رشته های ثبت نامی',
+    'fields_add'=>'اضافه کردن رشته جدید',
 
 
 ];

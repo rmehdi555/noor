@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Adlino\Locations\Facades\locations;
 use App\News;
 use App\ProductCategories;
 use App\Products;
@@ -20,7 +21,6 @@ class HomeController extends Controller
         //https://hekmatinasser.github.io/verta/
 //        $v=Verta::now();
 //        dd($v->formatWord('l').' '.$v->format('d').' '.$v->formatWord('F').' '.$v->format('Y'));
-
         $slider=Slider::where('status','=','1')->orderBy('priority')->get();
         $news=News::where('status','=','1')->orderBy('priority')->get();
         return view('web.pages.index',compact('slider','news'));

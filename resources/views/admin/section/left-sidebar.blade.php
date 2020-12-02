@@ -27,6 +27,13 @@
                             <li class="@if($SID==21 ) active @endif"><a href="{{ route('news.create',['SID' => '21']) }}">{{__('admin/public.news_add')}}</a></li>
                         </ul>
                     </li>
+                    <li class="@if($SID>=30 and $SID<40) active @endif">
+                        <a href="#news" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.fields')}}</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==30 ) active @endif"><a href="{{ route('fields.index',['SID' => '30']) }}">{{__('admin/public.fields_list')}}</a></li>
+                            <li class="@if($SID==31 ) active @endif"><a href="{{ route('fields.create',['SID' => '31']) }}">{{__('admin/public.fields_add')}}</a></li>
+                        </ul>
+                    </li>
 
 
 

@@ -96,4 +96,5 @@ return array(
     'Aws\\' => array($vendorDir . '/aws/aws-sdk-php/src'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src/Asm89/Stack'),
     'App\\' => array($baseDir . '/app'),
+    'Adlino\\Locations\\' => array($vendorDir . '/adlino/locations/src'),
 );

@@ -4,8 +4,72 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4540b8caf17af0d7a400b266d5818b41",
+    "content-hash": "49e4c6c997ca4b66010b97a4996032f8",
     "packages": [
+        {
+            "name": "adlino/locations",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamadlino/locations.git",
+                "reference": "c3f7dd9da69bce1c7b2e2a626688d0f0f9dc798a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamadlino/locations/zipball/c3f7dd9da69bce1c7b2e2a626688d0f0f9dc798a",
+                "reference": "c3f7dd9da69bce1c7b2e2a626688d0f0f9dc798a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Adlino\\Locations\\LocationsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Locations": "Adlino\\Locations\\Facades\\Locations"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Adlino\\Locations\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alireza Hamedashki",
+                    "email": "a.hamedashki@gmail.com"
+                },
+                {
+                    "name": "Saman Moghimi",
+                    "email": "saman.moghimi@hotmail.com"
+                }
+            ],
+            "description": "Iran Provinces, Counties and Cities with a Google Map Location for Laravel.",
+            "keywords": [
+                "cities",
+                "counties",
+                "iran",
+                "laravel",
+                "latitude",
+                "locations",
+                "longitude",
+                "provinces"
+            ],
+            "support": {
+                "issues": "https://github.com/teamadlino/locations/issues",
+                "source": "https://github.com/teamadlino/locations/tree/0.0.1"
+            },
+            "time": "2018-05-27T12:43:09+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "1.3.0",
