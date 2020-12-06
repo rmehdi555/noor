@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '547e4b2efa4bcbb71414127984fb10fd46b2e5a6',
+    'reference' => 'fa68f802fa16f00689caae0d57facbb3b03843b7',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -64,6 +64,15 @@
       array (
       ),
       'reference' => '3f1ffc300f164f23abe8b64ffb3f92d35cec8307',
+    ),
+    'composer/ca-bundle' => 
+    array (
+      'pretty_version' => '1.2.8',
+      'version' => '1.2.8.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8a7ecad675253e4654ea05505233285377405215',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -480,6 +489,24 @@
       ),
       'reference' => 'abbf18d5ab8367f96b3205ca3c89fb2fa598c69e',
     ),
+    'jaybizzle/crawler-detect' => 
+    array (
+      'pretty_version' => 'v1.2.103',
+      'version' => '1.2.103.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3efa2860959cc971f17624b40bf0699823f9d0f3',
+    ),
+    'jenssegers/agent' => 
+    array (
+      'pretty_version' => 'v2.6.4',
+      'version' => '2.6.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'daa11c43729510b3700bc34d414664966b03bffe',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -503,7 +530,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '547e4b2efa4bcbb71414127984fb10fd46b2e5a6',
+      'reference' => 'fa68f802fa16f00689caae0d57facbb3b03843b7',
     ),
     'laravel/tinker' => 
     array (
@@ -567,6 +594,15 @@
       array (
       ),
       'reference' => '353f66d7555d8a90781f6f5e7091932f9a4250aa',
+    ),
+    'mobiledetect/mobiledetectlib' => 
+    array (
+      'pretty_version' => '2.8.34',
+      'version' => '2.8.34.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6f8113f57a508494ca36acbcfa2dc2d923c7ed5b',
     ),
     'mockery/mockery' => 
     array (
@@ -1004,6 +1040,15 @@
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
     ),
+    'shetabit/visitor' => 
+    array (
+      'pretty_version' => 'v3.0.1',
+      'version' => '3.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f82da13d9d8c9b2790bb59f7228c63a5c1bd2d27',
+    ),
     'spatie/dropbox-api' => 
     array (
       'pretty_version' => '1.16.1',
@@ -1305,6 +1350,15 @@
       array (
       ),
       'reference' => 'b43b05cf43c1b6d849478965062b6ef73e223bb5',
+    ),
+    'ua-parser/uap-php' => 
+    array (
+      'pretty_version' => 'v3.9.14',
+      'version' => '3.9.14.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b796c5ea5df588e65aeb4e2c6cce3811dec4fed6',
     ),
     'uxweb/sweet-alert' => 
     array (

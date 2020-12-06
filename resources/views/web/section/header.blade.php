@@ -24,8 +24,7 @@
                         <div class="col-md-4">
 
                             <div class="s-logo">
-
-                                <img src="{{$siteDetailsProvider["image_header"]->images["images"]["original"]}}">
+                                <img src="{{$siteDetailsProvider["image_header"]->images["images"]["original"]}}" alt="{{\App\Providers\MyProvider::_text($siteDetailsProvider["site_name"]->value)}}">
                             </div>
                         </div>
                         <div class=" col-md-4">

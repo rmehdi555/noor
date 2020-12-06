@@ -91,6 +91,15 @@ return [
     'ok'=>'تایید',
     'activation_account_by_sms'=>'فعال سازی حساب با وارد کردن کد پیامک شده',
     'enter_code_sms'=>'کد پیامک شده را وارد نمایید',
+    'home_page'=>'صفحه اصلی',
+    'student_field_select'=>'لیست رشته هایی که انتخاب شده اند',
+    'student_field_add_new'=>'انتخاب رشته',
+    'select_class_type'=>'نوع کلاس ',
+    'select_class_type_online'=>'مجازی',
+    'select_class_type_verbal'=>'حضوری',
+    'select_field_main'=>'انتخاب دسته اصلی رشته',
+    'select_field_child'=>'انتخاب دسته فرعی'
+
 
 
 

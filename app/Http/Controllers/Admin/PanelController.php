@@ -16,7 +16,8 @@ class PanelController extends Controller
     public function index(Request $request)
     {
         //
-        return view('admin.panel');
+        return redirect(route('news.index',['SID' => '20']));
+        //return view('admin.panel');
     }
 
     /**

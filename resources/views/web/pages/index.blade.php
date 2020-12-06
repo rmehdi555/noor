@@ -98,7 +98,7 @@
                 <div class="col-md-12">
                     <div class="bu-title bu-margin-bottom-20">
                         <div class="bu-title-cont">
-                            <h3 class="bu-title-name">آخرین اخبار</h3>
+                            <h3 class="bu-title-name"></h3>
                         </div>
                     </div>
                     <div class="main-events-cont">
@@ -106,7 +106,7 @@
                             <ul class="nav nav-tabs " id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#t1" role="tab"
-                                       aria-selected="true">اخبار عمومی</a>
+                                       aria-selected="true">آخرین اخبار</a>
                                 </li>
 
                             </ul>

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware('language')->group(function (){
+Route::middleware('language','visit')->group(function (){
     //Auth::routes();
 
     Route::get('/test',function (){
@@ -45,6 +45,18 @@ Route::middleware('language')->group(function (){
     //complaint
     Route::get('/complaint','ComplaintController@index')->name('web.complaint.index');
     Route::post('/complaint','ComplaintController@insert')->name('web.complaint.insert');
+
+
+    //fields
+    Route::get('/fields','FieldController@index')->name('web.fields');
+    Route::get('/field/{id}','FieldController@show')->name('web.show.field');
+
+
+
+    //student
+    Route::get('/students/level/1','StudentsController@level1')->name('web.students.level.1');
+    Route::post('/students/level/1','StudentsController@level1Save')->name('web.students.level.1.save');
+    Route::get('/students/level/2','StudentsController@level2')->name('web.students.level.2');
 
 
     // error page
@@ -94,7 +106,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
 
 
 // start auth route
-Route::middleware('language')->namespace('Auth')->group(function (){
+Route::middleware('language','visit')->namespace('Auth')->group(function (){
     // Authentication Routes...
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
@@ -135,7 +147,7 @@ Route::middleware('language')->namespace('Auth')->group(function (){
 
 // start user  route
 
-Route::middleware('auth','language')->namespace('User')->prefix('user')->group(function (){
+Route::middleware('auth','language','visit')->namespace('User')->prefix('user')->group(function (){
     Route::get('panel','PanelController@index')->name('user.panel');
 });
 

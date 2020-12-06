@@ -73,4 +73,17 @@ $( window ).resize(function() {
 
 
 
+    $(".option-field-child").hide();
+    $("#select-field-child").val(0);
+    var id=$("#select-field-main").val();
+    $(".option-field-child-"+id).show();
+$("#select-field-main").change(function () {
+	$(".option-field-child").hide();
+	$("#select-field-child").val(0);
+	var id=$(this).val();
+	$(".option-field-child-"+id).show();
+})
+
+
+
 });

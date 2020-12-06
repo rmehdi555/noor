@@ -17,10 +17,10 @@ $locale = App::getLocale();
 
     <meta name="theme-color" content="#3e42e9">
 
-    {{--<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon_32.png">--}}
-    {{--<link rel="icon" type="image/png" sizes="48x48" href="assets/icons/icon_48.png">--}}
-    {{--<link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon_128.png">--}}
-    {{--<link rel="icon" type="image/png" sizes="256x256" href="assets/icons/icon_256.png">--}}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}">
+    <link rel="icon" type="image/png" sizes="128x128" href="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}">
+    <link rel="icon" type="image/png" sizes="256x256" href="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}">
 
     <meta name="apple-mobile-web-app-title" content="site">
     {{--<link rel="apple-touch-icon" sizes="152x152" href="assets/icons/icon_152.png">--}}
@@ -47,7 +47,7 @@ $locale = App::getLocale();
     <link type="text/css" href="{{asset('web/2020/assets/plg/OwlCarousel2-2.3.4/css/owl.theme.default.min.css')}}" rel="stylesheet" />
 
     <!-- Main Stylesheet -->
-    <link type="text/css" href="{{asset('web/2020/assets/css/style.css')}}" rel="stylesheet" />
+    <link type="text/css" href="{{asset('web/2020/assets/css/style.v.1.css')}}" rel="stylesheet" />
 
     <!-- JavaScript -->
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-3.3.1.min.js')}}"></script>

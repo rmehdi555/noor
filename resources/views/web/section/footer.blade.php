@@ -15,6 +15,9 @@
                         <li>
                         {!! \App\Providers\MyProvider::_text($siteDetailsProvider["footer_about_body"]->value) !!}
                         </li>
+                        <li>
+                            <img src="{{$siteDetailsProvider["image_logo"]->images["images"]["original"]}}" alt="{{\App\Providers\MyProvider::_text($siteDetailsProvider["site_name"]->value)}}" class="" style="max-height: 250px; max-width: 250px">
+                        </li>
                     </ul>
                     </div>
                     <div class="main-footer-links">
