@@ -72,6 +72,10 @@ $( window ).resize(function() {
 });
 
 
+$("#button-level-1-save").click(function () {
+    $("#form-level-1-save").submit();
+});
+
 
     $(".option-field-child").hide();
     $("#select-field-child").val(0);

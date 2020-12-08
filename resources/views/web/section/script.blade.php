@@ -4,7 +4,7 @@
 <script src="{{asset('web/2020/assets/plg/easing/js/jquery.easing.min.js')}}"></script>
 <script src="{{asset('web/2020/assets/plg/OwlCarousel2-2.3.4/js/owl.carousel.min.js')}}"></script>
 
-<script src="{{asset('web/2020/assets/js/custom.js')}}"></script>
+<script src="{{asset('web/2020/assets/js/custom-v-1.js')}}"></script>
 
 <!-- JS Part End-->
 

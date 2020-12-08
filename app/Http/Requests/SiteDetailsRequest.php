@@ -28,7 +28,7 @@ class SiteDetailsRequest extends FormRequest
         $result=[];
         foreach ($allLang as $kay => $value)
         {
-            $result=array_merge($result , [ 'value_'.$kay => 'required|max:250']);
+            $result=array_merge($result , [ 'value_'.$kay => 'required']);
         }
 
         if($this->method() == 'POST') {

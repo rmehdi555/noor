@@ -43,7 +43,7 @@
                                 ?>
                                 <div class="form-group">
                                     <label>{{__('admin/public.value')}} ({{$kay}}) :</label>
-                                    <textarea name="value_{{$kay}}" id="ckeditor" class="form-control" rows="5" cols="30" required>{{\App\Providers\MyProvider::_text($siteDetails->value,$kay)}}</textarea>
+                                    <textarea name="value_{{$kay}}" id="ckeditor" class="form-control ckeditor" rows="5" cols="30" required>{{\App\Providers\MyProvider::_text($siteDetails->value,$kay)}}</textarea>
                                 </div>
                                 <?php
                                 }

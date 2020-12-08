@@ -44,7 +44,7 @@
                                 ?>
                                 <div class="form-group">
                                     <label>{{__('admin/public.value')}} ({{$kay}}) :</label>
-                                    <textarea name="value_{{$kay}}" id="ckeditor" class="form-control" rows="5" cols="30" required>{{old('value_'.$kay)}}</textarea>
+                                    <textarea name="value_{{$kay}}" id="ckeditor" class="form-control ckeditor" rows="5" cols="30" required>{{old('value_'.$kay)}}</textarea>
                                 </div>
                                 <?php
                                 }

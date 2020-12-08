@@ -33,9 +33,7 @@
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
-            <div class="row">
-                {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_students_level_1_body"]->value) !!}
-            </div>
+            {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_students_level_1_body"]->value) !!}
         </div>
     </section>
 
@@ -54,66 +52,55 @@
                                 </ul>
                             </div>
                         @endif
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="input-name">{{__('web/public.select_class_type')}} :</label>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="col-md-10 col-sm-9">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="class_type"
-                                               checked>{{__('web/public.select_class_type_online')}}
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio"
-                                               name="class_type">{{__('web/public.select_class_type_verbal')}}
-                                    </label>
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
+
+                        <form class="form-horizontal" id="form-level-1-save" method="POST"
+                              action="{{ route('web.students.level.1.save') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="input-name">{{__('web/public.select_class_type')}} :</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-10 col-sm-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="class_type"
+                                                   value="{{__('web/public.select_class_type_online')}}"
+                                                   checked>{{__('web/public.select_class_type_online')}}
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio"
+                                                   name="class_type"
+                                                   value="{{__('web/public.select_class_type_verbal')}}">{{__('web/public.select_class_type_verbal')}}
+                                        </label>
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
+                                        @enderror
+                                    </div>
                                 </div>
+
                             </div>
-
-                        </div>
+                        </form>
                         <br><br>
-                        @if(isset($studentFields[1]))
-                            <p class="bu-margin-bottom-30">{{__('web/public.student_field_select')}} : </p>
-                            @foreach($studentFields as $item)
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        {{$item->title}}
-                                    </div>
-                                    <div class="col-md-3">
-                                        {{$item->price}}
-                                    </div>
-                                    <div class="col-md-3">
-                                        {{$item->title}}
-                                    </div>
-                                    <div class="col-md-3">
-                                        {{$item->price}}
-                                    </div>
-                                </div>
-                                <br><br>
-                            @endforeach
-                        @endif
 
 
-                        <form class="form-horizontal" method="POST" action="{{ route('web.students.level.1.save') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('web.students.field.add') }}">
                             @csrf
                             <p class="bu-margin-bottom-30">{{__('web/public.student_field_add_new')}} : </p>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group required">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
                                         <label class=" control-label"
-                                               for="input-name">{{__('web/public.select_field_main')}} :</label>
+                                               for="input-name">{{__('web/public.select_field_main')}} : <span class="required">*</span> </label>
                                         <div class="col-md-10 col-sm-9">
                                             <select name="field_main" id="select-field-main"
                                                     class="form-control  @error('field_main') is-invalid @enderror">
                                                 @foreach($fields as $item)
                                                     @if($item->parent_id==0)
-                                                        <option class="option-field-main" id="option-field-main-{{$item->id}}" value="{{$item->id}}">{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                        <option class="option-field-main"
+                                                                id="option-field-main-{{$item->id}}"
+                                                                value="{{$item->id}}" @php if($item->status==0)echo"disabled";@endphp>{{\App\Providers\MyProvider::_text($item->title)}}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
@@ -125,17 +112,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-group required">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
                                         <label class=" control-label"
-                                               for="input-name">{{__('web/public.select_field_child')}} :</label>
+                                               for="input-name">{{__('web/public.select_field_child')}} : <span class="required">*</span></label>
                                         <div class="col-md-10 col-sm-9">
-                                            <select name="field_child"  id="select-field-child"
-                                                    class="form-control  @error('field_main') is-invalid @enderror">
-                                                <option value="0">{{__('web/public.select_field_child')}}</option>
+                                            <select name="field_child" id="select-field-child"
+                                                    class="form-control  @error('field_main') is-invalid @enderror" required >
+                                                {{--<option selected>{{__('web/public.select_field_child')}}</option>--}}
                                                 @foreach($fields as $item)
                                                     @if($item->parent_id!=0 OR !isset($item->children[1]))
-                                                        <option class="option-field-child option-field-child-{{$item->parent_id==0?$item->id:$item->parent_id}}" id="option-field-child-{{$item->id}}"value="{{$item->id}}">{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                        <option class="option-field-child option-field-child-{{$item->parent_id==0?$item->id:$item->parent_id}}"
+                                                                id="option-field-child-{{$item->id}}"
+                                                                value="{{$item->id}}" @php if($item->status==0)echo"disabled";@endphp>{{\App\Providers\MyProvider::_text($item->title)}}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
@@ -147,12 +136,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <label class=" control-label"
                                            for="input-name"><br></label>
                                     <div class="buttons">
                                         <div class="pull-right">
-                                            <input type="submit" class="btn btn-primary" value="{{__('web/public.submit')}}">
+                                            <input type="submit" class="btn btn-primary"
+                                                   value="{{__('web/public.btn_add_field')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -165,6 +155,55 @@
                             </fieldset>
 
                         </form>
+
+
+                        <br><br>
+                        @if(count($studentFields)>0)
+                            <p class="bu-margin-bottom-30">{{__('web/public.student_field_select')}} : </p>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{{__('web/public.title_field')}}</th>
+                                        <th>{{__('web/public.price')}}({{__('web/public.currency_name_IRR')}})</th>
+                                        <th>{{__('web/public.setting')}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php $i=1; $finalPrice=0;@endphp
+                                    @foreach($studentFields as $item)
+                                        <tr>
+                                            <td>{{$i}}</td>
+                                            <td>{{$item->title}}</td>
+                                            <td>{{$item->price}}</td>
+                                            <td><a class="btn btn-danger"
+                                                   href="{{ route('web.students.field.delete',$item->id) }}">{{__('web/public.delete')}}</a>
+                                            </td>
+                                        </tr>
+                                        @php $i++; $finalPrice+=$item->price; @endphp
+                                    @endforeach
+                                    <tr class="table-primary">
+                                        <td colspan='2'>{{__('web/public.price_final')}}
+                                            ({{__('web/public.currency_name_IRR')}}) :
+                                        </td>
+                                        <td colspan='2'>{{$finalPrice}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br><br>
+                            <div class="d-flex justify-content-center mb-2">
+                                <div class="p-2"><a class="btn btn-danger"
+                                                    href="{{ route('web.students.level.1.cancel') }}">{{__('web/public.cancel')}}</a>
+                                </div>
+                                <div class="p-2 ">
+                                    <button id="button-level-1-save"
+                                            class="btn btn-primary">{{__('web/public.next')}}</button>
+                                </div>
+                            </div>
+
+                        @endif
 
 
                     </div>

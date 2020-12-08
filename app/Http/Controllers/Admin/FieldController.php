@@ -65,12 +65,12 @@ class FieldController extends AdminController
      * @param  \App\FieldController  $fields
      * @return \Illuminate\Http\Response
      */
-    public function show($fields)
+    public function show($field)
     {
         $SID=30;
         $fields=Field::with('children')->get();
-        $fields=Field::find($fields);
-        return view('admin.fields.show',compact('fields','fields','SID'));
+        $field=Field::find($field);
+        return view('admin.fields.show',compact('field','fields','SID'));
     }
 
     /**
@@ -79,11 +79,11 @@ class FieldController extends AdminController
      * @param  \App\FieldController  $fields
      * @return \Illuminate\Http\Response
      */
-    public function edit($fields)
+    public function edit($field)
     {
         $SID=30;
-        $field=Field::with('children')->get();
-        $fields=Field::find($fields);
+        $fields=Field::with('children')->get();
+        $field=Field::find($field);
         return view('admin.fields.edit',compact('field','fields','SID'));
     }
 

@@ -32,10 +32,8 @@
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
-            <div class="row">
                 <h1>{{\App\Providers\MyProvider::_text($field->title)}} :</h1>
                 <p>{!! \App\Providers\MyProvider::_text($field->body) !!}</p>
-            </div>
         </div>
     </section>
 

@@ -55,8 +55,12 @@ Route::middleware('language','visit')->group(function (){
 
     //student
     Route::get('/students/level/1','StudentsController@level1')->name('web.students.level.1');
-    Route::post('/students/level/1','StudentsController@level1Save')->name('web.students.level.1.save');
+    Route::post('/students/level/1/save','StudentsController@level1Save')->name('web.students.level.1.save');
+    Route::get('/students/level/1/cancel','StudentsController@level1Cancel')->name('web.students.level.1.cancel');
+    Route::post('/students/field/add','StudentsFieldsController@add')->name('web.students.field.add');
+    Route::get('/students/field/delete/{id}','StudentsFieldsController@delete')->name('web.students.field.delete');
     Route::get('/students/level/2','StudentsController@level2')->name('web.students.level.2');
+    Route::post('/students/level/2/save','StudentsController@level2Save')->name('web.students.level.2.save');
 
 
     // error page

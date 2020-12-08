@@ -36,5 +36,11 @@ return [
     'reset_password_by_sms'=>'تغییر رمز عبور با پیامک',
     'not_confirmed_password'=>'رمز عبور باید حداقل 8 کاراکتر باشد و با تکرار آن برابر باشد .',
     'success_reset_password'=>'رمز با موفقیت تغییر یافت',
-
+    'not_exist_student_field'=>'رشته مورد نظر را به درستی انتخاب نمایید',
+    'success_add_student_field'=>'رشته انتخابی با موفقیت درج شد',
+    'before_select_student_field'=>'این رشته را قبلا انتخاب کرده اید و تکراری میباشد',
+    'before_select_student_field_parent'=>'از این دسته رشته ای انتخاب نموده اید، از هر دسته اصلی تنها یک رشته میتوان ثبت نام نمود.',
+    'disabled_student_field'=>'ثبت نام این رشته غیر فعال میباشد',
+    'success_delete'=>'خذف با موفقیت انجام شد',
+    'student_field_cancel'=>'ثبت نام شما حذف گردید',
 ];

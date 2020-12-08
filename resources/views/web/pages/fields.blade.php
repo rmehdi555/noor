@@ -31,9 +31,7 @@
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
-            <div class="row">
                 {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_fields_body"]->value) !!}
-            </div>
         </div>
     </section>
     <!-- Start: Inner main -->

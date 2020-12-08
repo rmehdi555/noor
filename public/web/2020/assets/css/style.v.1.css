@@ -114,7 +114,12 @@ img {
 strong{
 	font-weight: bold;
 }
-
+option:disabled {
+	color: red;
+}
+.required {
+	color: red;
+}
 
 /* #bu-fonts*/
 .bu-iranyekan{

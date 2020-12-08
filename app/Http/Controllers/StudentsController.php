@@ -15,7 +15,6 @@ class StudentsController extends Controller
     {
         //Cookie::queue('student_code', 124891, 720);
         $result=$this->checkCodeCookie(1);
-
         if($result=='true')
         {
             $fields = Field::all();
@@ -24,6 +23,73 @@ class StudentsController extends Controller
         }else{
             return redirect()->route($result);
         }
+    }
+
+    public function level1Save(Request $request)
+    {
+        $student_flag_cookie=Cookie::get('student_flag_cookie');
+        if(empty($student_flag_cookie) ) {
+            return redirect()->route('web.students.level.1');
+        }
+        return redirect()->route('web.students.level.2',['class_type'=>$request->class_type]);
+        //$studentFields = StudentsFields::where('flag_cookie', '=', Cookie::get('student_flag_cookie'))->orderBy('id')->get();
+       // return view('web.pages.students-level-2', compact('studentFields','request'));
+    }
+
+    public function level1Cancel(Request $request)
+    {
+        Cookie::forget('student_flag_cookie');
+        Cookie::queue('student_flag_cookie', "0", 1);
+        Cookie::forget('student_flag_cookie');
+        alert()->error(__('web/messages.student_field_cancel'),__('web/messages.alert'))->persistent(__('web/messages.success'));
+        return redirect()->route('web.home');
+    }
+
+
+    public function level2(Request $request)
+    {
+        $student_flag_cookie=Cookie::get('student_flag_cookie');
+        if(empty($student_flag_cookie) OR empty($request->class_type) ) {
+            return redirect()->route('web.students.level.1');
+        }
+        $studentFields = StudentsFields::where('flag_cookie', '=', Cookie::get('student_flag_cookie'))->orderBy('id')->get();
+        return view('web.pages.students-level-2', compact('studentFields','request'));
+
+    }
+    public function level2Save(Request $request)
+    {
+        $request->validate([
+            'class_type' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'family' => ['required', 'string', 'max:255'],
+            'f_name' => ['required', 'string', 'max:255'],
+            'sh_number' => ['required', 'string', 'max:255'],
+            'meli_number' => ['required', 'string', 'max:255'],
+            'sh_sodor' => ['required', 'string', 'max:255'],
+            'tavalod_date_y' => ['required', 'numeric','min:1250', 'max:1450'],
+            'tavalod_date_m' => ['required', 'numeric','min:1', 'max:12'],
+            'tavalod_date_d' => ['required', 'numeric','min:1', 'max:31'],
+            'married' => ['required', 'string', 'max:255'],
+            'phone_1' => ['required', 'numeric', 'digits:11', 'unique:users'],
+            'phone_2' => ['numeric', 'digits:11'],
+            'phone_f' => ['numeric', 'digits:11'],
+            'phone_m' => ['numeric', 'digits:11'],
+            'city' => ['required', 'string', 'max:255'],
+            'province' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'post_number' => ['required', 'string', 'max:255'],
+            'education' => ['required', 'string', 'max:255'],
+            'job' => ['string', 'max:255'],
+            'email' => ['string', 'email', 'max:255', 'unique:users'],
+            'number_of_children' => ['numeric','min:0', 'max:50'],
+
+        ]);
+        $student_flag_cookie=Cookie::get('student_flag_cookie');
+        if(empty($student_flag_cookie) ) {
+            return redirect()->route('web.students.level.1');
+        }
+        $studentFields = StudentsFields::where('flag_cookie', '=', Cookie::get('student_flag_cookie'))->orderBy('id')->get();
+        return view('web.pages.students-level-2', compact('studentFields','request'));
     }
 
 
