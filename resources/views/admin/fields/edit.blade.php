@@ -98,7 +98,7 @@
                                         <select id="single-selection" name="parent_id" class="multiselect multiselect-custom" >
                                             <option value="0">{{__('admin/public.base_parent_id')}}</option>
                                             @foreach($fields as $item)
-                                                <option value="{{$item->id}}">{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                <option value="{{$item->id}}" {{$item->id==$field->parent_id?"selected":""}}>{{\App\Providers\MyProvider::_text($item->title)}}</option>
                                             @endforeach
                                         </select>
                                     </div>

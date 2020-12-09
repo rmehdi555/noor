@@ -76,6 +76,8 @@ jQuery(function ($) {
     });
 
 
+
+/*student select field */
     $(".option-field-child").hide();
     $("#select-field-child").val(0);
     var id = $("#select-field-main").val();
@@ -85,15 +87,39 @@ jQuery(function ($) {
         $("#select-field-child").val(0);
         var id = $(this).val();
         $(".option-field-child-" + id).show();
-    })
+    });
+
+    /*married-yes or no select field */
 
     $(".div-married-yes").hide();
+    $(".input-married-no").prop('required',true);
+    $(".input-married-yes").prop('required',false);
     $("input[name$='married']").click(function () {
         var test = $(this).val();
 
         $(".div-married").hide();
         $(".div-married-" + test).show();
+
+        $(".input-married").prop('required',false);
+        $(".input-married-"+ test).prop('required',true);
     });
+
+
+
+    /*select city and province */
+
+    $(".option-city").hide();
+    $("#select-city").val(0);
+    // var id = $("#select-province").val();
+    // $(".option-city-" + id).show();
+    $("#select-province").change(function () {
+        $(".option-city").hide();
+        $("#select-city").val(0);
+        var id = $(this).val();
+        $(".option-city-" + id).show();
+    });
+
+
 
 
 });

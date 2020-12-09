@@ -22,12 +22,17 @@
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
-                <div class="container p-3 my-3 bg-primary text-white align-center">
-                    <h1><a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_fields_link"]->value)}}">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_fields_body"]->value) !!}</a></h1>
+                <div class="col-md-12">
+                    <div class="alert alert-info m-1">
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_fields_link"]->value)}}">
+                            <p class="p-1 text-justify">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_fields_body"]->value) !!}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Start: Inner main -->
     <section class="bu-inner-main">

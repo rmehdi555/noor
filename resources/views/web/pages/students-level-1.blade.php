@@ -18,14 +18,16 @@
         </div>
     </div>
 
-    <!-- Start: Inner main -->
+
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
-                <div class="container p-3 my-3 bg-primary text-white align-center">
-                    <h1>
-                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_students_level_link"]->value)}}">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_students_level_body"]->value) !!}</a>
-                    </h1>
+                <div class="col-md-12">
+                    <div class="alert alert-info m-1">
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_students_level_link"]->value)}}">
+                            <p class="p-1 text-justify">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_students_level_body"]->value) !!}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,9 +35,18 @@
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
-            {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_students_level_1_body"]->value) !!}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-primary m-1">
+                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_students_level_1_body"]->value) !!}
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+
+
 
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
@@ -177,7 +188,7 @@
                                             <td>{{$i}}</td>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->price}}</td>
-                                            <td><a class="btn btn-danger"
+                                            <td><a class="btn btn-danger btn-sm"
                                                    href="{{ route('web.students.field.delete',$item->id) }}">{{__('web/public.delete')}}</a>
                                             </td>
                                         </tr>
