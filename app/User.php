@@ -65,6 +65,14 @@ class User extends Authenticatable
     {
         return $this->level=='admin'?true:false;
     }
+    public function isStudent()
+    {
+        return $this->level=='student'?true:false;
+    }
+    public function isTeacher()
+    {
+        return $this->level=='teacher'?true:false;
+    }
 
     public function activationCode()
     {

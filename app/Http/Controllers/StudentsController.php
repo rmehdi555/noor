@@ -129,6 +129,7 @@ class StudentsController extends Controller
             'email' => strtolower($request->email),
             'phone' => \App\Providers\MyProvider::convert_phone_number($request->phone_1),
             'password' => Hash::make($request->meli_number),
+            'level' => 'student',
         ]);
         $year=substr(verta()->year, 2);
 

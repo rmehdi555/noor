@@ -112,8 +112,8 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
 // start auth route
 Route::middleware('language','visit')->namespace('Auth')->group(function (){
     // Authentication Routes...
-    Route::get('login', 'LoginController@showLoginForm')->name('login');
-    Route::post('login', 'LoginController@login');
+    //Route::get('login', 'LoginController@showLoginForm')->name('login');
+    //Route::post('login', 'LoginController@login');
 
     Route::get('login/sms', 'LoginSmsController@showLoginForm')->name('login.sms');
     Route::post('login/sms', 'LoginSmsController@login');
@@ -121,23 +121,20 @@ Route::middleware('language','visit')->namespace('Auth')->group(function (){
     Route::get('logout', 'LoginController@logout')->name('logout');
 
 
-//    // Login And Register With Google
-//    Route::get('login/google', 'LoginController@redirectToProvider');
-//    Route::get('login/google/callback', 'LoginController@handleProviderCallback');
     // Registration Routes...
-    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'RegisterController@register');
+ //   Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+   // Route::post('register', 'RegisterController@register');
 
-    Route::get('register/sms', 'RegisterSmsController@showRegistrationForm')->name('register.sms');
-    Route::post('register/sms', 'RegisterSmsController@register');
+   // Route::get('register/sms', 'RegisterSmsController@showRegistrationForm')->name('register.sms');
+   // Route::post('register/sms', 'RegisterSmsController@register');
 
     Route::post('activation/account/sms', 'RegisterSmsController@showActivationAccontSms')->name('activation.account.sms');
 
     // Password Reset Routes...
-    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
-    Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
+   // Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+   // Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+   // Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+   // Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
     // Password Reset By SMS Routes
     Route::get('password/sms/reset', 'ForgotPasswordSmsController@showLinkRequestForm')->name('password.request.sms');
     Route::post('password/sms', 'ForgotPasswordSmsController@sendResetLinkSms')->name('password.sms');
@@ -156,6 +153,21 @@ Route::middleware('auth','language','visit')->namespace('User')->prefix('user')-
 });
 
 // end user  route
+
+// start student  route
+
+Route::middleware('auth','language','visit','checkStudent')->namespace('Student')->prefix('student')->group(function (){
+    Route::get('panel','PanelController@index')->name('student.panel');
+});
+
+// end student  route
+// start teacher  route
+
+Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher')->prefix('teacher')->group(function (){
+    Route::get('panel','PanelController@index')->name('teacher.panel');
+});
+
+// end teacher  route
 
 
 
