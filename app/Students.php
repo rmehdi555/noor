@@ -16,7 +16,7 @@ class Students extends Model
 
     public function studentsFields()
     {
-        return $this->hasMany(StudentsFields::class,'student_id','id');
+        return $this->hasMany(StudentsFields::class,'flag_cookie','flag_cookie');
     }
     public function studentsDocuments()
     {

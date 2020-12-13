@@ -115,6 +115,8 @@ Route::middleware('language','visit')->namespace('Auth')->group(function (){
     //Route::get('login', 'LoginController@showLoginForm')->name('login');
     //Route::post('login', 'LoginController@login');
 
+
+    Route::get('login', 'LoginSmsController@showLoginForm')->name('login');
     Route::get('login/sms', 'LoginSmsController@showLoginForm')->name('login.sms');
     Route::post('login/sms', 'LoginSmsController@login');
 
@@ -185,3 +187,13 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 //    ->name('ckfinder_examples');
 
 //end ckfinder route
+
+
+
+
+// start route payment
+
+Route::get('payment/online/zarinpal','PaymentController@payZarinpal')->name('web.payment.online.zarinpal');
+Route::get('payment/online/zarinpal/callback','PaymentController@payZarinpalCallback')->name('web.payment.online.zarinpal.callback');
+
+// end route payment
