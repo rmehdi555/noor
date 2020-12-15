@@ -46,7 +46,7 @@ class PaymentController extends Controller
                     //echo 'Transaction success. RefID:'.$result->RefID;
                     $payment->update([
                         'refId'=>$result->RefID,
-                        'extraDetail'=>$result->ExtraDetail,
+//                        'extraDetail'=>$result->ExtraDetail,
                         'status'=>'5',
                     ]);
                     User::where('id','=',$payment->user_id)->update([

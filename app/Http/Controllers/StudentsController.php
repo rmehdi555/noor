@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 
 use Adlino\Locations\Facades\locations;
+use App\Cities;
 use App\Field;
 use App\Http\Controllers\Controller;
+use App\Provinces;
 use App\Students;
 use App\StudentsFields;
 use App\User;
@@ -57,8 +59,8 @@ class StudentsController extends Controller
             return redirect()->route('web.students.level.1');
         }
         $studentFields = StudentsFields::where('flag_cookie', '=', Cookie::get('student_flag_cookie'))->orderBy('id')->get();
-        $provinces = Locations::getAllProvinces();
-        $cities = Locations::getAllCities();
+        $provinces = Provinces::all();
+        $cities = Cities::all();
         return view('web.pages.students-level-2', compact('studentFields', 'request', 'provinces', 'cities'));
 
     }
