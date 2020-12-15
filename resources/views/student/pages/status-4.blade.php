@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-info m-1">
-                        <p class="p-1 text-justify">کاربر گرامی
+                        <p class="p-1 text-justify">قرآن آموز گرامی
                             {{$user->student->name}}  {{$user->student->family}}
                   پرداخت شما با موفقیت انجام شد  .
                         </p>

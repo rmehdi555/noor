@@ -91,9 +91,13 @@ jQuery(function ($) {
 
     /*married-yes or no select field */
 
-    $(".div-married-yes").hide();
-    $(".input-married-no").prop('required',true);
-    $(".input-married-yes").prop('required',false);
+    var test=$("input[name$='married']").val();
+    $(".div-married").hide();
+    $(".div-married-" + test).show();
+
+    $(".input-married").prop('required',false);
+    $(".input-married-"+ test).prop('required',true);
+
     $("input[name$='married']").click(function () {
         var test = $(this).val();
 

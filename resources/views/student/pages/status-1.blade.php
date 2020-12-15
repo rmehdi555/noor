@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-info m-1">
-                        <p class="p-1 text-justify">کاربر گرامی
+                        <p class="p-1 text-justify">قرآن آموز گرامی
                             {{$user->student->name}}  {{$user->student->family}}
                             احراز هویت شماره همراه شما به درستی انجام شده و برای ادامه ثبت نام لیست رشته های انتخابی را
                             مشاهده و پرداخت نمایید .

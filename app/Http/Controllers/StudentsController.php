@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Adlino\Locations\Facades\locations;
 use App\Field;
 use App\Http\Controllers\Controller;
@@ -79,6 +81,7 @@ class StudentsController extends Controller
             'phone_2' => ['nullable', 'numeric', 'digits:11'],
             'phone_f' => ['nullable', 'numeric', 'digits:11'],
             'phone_m' => ['nullable', 'numeric', 'digits:11'],
+            'tel' => ['nullable', 'numeric'],
             'city' => ['required', 'string', 'max:255'],
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
@@ -111,6 +114,7 @@ class StudentsController extends Controller
             'phone_2' => \App\Providers\MyProvider::convert_phone_number($request->phone_2),
             'phone_f' => \App\Providers\MyProvider::convert_phone_number($request->phone_f),
             'phone_m' => \App\Providers\MyProvider::convert_phone_number($request->phone_m),
+            'tel'=> $request->tel,
             'city' => $request->city,
             'province' => $request->province,
             'address' => $request->address,

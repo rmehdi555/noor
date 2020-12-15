@@ -198,7 +198,7 @@
                                         <td colspan='2'>{{__('web/public.price_final')}}
                                             ({{__('web/public.currency_name_IRR')}}) :
                                         </td>
-                                        <td colspan='2'>{{nu$finalPrice}}</td>
+                                        <td colspan='2'>{{$finalPrice}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

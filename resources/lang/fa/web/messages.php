@@ -51,4 +51,5 @@ return [
     'not_exist'=>'رکوردی پیدا نشد',
     'error_payment_cancel_by_user'=>'درخواست پرداخت توسط شما انصراف داده شد',
     'student_success_save_level_4'=>'درخواست شما با موفقیت ثبت گردید ',
+    'student_success_save_level_5'=>'تایید مشخصات شما با موفقیت ثبت گردید ',
 ];

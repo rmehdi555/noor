@@ -7,6 +7,11 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
+/*
+ * status
+ * 1=جدید
+ * 2=تایید از سمت کاربر
+ */
 class StudentController extends Controller
 {
     public function uploadImages($file,$type="public",$sizes= ["300" , "600" , "900"])

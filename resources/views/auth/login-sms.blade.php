@@ -21,9 +21,9 @@
 
 
     <section class="bu-inner-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
+        <div class="container ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
                     <h2 class="subtitle">{{__('web/public.login')}}</h2>
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">

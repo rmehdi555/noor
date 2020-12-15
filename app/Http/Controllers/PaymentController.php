@@ -64,6 +64,8 @@ class PaymentController extends Controller
                 }
             } else {
 
+
+
                 //echo 'Transaction canceled by user';
                 $payment->update([
                     'status'=>'3',
