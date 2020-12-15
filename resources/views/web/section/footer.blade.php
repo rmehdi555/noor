@@ -88,9 +88,10 @@
                     </div>
                     <div class="main-copyright-left">
                         <ul class="main-copyright-b-list">
-                            {{--<li>--}}
-                                {{--<img src="assets/img/dummy/badge-1.png">--}}
-                            {{--</li>--}}
+                             <li>
+                               
+                                <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=192918&amp;Code=rBVX4yCH9rSSRBdNDSCu"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=192918&amp;Code=rBVX4yCH9rSSRBdNDSCu" alt="" style="cursor:pointer" id="rBVX4yCH9rSSRBdNDSCu"></a>
+                            </li>
                             {{--<li>--}}
                                 {{--<img src="assets/img/dummy/badge-2.png">--}}
                             {{--</li>--}}

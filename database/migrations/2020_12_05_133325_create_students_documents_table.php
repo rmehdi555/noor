@@ -15,10 +15,10 @@ class CreateStudentsDocumentsTable extends Migration
     {
         Schema::create('students_documents', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->text('title')->nullable();
             $table->string('flag_cookie')->nullable();
             $table->string('url')->nullable();
-            $table->bigInteger('student_id')->nullable();
+            $table->bigInteger('user_id')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

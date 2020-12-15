@@ -25,6 +25,7 @@ class CreatePaymentsTable extends Migration
             $table->text('callbackURL')->nullable();
             $table->text('authority')->nullable();
             $table->text('refId')->nullable();
+            $table->text('extraDetail')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

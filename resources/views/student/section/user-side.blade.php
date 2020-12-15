@@ -1,24 +1,19 @@
-<!-- Feature Box End-->
-<div id="container">
-    <!-- Feature Box Start-->
+<div class="main-inner-banner">
     <div class="container">
-        <div class="custom-feature-box row">
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-inner-banner-cont">
+                    <div class="main-inner-banner-c-title">
+                        <ul class="main-breadcrumb">
+                            <li><a href="{{ route('web.home') }}">{{__('web/public.home_page')}}</a></li>
+                            {{--<li class="active">{{\App\Providers\MyProvider::_text($product->title)}}</li>--}}
+                        </ul>
+                        {{--<h1 class="main-inner-banner-ct-name">{{__('web/public.complaint')}}</h1>--}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Feature Box End-->
-<div class="container">
-    <div class="row">
-        <!-- Left Part Start-->
-        <aside id="column-left" class="col-sm-3 hidden-xs">
-            <h3 class="subtitle"> {{__('user/public.panel')}}</h3>
-            <div class="box-category">
-                <ul id="cat_accordion">
-                    <li>
-                        <a href="{{ route('user.panel') }}">{{__('user/public.panel')}} {{auth()->user()->name}} {{auth()->user()->family}} </a>
-                        <a href="{{ route('logout') }}">{{__('user/public.btn_logout')}}</a>
-                    </li>
-                </ul>
+</div>
 
 
-        </aside>

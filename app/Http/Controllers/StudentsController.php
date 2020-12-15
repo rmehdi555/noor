@@ -140,7 +140,9 @@ class StudentsController extends Controller
             ]
         );
         alert()->success(__('web/messages.student_success_level_1'), __('web/messages.success'))->persistent(__('web/messages.success'));
-
+        Cookie::forget('student_flag_cookie');
+        Cookie::queue('student_flag_cookie', "0", 1);
+        Cookie::forget('student_flag_cookie');
         return redirect()->route('login.sms');
     }
 

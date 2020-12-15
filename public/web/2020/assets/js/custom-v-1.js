@@ -121,5 +121,17 @@ jQuery(function ($) {
 
 
 
+    $(document).ready(function(){
+        $(".contract-button").hide();
+
+        $('#contract-checkbox').click(function() {
+            $(".contract-button").toggle(this.checked);
+            $(".contract-div-hide").toggle(!this.checked);
+        });
+
+
+    });
+
+
 
 });

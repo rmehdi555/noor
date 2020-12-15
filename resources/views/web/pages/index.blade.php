@@ -32,7 +32,7 @@
                 <div class="col-md-12">
                     <div class="bu-title bu-margin-bottom-20">
                         <div class="bu-title-cont">
-                            <h3 class="bu-title-name">امکانات </h3>
+                            {{--<h3 class="bu-title-name">امکانات </h3>--}}
                         </div>
                     </div>
                     <div class="main-iconbox-cont">
@@ -40,29 +40,29 @@
                         <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
                             <div class="main-iconbox-i-content">
                                 <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_title"]->value)}}</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i
-                                            class="fal fa-long-arrow-left"></i></span>
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
+                                            {{--class="fal fa-long-arrow-left"></i></span>--}}
                             </div>
                         </a>
                         <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_2_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
                             <div class="main-iconbox-i-content">
                                 <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_2_title"]->value)}}</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i
-                                            class="fal fa-long-arrow-left"></i></span>
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
+                                            {{--class="fal fa-long-arrow-left"></i></span>--}}
                             </div>
                         </a>
                         <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
                             <div class="main-iconbox-i-content">
                                 <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_title"]->value)}}</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i
-                                            class="fal fa-long-arrow-left"></i></span>
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
+                                            {{--class="fal fa-long-arrow-left"></i></span>--}}
                             </div>
                         </a>
                         <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_4_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
                             <div class="main-iconbox-i-content">
                                 <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_4_title"]->value)}}</h3>
-                                <span class="main-iconbox-ic-more">کلیک کنید<i
-                                            class="fal fa-long-arrow-left"></i></span>
+                                {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
+                                            {{--class="fal fa-long-arrow-left"></i></span>--}}
                             </div>
                         </a>
                     </div>

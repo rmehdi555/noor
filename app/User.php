@@ -116,5 +116,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Payment::class, 'user_id');
     }
+    public function studentsDocuments()
+    {
+        return $this->hasOne(StudentsDocuments::class, 'user_id');
+    }
+    public function teacherDocuments()
+    {
+        return $this->hasOne(TeachersDocuments::class, 'user_id');
+    }
 
 }

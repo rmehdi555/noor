@@ -187,7 +187,7 @@
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>{{$item->title}}</td>
-                                            <td>{{$item->price}}</td>
+                                            <td>{{number_format($item->price)}}</td>
                                             <td><a class="btn btn-danger btn-sm"
                                                    href="{{ route('web.students.field.delete',$item->id) }}">{{__('web/public.delete')}}</a>
                                             </td>
@@ -198,7 +198,7 @@
                                         <td colspan='2'>{{__('web/public.price_final')}}
                                             ({{__('web/public.currency_name_IRR')}}) :
                                         </td>
-                                        <td colspan='2'>{{$finalPrice}}</td>
+                                        <td colspan='2'>{{nu$finalPrice}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

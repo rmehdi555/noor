@@ -49,6 +49,7 @@ $locale = App::getLocale();
     <!-- Main Stylesheet -->
     <link type="text/css" href="{{asset('web/2020/assets/css/style.v.1.css')}}" rel="stylesheet" />
 
+
     <!-- JavaScript -->
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-3.3.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-migrate-1.4.1.min.js')}}"></script>

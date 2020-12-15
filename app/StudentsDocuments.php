@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class StudentsDocuments extends Model
 {
+    use SoftDeletes;
+    protected $fillable = ['title','flag_cookie', 'user_id', 'url', 'status'];
+    protected $dates = ['deleted_at'];
 
 }
