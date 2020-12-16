@@ -47,7 +47,7 @@ $locale = App::getLocale();
     <link type="text/css" href="{{asset('web/2020/assets/plg/OwlCarousel2-2.3.4/css/owl.theme.default.min.css')}}" rel="stylesheet" />
 
     <!-- Main Stylesheet -->
-    <link type="text/css" href="{{asset('web/2020/assets/css/style-v-1.css')}}" rel="stylesheet" />
+    <link type="text/css" href="{{asset('web/2020/assets/css/style-v-2.css')}}" rel="stylesheet" />
 
 
     <!-- JavaScript -->

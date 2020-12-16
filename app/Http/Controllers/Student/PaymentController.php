@@ -21,7 +21,7 @@ class PaymentController extends Controller
     {
         $user=Auth::user();
         //dd($user->student->studentsFields);
-        $payment=Payment::where('user_id','=',$user->id)->first();
+        $payment=Payment::where('user_id','=',$user->id)->orderBy('id','DESC')->first();
         $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'; //Required
         $Amount = $payment->price; //Amount will be based on Toman - Required
         $Description = 'توضیحات تراکنش تستی'; // Required
@@ -47,7 +47,7 @@ class PaymentController extends Controller
             Header('Location: https://sandbox.zarinpal.com/pg/StartPay/'.$result->Authority);
             exit;
         } else {
-            alert()->alert(__('web/messages.success_upload'),__('web/messages.success'));
+            alert()->error(__('web/messages.error_connect_bank'),__('web/messages.success'));
             return redirect()->route('student.panel');
         }
     }

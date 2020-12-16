@@ -63,6 +63,12 @@ Route::middleware('language','visit')->group(function (){
     Route::post('/students/level/2/save','StudentsController@level2Save')->name('web.students.level.2.save');
 
 
+    //teacher
+    Route::get('/teachers/level/1','TeachersController@level1')->name('web.teachers.level.1');
+    Route::get('/teachers/level/1/cancel','TeachersController@level1Cancel')->name('web.teachers.level.1.cancel');
+    Route::get('/teachers/level/2','TeachersController@level2')->name('web.teachers.level.2');
+    Route::post('/teachers/level/2/save','TeachersController@level2Save')->name('web.teachers.level.2.save');
+
     // error page
 
     Route::get('/404', 'HomeController@web404')->name('web.404');

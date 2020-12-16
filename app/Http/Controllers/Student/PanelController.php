@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Student;
 
 use Adlino\Locations\Facades\locations;
+use App\Cities;
 use App\Field;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Controller;
 use App\Payment;
+use App\Provinces;
 use App\Students;
 use App\StudentsDocuments;
 use App\StudentsFields;
@@ -57,15 +59,17 @@ class PanelController extends StudentController
             case 5:
                 $this->createPayment();
                 $fields = Field::all();
-                $provinces = Locations::getAllProvinces();
-                $cities = Locations::getAllCities();
+//                $provinces = Locations::getAllProvinces();
+//                $cities = Locations::getAllCities();
+                $provinces = Provinces::all();
+                $cities = Cities::all();
                 return view('student.pages.status-5', compact('fields', 'user','provinces','cities'));
                 break;
             case 6:
                 $this->createPayment();
                 $fields = Field::all();
-                $provinces = Locations::getAllProvinces();
-                $cities = Locations::getAllCities();
+                $provinces = Provinces::all();
+                $cities = Cities::all();
                 return view('student.pages.status-6', compact('fields', 'user','provinces','cities'));
                 break;
             default:
@@ -80,7 +84,7 @@ class PanelController extends StudentController
         $user=Auth::user();
         //dd($user->student->studentsFields);
         $request->validate([
-            'filename' => 'required|mimes:jpeg,png,bmp|max:2048',
+            'filename' => 'required|mimes:jpeg,png,bmp,jpg|max:2048',
         ]);
         $url = $this->uploadImage($request->file('filename'),'student');
         StudentsDocuments::create([
@@ -105,11 +109,11 @@ class PanelController extends StudentController
         $user=Auth::user();
         //dd($user->student->studentsFields);
         $request->validate([
-            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp',
-            'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp',
-            'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp',
-            'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp',
-            'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp',
+            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
+            'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
+            'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
+            'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg',
+            'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg',
         ]);
         $url = $this->uploadImage($request->file('meli_image'),'student');
         StudentsDocuments::create([

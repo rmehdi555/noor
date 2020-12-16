@@ -7,16 +7,16 @@
                 <div class="col-md-1">
 
                 </div>
-                <div class="card text-white col-md-5" style="background-color: #ffb400 ; margin : 10px ; width: 100%">
-                    <div class="card-header">{{\App\Providers\MyProvider::_text($siteDetailsProvider["hadis_roz_title"]->value)}}</div>
+                <div class="card text-white col-md-5" style="background-color: #fefe33 ; margin : 10px ; width: 100%">
+                    <div class="card-header text-dark">{{\App\Providers\MyProvider::_text($siteDetailsProvider["hadis_roz_title"]->value)}}</div>
                     <div class="card-body">
-                        <p class="card-text">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["hadis_roz_body"]->value) !!}</p>
+                        <p class="card-text text-dark">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["hadis_roz_body"]->value) !!}</p>
                     </div>
                 </div>
-                <div class="card text-white  col-md-5" style="background-color: #002366 ; margin : 10px ; width: 100%">
-                    <div class="card-header">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_info_title"]->value)}}</div>
+                <div class="card text-white  col-md-5" style="background-color: #008B8B ; margin : 10px ; width: 100%">
+                    <div class="card-header ">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_info_title"]->value)}}</div>
                     <div class="card-body">
-                        <p class="card-text">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_info_body"]->value) !!}</p>
+                        <p class="card-text ">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_info_body"]->value) !!}</p>
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -37,28 +37,28 @@
                     </div>
                     <div class="main-iconbox-cont">
 
-                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #fefe33; color: #000000 !important;">
                             <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_title"]->value)}}</h3>
+                                <h3 class="main-iconbox-ic-title text-dark">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_1_title"]->value)}}</h3>
                                 {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
                                             {{--class="fal fa-long-arrow-left"></i></span>--}}
                             </div>
                         </a>
-                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_2_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_2_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #008B8B">
                             <div class="main-iconbox-i-content">
                                 <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_2_title"]->value)}}</h3>
                                 {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
                                             {{--class="fal fa-long-arrow-left"></i></span>--}}
                             </div>
                         </a>
-                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #fefe33">
                             <div class="main-iconbox-i-content">
-                                <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_title"]->value)}}</h3>
+                                <h3 class="main-iconbox-ic-title text-dark">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_3_title"]->value)}}</h3>
                                 {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
                                             {{--class="fal fa-long-arrow-left"></i></span>--}}
                             </div>
                         </a>
-                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_4_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #002366">
+                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_4_link"]->value)}}" class="main-iconbox-item bu-item-hover" style="background-color: #008B8B">
                             <div class="main-iconbox-i-content">
                                 <h3 class="main-iconbox-ic-title">{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_4_title"]->value)}}</h3>
                                 {{--<span class="main-iconbox-ic-more">کلیک کنید<i--}}
@@ -174,28 +174,28 @@
                             {{--<img src="assets/img/dummy/ibox-1.png" alt="">--}}
                         {{--</a>--}}
 
-                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">--}}
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #fefe33">--}}
                             {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>--}}
                             {{--<div class="main-iconbox-i-content">--}}
                                 {{--<h3 class="main-iconbox-ic-title">عنوان باکس</h3>--}}
                                 {{--<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>--}}
                             {{--</div>--}}
                         {{--</a>--}}
-                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">--}}
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #008B8B">--}}
                             {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>--}}
                             {{--<div class="main-iconbox-i-content">--}}
                                 {{--<h3 class="main-iconbox-ic-title">عنوان باکس عنوان باکس عنوان باکس</h3>--}}
                                 {{--<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>--}}
                             {{--</div>--}}
                         {{--</a>--}}
-                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #ffb400">--}}
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #fefe33">--}}
                             {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-chalkboard-teacher"></i></div>--}}
                             {{--<div class="main-iconbox-i-content">--}}
                                 {{--<h3 class="main-iconbox-ic-title">عنوان باکس</h3>--}}
                                 {{--<span class="main-iconbox-ic-more">کلیک کنید<i class="fal fa-long-arrow-left"></i></span>--}}
                             {{--</div>--}}
                         {{--</a>--}}
-                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #002366">--}}
+                        {{--<a href="" class="main-iconbox-item bu-item-hover" style="background-color: #008B8B">--}}
                             {{--<div class="main-iconbox-i-icon"><i style="color: #fff;" class="fal fa-books"></i></div>--}}
                             {{--<div class="main-iconbox-i-content">--}}
                                 {{--<h3 class="main-iconbox-ic-title">عنوان باکس</h3>--}}

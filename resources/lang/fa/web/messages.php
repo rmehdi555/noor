@@ -41,7 +41,7 @@ return [
     'before_select_student_field'=>'این رشته را قبلا انتخاب کرده اید و تکراری میباشد',
     'before_select_student_field_parent'=>'از این دسته رشته ای انتخاب نموده اید، از هر دسته اصلی تنها یک رشته میتوان ثبت نام نمود.',
     'disabled_student_field'=>'ثبت نام این رشته غیر فعال میباشد',
-    'success_delete'=>'خذف با موفقیت انجام شد',
+    'success_delete'=>'حذف با موفقیت انجام شد',
     'student_field_cancel'=>'ثبت نام شما حذف گردید',
     'student_success_level_1'=>'ثبت اطلاعات با موفقیت انجام شد ، جهت احراز هویت و ادامه ثبت نام وارد حساب کاربری خود شوید .',
     'student_success_save_level_1'=>'درخواست شما با موفقیت ثبت گردید ',

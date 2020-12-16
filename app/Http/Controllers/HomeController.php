@@ -7,6 +7,7 @@ use App\News;
 use App\ProductCategories;
 use App\Products;
 use App\Providers\MyProvider;
+use App\Provinces;
 use App\Slider;
 use App\WebPages;
 use Hekmatinasser\Verta\Verta;

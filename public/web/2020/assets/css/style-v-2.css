@@ -57,7 +57,7 @@ a {
 }
 a:hover,
 a:focus {
-	color: #002366;
+	color: #008B8B;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -138,7 +138,7 @@ option:disabled {
 	font-weight: bold
 }
 .bu-blue{
-	color: #002366
+	color: #008B8B
 }
 
 /* #bu-margin*/
@@ -226,7 +226,7 @@ option:disabled {
 }
 .bu-title-effect:hover:before {
 	width: 8px;
-	background-color: #ffb400;
+	background-color: #fefe33;
 	transition: all 0.2s ease-in-out;
 }
 
@@ -317,23 +317,23 @@ option:disabled {
 	font-weight: bold;
 }
 .bu-btn-yellow{
-	background-color: #ffb400;
-	color: #002366;
+	background-color: #fefe33;
+	color: #008B8B;
 }
 .bu-btn-yellow:hover,
 .bu-btn-yellow:focus{
-	color: #002366;
+	color: #008B8B;
 }
 .bu-btn-white{
 	background-color: #fff;
-	color: #002366;
+	color: #008B8B;
 }
 .bu-btn-white:hover,
 .bu-btn-white:focus{
-	color: #002366;
+	color: #008B8B;
 }
 .bu-btn-blue{
-	background-color: #002366;
+	background-color: #008B8B;
 	color: #fff;
 }
 .bu-btn-blue:hover,
@@ -436,7 +436,7 @@ textarea.form-control{
 	color: #fff;
 }
 .bu-title-name{
-	color: #002366;
+	color: #008B8B;
 	font-size: 1.250rem;
 }
 .bu-title-icon.svg{
@@ -449,7 +449,7 @@ textarea.form-control{
 .bu-title-icon.sqaure{
 	width: 8px;
 	height: 20px;
-	background-color: #002366
+	background-color: #008B8B
 }
 
 /* #Effect - Title*/
@@ -465,7 +465,7 @@ textarea.form-control{
 }
 .bu-title-effect:hover:before {
 	width: 8px;
-	background-color: #ffb400;
+	background-color: #fefe33;
 	transition: all 0.2s ease-in-out;
 }
 
@@ -476,7 +476,7 @@ textarea.form-control{
 .bu-more{
 	display: flex;
 	align-items: center;
-	color: #002366
+	color: #008B8B
 }
 .bu-more span{
 	font-size: 0.75rem;
@@ -492,12 +492,12 @@ textarea.form-control{
 .owl-theme .owl-dots .owl-dot span {
 	width: 14px;
 	height: 14px;
-	background: #ffb400;
+	background: #fefe33;
 	transition: all 0.2s ease-in-out;
 	margin: 5px 4px;
 }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-	background: #002366;
+	background: #008B8B;
 	width: 24px;
 	height: 14px;
 	transition: all 0.2s ease-in-out;
@@ -540,7 +540,7 @@ textarea.form-control{
 	font-family: "Font Awesome 5 Pro";
 	font-size: 36px;
 	font-weight: lighter;
-	color: #002366;
+	color: #008B8B;
 	transition: all 0.2s ease-in-out;
 	position: absolute;
 }
@@ -591,7 +591,7 @@ textarea.form-control{
 /* #Header
 /********************************************************************************/
 .main-header {
-	background-color: #002366;
+	background-color: #008B8B;
 	box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.06);
 	display: flex;
 	height: 150px;
@@ -699,7 +699,7 @@ padding: 0 5px;
 	width: 100%;
 	left: 0;
 	z-index: 2;
-	background-color: #002366;
+	background-color: #008B8B;
 	display: none;
 	align-items: center;
 	top: 0;
@@ -761,7 +761,7 @@ padding: 0 5px;
 
 .main-header-nav-cont{
 	height: 64px;
-	background-color: #ffb400;
+	background-color: #fefe33;
 	width: 100%;
 	/*	width: 100%;*/
 	padding-right: 20px;
@@ -783,10 +783,10 @@ padding: 0 5px;
 	border-bottom: 4px solid transparent
 }
 .main-menu-list li:hover a{
-	border-bottom: 4px solid #002366;
+	border-bottom: 4px solid #008B8B;
 }
 .main-menu-list li.active a{
-	border-bottom: 4px solid #002366;
+	border-bottom: 4px solid #008B8B;
 }
 .main-menu-dropmenu {
 	position: absolute;
@@ -954,7 +954,7 @@ padding: 0 5px;
 	padding: 40px 0;
 }
 .main-inner-banner-cont{
-	border-right: 8px solid #ffb400;
+	border-right: 8px solid #fefe33;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -968,7 +968,7 @@ padding: 0 5px;
 .main-inner-banner-ct-name{
 	font-size: 1.875rem;
 	line-height: 2.250rem;
-	color: #002366
+	color: #008B8B
 }
 
 /********************************************************************************/
@@ -987,19 +987,19 @@ padding: 0 5px;
 .main-breadcrumb li a{
 	padding:0 0 0 15px;
 	position:relative;
-	color: #002366
+	color: #008B8B
 }
 .main-breadcrumb.main-dark-breadcrumb li a{
 	color:#888
 }
 .main-breadcrumb li a:hover{
-	color:#ffb400
+	color:#fefe33
 }
 .main-breadcrumb.main-dark-breadcrumb li a:hover{
-	color:#ffb400
+	color:#fefe33
 }
 .main-breadcrumb li a:hover:after{
-	color:#ffb400
+	color:#fefe33
 }
 .main-breadcrumb.main-dark-breadcrumb li a:hover:after{
 	color:#888
@@ -1139,7 +1139,7 @@ padding: 0 5px;
 	right: 0;
 	width: 6px;
 	height: 6px;
-	background-color: #002366;
+	background-color: #008B8B;
 	top: 8px;
 }
 .bu-inner-mcs-view-date {
@@ -1166,7 +1166,7 @@ padding: 0 5px;
 	padding: 8px 0;
 }
 .bu-inner-mcs-cats-list li a:hover{
-	background-color: #ffb400;
+	background-color: #fefe33;
 	padding-right: 10px;
 }
 
@@ -1251,7 +1251,7 @@ padding: 0 5px;
 	width: 100%;
 }
 .bu-inner-news-li-title a:hover{
-	color: #ffb400
+	color: #fefe33
 }
 .bu-inner-news-li-desc{
 	width: 100%;
@@ -1291,15 +1291,15 @@ padding: 0 5px;
 }
 .bu-inner-ns-meta span {
 	font-size: 0.875rem;
-	color: #002366;
+	color: #008B8B;
 }
 .bu-inner-ns-like{
 	display: flex;
 	align-items: center;
-	color: #002366
+	color: #008B8B
 }
 .bu-inner-ns-like i{
-	color: #002366;
+	color: #008B8B;
 	font-size: 18px;
 	margin-left: 10px;
 }
@@ -1378,7 +1378,7 @@ padding: 0 5px;
 	color: #888;
 }
 .bu-inner-nst-list li a:hover{
-	color: #002366;
+	color: #008B8B;
 }
 .bu-inner-nss-name{
 	color: #888;
@@ -1390,7 +1390,7 @@ padding: 0 5px;
 	font-size: 16px;
 }
 .bu-inner-ns-source a:hover{
-	color: #002366;
+	color: #008B8B;
 }
 
 .bu-event-slider .owl-nav button.owl-next, .bu-event-slider .owl-nav button.owl-prev{
@@ -1455,7 +1455,7 @@ padding: 0 5px;
 /* Single - comments */
 .bu-inner-ns-comment-no{
 	display: flex;
-	color: #002366;
+	color: #008B8B;
 	white-space: nowrap;
 }
 .bu-inner-ns-comments{
@@ -1526,7 +1526,7 @@ padding: 0 5px;
 }
 .bu-inner-nscch-name{
 	font-size: 1.0rem;
-	color: #002366;
+	color: #008B8B;
 }
 .bu-inner-nscch-reply{
 	color: #888;
@@ -1565,10 +1565,10 @@ padding: 0 5px;
 	display:block
 }
 .bu-pagination-list li.bu-active a{
-	background-color:#ffb400;
+	background-color:#fefe33;
 }
 .bu-pagination-list li.bu-active a:hover{
-	background-color:#ffb400
+	background-color:#fefe33
 }
 .bu-pagination-list li.bu-page a{
 	background-color:transparent;
@@ -1643,8 +1643,8 @@ padding: 0 5px;
 }
 .main-events-tab .nav-tabs .nav-item.show .nav-link,
 .main-events-tab .nav-tabs .nav-link.active {
-	color: #002366;
-	background-color: #ffb400;
+	color: #008B8B;
+	background-color: #fefe33;
 	border: 0;
 }
 .main-events-tab .tab-content{
@@ -1672,7 +1672,7 @@ padding: 0 5px;
 	font-size: 15px;
 }
 .main-events-list li .main-events-list-title a:hover{
-	color: #002366;
+	color: #008B8B;
 	transition: all 0.2s ease-in-out;
 }
 .main-events-list-title{
@@ -1687,7 +1687,7 @@ padding: 0 5px;
 	right: 0;
 	width: 6px;
 	height: 6px;
-	background-color: #002366;
+	background-color: #008B8B;
 	top: calc(50% - 3px);
 }
 .main-events-list-title a{
@@ -1795,7 +1795,7 @@ padding: 0 5px;
 	margin-bottom: 15px !important;
 }
 .main-inner-mc-social-list li a{
-	color: #002366 !important;
+	color: #008B8B !important;
 }
 
 /********************************************************************************/
@@ -1818,7 +1818,7 @@ padding: 0 5px;
 .bu-404-content-404 h1 {
 	font-size: 12rem;
 	line-height: 10rem;
-	color: #002366
+	color: #008B8B
 }
 .bu-404-content-c-title {
 	font-size: 1.875rem;
@@ -1835,7 +1835,7 @@ padding: 0 5px;
 /********************************************************************************/
 .main-footer{
 	padding: 40px 0;
-	background-color: #002366
+	background-color: #008B8B
 }
 .main-footer-cont{
 	width: calc(100% + 20px);
@@ -1877,7 +1877,7 @@ padding: 0 5px;
 	font-size: 0.75rem;
 }
 .main-footer-links-list li a:hover{
-	color: #ffb400;
+	color: #fefe33;
 }
 .main-footer-contact-list {
 	width: 100%;
@@ -2047,7 +2047,7 @@ padding: 0 5px;
 	}
 	.main-menu-list li.active a {
 		border-bottom: 4px solid transparent;
-		background-color: #ffb400;
+		background-color: #fefe33;
 		color: #fff;
 	}
 	.main-menu-list li a:hover {

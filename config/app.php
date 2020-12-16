@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Hekmatinasser\Verta\VertaServiceProvider::class,
+        Adlino\Locations\LocationsServiceProvider::class,
 
     ],
 
@@ -232,6 +233,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
+        'Locations' => Adlino\Locations\Facades\Locations::class,
 
     ],
 
