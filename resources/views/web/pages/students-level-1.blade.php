@@ -147,16 +147,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <label class=" control-label"
-                                           for="input-name"><br></label>
-                                    <div class="buttons">
-                                        <div class="pull-right">
-                                            <input type="submit" class="btn btn-primary"
-                                                   value="{{__('web/public.btn_add_field')}}">
+                                @if(count($studentFields)>0)
+                                    <div class="col-md-4">
+                                        <label class=" control-label"
+                                               for="input-name"><br></label>
+                                        <div class="buttons">
+                                            <div class="pull-right">
+                                                <input type="submit" class="btn btn-primary"
+                                                       value="{{__('web/public.btn_add_field')}}">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="col-md-4">
+                                        <label class=" control-label"
+                                               for="input-name"><br></label>
+                                        <div class="buttons">
+                                            <div class="pull-right">
+                                                <input type="submit" class="btn btn-primary"
+                                                       value="{{__('web/public.select')}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+
 
                             </div>
 

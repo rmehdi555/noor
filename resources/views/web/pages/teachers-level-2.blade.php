@@ -245,12 +245,12 @@
 
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label"
-                                           for="phone_f">{{__('web/public.phone_f')}} : <span class="required">*</span></label>
+                                           for="phone_f">{{__('web/public.phone_f')}} : </label>
                                     <div class="col-md-12 col-sm-10">
                                         <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                                pattern="09[0-9]{9}" name="phone_f" id="phone_f"
                                                value="{{old('phone_f')}}"
-                                               class="form-control input-married input-married-no  @error('phone_f') is-invalid @enderror"/>
+                                               class="form-control  @error('phone_f') is-invalid @enderror"/>
                                         @error('phone_f')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -260,12 +260,12 @@
                                 </div>
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label"
-                                           for="phone_m">{{__('web/public.phone_m')}} : <span class="required">*</span></label>
+                                           for="phone_m">{{__('web/public.phone_m')}} : </label>
                                     <div class="col-md-12 col-sm-10">
                                         <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                                pattern="09[0-9]{9}" name="phone_m" id="phone_m"
                                                value="{{old('phone_m')}}" id="input-name"
-                                               class="form-control input-married input-married-no @error('phone_m') is-invalid @enderror"/>
+                                               class="form-control  @error('phone_m') is-invalid @enderror"/>
                                         @error('phone_m')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -314,7 +314,7 @@
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label" for="tel">{{__('web/public.tel')}} :
-                                        <span class="required">*</span></label>
+                                        </label>
                                     <div class="col-md-12 col-sm-10">
                                         <input type="text" name="tel" id="tel"
                                                placeholder="{{__('web/public.example')}} : 02122334455"
