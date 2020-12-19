@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Http\Controllers\Teacher;
+
+use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+
+/*
+ * status
+ * 1=جدید
+ * 2=تایید از سمت کاربر
+ */
+class TeacherController extends Controller
+{
+    public function uploadImages($file,$type="public",$sizes= ["300" , "600" , "900"])
+    {
+        $year = Carbon::now()->year;
+        $month = Carbon::now()->month;
+        $imagePath = "/upload/images/{$year}/{$month}/{$type}/";
+        $filename = $file->getClientOriginalName();
+        $filename=explode('.',$filename);
+        $filename=end($filename);
+        $filename = uniqid().'.'.$filename;
+        $file = $file->move(public_path($imagePath) , $filename);
+
+        $url['images'] = $this->resize($file->getRealPath() , $sizes , $imagePath , $filename);
+        $url['thumb'] = $url['images'][$sizes[0]];
+
+        return $url;
+    }
+
+    private function resize($path , $sizes , $imagePath , $filename)
+    {
+        $images['original'] = $imagePath . $filename;
+        foreach ($sizes as $size) {
+            $sizeName=$size;
+            $size=explode('-',$size);
+            if(!isset($size[1]))
+            {
+                $size[1]=$size[0];
+            }
+            $images[$sizeName] = $imagePath . "{$sizeName}_" . $filename;
+
+            Image::make($path)->fit($size[0], $size[1], function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path($images[$sizeName]));
+        }
+
+        return $images;
+    }
+
+
+
+    public function uploadImage($file,$type="public")
+    {
+        $year = Carbon::now()->year;
+        $month = Carbon::now()->month;
+        $imagePath = "/upload/file/{$type}/{$year}/{$month}/";
+        $filename = $file->getClientOriginalName();
+        $filename=explode('.',$filename);
+        $filename=end($filename);
+        $filename = uniqid().'.'.$filename;
+        $file = $file->move(public_path($imagePath) , $filename);
+        $url=$imagePath .$filename;
+        return $url;
+    }
+
+
+
+}

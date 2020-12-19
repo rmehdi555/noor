@@ -17,6 +17,7 @@ class CreateTeachersTable extends Migration
             $table->id();
             $table->string('flag_cookie')->nullable();
             $table->bigInteger('user_id')->nullable();
+            $table->string('teacher_id')->nullable();
             $table->string('name')->nullable();
             $table->string('family')->nullable();
             $table->string('f_name')->nullable();
@@ -24,7 +25,7 @@ class CreateTeachersTable extends Migration
             $table->string('meli_number')->nullable();
             $table->string('sh_sodor')->nullable();
             $table->string('tavalod_date')->nullable();
-            $table->boolean('married')->default(false);
+            $table->string('married')->default('no');
             $table->string('phone_1')->unique();
             $table->string('phone_2')->nullable();
             $table->string('phone_f')->nullable();

@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="alert alert-success m-1">
                         <p class="p-1 text-justify">
-                            اطلاعات وارد شده را با دقت مطالعه نمایید و درصورت نیاز ویرایش نماید سپس دکمه مرحله بعد را انخاب نمایید ، لازم به ذکر میباشد صحت اطلاعات شما در این مرحله تایید نهایی میشوند .
+                            اطلاعات وارد شده را با دقت مطالعه  و درصورت نیاز ویرایش نماید سپس دکمه بعدی را انخاب کنید ، لازم به ذکر میباشد صحت اطلاعات شما در این مرحله تایید نهایی میشوند .
                         </p>
                     </div>
                 </div>
@@ -236,7 +236,7 @@
                             <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                    pattern="09[0-9]{9}" name="phone_f" id="phone_f"
                                    value="{{$user->student->phone_f}}"
-                                   class="form-control input-married input-married-no  @error('phone_f') is-invalid @enderror"/>
+                                   class="form-control   @error('phone_f') is-invalid @enderror"/>
                             @error('phone_f')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -251,7 +251,7 @@
                             <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                    pattern="09[0-9]{9}" name="phone_m" id="phone_m"
                                    value="{{$user->student->phone_m}}" id="input-name"
-                                   class="form-control input-married input-married-no @error('phone_m') is-invalid @enderror"/>
+                                   class="form-control @error('phone_m') is-invalid @enderror"/>
                             @error('phone_m')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -305,7 +305,7 @@
                             <input type="text" name="tel" id="tel"
                                    placeholder="{{__('web/public.example')}} : 02122334455"
                                    value="{{$user->student->tel}}"
-                                   class="form-control  @error('tel') is-invalid @enderror" required/>
+                                   class="form-control  @error('tel') is-invalid @enderror" />
                             @error('tel')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

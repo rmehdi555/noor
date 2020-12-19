@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserActivationSms;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Cities;
 use App\Field;
 use App\Provinces;
-use App\Students;
-use App\StudentsFields;
+use App\Teachers;
 use App\User;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
@@ -28,13 +28,14 @@ class TeachersController extends Controller
 
     public function level2(Request $request)
     {
-        return view('web.pages.teachers-level-2');
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        return view('web.pages.teachers-level-2',compact('provinces','cities'));
     }
 
     public function level2Save(Request $request)
     {
         $request->validate([
-            'class_type' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'family' => ['required', 'string', 'max:255'],
             'f_name' => ['required', 'string', 'max:255'],
@@ -62,13 +63,8 @@ class TeachersController extends Controller
         ]);
 
 
-        $student_flag_cookie = Cookie::get('student_flag_cookie');
-        if (empty($student_flag_cookie)) {
-            return redirect()->route('web.students.level.1');
-        }
 
-        $student = Students::create([
-            'flag_cookie' => $student_flag_cookie,
+        $teacher = Teachers::create([
             'class_type' => $request->class_type,
             'name' => $request->name,
             'family' => $request->family,
@@ -101,21 +97,27 @@ class TeachersController extends Controller
             'email' => strtolower($request->email),
             'phone' => \App\Providers\MyProvider::convert_phone_number($request->phone_1),
             'password' => Hash::make($request->meli_number),
-            'level' => 'student',
+            'level' => 'teacher',
         ]);
         $year=substr(verta()->year, 2);
 
-        Students::find($student->id)->update(
+        Teachers::find($teacher->id)->update(
             [
                 'user_id'=>$user->id,
-                'student_id'=>'q'.$year.$student->id,
+                'teacher_id'=>'m'.$year.$teacher->id,
             ]
         );
-        alert()->success(__('web/messages.student_success_level_1'), __('web/messages.success'))->persistent(__('web/messages.success'));
-        Cookie::forget('student_flag_cookie');
-        Cookie::queue('student_flag_cookie', "0", 1);
-        Cookie::forget('student_flag_cookie');
-        return redirect()->route('login.sms');
+
+        $user->update(
+            [
+                'user_name'=>'m'.$year.$teacher->id,
+            ]
+        );
+
+        event(new UserActivationSms($user));
+        alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;
+        return view('auth.confirm-sms-code',compact('user'));
+
     }
 
 }

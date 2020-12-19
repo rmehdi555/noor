@@ -319,7 +319,7 @@
                                         <input type="text" name="tel" id="tel"
                                                placeholder="{{__('web/public.example')}} : 02122334455"
                                                value="{{old('tel')}}"
-                                               class="form-control  @error('tel') is-invalid @enderror" required/>
+                                               class="form-control  @error('tel') is-invalid @enderror"/>
                                         @error('tel')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

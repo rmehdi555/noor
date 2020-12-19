@@ -52,4 +52,6 @@ return [
     'error_payment_cancel_by_user'=>'درخواست پرداخت توسط شما انصراف داده شد',
     'student_success_save_level_4'=>'درخواست شما با موفقیت ثبت گردید ',
     'student_success_save_level_5'=>'تایید مشخصات شما با موفقیت ثبت گردید ',
+    'teacher_success_save_level_1'=>'مدارک به درستی بارگذاری شدند',
+    'teacher_success_save_level_2'=>'تایید مشخصات شما با موفقیت ثبت گردید ',
 ];

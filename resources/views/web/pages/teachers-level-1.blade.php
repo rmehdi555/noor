@@ -24,27 +24,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-info m-1">
-                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_teachers_level_link"]->value)}}">
+
                             <p class="p-1 text-justify">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_teachers_level_body"]->value) !!}</p>
-                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Start: Inner main -->
-    <section class="bu-inner-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-primary m-1">
-                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_teachers_level_1_body"]->value) !!}
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
 
 
 

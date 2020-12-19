@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use Adlino\Locations\Facades\locations;
 use App\Cities;
+use App\Events\UserActivationSms;
 use App\Field;
 use App\Http\Controllers\Controller;
 use App\Provinces;
@@ -145,11 +146,22 @@ class StudentsController extends Controller
                 'student_id'=>'q'.$year.$student->id,
             ]
         );
-        alert()->success(__('web/messages.student_success_level_1'), __('web/messages.success'))->persistent(__('web/messages.success'));
+        $user->update(
+            [
+                'user_name'=>'q'.$year.$student->id,
+            ]
+        );
         Cookie::forget('student_flag_cookie');
         Cookie::queue('student_flag_cookie', "0", 1);
         Cookie::forget('student_flag_cookie');
-        return redirect()->route('login.sms');
+
+        event(new UserActivationSms($user));
+        alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;
+        return view('auth.confirm-sms-code',compact('user'));
+
+
+        //alert()->success(__('web/messages.student_success_level_1'), __('web/messages.success'))->persistent(__('web/messages.success'));
+        //return redirect()->route('login.sms');
     }
 
 

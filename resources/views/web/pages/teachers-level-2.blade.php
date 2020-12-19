@@ -19,26 +19,26 @@
     </div>
 
     <!-- Start: Inner main -->
-    <section class="bu-inner-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-info m-1">
-                        <a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_students_level_link"]->value)}}">
-                            <p class="p-1 text-justify">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_students_level_body"]->value) !!}</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{--<section class="bu-inner-main">--}}
+        {{--<div class="container">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-md-12">--}}
+                    {{--<div class="alert alert-info m-1">--}}
+                        {{--<a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["box_teachers_level_link"]->value)}}">--}}
+                            {{--<p class="p-1 text-justify">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["box_teachers_level_body"]->value) !!}</p>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-primary m-1">
-                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_students_level_2_body"]->value) !!}
+                        {!! \App\Providers\MyProvider::_text($siteDetailsProvider["page_teachers_level_2_body"]->value) !!}
                     </div>
                 </div>
             </div>
@@ -63,9 +63,8 @@
                         @endif
 
                         <form class="form-horizontal" id="form-level-2-save" method="POST"
-                              action="{{ route('web.students.level.2.save') }}">
+                              action="{{ route('web.teachers.level.2.save') }}">
                             @csrf
-                            <input type="hidden" name="class_type" value="{{$request->class_type}}">
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label" for="name">{{__('web/public.name')}}
@@ -319,7 +318,7 @@
                                         <input type="text" name="tel" id="tel"
                                                placeholder="{{__('web/public.example')}} : 02122334455"
                                                value="{{old('tel')}}"
-                                               class="form-control  @error('tel') is-invalid @enderror" required/>
+                                               class="form-control  @error('tel') is-invalid @enderror" />
                                         @error('tel')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -447,7 +446,7 @@
                             <br><br>
                             <div class="d-flex justify-content-center mb-2">
                                 <div class="p-2"><a class="btn btn-danger"
-                                                    href="{{ route('web.students.level.1.cancel') }}">{{__('web/public.cancel')}}</a>
+                                                    href="{{ route('web.teachers.level.1.cancel') }}">{{__('web/public.cancel')}}</a>
                                 </div>
                                 <div class="p-2 ">
                                     <button type="submit"

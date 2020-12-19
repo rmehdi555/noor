@@ -177,6 +177,10 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
 
 Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher')->prefix('teacher')->group(function (){
     Route::get('panel','PanelController@index')->name('teacher.panel');
+    Route::post('level/1/save','PanelController@level1Save')->name('teacher.level.1.save');
+    Route::post('level/2/save','PanelController@level2Save')->name('teacher.level.2.save');
+    Route::post('level/3/save','PanelController@level3Save')->name('teacher.level.3.save');
+    Route::get('payment','PaymentController@index')->name('teacher.payment.index');
 });
 
 // end teacher  route
@@ -205,5 +209,5 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 
 Route::get('payment/online/zarinpal','PaymentController@payZarinpal')->name('web.payment.online.zarinpal');
 Route::get('payment/online/zarinpal/callback','PaymentController@payZarinpalCallback')->name('web.payment.online.zarinpal.callback');
-
+Route::get('payment/online/zarinpal/callback/teacher','PaymentController@payZarinpalCallbackTeacher')->name('web.payment.online.zarinpal.callback.teacher');
 // end route payment

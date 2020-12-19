@@ -26,7 +26,7 @@ class CreateStudentsTable extends Migration
             $table->string('meli_number')->nullable();
             $table->string('sh_sodor')->nullable();
             $table->string('tavalod_date')->nullable();
-            $table->string('married')->default(false);
+            $table->string('married')->default('no');
             $table->string('phone_1')->unique();
             $table->string('phone_2')->nullable();
             $table->string('phone_f')->nullable();

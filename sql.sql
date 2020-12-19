@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `user_name` VARCHAR(191) NOT NULL DEFAULT 'user' AFTER `phone`;
