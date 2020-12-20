@@ -138,4 +138,34 @@ jQuery(function ($) {
 
 
 
+
+
+    /*select noor */
+
+
+    $("#select-type-noor").val(1);
+    $(".div-type-noor-1").show();
+    $(".div-type-noor-all").hide();
+    $(".input-type-noor-1").prop('required',true);
+    $(".input-type-noor-all").prop('required',false);
+    // var id = $("#select-province").val();
+    // $(".option-city-" + id).show();
+    $("#select-type-noor").change(function () {
+        var id = $(this).val();
+        if(id==1)
+        {
+            $(".div-type-noor-1").show();
+            $(".div-type-noor-all").hide();
+            $(".input-type-noor-1").prop('required',true);
+            $(".input-type-noor-all").prop('required',false);
+        }else{
+            $(".div-type-noor-1").hide();
+            $(".div-type-noor-all").show();
+            $(".input-type-noor-1").prop('required',false);
+            $(".input-type-noor-all").prop('required',true);
+        }
+    });
+
+
+
 });

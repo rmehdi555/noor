@@ -54,4 +54,5 @@ return [
     'student_success_save_level_5'=>'تایید مشخصات شما با موفقیت ثبت گردید ',
     'teacher_success_save_level_1'=>'مدارک به درستی بارگذاری شدند',
     'teacher_success_save_level_2'=>'تایید مشخصات شما با موفقیت ثبت گردید ',
+    'success_save_form'=>'اطلاعات به درستی ذخیره شدند',
 ];

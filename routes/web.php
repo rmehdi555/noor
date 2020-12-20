@@ -69,6 +69,16 @@ Route::middleware('language','visit')->group(function (){
     Route::get('/teachers/level/2','TeachersController@level2')->name('web.teachers.level.2');
     Route::post('/teachers/level/2/save','TeachersController@level2Save')->name('web.teachers.level.2.save');
 
+
+    //noor
+    Route::get('/noor/level/1','NoorController@level1')->name('web.noor.level.1');
+    Route::get('/noor/level/1/cancel','NoorController@level1Cancel')->name('web.noor.level.1.cancel');
+    Route::get('/noor/level/2','NoorController@level2')->name('web.noor.level.2');
+    Route::post('/noor/level/1/save','NoorController@level1Save')->name('web.noor.level.1.save');
+    Route::post('/noor/level/2/save','NoorController@level2Save')->name('web.noor.level.2.save');
+
+
+
     // error page
 
     Route::get('/404', 'HomeController@web404')->name('web.404');
@@ -210,4 +220,5 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 Route::get('payment/online/zarinpal','PaymentController@payZarinpal')->name('web.payment.online.zarinpal');
 Route::get('payment/online/zarinpal/callback','PaymentController@payZarinpalCallback')->name('web.payment.online.zarinpal.callback');
 Route::get('payment/online/zarinpal/callback/teacher','PaymentController@payZarinpalCallbackTeacher')->name('web.payment.online.zarinpal.callback.teacher');
+Route::get('payment/online/zarinpal/callback/noor','PaymentController@payZarinpalCallbackNoor')->name('web.payment.online.zarinpal.callback.noor');
 // end route payment

@@ -238,6 +238,10 @@ class PanelController extends TeacherController
         {
             $allPrice+=$field->price;
         }
+        if($allPrice<1000)
+        {
+            $allPrice=1000;
+        }
         Payment::where([['status','=','1'],['user_id','=',$user->id]])->delete();
         Payment::create([
             'price' => $allPrice,
