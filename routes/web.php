@@ -107,9 +107,9 @@ Route::get('/currency/{currency}','HomeController@changeCurrency')->name('web.ch
 
 Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->group(function (){
     Route::get('panel','PanelController@index')->name('admin.panel');
-    Route::resource('products','ProductsController');
+    //Route::resource('products','ProductsController');
     Route::resource('siteDetails','SiteDetailsController');
-    Route::resource('productCategories','ProductCategoriesController');
+    //Route::resource('productCategories','ProductCategoriesController');
     Route::resource('slider','SliderController');
     Route::resource('webPages','WebPagesController');
     Route::resource('menus','MenuController');
@@ -120,6 +120,9 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('newsCategories','NewsCategoriesController');
     Route::resource('news','NewsController');
     Route::resource('fields','FieldController');
+    Route::resource('students','StudentsController');
+    Route::resource('teachers','TeachersController');
+    Route::resource('noors','NoorsController');
 });
 
 // end admin  route
@@ -179,7 +182,6 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::post('level/1/save','PanelController@level1Save')->name('student.level.1.save');
     Route::get('payment','PaymentController@index')->name('student.payment.index');
     Route::post('level/4/save','PanelController@level4Save')->name('student.level.4.save');
-    Route::post('level/5/save','PanelController@level5Save')->name('student.level.5.save');
 });
 
 // end student  route

@@ -122,7 +122,7 @@ class PanelController extends TeacherController
         $user->update([
             'status'=> '1',
         ]);
-        alert()->success(__('web/messages.teacher_success_save_level_1'), __('web/messages.success'))->persistent(__('web/messages.success'));
+        alert()->success(__('web/messages.teacher_success_save_level_1'), __('web/messages.success'));
         return redirect()->route('teacher.panel');
     }
 
@@ -136,7 +136,7 @@ class PanelController extends TeacherController
             'name' => ['required', 'string', 'max:255'],
             'family' => ['required', 'string', 'max:255'],
             'f_name' => ['required', 'string', 'max:255'],
-            'sh_number' => ['required', 'string', 'max:255'],
+            'sh_number' => ['required', 'numeric'],
             'sh_sodor' => ['required', 'string', 'max:255'],
             'tavalod_date_y' => ['required', 'numeric', 'min:1250', 'max:1450'],
             'tavalod_date_m' => ['required', 'numeric', 'min:1', 'max:12'],
@@ -149,7 +149,7 @@ class PanelController extends TeacherController
             'city' => ['required', 'string', 'max:255'],
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'post_number' => ['required', 'string', 'max:255'],
+            'post_number' => ['required', 'numeric', 'digits:10'],
             'education' => ['required', 'string', 'max:255'],
             'job' => ['string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
@@ -189,7 +189,7 @@ class PanelController extends TeacherController
             'email' => strtolower($request->email),
             'status'=> '2',
         ]);
-        alert()->success(__('web/messages.teacher_success_save_level_2'), __('web/messages.success'))->persistent(__('web/messages.success'));
+        alert()->success(__('web/messages.teacher_success_save_level_2'), __('web/messages.success'));
         return redirect()->route('teacher.panel');
     }
 

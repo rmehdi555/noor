@@ -16,13 +16,13 @@ class StudentsFieldsController extends Controller
         if(!isset($field->id))
         {
 //            alert()->success(__('web/messages.success_sabt_level_1'),__('web/messages.success'));
-//            alert()->success(__('web/messages.success_sabt_level_4'),$code_cookie)->persistent(__('web/messages.success'));
-            alert()->error(__('web/messages.not_exist_student_field'),__('web/messages.alert'))->persistent(__('web/messages.success'));
+//            alert()->success(__('web/messages.success_sabt_level_4'),$code_cookie);
+            alert()->error(__('web/messages.not_exist_student_field'),__('web/messages.alert'));
             return redirect()->route('web.students.level.1');
         }
         if($field->id==0)
         {
-            alert()->error(__('web/messages.disabled_student_field'),__('web/messages.alert'))->persistent(__('web/messages.success'));
+            alert()->error(__('web/messages.disabled_student_field'),__('web/messages.alert'));
             return redirect()->route('web.students.level.1');
         }
         $student_flag_cookie=Cookie::get('student_flag_cookie');
@@ -34,12 +34,12 @@ class StudentsFieldsController extends Controller
             {
                 if($field->id==$item->field_id)
                 {
-                    alert()->error(__('web/messages.before_select_student_field'),__('web/messages.alert'))->persistent(__('web/messages.success'));
+                    alert()->error(__('web/messages.before_select_student_field'),__('web/messages.alert'));
                     return redirect()->route('web.students.level.1');
                 }
                 if($field->parent_id!=0 AND $field->parent_id==$item->field_parent_id)
                 {
-                    alert()->error(__('web/messages.before_select_student_field_parent'),__('web/messages.alert'))->persistent(__('web/messages.success'));
+                    alert()->error(__('web/messages.before_select_student_field_parent'),__('web/messages.alert'));
                     return redirect()->route('web.students.level.1');
                 }
             }
@@ -67,7 +67,7 @@ class StudentsFieldsController extends Controller
         $studentField=StudentsFields::where([['id','=',$id],['flag_cookie','=',$student_flag_cookie]])->get()->first();
         if(!isset($studentField->id))
         {
-            alert()->error(__('web/messages.not_exist_student_field'),__('web/messages.alert'))->persistent(__('web/messages.success'));
+            alert()->error(__('web/messages.not_exist_student_field'),__('web/messages.alert'));
             return redirect()->route('web.students.level.1');
         }
         $studentField=StudentsFields::where([['id','=',$id],['flag_cookie','=',$student_flag_cookie]])->delete();

@@ -9,15 +9,17 @@ use App\Cities;
 use App\Events\UserActivationSms;
 use App\Field;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Student\StudentController;
 use App\Provinces;
 use App\Students;
+use App\StudentsDocuments;
 use App\StudentsFields;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
-class StudentsController extends Controller
+class StudentsController extends StudentController
 {
     public function level1()
     {
@@ -48,7 +50,7 @@ class StudentsController extends Controller
         Cookie::forget('student_flag_cookie');
         Cookie::queue('student_flag_cookie', "0", 1);
         Cookie::forget('student_flag_cookie');
-        alert()->error(__('web/messages.student_field_cancel'), __('web/messages.alert'))->persistent(__('web/messages.success'));
+        alert()->error(__('web/messages.student_field_cancel'), __('web/messages.alert'));
         return redirect()->route('web.home');
     }
 
@@ -73,7 +75,7 @@ class StudentsController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'family' => ['required', 'string', 'max:255'],
             'f_name' => ['required', 'string', 'max:255'],
-            'sh_number' => ['required', 'string', 'max:255'],
+            'sh_number' => ['required', 'numeric'],
             'meli_number' => ['required', 'numeric', 'digits:10'],
             'sh_sodor' => ['required', 'string', 'max:255'],
             'tavalod_date_y' => ['required', 'numeric', 'min:1250', 'max:1450'],
@@ -88,12 +90,19 @@ class StudentsController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'post_number' => ['required', 'string', 'max:255'],
+            'post_number' => ['required', 'numeric', 'digits:10'],
             'education' => ['required', 'string', 'max:255'],
             'job' => ['string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
-
+            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'profile_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf',
+            'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            "file_more"    => "nullable|array",
+            "file_more.*"  => "nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf",
         ]);
 
 
@@ -151,6 +160,72 @@ class StudentsController extends Controller
                 'user_name'=>'q'.$year.$student->id,
             ]
         );
+
+
+
+
+
+        $url = $this->uploadImage($request->file('meli_image'),'student');
+        StudentsDocuments::create([
+            'title'=>__('web/public.meli_image'),
+            'flag_cookie'=>$student->flag_cookie,
+            'user_id'=>$user->id,
+            'url'=>$url,
+            'status' => '1',
+        ]);
+        $url = $this->uploadImage($request->file('sh_1_image'),'student');
+        StudentsDocuments::create([
+            'title'=>__('web/public.sh_1_image'),
+            'flag_cookie'=>$student->flag_cookie,
+            'user_id'=>$user->id,
+            'url'=>$url,
+            'status' => '1',
+        ]);
+        $url = $this->uploadImage($request->file('sh_2_image'),'student');
+        StudentsDocuments::create([
+            'title'=>__('web/public.sh_2_image'),
+            'flag_cookie'=>$student->flag_cookie,
+            'user_id'=>$user->id,
+            'url'=>$url,
+            'status' => '1',
+        ]);
+
+        $file = $request->file('p_image');
+        if($file) {
+            $url = $this->uploadImage($request->file('p_image'),'student');
+            StudentsDocuments::create([
+                'title'=>__('web/public.p_image'),
+                'flag_cookie'=>$student->flag_cookie,
+                'user_id'=>$user->id,
+                'url'=>$url,
+                'status' => '1',
+            ]);
+        }
+        $file = $request->file('m_image');
+        if($file) {
+            $url = $this->uploadImage($request->file('m_image'),'student');
+            StudentsDocuments::create([
+                'title'=>__('web/public.m_image'),
+                'flag_cookie'=>$student->flag_cookie,
+                'user_id'=>$user->id,
+                'url'=>$url,
+                'status' => '1',
+            ]);
+        }
+
+        foreach ($request->file('file_more') as $key=>$file)
+        {
+            if($file) {
+                $url = $this->uploadImage($file,'student');
+                StudentsDocuments::create([
+                    'title'=>$request->file_more_name[$key],
+                    'flag_cookie'=>$student->flag_cookie,
+                    'user_id'=>$user->id,
+                    'url'=>$url,
+                    'status' => '1',
+                ]);
+            }
+        }
         Cookie::forget('student_flag_cookie');
         Cookie::queue('student_flag_cookie', "0", 1);
         Cookie::forget('student_flag_cookie');
@@ -160,7 +235,7 @@ class StudentsController extends Controller
         return view('auth.confirm-sms-code',compact('user'));
 
 
-        //alert()->success(__('web/messages.student_success_level_1'), __('web/messages.success'))->persistent(__('web/messages.success'));
+        //alert()->success(__('web/messages.student_success_level_1'), __('web/messages.success'));
         //return redirect()->route('login.sms');
     }
 

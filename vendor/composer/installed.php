@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '727b3a8e89f8153f1da94ac9a5d95794bc781ef0',
+    'reference' => '6d53facfb840efa10666dc5a692e5e90f8f3b60f',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -530,7 +530,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '727b3a8e89f8153f1da94ac9a5d95794bc781ef0',
+      'reference' => '6d53facfb840efa10666dc5a692e5e90f8f3b60f',
     ),
     'laravel/tinker' => 
     array (
@@ -622,6 +622,15 @@
       ),
       'reference' => '1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
     ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v8.0.8',
+      'version' => '8.0.8.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4ce221329d0918146514605db1644b2771c5e308',
+    ),
     'mtdowling/jmespath.php' => 
     array (
       'pretty_version' => '2.6.0',
@@ -662,6 +671,15 @@
       ),
       'reference' => 'dbe56d23de8fcb157bbc0cfb3ad7c7de0cfb0984',
     ),
+    'niklasravnsborg/laravel-pdf' => 
+    array (
+      'pretty_version' => 'v4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '80cce12a3d9048759ec0d2ca87c57a56b4b4950f',
+    ),
     'nunomaduro/collision' => 
     array (
       'pretty_version' => 'v4.3.0',
@@ -679,6 +697,15 @@
       array (
       ),
       'reference' => '943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
     ),
     'phar-io/manifest' => 
     array (
@@ -876,8 +903,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -1039,6 +1066,15 @@
       array (
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
+    ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.5',
+      'version' => '2.3.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f2246c8669bd25834f5c264425eb0e250d7a9312',
     ),
     'shetabit/visitor' => 
     array (

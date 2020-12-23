@@ -1,11 +1,11 @@
 
 <!-- Start: Footer -->
-<footer class="main-footer">
+<footer class="main-footer noPrint">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="main-footer-cont">
-                    <div class="main-footer-links"">
+                    <div class="main-footer-links">
                         <div class="bu-title white bu-margin-bottom-20">
                             <div class="bu-title-cont">
                                 <h3 class="bu-title-name">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["footer_about_title"]->value) !!}</h3>
@@ -70,7 +70,7 @@
 <!-- End: Footer -->
 
 <!-- Start: Copyright -->
-<section class="main-copyright">
+<section class="main-copyright noPrint">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

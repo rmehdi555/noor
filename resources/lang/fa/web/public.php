@@ -95,7 +95,7 @@ return [
     'student_field_select'=>'لیست رشته هایی که انتخاب شده اند',
     'student_field_add_new'=>'انتخاب رشته',
     'select_class_type'=>'نوع کلاس ',
-    'select_class_type_online'=>'مجازی',
+    'select_class_type_online'=>'آنلاین',
     'select_class_type_verbal'=>'حضوری',
     'select_field_main'=>'انتخاب دسته اصلی رشته',
     'select_field_child'=>'انتخاب دسته فرعی',
@@ -143,10 +143,15 @@ return [
     'meli_image'=>'تصویر کارت ملی',
     'sh_1_image'=>'تصویر صفحه اول شناسنامه',
     'sh_2_image'=>'تصویر صفحه دوم شناسنامه',
-    'p_image'=>'پوشه سوابق و لوح تقدیر ها',
+    'p_image'=>'تصویر یا pdf سوابق و لوح تقدیر ها',
     'm_image'=>'مدرک تحصیلی',
     'select'=>'انتخاب',
     'mobile'=>'شماره همراه',
+    'profile_image'=>'تصویر پرسنلی',
+    'add_more_upload_file'=>'بارگذاری مدارک بیشتر',
+    'add_more_file_file'=>'فایل را انتخاب نمایید',
+    'add_more_file_name'=>'عنوان فایل را وارد نمایید',
+    'print'=>'چاپ',
 
 
 

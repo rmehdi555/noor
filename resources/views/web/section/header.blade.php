@@ -8,7 +8,7 @@
     <div class="bu-overlay"></div>
 
 
-    <header class="main-header">
+    <header class="main-header noPrint">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </header>
-    <div class="main-header-nav-cont">
+    <div class="main-header-nav-cont noPrint">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

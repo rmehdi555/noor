@@ -178,6 +178,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Hekmatinasser\Verta\VertaServiceProvider::class,
         Adlino\Locations\LocationsServiceProvider::class,
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
         'Locations' => Adlino\Locations\Facades\Locations::class,
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
 
     ],
 

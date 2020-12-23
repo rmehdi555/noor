@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use niklasravnsborg\LaravelPdf\PdfWrapper;
 use SoapClient;
 
 /*
@@ -24,12 +25,11 @@ use SoapClient;
  * status=1ایجاد فاکتور و ارسال به درگاه پرداخت
  * status=2درخواست بررسی نهاد برای پرداخت نکردن
  * status=3تایید پرداخت نکردن
- * status=4 پرداخت تایید شده و در حال بارگذاری مدارک
- * status=5مدارک بارگذاری شده و در حال نمایش و ویرایش اطلاعات
- * status=6اطلاعات توسط کاربر تایید شده اند
+ * status=4پرداخت تایید شده و در حال نمایش و ویرایش اطلاعات
+ * status=6اطلاعات توسط کاربر تایید شده ان5
  * status=10 تایید نهایی
  */
-class PanelController extends TeacherController
+class PanelController extends StudentsDocuments
 {
     public function index(Request $request)
     {
@@ -52,21 +52,24 @@ class PanelController extends TeacherController
                 break;
             case 4:
                 $fields = Field::all();
-                return view('student.pages.status-4', compact('fields', 'user'));
+                $provinces = Provinces::all();
+                $cities = Cities::all();
+                return view('student.pages.status-4', compact('fields', 'user','provinces','cities'));
                 break;
             case 5:
+
+
+
                 $fields = Field::all();
-//                $provinces = Locations::getAllProvinces();
-//                $cities = Locations::getAllCities();
                 $provinces = Provinces::all();
                 $cities = Cities::all();
+
+                $pdf = new PdfWrapper();
+                $pdf->loadView('pdf.test',compact('fields', 'user','provinces','cities'),[],[ ])->save(base_path('public/pdf/').$user->student->id.'.pdf');
+
+
+
                 return view('student.pages.status-5', compact('fields', 'user','provinces','cities'));
-                break;
-            case 6:
-                $fields = Field::all();
-                $provinces = Provinces::all();
-                $cities = Cities::all();
-                return view('student.pages.status-6', compact('fields', 'user','provinces','cities'));
                 break;
             default:
                 return view('user.pages.panel');
@@ -95,85 +98,21 @@ class PanelController extends TeacherController
         $user->update([
             'status'=> '2',
         ]);
-        alert()->success(__('web/messages.student_success_save_level_1'), __('web/messages.success'))->persistent(__('web/messages.success'));
+        alert()->success(__('web/messages.student_success_save_level_1'), __('web/messages.success'));
         return redirect()->route('student.panel');
     }
+
+
 
 
     public function level4Save(Request $request)
-    {
-        $user=Auth::user();
-        //dd($user->student->studentsFields);
-        $request->validate([
-            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
-            'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
-            'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
-            'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg',
-            'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg',
-        ]);
-        $url = $this->uploadImage($request->file('meli_image'),'student');
-        StudentsDocuments::create([
-            'title'=>__('web/public.meli_image'),
-            'flag_cookie'=>$user->student->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
-            'status' => '1',
-        ]);
-        $url = $this->uploadImage($request->file('sh_1_image'),'student');
-        StudentsDocuments::create([
-            'title'=>__('web/public.sh_1_image'),
-            'flag_cookie'=>$user->student->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
-            'status' => '1',
-        ]);
-        $url = $this->uploadImage($request->file('sh_2_image'),'student');
-        StudentsDocuments::create([
-            'title'=>__('web/public.sh_2_image'),
-            'flag_cookie'=>$user->student->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
-            'status' => '1',
-        ]);
-
-        $file = $request->file('p_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('p_image'),'student');
-            StudentsDocuments::create([
-                'title'=>__('web/public.p_image'),
-                'flag_cookie'=>$user->student->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
-                'status' => '1',
-            ]);
-        }
-        $file = $request->file('m_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('m_image'),'student');
-            StudentsDocuments::create([
-                'title'=>__('web/public.m_image'),
-                'flag_cookie'=>$user->student->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
-                'status' => '1',
-            ]);
-        }
-
-        $user->update([
-            'status'=> '5',
-        ]);
-        alert()->success(__('web/messages.student_success_save_level_4'), __('web/messages.success'))->persistent(__('web/messages.success'));
-        return redirect()->route('student.panel');
-    }
-
-    public function level5Save(Request $request)
     {
         $user=Auth::user();
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'family' => ['required', 'string', 'max:255'],
             'f_name' => ['required', 'string', 'max:255'],
-            'sh_number' => ['required', 'string', 'max:255'],
+            'sh_number' => ['required', 'numeric'],
             'sh_sodor' => ['required', 'string', 'max:255'],
             'tavalod_date_y' => ['required', 'numeric', 'min:1250', 'max:1450'],
             'tavalod_date_m' => ['required', 'numeric', 'min:1', 'max:12'],
@@ -186,7 +125,7 @@ class PanelController extends TeacherController
             'city' => ['required', 'string', 'max:255'],
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'post_number' => ['required', 'string', 'max:255'],
+            'post_number' => ['required', 'numeric', 'digits:10'],
             'education' => ['required', 'string', 'max:255'],
             'job' => ['string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
@@ -224,9 +163,9 @@ class PanelController extends TeacherController
             'name' => $request->name,
             'family' => $request->family,
             'email' => strtolower($request->email),
-            'status'=> '6',
+            'status'=> '5',
         ]);
-        alert()->success(__('web/messages.student_success_save_level_5'), __('web/messages.success'))->persistent(__('web/messages.success'));
+        alert()->success(__('web/messages.student_success_save_level_5'), __('web/messages.success'));
         return redirect()->route('student.panel');
     }
 

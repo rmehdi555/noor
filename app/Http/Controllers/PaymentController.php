@@ -53,14 +53,14 @@ class PaymentController extends Controller
                     User::where('id','=',$payment->user_id)->update([
                        'status'=>'4',
                     ]);
-                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'))->persistent(__('web/messages.success'));
+                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                     return redirect()->route('login');
                 } else {
                     //echo 'Transaction failed. Status:'.$result->Status;
                     $payment->update([
                         'status'=>'4',
                     ]);
-                    alert()->error(__('web/messages.error_payment_72'))->persistent(__('web/messages.success'));
+                    alert()->error(__('web/messages.error_payment_72'));
                     return redirect()->route('login');
                 }
             } else {
@@ -71,14 +71,14 @@ class PaymentController extends Controller
                 $payment->update([
                     'status'=>'3',
                 ]);
-                alert()->error(__('web/messages.error_payment_cancel_by_user'))->persistent(__('web/messages.success'));
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
                 return redirect()->route('login');
             }
 
 
         }else{
             //رکورد وجود ندارد
-            alert()->error(__('web/messages.not_exist'))->persistent(__('web/messages.success'));
+            alert()->error(__('web/messages.not_exist'));
             return redirect()->route('login');
 
         }
@@ -120,14 +120,14 @@ class PaymentController extends Controller
                     User::where('id','=',$payment->user_id)->update([
                         'status'=>'4',
                     ]);
-                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'))->persistent(__('web/messages.success'));
+                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                     return redirect()->route('login');
                 } else {
                     //echo 'Transaction failed. Status:'.$result->Status;
                     $payment->update([
                         'status'=>'4',
                     ]);
-                    alert()->error(__('web/messages.error_payment_72'))->persistent(__('web/messages.success'));
+                    alert()->error(__('web/messages.error_payment_72'));
                     return redirect()->route('login');
                 }
             } else {
@@ -138,14 +138,14 @@ class PaymentController extends Controller
                 $payment->update([
                     'status'=>'3',
                 ]);
-                alert()->error(__('web/messages.error_payment_cancel_by_user'))->persistent(__('web/messages.success'));
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
                 return redirect()->route('login');
             }
 
 
         }else{
             //رکورد وجود ندارد
-            alert()->error(__('web/messages.not_exist'))->persistent(__('web/messages.success'));
+            alert()->error(__('web/messages.not_exist'));
             return redirect()->route('login');
 
         }
@@ -189,14 +189,14 @@ class PaymentController extends Controller
                     $noor->update([
                         'status'=>'4',
                     ]);
-                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'))->persistent(__('web/messages.success'));
+                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                     return view('web.pages.noor-level-2-type-all',compact('noor'));
                 } else {
                     //echo 'Transaction failed. Status:'.$result->Status;
                     $payment->update([
                         'status'=>'4',
                     ]);
-                    alert()->error(__('web/messages.error_payment_72'))->persistent(__('web/messages.success'));
+                    alert()->error(__('web/messages.error_payment_72'));
                     return view('web.pages.noor-level-1');
                 }
             } else {
@@ -207,14 +207,14 @@ class PaymentController extends Controller
                 $payment->update([
                     'status'=>'3',
                 ]);
-                alert()->error(__('web/messages.error_payment_cancel_by_user'))->persistent(__('web/messages.success'));
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
                 return view('web.pages.noor-level-1');
             }
 
 
         }else{
             //رکورد وجود ندارد
-            alert()->error(__('web/messages.not_exist'))->persistent(__('web/messages.success'));
+            alert()->error(__('web/messages.not_exist'));
             return redirect()->route('login');
 
         }

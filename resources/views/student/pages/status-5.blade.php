@@ -1,14 +1,24 @@
 @extends('student.master')
 @section('content')
+    <section class="bu-inner-main noPrint">
+        <div class=" d-flex justify-content-center mb-2 ">
+            <div class="p-2 ">
+                <button type="button"
+                        class="btn btn-warning" onclick="window.print()">{{__('web/public.print')}}</button>
+            </div>
+        </div>
+    </section>
 
-    <section class="bu-inner-main">
+
+
+    <section class="bu-inner-main ">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-info m-1">
                         <p class="p-1 text-justify">قرآن آموز گرامی
                             {{$user->student->name}}  {{$user->student->family}}
-                  پرداخت شما با موفقیت انجام شد  .
+                            مشخصات شما با موفقیت در سامانه نور موعود ثبت گردید.
                         </p>
                     </div>
                 </div>
@@ -21,7 +31,10 @@
                 <div class="col-md-12">
                     <div class="alert alert-success m-1">
                         <p class="p-1 text-justify">
-                            اطلاعات وارد شده را با دقت مطالعه  و درصورت نیاز ویرایش نماید سپس دکمه بعدی را انخاب کنید ، لازم به ذکر میباشد صحت اطلاعات شما در این مرحله تایید نهایی میشوند .
+                            کد قرآن آموزی:
+                            {{$user->student->student_id }}
+                            <br>
+
                         </p>
                     </div>
                 </div>
@@ -32,7 +45,7 @@
     <section class="bu-inner-main">
         <div class="container">
             <form class="form-horizontal" id="form-level-1-save" method="POST"
-                  action="{{ route('student.level.5.save') }}" enctype="multipart/form-data">
+                  action="" enctype="multipart/form-data">
                 @csrf
                 @if(count($errors) > 0)
                     <div class="alert alert-danger">
@@ -49,7 +62,7 @@
                             : <span class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="name" id="name" value="{{$user->student->name}}"
-                                   class="form-control  @error('name') is-invalid @enderror" required/>
+                                   class="form-control  @error('name') is-invalid @enderror" required disabled/>
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -63,7 +76,7 @@
                                     class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="family" id="family" value="{{$user->student->family}}"
-                                   class="form-control  @error('family') is-invalid @enderror" required/>
+                                   class="form-control  @error('family') is-invalid @enderror" required disabled/>
                             @error('family')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -79,7 +92,7 @@
                                     class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="f_name" id="f_name" value="{{$user->student->f_name}}"
-                                   class="form-control  @error('f_name') is-invalid @enderror"/>
+                                   class="form-control  @error('f_name') is-invalid @enderror" disabled/>
                             @error('f_name')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -94,7 +107,7 @@
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="sh_number" id="sh_number" value="{{$user->student->sh_number}}"
                                    id="input-name"
-                                   class="form-control  @error('sh_number') is-invalid @enderror" required/>
+                                   class="form-control  @error('sh_number') is-invalid @enderror" required disabled/>
                             @error('sh_number')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -128,7 +141,7 @@
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="sh_sodor" id="sh_sodor" value="{{$user->student->sh_sodor}}"
                                    id="input-name"
-                                   class="form-control  @error('sh_sodor') is-invalid @enderror" required/>
+                                   class="form-control  @error('sh_sodor') is-invalid @enderror" required disabled/>
                             @error('sh_sodor')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -145,15 +158,15 @@
                         <div class="col-md-12 col-sm-12">
                             <div class='form-inline row'>
                                 @php
-                                $tavalod_date=explode("-",$user->student->tavalod_date);
-                                $user->student->tavalod_date_d=$tavalod_date[2];
-                                $user->student->tavalod_date_m=$tavalod_date[1];
-                                $user->student->tavalod_date_y=$tavalod_date[0];
+                                    $tavalod_date=explode("-",$user->student->tavalod_date);
+                                    $user->student->tavalod_date_d=$tavalod_date[2];
+                                    $user->student->tavalod_date_m=$tavalod_date[1];
+                                    $user->student->tavalod_date_y=$tavalod_date[0];
 
                                 @endphp
 
                                 <div class='form-group col-sm-4'>
-                                    <select name='tavalod_date_d' class='form-control' required>
+                                    <select name='tavalod_date_d' class='form-control' required disabled>
                                         <option selected
                                                 disabled>{{__('web/public.tavalod_date_d')}}</option>
                                         @for ($i = 1; $i < 32; $i++)
@@ -162,7 +175,7 @@
                                     </select>
                                 </div>
                                 <div class='form-group col-sm-4'>
-                                    <select name='tavalod_date_m' class='form-control' required>
+                                    <select name='tavalod_date_m' class='form-control' required disabled>
                                         <option selected
                                                 disabled>{{__('web/public.tavalod_date_m')}}</option>
                                         @for ($i = 1; $i < 13; $i++)
@@ -171,7 +184,7 @@
                                     </select>
                                 </div>
                                 <div class='form-group col-sm-4'>
-                                    <select name='tavalod_date_y' class='form-control' required>
+                                    <select name='tavalod_date_y' class='form-control' required disabled>
                                         <option selected
                                                 disabled>{{__('web/public.tavalod_date_y')}}</option>
                                         @for ($i = 1400; $i > 1295; $i--)
@@ -190,12 +203,12 @@
                                for="married">{{__('web/public.married')}} : <span class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
                             <label class="radio-inline" style="padding: 10px 40px 10px">
-                                <input type="radio" name="married" checked
+                                <input type="radio" name="married" checked disabled
                                        value="{{$user->student->married}}">{{__('web/public.married_'.$user->student->married)}}
                             </label>
                             @php $user->student->married_d=$user->student->married=="no"?"yes":"no";@endphp
                             <label class="radio-inline">
-                                <input type="radio" name="married"
+                                <input type="radio" name="married" disabled
                                        value="{{$user->student->married_d}}">{{__('web/public.married_'.$user->student->married_d)}}
                             </label>
 
@@ -217,7 +230,8 @@
                         <div class="col-md-12 col-sm-10">
                             <input type="number" value="0" min="0" max="20" name="number_of_children"
                                    id="number_of_children" value="{{$user->student->number_of_children}}"
-                                   class="form-control input-married input-married-yes  @error('number_of_children') is-invalid @enderror"/>
+                                   class="form-control input-married input-married-yes  @error('number_of_children') is-invalid @enderror"
+                                   disabled/>
                             @error('number_of_children')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -236,7 +250,8 @@
                             <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                    pattern="09[0-9]{9}" name="phone_f" id="phone_f"
                                    value="{{$user->student->phone_f}}"
-                                   class="form-control   @error('phone_f') is-invalid @enderror"/>
+                                   class="form-control input-married input-married-no  @error('phone_f') is-invalid @enderror"
+                                   disabled/>
                             @error('phone_f')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -251,7 +266,8 @@
                             <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                    pattern="09[0-9]{9}" name="phone_m" id="phone_m"
                                    value="{{$user->student->phone_m}}" id="input-name"
-                                   class="form-control @error('phone_m') is-invalid @enderror"/>
+                                   class="form-control input-married input-married-no @error('phone_m') is-invalid @enderror"
+                                   disabled/>
                             @error('phone_m')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -287,7 +303,7 @@
                             <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                    pattern="09[0-9]{9}" name="phone_2" id="phone_2"
                                    value="{{$user->student->phone_2}}" id="input-name"
-                                   class="form-control  @error('phone_2') is-invalid @enderror"/>
+                                   class="form-control  @error('phone_2') is-invalid @enderror" disabled/>
                             @error('phone_2')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -305,7 +321,7 @@
                             <input type="text" name="tel" id="tel"
                                    placeholder="{{__('web/public.example')}} : 02122334455"
                                    value="{{$user->student->tel}}"
-                                   class="form-control  @error('tel') is-invalid @enderror" />
+                                   class="form-control  @error('tel') is-invalid @enderror" disabled/>
                             @error('tel')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -318,7 +334,7 @@
                                for="email">{{__('web/public.email')}} :</label>
                         <div class="col-md-12 col-sm-10">
                             <input type="email" name="email" id="email" value="{{$user->student->email}}"
-                                   class="form-control  @error('email') is-invalid @enderror"/>
+                                   class="form-control  @error('email') is-invalid @enderror" disabled/>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -333,7 +349,7 @@
                                for="province">{{__('web/public.province')}} : <span
                                     class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
-                            <select name='province' class='form-control' id="select-province" required>
+                            <select name='province' class='form-control' id="select-province" required disabled>
                                 <option value="0" selected
                                         disabled>{{__('web/public.select_option')}}</option>
                                 @foreach ($provinces as $item)
@@ -352,7 +368,7 @@
                         <label class="col-md-6 col-sm-6 control-label" for="city">{{__('web/public.city')}}
                             : <span class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
-                            <select name='city' class='form-control' id="select-city" required>
+                            <select name='city' class='form-control' id="select-city" required disabled>
                                 <option value="0" selected
                                         disabled>{{__('web/public.select_option')}}</option>
                                 @foreach ($cities as $item)
@@ -376,7 +392,7 @@
                                for="address">{{__('web/public.address')}} : <span class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="address" id="address" value="{{$user->student->address}}"
-                                   class="form-control  @error('address') is-invalid @enderror" required/>
+                                   class="form-control  @error('address') is-invalid @enderror" required disabled/>
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -392,7 +408,7 @@
                             <input type="text" name="post_number" id="post_number"
                                    value="{{$user->student->post_number}}" id="input-name"
                                    class="form-control  @error('post_number') is-invalid @enderror"
-                                   required/>
+                                   required disabled/>
                             @error('post_number')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -408,7 +424,7 @@
                                     class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="education" id="education" value="{{$user->student->education}}"
-                                   class="form-control  @error('education') is-invalid @enderror" required/>
+                                   class="form-control  @error('education') is-invalid @enderror" required disabled/>
                             @error('education')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -421,7 +437,7 @@
                             <span class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
                             <input type="text" name="job" id="job" value="{{$user->student->job}}" id="input-name"
-                                   class="form-control  @error('job') is-invalid @enderror" required/>
+                                   class="form-control  @error('job') is-invalid @enderror" required disabled/>
                             @error('job')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -431,18 +447,12 @@
                     </div>
                 </div>
                 <br><br>
-                <div class="d-flex justify-content-center mb-2">
-                    <div class="p-2 ">
-                        <button type="submit"
-                                class="btn btn-primary">{{__('web/public.next')}}</button>
-                    </div>
-                </div>
+
 
             </form>
         </div>
 
     </section>
-
 
 
 

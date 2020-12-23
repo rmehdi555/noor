@@ -1,10 +1,14 @@
 <!-- JS Part Start-->
+<script>
+    var add_more_file_name=__('web/public.add_more_file_name');
+    var add_more_file_file=__('web/public.add_more_file_file');
+</script>
 <script src="{{asset('web/2020/assets/plg/bootstrap-4.3.1/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('web/2020/assets/plg/Bootstrap-Offcanvas-master/js/bootstrap.offcanvas.min.js')}}"></script>
 <script src="{{asset('web/2020/assets/plg/easing/js/jquery.easing.min.js')}}"></script>
 <script src="{{asset('web/2020/assets/plg/OwlCarousel2-2.3.4/js/owl.carousel.min.js')}}"></script>
 
-<script src="{{asset('web/2020/assets/js/custom-v-1.js')}}"></script>
+<script src="{{asset('web/2020/assets/js/custom-v-2.js')}}"></script>
 
 <!-- JS Part End-->
 
@@ -37,6 +41,17 @@ var ez =   $('#zoom_01').data('elevateZoom');
 $.swipebox(ez.getGalleryList());
 return false;
 });
+</script>
+
+
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w=window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
 </script>
 <!-- JS Part End--
 </body>

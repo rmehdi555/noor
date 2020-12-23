@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Events\UserActivationSms;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Teacher\TeacherController;
+use App\TeachersDocuments;
 use Illuminate\Http\Request;
 use App\Cities;
 use App\Field;
@@ -13,7 +15,7 @@ use App\User;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
-class TeachersController extends Controller
+class TeachersController extends TeacherController
 {
     public function level1()
     {
@@ -39,7 +41,7 @@ class TeachersController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'family' => ['required', 'string', 'max:255'],
             'f_name' => ['required', 'string', 'max:255'],
-            'sh_number' => ['required', 'string', 'max:255'],
+            'sh_number' => ['required', 'numeric'],
             'meli_number' => ['required', 'numeric', 'digits:10'],
             'sh_sodor' => ['required', 'string', 'max:255'],
             'tavalod_date_y' => ['required', 'numeric', 'min:1250', 'max:1450'],
@@ -54,11 +56,19 @@ class TeachersController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'post_number' => ['required', 'string', 'max:255'],
+            'post_number' => ['required', 'numeric', 'digits:10'],
             'education' => ['required', 'string', 'max:255'],
             'job' => ['string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
+            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'profile_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf',
+            'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            "file_more"    => "nullable|array",
+            "file_more.*"  => "nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf",
 
         ]);
 
@@ -113,6 +123,71 @@ class TeachersController extends Controller
                 'user_name'=>'m'.$year.$teacher->id,
             ]
         );
+
+
+
+
+        $url = $this->uploadImage($request->file('meli_image'),'teacher');
+        TeachersDocuments::create([
+            'title'=>__('web/public.meli_image'),
+            'flag_cookie'=>$teacher->flag_cookie,
+            'user_id'=>$user->id,
+            'url'=>$url,
+            'status' => '1',
+        ]);
+        $url = $this->uploadImage($request->file('sh_1_image'),'teacher');
+        TeachersDocuments::create([
+            'title'=>__('web/public.sh_1_image'),
+            'flag_cookie'=>$teacher->flag_cookie,
+            'user_id'=>$user->id,
+            'url'=>$url,
+            'status' => '1',
+        ]);
+        $url = $this->uploadImage($request->file('sh_2_image'),'teacher');
+        TeachersDocuments::create([
+            'title'=>__('web/public.sh_2_image'),
+            'flag_cookie'=>$teacher->flag_cookie,
+            'user_id'=>$user->id,
+            'url'=>$url,
+            'status' => '1',
+        ]);
+
+        $file = $request->file('p_image');
+        if($file) {
+            $url = $this->uploadImage($request->file('p_image'),'teacher');
+            TeachersDocuments::create([
+                'title'=>__('web/public.p_image'),
+                'flag_cookie'=>$teacher->flag_cookie,
+                'user_id'=>$user->id,
+                'url'=>$url,
+                'status' => '1',
+            ]);
+        }
+        $file = $request->file('m_image');
+        if($file) {
+            $url = $this->uploadImage($request->file('m_image'),'teacher');
+            TeachersDocuments::create([
+                'title'=>__('web/public.m_image'),
+                'flag_cookie'=>$teacher->flag_cookie,
+                'user_id'=>$user->id,
+                'url'=>$url,
+                'status' => '1',
+            ]);
+        }
+        foreach ($request->file('file_more') as $key=>$file)
+        {
+            if($file) {
+                $url = $this->uploadImage($file,'teacher');
+                TeachersDocuments::create([
+                    'title'=>$request->file_more_name[$key],
+                    'flag_cookie'=>$teacher->flag_cookie,
+                    'user_id'=>$user->id,
+                    'url'=>$url,
+                    'status' => '1',
+                ]);
+            }
+        }
+
 
         event(new UserActivationSms($user));
         alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;

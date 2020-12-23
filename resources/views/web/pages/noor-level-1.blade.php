@@ -93,8 +93,8 @@
 
                                         <div class="col-md-10 col-sm-9">
                                             <input type="text" name="description" id="description"
-                                                   value="{{old('description')}}"  placeholder="توضیحات و موضوع وقف خود را بنویسند"
-                                                   class="form-control input-type-noor-1 @error('description ') is-invalid @enderror"/>
+                                                   value="{{old('description')}}"  placeholder="توضیحات و موضوع وقف خود را بنویسید"
+                                                   class="form-control input-type-noor-1 @error('description') is-invalid @enderror"/>
                                             @error('description')
                                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -144,7 +144,7 @@
                                     <div class="col-md-12 col-sm-10">
                                         <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
                                                pattern="09[0-9]{9}" name="mobile" id="mobile"
-                                               value="{{old('mobile')}}"
+                                               value="{{old('mobile')}}" minlength="11"  maxlength="11"
                                                class="form-control input-type-noor-required  @error('mobile') is-invalid @enderror" required/>
 
                                         @error('mobile')
@@ -206,7 +206,7 @@
                                            for="meli_number">{{__('web/public.meli_number')}} :  </label>
                                     <div class="col-md-12 col-sm-10">
                                         <input type="number" pattern="[0-9]{10}" name="meli_number" id="meli_number"
-                                               value="{{old('meli_number')}}"
+                                               value="{{old('meli_number')}}" minlength="10"  maxlength="10"
                                                class="form-control input-type-noor-1 @error('meli_number') is-invalid @enderror"
 
                                         />
