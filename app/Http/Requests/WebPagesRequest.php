@@ -35,7 +35,7 @@ class WebPagesRequest extends FormRequest
         if($this->method() == 'POST') {
 
             $result=array_merge($result , [
-                'images' => 'required|mimes:jpeg,png,bmp',
+                'images' => 'required|mimes:png,bmp,jpg,jpeg,bmp',
                 'link' => 'required',
                 'type'=>'required',
                 'status'=>'required|integer',

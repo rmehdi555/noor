@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\Cookie;
 use SoapClient;
 
 /*
- * status=0فایل ها بارگذاری شوند ثبت نام اولیه
- * status=1مدارک بارگذاری شده و در حال نمایش و ویرایش اطلاعات
+ * status=0مدارک بارگذاری شده و در حال نمایش و ویرایش اطلاعات
  * status=2اطلاعات توسط کاربر تایید شده اند درحال پرداخت
  * status=4 پرداخت تایید شده
  * status=10 تایید نهایی
@@ -35,10 +34,8 @@ class PanelController extends TeacherController
         //dd($user->teacher->name);
         switch (Auth::user()->status)
         {
+
             case 0:
-                return view('teacher.pages.status-1',compact('user'));
-                break;
-            case 1:
                 $provinces = Provinces::all();
                 $cities = Cities::all();
                 return view('teacher.pages.status-2', compact('user','provinces','cities'));
@@ -59,74 +56,6 @@ class PanelController extends TeacherController
         }
 
     }
-
-    public function level1Save(Request $request)
-    {
-        $user=Auth::user();
-        //dd($user->teacher->teachersFields);
-        $request->validate([
-            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
-            'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
-            'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg',
-            'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg',
-            'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg',
-        ]);
-        $url = $this->uploadImage($request->file('meli_image'),'teacher');
-        TeachersDocuments::create([
-            'title'=>__('web/public.meli_image'),
-            'flag_cookie'=>$user->teacher->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
-            'status' => '1',
-        ]);
-        $url = $this->uploadImage($request->file('sh_1_image'),'teacher');
-        TeachersDocuments::create([
-            'title'=>__('web/public.sh_1_image'),
-            'flag_cookie'=>$user->teacher->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
-            'status' => '1',
-        ]);
-        $url = $this->uploadImage($request->file('sh_2_image'),'teacher');
-        TeachersDocuments::create([
-            'title'=>__('web/public.sh_2_image'),
-            'flag_cookie'=>$user->teacher->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
-            'status' => '1',
-        ]);
-
-        $file = $request->file('p_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('p_image'),'teacher');
-            TeachersDocuments::create([
-                'title'=>__('web/public.p_image'),
-                'flag_cookie'=>$user->teacher->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
-                'status' => '1',
-            ]);
-        }
-        $file = $request->file('m_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('m_image'),'teacher');
-            TeachersDocuments::create([
-                'title'=>__('web/public.m_image'),
-                'flag_cookie'=>$user->teacher->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
-                'status' => '1',
-            ]);
-        }
-
-        $user->update([
-            'status'=> '1',
-        ]);
-        alert()->success(__('web/messages.teacher_success_save_level_1'), __('web/messages.success'));
-        return redirect()->route('teacher.panel');
-    }
-
-
 
 
     public function level2Save(Request $request)

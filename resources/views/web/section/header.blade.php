@@ -76,6 +76,12 @@
                                     <li class=""><a href="{{ $menu->link }}">{{\App\Providers\MyProvider::_text($menu->title)}}</a></li>
                                 @endif
                             @endforeach
+
+                                @if(auth()->check())
+                                    <li class=""><a href="{{ route('logout') }}">{{__('web/public.btn_logout')}}</a></li>
+                                @else
+                                    {{--<li class=""><a href="{{ route('login') }}">{{__('web/public.btn_login')}}</a></li>--}}
+                                @endif
                         </ul>
                     </div>
                     <button class="navbar-toggler offcanvas-toggle" type="button" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">

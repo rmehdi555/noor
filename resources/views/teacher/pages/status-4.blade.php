@@ -1,6 +1,14 @@
 @extends('teacher.master')
 @section('content')
 
+    <section class="bu-inner-main noPrint">
+        <div class=" d-flex justify-content-center mb-2 ">
+            <div class="p-2 ">
+                <button type="button"
+                        class="btn btn-warning" onclick="window.print()">{{__('web/public.print')}}</button>
+            </div>
+        </div>
+    </section>
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
@@ -24,6 +32,8 @@
                             کد معلم القرآنی :
                             {{$user->teacher->teacher_id }}
                             <br>
+                            تاریخ ایجاد :
+                            {{\App\Providers\MyProvider::show_date($user->created_at,'%B %d، %Y ')}}
 
                         </p>
                     </div>

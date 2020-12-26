@@ -28,6 +28,7 @@ class CreateNoorsTable extends Migration
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
             $table->text('description')->nullable();
+            $table->integer('monthly_payment')->default('1');
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

@@ -70,7 +70,6 @@ return [
     'login'=>'وارد شدن به حساب کاربری / ادامه ثبت نام',
     'new_user'=>'مشتری جدید',
     'old_user'=>'مشتری قبلی',
-    'btn_login'=>'ورود',
     'remember_me'=>'مرا به خاطر بسپار',
     'forgot_yor_password'=>'رمز عبور را فراموش کرده اید ؟',
     'btn_register'=>'ثبت نام',
@@ -152,6 +151,7 @@ return [
     'add_more_file_file'=>'فایل را انتخاب نمایید',
     'add_more_file_name'=>'عنوان فایل را وارد نمایید',
     'print'=>'چاپ',
+    'monthly_payment'=>'تمایل به شراکت ماهیانه دارم .',
 
 
 

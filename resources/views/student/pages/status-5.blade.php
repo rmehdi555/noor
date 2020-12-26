@@ -34,6 +34,8 @@
                             کد قرآن آموزی:
                             {{$user->student->student_id }}
                             <br>
+                            تاریخ ایجاد :
+                            {{\App\Providers\MyProvider::show_date($user->created_at,'%B %d، %Y ')}}
 
                         </p>
                     </div>

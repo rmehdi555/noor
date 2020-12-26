@@ -36,7 +36,7 @@ class NewsRequest extends FormRequest
         if($this->method() == 'POST') {
 
             $result=array_merge($result , [
-                'images' => 'required|mimes:jpeg,png,bmp',
+                'images' => 'required|mimes:png,bmp,jpg,jpeg,bmp',
                 'tags' => 'required',
                 'news_categories_id' => 'required',
                 'type'=>'required',

@@ -154,6 +154,19 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6 padding-top-15 ">
+
+                                    <div class="col-md-12 col-sm-10 form-check ">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for=""><br> </label>
+                                        <br>
+                                        <input type="checkbox" name="monthly_payment" id="monthly_payment"
+                                               class="form-check-input  input-type-noor-required " checked>
+                                        <label class="col-md-6 col-sm-6 form-check-label"
+                                               for="monthly_payment">{{__('web/public.monthly_payment')}}  </label>
+
+                                    </div>
+                                </div>
                             </div>
 
 

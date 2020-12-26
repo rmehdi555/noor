@@ -35,6 +35,14 @@ class NoorController extends Controller
             'price' => ['nullable','numeric', 'min:10000'],
         ]);
 
+
+        if($request->monthly_payment)
+        {
+            $request->monthly_payment=1;
+        }else{
+            $request->monthly_payment=0;
+        }
+
         if($request->type=='1')
         {
             $request->type="وقف";
@@ -46,6 +54,7 @@ class NoorController extends Controller
                 'meli_number' => $request->meli_numbere,
                 'mobile' => \App\Providers\MyProvider::convert_phone_number($request->mobile),
                 'description'=>$request->description,
+                'monthly_payment'=>$request->monthly_payment,
                 'status' => '1',
             ]);
             alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
@@ -61,6 +70,7 @@ class NoorController extends Controller
                 'meli_number' => $request->meli_numbere,
                 'mobile' => \App\Providers\MyProvider::convert_phone_number($request->mobile),
                 'price'=>$request->price,
+                'monthly_payment'=>$request->monthly_payment,
                 'status' => '1',
             ]);
             $payment=$this->createPayment($noor);
