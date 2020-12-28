@@ -22,4 +22,16 @@ class Students extends Model
     {
         return $this->hasMany(StudentsDocuments::class,'student_id','id');
     }
+    public function studentsProvince()
+    {
+        return $this->hasOne(Provinces::class,'id','province');
+    }
+    public function studentsCity()
+    {
+        return $this->hasOne(Cities::class,'id','city');
+    }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id','user_id');
+    }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 
-
 use Adlino\Locations\Facades\locations;
 use App\Cities;
 use App\Events\UserActivationSms;
@@ -101,8 +100,8 @@ class StudentsController extends StudentController
             'profile_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf',
             'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
-            "file_more"    => "nullable|array",
-            "file_more.*"  => "nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf",
+            "file_more" => "nullable|array",
+            "file_more.*" => "nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf",
         ]);
 
 
@@ -126,7 +125,7 @@ class StudentsController extends StudentController
             'phone_2' => \App\Providers\MyProvider::convert_phone_number($request->phone_2),
             'phone_f' => \App\Providers\MyProvider::convert_phone_number($request->phone_f),
             'phone_m' => \App\Providers\MyProvider::convert_phone_number($request->phone_m),
-            'tel'=> $request->tel,
+            'tel' => $request->tel,
             'city' => $request->city,
             'province' => $request->province,
             'address' => $request->address,
@@ -139,7 +138,7 @@ class StudentsController extends StudentController
         ]);
 
 
-        $user=User::create([
+        $user = User::create([
             'name' => $request->name,
             'family' => $request->family,
             'email' => strtolower($request->email),
@@ -147,83 +146,80 @@ class StudentsController extends StudentController
             'password' => Hash::make($request->meli_number),
             'level' => 'student',
         ]);
-        $year=substr(verta()->year, 2);
+        $year = substr(verta()->year, 2);
 
         Students::find($student->id)->update(
             [
-                'user_id'=>$user->id,
-                'student_id'=>'q'.$year.$student->id,
+                'user_id' => $user->id,
+                'student_id' => 'q' . $year . $student->id,
             ]
         );
         $user->update(
             [
-                'user_name'=>'q'.$year.$student->id,
+                'user_name' => 'q' . $year . $student->id,
             ]
         );
 
 
-
-
-
-        $url = $this->uploadImage($request->file('meli_image'),'student');
+        $url = $this->uploadImage($request->file('meli_image'), 'student');
         StudentsDocuments::create([
-            'title'=>__('web/public.meli_image'),
-            'flag_cookie'=>$student->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
+            'title' => __('web/public.meli_image'),
+            'flag_cookie' => $student->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
             'status' => '1',
         ]);
-        $url = $this->uploadImage($request->file('sh_1_image'),'student');
+        $url = $this->uploadImage($request->file('sh_1_image'), 'student');
         StudentsDocuments::create([
-            'title'=>__('web/public.sh_1_image'),
-            'flag_cookie'=>$student->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
+            'title' => __('web/public.sh_1_image'),
+            'flag_cookie' => $student->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
             'status' => '1',
         ]);
-        $url = $this->uploadImage($request->file('sh_2_image'),'student');
+        $url = $this->uploadImage($request->file('sh_2_image'), 'student');
         StudentsDocuments::create([
-            'title'=>__('web/public.sh_2_image'),
-            'flag_cookie'=>$student->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
+            'title' => __('web/public.sh_2_image'),
+            'flag_cookie' => $student->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
             'status' => '1',
         ]);
 
         $file = $request->file('p_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('p_image'),'student');
+        if ($file) {
+            $url = $this->uploadImage($request->file('p_image'), 'student');
             StudentsDocuments::create([
-                'title'=>__('web/public.p_image'),
-                'flag_cookie'=>$student->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
+                'title' => __('web/public.p_image'),
+                'flag_cookie' => $student->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
                 'status' => '1',
             ]);
         }
         $file = $request->file('m_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('m_image'),'student');
+        if ($file) {
+            $url = $this->uploadImage($request->file('m_image'), 'student');
             StudentsDocuments::create([
-                'title'=>__('web/public.m_image'),
-                'flag_cookie'=>$student->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
+                'title' => __('web/public.m_image'),
+                'flag_cookie' => $student->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
                 'status' => '1',
             ]);
         }
-
-        foreach ($request->file('file_more') as $key=>$file)
-        {
-            if($file) {
-                $url = $this->uploadImage($file,'student');
-                StudentsDocuments::create([
-                    'title'=>$request->file_more_name[$key],
-                    'flag_cookie'=>$student->flag_cookie,
-                    'user_id'=>$user->id,
-                    'url'=>$url,
-                    'status' => '1',
-                ]);
+        if($request->file('file_more')) {
+            foreach ($request->file('file_more') as $key => $file) {
+                if ($file) {
+                    $url = $this->uploadImage($file, 'student');
+                    StudentsDocuments::create([
+                        'title' => $request->file_more_name[$key],
+                        'flag_cookie' => $student->flag_cookie,
+                        'user_id' => $user->id,
+                        'url' => $url,
+                        'status' => '1',
+                    ]);
+                }
             }
         }
         Cookie::forget('student_flag_cookie');
@@ -231,8 +227,8 @@ class StudentsController extends StudentController
         Cookie::forget('student_flag_cookie');
 
         event(new UserActivationSms($user));
-        alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;
-        return view('auth.confirm-sms-code',compact('user'));
+        alert()->success(__('web/messages.save_register_and_send_sms'), __('web/messages.success'))->persistent(__('web/public.ok'));;
+        return view('auth.confirm-sms-code', compact('user'));
 
 
         //alert()->success(__('web/messages.student_success_level_1'), __('web/messages.success'));
@@ -240,7 +236,8 @@ class StudentsController extends StudentController
     }
 
 
-    public function checkCodeCookie($level = 1)
+    public
+    function checkCodeCookie($level = 1)
     {
         $student_flag_cookie = Cookie::get('student_flag_cookie');
         if (!empty($student_flag_cookie)) {

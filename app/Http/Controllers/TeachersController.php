@@ -32,7 +32,7 @@ class TeachersController extends TeacherController
     {
         $provinces = Provinces::all();
         $cities = Cities::all();
-        return view('web.pages.teachers-level-2',compact('provinces','cities'));
+        return view('web.pages.teachers-level-2', compact('provinces', 'cities'));
     }
 
     public function level2Save(Request $request)
@@ -67,11 +67,10 @@ class TeachersController extends TeacherController
             'profile_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf',
             'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
-            "file_more"    => "nullable|array",
-            "file_more.*"  => "nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf",
+            "file_more" => "nullable|array",
+            "file_more.*" => "nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf",
 
         ]);
-
 
 
         $teacher = Teachers::create([
@@ -88,7 +87,7 @@ class TeachersController extends TeacherController
             'phone_2' => \App\Providers\MyProvider::convert_phone_number($request->phone_2),
             'phone_f' => \App\Providers\MyProvider::convert_phone_number($request->phone_f),
             'phone_m' => \App\Providers\MyProvider::convert_phone_number($request->phone_m),
-            'tel'=> $request->tel,
+            'tel' => $request->tel,
             'city' => $request->city,
             'province' => $request->province,
             'address' => $request->address,
@@ -101,7 +100,7 @@ class TeachersController extends TeacherController
         ]);
 
 
-        $user=User::create([
+        $user = User::create([
             'name' => $request->name,
             'family' => $request->family,
             'email' => strtolower($request->email),
@@ -109,89 +108,88 @@ class TeachersController extends TeacherController
             'password' => Hash::make($request->meli_number),
             'level' => 'teacher',
         ]);
-        $year=substr(verta()->year, 2);
+        $year = substr(verta()->year, 2);
 
         Teachers::find($teacher->id)->update(
             [
-                'user_id'=>$user->id,
-                'teacher_id'=>'m'.$year.$teacher->id,
+                'user_id' => $user->id,
+                'teacher_id' => 'm' . $year . $teacher->id,
             ]
         );
 
         $user->update(
             [
-                'user_name'=>'m'.$year.$teacher->id,
+                'user_name' => 'm' . $year . $teacher->id,
             ]
         );
 
 
-
-
-        $url = $this->uploadImage($request->file('meli_image'),'teacher');
+        $url = $this->uploadImage($request->file('meli_image'), 'teacher');
         TeachersDocuments::create([
-            'title'=>__('web/public.meli_image'),
-            'flag_cookie'=>$teacher->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
+            'title' => __('web/public.meli_image'),
+            'flag_cookie' => $teacher->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
             'status' => '1',
         ]);
-        $url = $this->uploadImage($request->file('sh_1_image'),'teacher');
+        $url = $this->uploadImage($request->file('sh_1_image'), 'teacher');
         TeachersDocuments::create([
-            'title'=>__('web/public.sh_1_image'),
-            'flag_cookie'=>$teacher->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
+            'title' => __('web/public.sh_1_image'),
+            'flag_cookie' => $teacher->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
             'status' => '1',
         ]);
-        $url = $this->uploadImage($request->file('sh_2_image'),'teacher');
+        $url = $this->uploadImage($request->file('sh_2_image'), 'teacher');
         TeachersDocuments::create([
-            'title'=>__('web/public.sh_2_image'),
-            'flag_cookie'=>$teacher->flag_cookie,
-            'user_id'=>$user->id,
-            'url'=>$url,
+            'title' => __('web/public.sh_2_image'),
+            'flag_cookie' => $teacher->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
             'status' => '1',
         ]);
 
         $file = $request->file('p_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('p_image'),'teacher');
+        if ($file) {
+            $url = $this->uploadImage($request->file('p_image'), 'teacher');
             TeachersDocuments::create([
-                'title'=>__('web/public.p_image'),
-                'flag_cookie'=>$teacher->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
+                'title' => __('web/public.p_image'),
+                'flag_cookie' => $teacher->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
                 'status' => '1',
             ]);
         }
         $file = $request->file('m_image');
-        if($file) {
-            $url = $this->uploadImage($request->file('m_image'),'teacher');
+        if ($file) {
+            $url = $this->uploadImage($request->file('m_image'), 'teacher');
             TeachersDocuments::create([
-                'title'=>__('web/public.m_image'),
-                'flag_cookie'=>$teacher->flag_cookie,
-                'user_id'=>$user->id,
-                'url'=>$url,
+                'title' => __('web/public.m_image'),
+                'flag_cookie' => $teacher->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
                 'status' => '1',
             ]);
         }
-        foreach ($request->file('file_more') as $key=>$file)
-        {
-            if($file) {
-                $url = $this->uploadImage($file,'teacher');
-                TeachersDocuments::create([
-                    'title'=>$request->file_more_name[$key],
-                    'flag_cookie'=>$teacher->flag_cookie,
-                    'user_id'=>$user->id,
-                    'url'=>$url,
-                    'status' => '1',
-                ]);
+        if ($request->file('file_more')) {
+            foreach ($request->file('file_more') as $key => $file) {
+                if ($file) {
+                    $url = $this->uploadImage($file, 'teacher');
+                    TeachersDocuments::create([
+                        'title' => $request->file_more_name[$key],
+                        'flag_cookie' => $teacher->flag_cookie,
+                        'user_id' => $user->id,
+                        'url' => $url,
+                        'status' => '1',
+                    ]);
+                }
             }
         }
 
 
         event(new UserActivationSms($user));
-        alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;
-        return view('auth.confirm-sms-code',compact('user'));
+        alert()->success(__('web/messages.save_register_and_send_sms'), __('web/messages.success'))->persistent(__('web/public.ok'));;
+        return view('auth.confirm-sms-code', compact('user'));
 
     }
 

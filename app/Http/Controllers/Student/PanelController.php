@@ -26,7 +26,7 @@ use SoapClient;
  * status=2درخواست بررسی نهاد برای پرداخت نکردن
  * status=3تایید پرداخت نکردن
  * status=4پرداخت تایید شده و در حال نمایش و ویرایش اطلاعات
- * status=6اطلاعات توسط کاربر تایید شده ان5
+ * status=اطلاعات توسط کاربر تایید شده ان5
  * status=10 تایید نهایی
  */
 class PanelController extends StudentsDocuments
@@ -57,18 +57,11 @@ class PanelController extends StudentsDocuments
                 return view('student.pages.status-4', compact('fields', 'user','provinces','cities'));
                 break;
             case 5:
-
-
-
                 $fields = Field::all();
                 $provinces = Provinces::all();
                 $cities = Cities::all();
-
-                $pdf = new PdfWrapper();
-                $pdf->loadView('pdf.test',compact('fields', 'user','provinces','cities'),[],[ ])->save(base_path('public/pdf/').$user->student->id.'.pdf');
-
-
-
+               // $pdf = new PdfWrapper();
+                //$pdf->loadView('pdf.test',compact('fields', 'user','provinces','cities'),[],[ ])->save(base_path('public/pdf/').$user->student->id.'.pdf');
                 return view('student.pages.status-5', compact('fields', 'user','provinces','cities'));
                 break;
             default:
@@ -165,12 +158,18 @@ class PanelController extends StudentsDocuments
             'email' => strtolower($request->email),
             'status'=> '5',
         ]);
+        $this->send_sms_register_student($user->student->phone_1,$user->student->student_id);
         alert()->success(__('web/messages.student_success_save_level_5'), __('web/messages.success'));
         return redirect()->route('student.panel');
     }
 
     public function createPayment()
     {
+        if (config('app.bankPay.active') == 'meli') {
+            $url='web.payment.online.meli.callback';
+        }else{
+            $url='web.payment.online.zarinpal.callback';
+        }
         $user=Auth::user();
         $allPrice=0;
         foreach ($user->student->studentsFields as $field)
@@ -190,7 +189,7 @@ class PanelController extends StudentsDocuments
             'user_code' => $user->student->student_id,
             'email' => $user->email,
             'mobile' => $user->phone,
-            'callbackURL'=>route('web.payment.online.zarinpal.callback'),
+            'callbackURL'=>route($url),
             'status'=>'1'
         ]);
 

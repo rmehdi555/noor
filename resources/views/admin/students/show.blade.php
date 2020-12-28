@@ -26,93 +26,414 @@
                         </div>
                         <div class="body">
 
-                                @include('admin.section.errors')
-                                <?php
-                                $allLang=\App\Providers\MyProvider::get_languages();
-                                foreach ($allLang as $kay => $value)
-                                {
-                                ?>
-                                <div class="form-group">
-                                    <label>{{__('admin/public.title')}} ({{$kay}}):</label>
-                                    <input type="text" name="title_{{$kay}}" class="form-control" value="{{\App\Providers\MyProvider::_text($news->title,$kay)}}" required>
-                                </div>
-                                <?php
-                                }
-                                $allLang=\App\Providers\MyProvider::get_languages();
-                                foreach ($allLang as $kay => $value)
-                                {
-                                ?>
-                                <div class="form-group">
-                                    <label>{{__('admin/public.description')}} ({{$kay}}):</label>
-                                    <textarea name="description_{{$kay}}" id="ckeditor" class="form-control" rows="5" cols="30" required>{{\App\Providers\MyProvider::_text($news->description,$kay)}}</textarea>
-
-                                </div>
-                                <?php
-                                }
-                                $allLang=\App\Providers\MyProvider::get_languages();
-                                foreach ($allLang as $kay => $value)
-                                {
-                                ?>
-                                <div class="form-group">
-                                    <label>{{__('admin/public.body')}} ({{$kay}}):</label>
-                                    <textarea name="body_{{$kay}}" class="form-control ckeditor" rows="5" cols="30" required>{{\App\Providers\MyProvider::_text($news->body,$kay)}}</textarea>
-
-                                </div>
-                                <?php
-                                }
-                                ?>
-                                <div class="form-group col-lg-4 col-md-12">
-                                    <label>{{__('admin/public.news_categories_id')}} :</label>
-                                    <div class="multiselect_div">
-                                        <select id="single-selection" name="news_categories_id" class="multiselect multiselect-custom" >
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}" {{($news->news_categories_id==$category->id)?"selected":""}}>{{\App\Providers\MyProvider::_text($category->title)}}</option>
+                            <form class="form-horizontal" id="form-level-1-save" method="POST"
+                                  action="{{ route('student.level.4.save') }}" enctype="multipart/form-data">
+                                @csrf
+                                @if(count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                <li>{{ $error }}</li>
                                             @endforeach
-                                        </select>
+                                        </ul>
+                                    </div>
+                                @endif
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label" for="name">{{__('web/public.name')}}
+                                            : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="name" id="name" value="{{$student->name}}"
+                                                   class="form-control  @error('name') is-invalid @enderror" required/>
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="family">{{__('web/public.family')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="family" id="family" value="{{$student->family}}"
+                                                   class="form-control  @error('family') is-invalid @enderror" required/>
+                                            @error('family')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="f_name">{{__('web/public.f_name')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="f_name" id="f_name" value="{{$student->f_name}}"
+                                                   class="form-control  @error('f_name') is-invalid @enderror"/>
+                                            @error('f_name')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="sh_number">{{__('web/public.sh_number')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="sh_number" id="sh_number" value="{{$student->sh_number}}"
+                                                   id="input-name"
+                                                   class="form-control  @error('sh_number') is-invalid @enderror" required/>
+                                            @error('sh_number')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="meli_number">{{__('web/public.meli_number')}} : <span
+                                                    class="required">*</span> </label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="number" pattern="[0-9]{10}" name="meli_number" id="meli_number"
+                                                   value="{{$student->meli_number}}" minlength="10"  maxlength="10"
+                                                   class="form-control  @error('meli_number') is-invalid @enderror"
+                                                   required disabled/>
+                                            <span> ({{__('web/public.meli_number_help_2')}})</span>
+                                            @error('meli_number')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="sh_sodor">{{__('web/public.sh_sodor')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="sh_sodor" id="sh_sodor" value="{{$student->sh_sodor}}"
+                                                   id="input-name"
+                                                   class="form-control  @error('sh_sodor') is-invalid @enderror" required/>
+                                            @error('sh_sodor')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="tavalod_date">{{__('web/public.tavalod_date')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class='form-inline row'>
+                                                @php
+                                                    $tavalod_date=explode("-",$student->tavalod_date);
+                                                    $student->tavalod_date_d=$tavalod_date[2];
+                                                    $student->tavalod_date_m=$tavalod_date[1];
+                                                    $student->tavalod_date_y=$tavalod_date[0];
+
+                                                @endphp
+
+                                                <div class='form-group col-sm-4'>
+                                                    <select name='tavalod_date_d' class='form-control' required>
+                                                        <option selected
+                                                                disabled>{{__('web/public.tavalod_date_d')}}</option>
+                                                        @for ($i = 1; $i < 32; $i++)
+                                                            <option value="{{$i}}" @php if($student->tavalod_date_d==$i) echo "selected"; @endphp>{{$i}}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <div class='form-group col-sm-4'>
+                                                    <select name='tavalod_date_m' class='form-control' required>
+                                                        <option selected
+                                                                disabled>{{__('web/public.tavalod_date_m')}}</option>
+                                                        @for ($i = 1; $i < 13; $i++)
+                                                            <option value="{{$i}}" @php if($student->tavalod_date_m==$i) echo "selected"; @endphp>{{$i}}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <div class='form-group col-sm-4'>
+                                                    <select name='tavalod_date_y' class='form-control' required>
+                                                        <option selected
+                                                                disabled>{{__('web/public.tavalod_date_y')}}</option>
+                                                        @for ($i = 1400; $i > 1295; $i--)
+                                                            <option value="{{$i}}" @php if($student->tavalod_date_y==$i) echo "selected"; @endphp>{{$i}}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="married">{{__('web/public.married')}} : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <label class="radio-inline" style="padding: 10px 40px 10px">
+                                                <input type="radio" name="married" checked
+                                                       value="{{$student->married}}">{{__('web/public.married_'.$student->married)}}
+                                            </label>
+                                            @php $student->married_d=$student->married=="no"?"yes":"no";@endphp
+                                            <label class="radio-inline">
+                                                <input type="radio" name="married"
+                                                       value="{{$student->married_d}}">{{__('web/public.married_'.$student->married_d)}}
+                                            </label>
+
+                                            @error('married')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>{{__('admin/public.images')}} :</label>
-                                    <input type="file" name="images" class="form-control" value="{{old('images')}}" >
+                                <div class="row div-married div-married-yes">
+
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="number_of_children">{{__('web/public.number_of_children')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="number" value="0" min="0" max="20" name="number_of_children"
+                                                   id="number_of_children" value="{{$student->number_of_children}}"
+                                                   class="form-control input-married input-married-yes  @error('number_of_children') is-invalid @enderror"/>
+                                            @error('number_of_children')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="media">
-                                    <img class="media-object " src="{{$news->images["thumb"]}}" alt="">
-                                    {{--<div class="media-body">--}}
-                                    {{--<span class="name">Joge Lucky</span>--}}
-                                    {{--<span class="message">Sales Lead</span>--}}
-                                    {{--<span class="badge badge-outline status"></span>--}}
-                                    {{--</div>--}}
-                                </div>
-                                <div class="form-group">
-                                    <label>{{__('admin/public.tags')}} :</label>
-                                    <input type="text" name="tags" class="form-control" value="{{$news->tags}}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>{{__('admin/public.priority')}} :</label>
-                                    <input type="number" name="priority" class="form-control" value="{{$news->priority}}" required>
+                                <div class="row div-married div-married-no">
+
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="phone_f">{{__('web/public.phone_f')}} : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                                   pattern="09[0-9]{9}" name="phone_f" id="phone_f"
+                                                   value="{{$student->phone_f}}" minlength="11"  maxlength="11"
+                                                   class="form-control   @error('phone_f') is-invalid @enderror"/>
+                                            @error('phone_f')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="phone_m">{{__('web/public.phone_m')}} : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                                   pattern="09[0-9]{9}" name="phone_m" id="phone_m"
+                                                   value="{{$student->phone_m}}" minlength="11"  maxlength="11"
+                                                   class="form-control @error('phone_m') is-invalid @enderror"/>
+                                            @error('phone_m')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <div class="form-group col-lg-4 col-md-12">
-                                    <label>{{__('admin/public.status')}} :</label>
-                                    <div class="multiselect_div">
-                                        <select id="single-selection" name="status" class="multiselect multiselect-custom" >
-                                            <option value="0">{{__('admin/public.inactive')}}</option>
-                                            <option value="1" {{$news->status?"selected":""}}>{{__('admin/public.active')}}</option>
-                                        </select>
+
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="phone_1">{{__('web/public.phone_1')}} : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                                   pattern="09[0-9]{9}" name="phone_1" id="phone_1"
+                                                   value="{{$student->phone_1}}" minlength="11"  maxlength="11"
+                                                   class="form-control  @error('phone_1') is-invalid @enderror" required disabled/>
+                                            <span> ({{__('web/public.phone_1_help_2')}})</span>
+                                            @error('phone_1')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-12">
-                                    <label>{{__('admin/public.type')}} :</label>
-                                    <div class="multiselect_div">
-                                        <select id="single-selection" name="type" class="multiselect multiselect-custom" >
-                                            <option value="normal" {{($news->type=='normal')?"selected":""}}>{{__('admin/public.normal')}}</option>
-                                            <option value="special" {{($news->type=='special')?"selected":""}}>{{__('admin/public.special')}}</option>
-                                            <option value="offer" {{($news->type=='offer')?"selected":""}}>{{__('admin/public.offer')}}</option>
-                                        </select>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="phone_2">{{__('web/public.phone_2')}} :</label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                                   pattern="09[0-9]{9}" name="phone_2" id="phone_2"
+                                                   value="{{$student->phone_2}}" minlength="11"  maxlength="11"
+                                                   class="form-control  @error('phone_2') is-invalid @enderror"/>
+                                            @error('phone_2')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label" for="tel">{{__('web/public.tel')}} :
+                                            <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="tel" id="tel"
+                                                   placeholder="{{__('web/public.example')}} : 02122334455"
+                                                   value="{{$student->tel}}"
+                                                   class="form-control  @error('tel') is-invalid @enderror" />
+                                            @error('tel')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="email">{{__('web/public.email')}} :</label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="email" name="email" id="email" value="{{$student->email}}"
+                                                   class="form-control  @error('email') is-invalid @enderror"/>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="province">{{__('web/public.province')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <select name='province' class='form-control' id="select-province" required>
+                                                <option value="0" selected
+                                                        disabled>{{__('web/public.select_option')}}</option>
+                                                @foreach ($provinces as $item)
+                                                    <option value="{{$item->id}}" class="option-province"
+                                                            id="option-province-id" @php if($student->province==$item->id) echo "selected"; @endphp>{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('province')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label" for="city">{{__('web/public.city')}}
+                                            : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <select name='city' class='form-control' id="select-city" required>
+                                                <option value="0" selected
+                                                        disabled>{{__('web/public.select_option')}}</option>
+                                                @foreach ($cities as $item)
+                                                    <option value="{{$item->id}}"
+                                                            class="option-city option-city-{{$item->province_id}}"
+                                                            id="option-city-{{$item->id}}" @php if($student->city==$item->id) echo "selected"; @endphp>{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('city')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="address">{{__('web/public.address')}} : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="address" id="address" value="{{$student->address}}"
+                                                   class="form-control  @error('address') is-invalid @enderror" required/>
+                                            @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="post_number">{{__('web/public.post_number')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="number" name="post_number" id="post_number" minlength="10"  maxlength="10"
+                                                   value="{{$student->post_number}}" id="input-name"
+                                                   class="form-control  @error('post_number') is-invalid @enderror"
+                                                   required/>
+                                            @error('post_number')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label"
+                                               for="education">{{__('web/public.education')}} : <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="education" id="education" value="{{$student->education}}"
+                                                   class="form-control  @error('education') is-invalid @enderror" required/>
+                                            @error('education')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label" for="job">{{__('web/public.job')}} :
+                                            <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <input type="text" name="job" id="job" value="{{$student->job}}" id="input-name"
+                                                   class="form-control  @error('job') is-invalid @enderror" required/>
+                                            @error('job')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <div class="p-2 ">
+                                        <button type="submit"
+                                                class="btn btn-primary">{{__('web/public.next')}}</button>
+                                    </div>
+                                </div>
+
+                            </form>
 
                         </div>
                     </div>

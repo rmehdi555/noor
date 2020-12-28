@@ -223,4 +223,10 @@ Route::get('payment/online/zarinpal','PaymentController@payZarinpal')->name('web
 Route::get('payment/online/zarinpal/callback','PaymentController@payZarinpalCallback')->name('web.payment.online.zarinpal.callback');
 Route::get('payment/online/zarinpal/callback/teacher','PaymentController@payZarinpalCallbackTeacher')->name('web.payment.online.zarinpal.callback.teacher');
 Route::get('payment/online/zarinpal/callback/noor','PaymentController@payZarinpalCallbackNoor')->name('web.payment.online.zarinpal.callback.noor');
+
+
+Route::post('payment/online/meli','PaymentController@payMelil')->name('web.payment.online.meli');
+Route::post('payment/online/meli/callback','PaymentController@payMelilCallback')->name('web.payment.online.meli.callback');
+Route::post('payment/online/meli/callback/teacher','PaymentController@payMelilCallbackTeacher')->name('web.payment.online.meli.callback.teacher');
+Route::post('payment/online/meli/callback/noor','PaymentController@payMelilCallbackNoor')->name('web.payment.online.meli.callback.noor');
 // end route payment

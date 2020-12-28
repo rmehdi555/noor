@@ -146,7 +146,7 @@ return [
     'm_image'=>'مدرک تحصیلی',
     'select'=>'انتخاب',
     'mobile'=>'شماره همراه',
-    'profile_image'=>'تصویر پرسنلی',
+    'profile_image'=>'عکس پرسنلی',
     'add_more_upload_file'=>'بارگذاری مدارک بیشتر',
     'add_more_file_file'=>'فایل را انتخاب نمایید',
     'add_more_file_name'=>'عنوان فایل را وارد نمایید',

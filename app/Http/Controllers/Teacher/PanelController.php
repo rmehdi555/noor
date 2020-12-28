@@ -124,6 +124,11 @@ class PanelController extends TeacherController
 
     public function createPayment()
     {
+        if (config('app.bankPay.active') == 'meli') {
+            $url='web.payment.online.meli.callback.teacher';
+        }else{
+            $url='web.payment.online.zarinpal.callback.teacher';
+        }
         $user=Auth::user();
         $price=SiteDetails::where('key','=','price_register_m')->get()->first();
         Payment::where([['status','=','1'],['user_id','=',$user->id]])->delete();
@@ -135,7 +140,7 @@ class PanelController extends TeacherController
             'user_code' => $user->teacher->teacher_id,
             'email' => $user->email,
             'mobile' => $user->phone,
-            'callbackURL'=>route('web.payment.online.zarinpal.callback.teacher'),
+            'callbackURL'=>route($url),
             'status'=>'1'
         ]);
 

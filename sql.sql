@@ -1,1 +1,1 @@
-ALTER TABLE `users` ADD `user_name` VARCHAR(191) NOT NULL DEFAULT 'user' AFTER `phone`;
+ALTER TABLE `payments` ADD `Token` TEXT NULL AFTER `extraDetail`, ADD `RetrivalRefNo` TEXT NULL AFTER `Token`, ADD `SystemTraceNo` TEXT NULL AFTER `RetrivalRefNo`;

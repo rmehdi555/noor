@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Cities;
+use App\Field;
 use App\Http\Controllers\Controller;
+use App\Provinces;
 use App\Students;
 use Illuminate\Http\Request;
 
@@ -20,6 +23,9 @@ class StudentsController extends  AdminController
     {
         $SID="40";
         $student=Students::find($student);
-        return view('admin.students.show',compact('student','SID'));
+        $fields = Field::all();
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        return view('admin.students.show',compact('student','fields','provinces','cities','SID'));
     }
 }

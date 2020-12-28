@@ -24,9 +24,8 @@ class PaymentController extends Controller
     {
 
         //dd($request->Authority);
-        $payment=Payment::where('authority','=',$request->Authority)->first();
-        if(isset($payment->id))
-        {
+        $payment = Payment::where('authority', '=', $request->Authority)->first();
+        if (isset($payment->id)) {
             $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';
             $Amount = $payment->price; //Amount will be based on Toman
             $Authority = $request->Authority;
@@ -46,19 +45,19 @@ class PaymentController extends Controller
                 if ($result->Status == 100) {
                     //echo 'Transaction success. RefID:'.$result->RefID;
                     $payment->update([
-                        'refId'=>$result->RefID,
+                        'refId' => $result->RefID,
 //                        'extraDetail'=>$result->ExtraDetail,
-                        'status'=>'5',
+                        'status' => '5',
                     ]);
-                    User::where('id','=',$payment->user_id)->update([
-                       'status'=>'4',
+                    User::where('id', '=', $payment->user_id)->update([
+                        'status' => '4',
                     ]);
                     alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                     return redirect()->route('login');
                 } else {
                     //echo 'Transaction failed. Status:'.$result->Status;
                     $payment->update([
-                        'status'=>'4',
+                        'status' => '4',
                     ]);
                     alert()->error(__('web/messages.error_payment_72'));
                     return redirect()->route('login');
@@ -66,34 +65,30 @@ class PaymentController extends Controller
             } else {
 
 
-
                 //echo 'Transaction canceled by user';
                 $payment->update([
-                    'status'=>'3',
+                    'status' => '3',
                 ]);
                 alert()->error(__('web/messages.error_payment_cancel_by_user'));
                 return redirect()->route('login');
             }
 
 
-        }else{
+        } else {
             //رکورد وجود ندارد
             alert()->error(__('web/messages.not_exist'));
             return redirect()->route('login');
 
         }
     }
-
-
 
 
     public function payZarinpalCallbackTeacher(Request $request)
     {
 
         //dd($request->Authority);
-        $payment=Payment::where('authority','=',$request->Authority)->first();
-        if(isset($payment->id))
-        {
+        $payment = Payment::where('authority', '=', $request->Authority)->first();
+        if (isset($payment->id)) {
             $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';
             $Amount = $payment->price; //Amount will be based on Toman
             $Authority = $request->Authority;
@@ -113,19 +108,19 @@ class PaymentController extends Controller
                 if ($result->Status == 100) {
                     //echo 'Transaction success. RefID:'.$result->RefID;
                     $payment->update([
-                        'refId'=>$result->RefID,
+                        'refId' => $result->RefID,
 //                        'extraDetail'=>$result->ExtraDetail,
-                        'status'=>'5',
+                        'status' => '5',
                     ]);
-                    User::where('id','=',$payment->user_id)->update([
-                        'status'=>'4',
+                    User::where('id', '=', $payment->user_id)->update([
+                        'status' => '4',
                     ]);
                     alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                     return redirect()->route('login');
                 } else {
                     //echo 'Transaction failed. Status:'.$result->Status;
                     $payment->update([
-                        'status'=>'4',
+                        'status' => '4',
                     ]);
                     alert()->error(__('web/messages.error_payment_72'));
                     return redirect()->route('login');
@@ -133,17 +128,16 @@ class PaymentController extends Controller
             } else {
 
 
-
                 //echo 'Transaction canceled by user';
                 $payment->update([
-                    'status'=>'3',
+                    'status' => '3',
                 ]);
                 alert()->error(__('web/messages.error_payment_cancel_by_user'));
                 return redirect()->route('login');
             }
 
 
-        }else{
+        } else {
             //رکورد وجود ندارد
             alert()->error(__('web/messages.not_exist'));
             return redirect()->route('login');
@@ -152,15 +146,11 @@ class PaymentController extends Controller
     }
 
 
-
-
-
     public function payZarinpalCallbackNoor(Request $request)
     {
 
-        $payment=Payment::where('authority','=',$request->Authority)->first();
-        if(isset($payment->id))
-        {
+        $payment = Payment::where('authority', '=', $request->Authority)->first();
+        if (isset($payment->id)) {
             $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';
             $Amount = $payment->price; //Amount will be based on Toman
             $Authority = $request->Authority;
@@ -180,21 +170,21 @@ class PaymentController extends Controller
                 if ($result->Status == 100) {
                     //echo 'Transaction success. RefID:'.$result->RefID;
                     $payment->update([
-                        'refId'=>$result->RefID,
+                        'refId' => $result->RefID,
 //                        'extraDetail'=>$result->ExtraDetail,
-                        'status'=>'5',
+                        'status' => '5',
                     ]);
 
-                    $noor=Noor::find($payment->user_code);
+                    $noor = Noor::find($payment->user_code);
                     $noor->update([
-                        'status'=>'4',
+                        'status' => '4',
                     ]);
                     alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
-                    return view('web.pages.noor-level-2-type-all',compact('noor'));
+                    return view('web.pages.noor-level-2-type-all', compact('noor'));
                 } else {
                     //echo 'Transaction failed. Status:'.$result->Status;
                     $payment->update([
-                        'status'=>'4',
+                        'status' => '4',
                     ]);
                     alert()->error(__('web/messages.error_payment_72'));
                     return view('web.pages.noor-level-1');
@@ -202,22 +192,154 @@ class PaymentController extends Controller
             } else {
 
 
-
                 //echo 'Transaction canceled by user';
                 $payment->update([
-                    'status'=>'3',
+                    'status' => '3',
                 ]);
                 alert()->error(__('web/messages.error_payment_cancel_by_user'));
                 return view('web.pages.noor-level-1');
             }
 
 
-        }else{
+        } else {
             //رکورد وجود ندارد
             alert()->error(__('web/messages.not_exist'));
             return redirect()->route('login');
 
         }
+    }
+
+
+    public function payMeliCallback(Request $request)
+    {
+
+        $key = config('app.bankMeli.Key');
+        $OrderId = $request->OrderId;
+        $Token = $request->token;
+        $ResCode = $request->ResCode;
+        $payment = Payment::where('Token', '=', $Token)->first();
+        if (isset($payment->id)) {
+            if ($ResCode == 0) {
+                $verifyData = array('Token' => $Token, 'SignData' => $this->encrypt_pkcs7($Token, $key));
+                $str_data = json_encode($verifyData);
+                $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
+                $arrres = json_decode($res);
+            }
+            if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
+                $payment->update([
+                    'RetrivalRefNo' => $arrres->RetrivalRefNo,
+                    'SystemTraceNo' => $arrres->SystemTraceNo,
+                    'status' => '5',
+                ]);
+                User::where('id', '=', $payment->user_id)->update([
+                    'status' => '4',
+                ]);
+                alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
+                return redirect()->route('login');
+
+            } else
+                $payment->update([
+                    'status' => '4',
+                ]);
+            alert()->error(__('web/messages.error_payment_72'));
+            return redirect()->route('login');
+        } else {
+            //رکورد وجود ندارد
+            alert()->error(__('web/messages.not_exist'));
+            return redirect()->route('login');
+
+        }
+
+    }
+
+
+    public function payMeliCallbackTeacher(Request $request)
+    {
+
+        $key = config('app.bankMeli.Key');
+        $OrderId = $request->OrderId;
+        $Token = $request->token;
+        $ResCode = $request->ResCode;
+        $payment = Payment::where('Token', '=', $Token)->first();
+        if (isset($payment->id)) {
+            if ($ResCode == 0) {
+                $verifyData = array('Token' => $Token, 'SignData' => $this->encrypt_pkcs7($Token, $key));
+                $str_data = json_encode($verifyData);
+                $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
+                $arrres = json_decode($res);
+            }
+            if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
+                $payment->update([
+                    'RetrivalRefNo' => $arrres->RetrivalRefNo,
+                    'SystemTraceNo' => $arrres->SystemTraceNo,
+                    'status' => '5',
+                ]);
+                User::where('id', '=', $payment->user_id)->update([
+                    'status' => '4',
+                ]);
+                $this->send_sms_register_teacher($payment->mobile,$payment->user_code);
+                alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
+                return redirect()->route('login');
+
+            } else
+                $payment->update([
+                    'status' => '4',
+                ]);
+            alert()->error(__('web/messages.error_payment_72'));
+            return redirect()->route('login');
+        } else {
+            //رکورد وجود ندارد
+            alert()->error(__('web/messages.not_exist'));
+            return redirect()->route('login');
+
+        }
+
+    }
+
+
+    public function payMeliCallbackNoor(Request $request)
+    {
+
+
+        $key = config('app.bankMeli.Key');
+        $OrderId = $request->OrderId;
+        $Token = $request->token;
+        $ResCode = $request->ResCode;
+        $payment = Payment::where('Token', '=', $Token)->first();
+        if (isset($payment->id)) {
+            if ($ResCode == 0) {
+                $verifyData = array('Token' => $Token, 'SignData' => $this->encrypt_pkcs7($Token, $key));
+                $str_data = json_encode($verifyData);
+                $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
+                $arrres = json_decode($res);
+            }
+            if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
+                $payment->update([
+                    'RetrivalRefNo' => $arrres->RetrivalRefNo,
+                    'SystemTraceNo' => $arrres->SystemTraceNo,
+                    'status' => '5',
+                ]);
+                $noor = Noor::find($payment->user_code);
+                $noor->update([
+                    'status' => '4',
+                ]);
+                $this->send_sms_register_noor($noor->mobile,$noor->name.' '.$noor->family);
+                alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
+                return view('web.pages.noor-level-2-type-all', compact('noor'));
+
+            } else
+                $payment->update([
+                    'status' => '4',
+                ]);
+            alert()->error(__('web/messages.error_payment_72'));
+            return view('web.pages.noor-level-1');
+        } else {
+            //رکورد وجود ندارد
+            alert()->error(__('web/messages.not_exist'));
+            return view('web.pages.noor-level-1');
+
+        }
+
     }
 
 }

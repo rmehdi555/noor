@@ -31,6 +31,7 @@
                                     <thead>
                                     <tr>
                                         <th>{{__('admin/public.student_id')}}</th>
+                                        <th>{{__('admin/public.level')}}</th>
                                         <th>{{__('admin/public.class_type')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>
@@ -44,8 +45,14 @@
                                         <th>{{__('admin/public.phone_f')}}</th>
                                         <th>{{__('admin/public.phone_m')}}</th>
                                         <th>{{__('admin/public.tel')}}</th>
-                                        <th>{{__('admin/public.city')}}</th>
                                         <th>{{__('admin/public.province')}}</th>
+                                        <th>{{__('admin/public.city')}}</th>
+                                        <th>{{__('admin/public.address')}}</th>
+                                        <th>{{__('admin/public.post_number')}}</th>
+                                        <th>{{__('admin/public.education')}}</th>
+                                        <th>{{__('admin/public.job')}}</th>
+                                        <th>{{__('admin/public.email')}}</th>
+                                        <th>{{__('admin/public.number_of_children')}}</th>
                                         <th>{{__('admin/public.actions')}}</th>
                                     </tr>
                                     </thead>
@@ -53,11 +60,12 @@
                                     @foreach($students as $item)
                                         <tr class="gradeA">
                                             <td>{{$item->student_id}}</td>
+                                            <th>{{__('admin/public.status_level_'.$item->user->status)}}</th>
                                             <td>{{$item->class_type}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->family}}</td>
                                             <td>{{$item->f_name}}</td>
-                                            <td>{{$item->sh_numbe}}</td>
+                                            <td>{{$item->sh_number}}</td>
                                             <td>{{$item->meli_number}}</td>
                                             <td>{{$item->sh_sodor}}</td>
                                             <td>{{$item->tavalod_date}}</td>
@@ -66,8 +74,14 @@
                                             <td>{{$item->phone_f}}</td>
                                             <td>{{$item->phone_m}}</td>
                                             <td>{{$item->tel}}</td>
-                                            <td>{{$item->city}}</td>
-                                            <td>{{$item->province}}</td>
+                                            <td>{{$item->studentsProvince->name}}</td>
+                                            <td>{{$item->studentsCity->name}}</td>
+                                            <td>{{$item->address}}</td>
+                                            <td>{{$item->post_number }}</td>
+                                            <td>{{$item->education }}</td>
+                                            <td>{{$item->job }}</td>
+                                            <td>{{$item->email}}</td>
+                                            <td>{{$item->number_of_children }}</td>
                                             <td class="actions">
 
                                                 {{--<form action="{{ route('students.destroy', $item->id) }}" method="POST">--}}
@@ -91,6 +105,7 @@
                                     <tfoot>
                                     <tr>
                                         <th>{{__('admin/public.student_id')}}</th>
+                                        <th>{{__('admin/public.level')}}</th>
                                         <th>{{__('admin/public.class_type')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>
@@ -106,6 +121,12 @@
                                         <th>{{__('admin/public.tel')}}</th>
                                         <th>{{__('admin/public.city')}}</th>
                                         <th>{{__('admin/public.province')}}</th>
+                                        <th>{{__('admin/public.address')}}</th>
+                                        <th>{{__('admin/public.post_number')}}</th>
+                                        <th>{{__('admin/public.education')}}</th>
+                                        <th>{{__('admin/public.job')}}</th>
+                                        <th>{{__('admin/public.email')}}</th>
+                                        <th>{{__('admin/public.number_of_children')}}</th>
                                         <th>{{__('admin/public.actions')}}</th>
                                     </tr>
                                     </tfoot>

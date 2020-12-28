@@ -34,6 +34,8 @@
 
 <script src="{{asset('admin/2020/rtl/assets/js/pages/forms/advanced-form-elements.js')}}"></script>
 
+
+
 <script>
     $(function() {
         // validation needs name of the element
@@ -41,6 +43,55 @@
 
         // initialize after multiselect
         $('#basic-form').parsley();
+
+
+
+        /*married-yes or no select field */
+
+        var test=$("input[name$='married']").val();
+        $(".div-married").hide();
+        $(".div-married-" + test).show();
+
+        $(".input-married").prop('required',false);
+        $(".input-married-"+ test).prop('required',true);
+
+        $("input[name$='married']").click(function () {
+            var test = $(this).val();
+
+            $(".div-married").hide();
+            $(".div-married-" + test).show();
+
+            $(".input-married").prop('required',false);
+            $(".input-married-"+ test).prop('required',true);
+        });
+
+
+
+        /*select city and province */
+
+        //$(".option-city").hide();
+        //$("#select-city").val(0);
+        // var id = $("#select-province").val();
+        // $(".option-city-" + id).show();
+        $("#select-province").change(function () {
+            $(".option-city").hide();
+            $("#select-city").val(0);
+            var id = $(this).val();
+            $(".option-city-" + id).show();
+        });
+
+
+
+        $(document).ready(function(){
+            $(".contract-button").hide();
+
+            $('#contract-checkbox').click(function() {
+                $(".contract-button").toggle(this.checked);
+                $(".contract-div-hide").toggle(!this.checked);
+            });
+
+
+        });
     });
 </script>
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>

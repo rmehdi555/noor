@@ -34,7 +34,7 @@ class SendSmsNotification
             $username = config('app.smsPanelUser');
             $password = config('app.smsPanelPass');
             $from = config('app.smsPanelFrom');
-            $pattern_code = "mcpqfhxj6f";
+            $pattern_code = "srkt6lvuat";
             $to = array($event->user->phone);
             $input_data = array("verification-code" => $event->activationCode);
             $url = config('app.smsPanelUrl') .'?username='. $username . "&password=" . urlencode($password) . "&from=$from&to=" . json_encode($to) . "&input_data=" . urlencode(json_encode($input_data)) . "&pattern_code=$pattern_code";
