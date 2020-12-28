@@ -7,6 +7,7 @@ use App\Noor;
 use App\Payment;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use SoapClient;
 
 
@@ -212,6 +213,11 @@ class PaymentController extends Controller
 
     public function payMeliCallback(Request $request)
     {
+        if(!isset($request->token) or empty($request->token) )
+        {
+            alert()->error(__('web/messages.error_payment_cancel_by_user'));
+            return redirect()->route('login');
+        }
 
         $key = config('app.bankMeli.Key');
         $OrderId = $request->OrderId;
@@ -224,6 +230,9 @@ class PaymentController extends Controller
                 $str_data = json_encode($verifyData);
                 $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
                 $arrres = json_decode($res);
+            }else{
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
+                return redirect()->route('login');
             }
             if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
                 $payment->update([
@@ -234,6 +243,9 @@ class PaymentController extends Controller
                 User::where('id', '=', $payment->user_id)->update([
                     'status' => '4',
                 ]);
+                if(!Auth::check()) {
+                    Auth::loginUsingId($payment->user_id);
+                }
                 alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                 return redirect()->route('login');
 
@@ -255,7 +267,11 @@ class PaymentController extends Controller
 
     public function payMeliCallbackTeacher(Request $request)
     {
-
+        if(!isset($request->token) or empty($request->token) )
+        {
+            alert()->error(__('web/messages.error_payment_cancel_by_user'));
+            return redirect()->route('login');
+        }
         $key = config('app.bankMeli.Key');
         $OrderId = $request->OrderId;
         $Token = $request->token;
@@ -267,6 +283,9 @@ class PaymentController extends Controller
                 $str_data = json_encode($verifyData);
                 $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
                 $arrres = json_decode($res);
+            }else{
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
+                return redirect()->route('login');
             }
             if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
                 $payment->update([
@@ -277,6 +296,9 @@ class PaymentController extends Controller
                 User::where('id', '=', $payment->user_id)->update([
                     'status' => '4',
                 ]);
+                if(!Auth::check()) {
+                    Auth::loginUsingId($payment->user_id);
+                }
                 $this->send_sms_register_teacher($payment->mobile,$payment->user_code);
                 alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                 return redirect()->route('login');
@@ -300,7 +322,11 @@ class PaymentController extends Controller
     public function payMeliCallbackNoor(Request $request)
     {
 
-
+        if(!isset($request->token) or empty($request->token) )
+        {
+            alert()->error(__('web/messages.error_payment_cancel_by_user'));
+            return view('web.pages.noor-level-1');
+        }
         $key = config('app.bankMeli.Key');
         $OrderId = $request->OrderId;
         $Token = $request->token;
@@ -312,6 +338,9 @@ class PaymentController extends Controller
                 $str_data = json_encode($verifyData);
                 $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
                 $arrres = json_decode($res);
+            }else{
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
+                return view('web.pages.noor-level-1');
             }
             if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
                 $payment->update([

@@ -58,11 +58,10 @@ class Controller extends BaseController
     public function send_sms_register_teacher($number,$verificationCode)
     {
         try {
-
             $username = config('app.smsPanelUser');
             $password = config('app.smsPanelPass');
             $from = config('app.smsPanelFrom');
-            $pattern_code = "	cm7opf9tu2";
+            $pattern_code = "cm7opf9tu2";
             $to = array($number);
             $input_data = array("verification-code" => $verificationCode);
             $url = config('app.smsPanelUrl') .'?username='. $username . "&password=" . urlencode($password) . "&from=$from&to=" . json_encode($to) . "&input_data=" . urlencode(json_encode($input_data)) . "&pattern_code=$pattern_code";

@@ -225,8 +225,9 @@ Route::get('payment/online/zarinpal/callback/teacher','PaymentController@payZari
 Route::get('payment/online/zarinpal/callback/noor','PaymentController@payZarinpalCallbackNoor')->name('web.payment.online.zarinpal.callback.noor');
 
 
-Route::post('payment/online/meli','PaymentController@payMelil')->name('web.payment.online.meli');
-Route::post('payment/online/meli/callback','PaymentController@payMelilCallback')->name('web.payment.online.meli.callback');
-Route::post('payment/online/meli/callback/teacher','PaymentController@payMelilCallbackTeacher')->name('web.payment.online.meli.callback.teacher');
-Route::post('payment/online/meli/callback/noor','PaymentController@payMelilCallbackNoor')->name('web.payment.online.meli.callback.noor');
+Route::post('payment/online/meli','PaymentController@payMeli')->name('web.payment.online.meli');
+Route::post('payment/online/meli/callback','PaymentController@payMeliCallback')->name('web.payment.online.meli.callback');
+Route::post('payment/online/meli/callback/teacher','PaymentController@payMeliCallbackTeacher')->name('web.payment.online.meli.callback.teacher');
+Route::post('payment/online/meli/callback/noor','PaymentController@payMeliCallbackNoor')->name('web.payment.online.meli.callback.noor');
+Route::get('payment/online/meli/callback/noor','PaymentController@payMeliCallbackNoor')->name('web.payment.online.meli.callback.noor.get');
 // end route payment

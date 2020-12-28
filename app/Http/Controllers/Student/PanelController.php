@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Student;
 use Adlino\Locations\Facades\locations;
 use App\Cities;
 use App\Field;
-use App\Http\Controllers\Student\TeacherController;
 use App\Http\Controllers\Controller;
 use App\Payment;
 use App\Provinces;
@@ -29,7 +28,7 @@ use SoapClient;
  * status=اطلاعات توسط کاربر تایید شده ان5
  * status=10 تایید نهایی
  */
-class PanelController extends StudentsDocuments
+class PanelController extends StudentController
 {
     public function index(Request $request)
     {
