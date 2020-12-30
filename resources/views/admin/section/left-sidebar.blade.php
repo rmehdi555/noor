@@ -68,7 +68,7 @@
                         <a href="#slider" class="has-arrow"><i
                                     class="icon-diamond"></i><span>{{__('admin/public.teachers')}}</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li class="@if($SID==40 ) active @endif"><a
+                            <li class="@if($SID==50 ) active @endif"><a
                                         href="{{ route('teachers.index',['SID' => '50']) }}">{{__('admin/public.teachers_list')}}</a>
                             </li>
                             {{--<li class="@if($SID==41 ) active @endif"><a--}}
@@ -82,7 +82,7 @@
                                     class="icon-diamond"></i><span>{{__('admin/public.noors')}}</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==60 ) active @endif"><a
-                                        href="{{ route('noors.index',['SID' => '50']) }}">{{__('admin/public.noors_list')}}</a>
+                                        href="{{ route('noors.index',['SID' => '60']) }}">{{__('admin/public.noors_list')}}</a>
                             </li>
                             {{--<li class="@if($SID==41 ) active @endif"><a--}}
                             {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}

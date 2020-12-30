@@ -60,7 +60,7 @@ class NoorController extends Controller
                 'sex'=>$request->sex,
                 'status' => '2',
             ]);
-            $this->send_sms_register_noor($noor->mobile,$noor->name.' '.$noor->family);
+            $this->send_sms_register_noor($noor->mobile,__('web/public.sex_sms_'.$noor->sex).' '.$noor->name.' '.$noor->family);
             alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
             //return view('web.pages.noor-level-2-type-1',compact('noor'));
             return redirect()->route('web.noor.level.2.show',['id'=>$noor->id,'mobile'=>$noor->mobile]);

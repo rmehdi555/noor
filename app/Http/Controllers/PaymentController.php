@@ -352,7 +352,7 @@ class PaymentController extends Controller
                 $noor->update([
                     'status' => '4',
                 ]);
-                $this->send_sms_register_noor($noor->mobile,$noor->name.' '.$noor->family);
+                $this->send_sms_register_noor($noor->mobile,__('web/public.sex_sms_'.$noor->sex).' '.$noor->name.' '.$noor->family);
                 alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                 return view('web.pages.noor-level-2-type-all', compact('noor'));
 
