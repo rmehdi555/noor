@@ -33,7 +33,9 @@ class NoorController extends Controller
             'type' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'price' => ['nullable','numeric', 'min:10000'],
+            'sex' => ['required', 'string', 'max:255'],
         ]);
+
 
 
         if($request->monthly_payment)
@@ -51,27 +53,33 @@ class NoorController extends Controller
                 'name' => $request->name,
                 'family' => $request->family,
                 'f_name' => $request->f_name,
-                'meli_number' => $request->meli_numbere,
+                'meli_number' => $request->meli_number,
                 'mobile' => \App\Providers\MyProvider::convert_phone_number($request->mobile),
                 'description'=>$request->description,
                 'monthly_payment'=>$request->monthly_payment,
-                'status' => '1',
+                'sex'=>$request->sex,
+                'status' => '2',
             ]);
             $this->send_sms_register_noor($noor->mobile,$noor->name.' '.$noor->family);
             alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
-            return view('web.pages.noor-level-2-type-1',compact('noor'));
+            //return view('web.pages.noor-level-2-type-1',compact('noor'));
+            return redirect()->route('web.noor.level.2.show',['id'=>$noor->id,'mobile'=>$noor->mobile]);
         }else {
 
-
+            if($request->type=='5')
+            {
+                $request->type="کمک های نقدی";
+            }
             $noor = Noor::create([
                 'type' => $request->type,
                 'name' => $request->name,
                 'family' => $request->family,
                 'f_name' => $request->f_name,
-                'meli_number' => $request->meli_numbere,
+                'meli_number' => $request->meli_number,
                 'mobile' => \App\Providers\MyProvider::convert_phone_number($request->mobile),
                 'price' => $request->price,
                 'monthly_payment' => $request->monthly_payment,
+                'sex'=>$request->sex,
                 'status' => '1',
             ]);
             $payment = $this->createPayment($noor);
@@ -145,6 +153,14 @@ class NoorController extends Controller
 
 
 
+    }
+
+    public function noorLevel2Show($id,$mobile)
+    {
+        $noor=Noor::where([['id','=',$id],['mobile','=',$mobile]])->get()->first();
+        if(!isset($noor->id))
+            return redirect()->route('web.home');
+        return view('web.pages.noor-level-2-type-1',compact('noor'));
     }
 
     public function createPayment($noor)

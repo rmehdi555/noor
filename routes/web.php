@@ -76,6 +76,7 @@ Route::middleware('language','visit')->group(function (){
     Route::get('/noor/level/2','NoorController@level2')->name('web.noor.level.2');
     Route::post('/noor/level/1/save','NoorController@level1Save')->name('web.noor.level.1.save');
     Route::post('/noor/level/2/save','NoorController@level2Save')->name('web.noor.level.2.save');
+    Route::get('/noor/level/2/show/{id}/{mobile}','NoorController@noorLevel2Show')->name('web.noor.level.2.show');
 
 
 

@@ -95,7 +95,7 @@ class ResetPasswordSmsController extends Controller
 
        // $this->guard()->login($user);
         Auth::logout();
-        alert()->success(__('web/messages.success_reset_password'),__('web/messages.success'))->persistent(__('web/public.ok'));;
+        alert()->success(__('web/messages.success_reset_password'),__('web/messages.success'));
         return redirect()->route('login.sms');
     }
 

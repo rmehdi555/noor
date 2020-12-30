@@ -40,7 +40,33 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-6 col-sm-6 control-label" for="name">{{__('web/public.name')}}
+                                        <label class="col-md-6 col-sm-6 control-label" for="name">{{__('admin/public.sex')}}
+                                            : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10" >
+                                            <label class="radio-inline" style="padding: 10px 40px 10px">
+                                                <input type="radio" name="sex"
+                                                       value="male" @if($student->sex=="male") checked @endif
+                                                >{{__('admin/public.male')}}
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio"
+                                                       name="sex"
+                                                       value="female" @if($student->sex=="female") checked @endif>{{__('admin/public.female')}}
+                                            </label>
+                                            @error('sex')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 padding-top-15">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 padding-top-15">
+                                        <label class="col-md-6 col-sm-6 control-label" for="name">{{__('admin/public.name')}}
                                             : <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="name" id="name" value="{{$student->name}}"
@@ -54,7 +80,7 @@
                                     </div>
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="family">{{__('web/public.family')}} : <span
+                                               for="family">{{__('admin/public.family')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="family" id="family" value="{{$student->family}}"
@@ -70,7 +96,7 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="f_name">{{__('web/public.f_name')}} : <span
+                                               for="f_name">{{__('admin/public.f_name')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="f_name" id="f_name" value="{{$student->f_name}}"
@@ -84,7 +110,7 @@
                                     </div>
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="sh_number">{{__('web/public.sh_number')}} : <span
+                                               for="sh_number">{{__('admin/public.sh_number')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="sh_number" id="sh_number" value="{{$student->sh_number}}"
@@ -101,14 +127,14 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="meli_number">{{__('web/public.meli_number')}} : <span
+                                               for="meli_number">{{__('admin/public.meli_number')}} : <span
                                                     class="required">*</span> </label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="number" pattern="[0-9]{10}" name="meli_number" id="meli_number"
                                                    value="{{$student->meli_number}}" minlength="10"  maxlength="10"
                                                    class="form-control  @error('meli_number') is-invalid @enderror"
                                                    required disabled/>
-                                            <span> ({{__('web/public.meli_number_help_2')}})</span>
+                                            <span> ({{__('admin/public.meli_number_help_2')}})</span>
                                             @error('meli_number')
                                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -118,7 +144,7 @@
                                     </div>
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="sh_sodor">{{__('web/public.sh_sodor')}} : <span
+                                               for="sh_sodor">{{__('admin/public.sh_sodor')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="sh_sodor" id="sh_sodor" value="{{$student->sh_sodor}}"
@@ -135,7 +161,7 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="tavalod_date">{{__('web/public.tavalod_date')}} : <span
+                                               for="tavalod_date">{{__('admin/public.tavalod_date')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-12">
                                             <div class='form-inline row'>
@@ -150,7 +176,7 @@
                                                 <div class='form-group col-sm-4'>
                                                     <select name='tavalod_date_d' class='form-control' required>
                                                         <option selected
-                                                                disabled>{{__('web/public.tavalod_date_d')}}</option>
+                                                                disabled>{{__('admin/public.tavalod_date_d')}}</option>
                                                         @for ($i = 1; $i < 32; $i++)
                                                             <option value="{{$i}}" @php if($student->tavalod_date_d==$i) echo "selected"; @endphp>{{$i}}</option>
                                                         @endfor
@@ -159,7 +185,7 @@
                                                 <div class='form-group col-sm-4'>
                                                     <select name='tavalod_date_m' class='form-control' required>
                                                         <option selected
-                                                                disabled>{{__('web/public.tavalod_date_m')}}</option>
+                                                                disabled>{{__('admin/public.tavalod_date_m')}}</option>
                                                         @for ($i = 1; $i < 13; $i++)
                                                             <option value="{{$i}}" @php if($student->tavalod_date_m==$i) echo "selected"; @endphp>{{$i}}</option>
                                                         @endfor
@@ -168,7 +194,7 @@
                                                 <div class='form-group col-sm-4'>
                                                     <select name='tavalod_date_y' class='form-control' required>
                                                         <option selected
-                                                                disabled>{{__('web/public.tavalod_date_y')}}</option>
+                                                                disabled>{{__('admin/public.tavalod_date_y')}}</option>
                                                         @for ($i = 1400; $i > 1295; $i--)
                                                             <option value="{{$i}}" @php if($student->tavalod_date_y==$i) echo "selected"; @endphp>{{$i}}</option>
                                                         @endfor
@@ -182,16 +208,16 @@
 
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="married">{{__('web/public.married')}} : <span class="required">*</span></label>
+                                               for="married">{{__('admin/public.married')}} : <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <label class="radio-inline" style="padding: 10px 40px 10px">
                                                 <input type="radio" name="married" checked
-                                                       value="{{$student->married}}">{{__('web/public.married_'.$student->married)}}
+                                                       value="{{$student->married}}">{{__('admin/public.married_'.$student->married)}}
                                             </label>
                                             @php $student->married_d=$student->married=="no"?"yes":"no";@endphp
                                             <label class="radio-inline">
                                                 <input type="radio" name="married"
-                                                       value="{{$student->married_d}}">{{__('web/public.married_'.$student->married_d)}}
+                                                       value="{{$student->married_d}}">{{__('admin/public.married_'.$student->married_d)}}
                                             </label>
 
                                             @error('married')
@@ -207,7 +233,7 @@
 
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="number_of_children">{{__('web/public.number_of_children')}} : <span
+                                               for="number_of_children">{{__('admin/public.number_of_children')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="number" value="0" min="0" max="20" name="number_of_children"
@@ -226,9 +252,9 @@
 
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="phone_f">{{__('web/public.phone_f')}} : <span class="required">*</span></label>
+                                               for="phone_f">{{__('admin/public.phone_f')}} : <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
-                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                            <input type="tel" placeholder="{{__('admin/public.example')}} : 09125555555"
                                                    pattern="09[0-9]{9}" name="phone_f" id="phone_f"
                                                    value="{{$student->phone_f}}" minlength="11"  maxlength="11"
                                                    class="form-control   @error('phone_f') is-invalid @enderror"/>
@@ -241,9 +267,9 @@
                                     </div>
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="phone_m">{{__('web/public.phone_m')}} : <span class="required">*</span></label>
+                                               for="phone_m">{{__('admin/public.phone_m')}} : <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
-                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                            <input type="tel" placeholder="{{__('admin/public.example')}} : 09125555555"
                                                    pattern="09[0-9]{9}" name="phone_m" id="phone_m"
                                                    value="{{$student->phone_m}}" minlength="11"  maxlength="11"
                                                    class="form-control @error('phone_m') is-invalid @enderror"/>
@@ -261,13 +287,13 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="phone_1">{{__('web/public.phone_1')}} : <span class="required">*</span></label>
+                                               for="phone_1">{{__('admin/public.phone_1')}} : <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
-                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                            <input type="tel" placeholder="{{__('admin/public.example')}} : 09125555555"
                                                    pattern="09[0-9]{9}" name="phone_1" id="phone_1"
                                                    value="{{$student->phone_1}}" minlength="11"  maxlength="11"
                                                    class="form-control  @error('phone_1') is-invalid @enderror" required disabled/>
-                                            <span> ({{__('web/public.phone_1_help_2')}})</span>
+                                            <span> ({{__('admin/public.phone_1_help_2')}})</span>
                                             @error('phone_1')
                                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -277,9 +303,9 @@
                                     </div>
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="phone_2">{{__('web/public.phone_2')}} :</label>
+                                               for="phone_2">{{__('admin/public.phone_2')}} :</label>
                                         <div class="col-md-12 col-sm-10">
-                                            <input type="tel" placeholder="{{__('web/public.example')}} : 09125555555"
+                                            <input type="tel" placeholder="{{__('admin/public.example')}} : 09125555555"
                                                    pattern="09[0-9]{9}" name="phone_2" id="phone_2"
                                                    value="{{$student->phone_2}}" minlength="11"  maxlength="11"
                                                    class="form-control  @error('phone_2') is-invalid @enderror"/>
@@ -294,11 +320,11 @@
 
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-6 col-sm-6 control-label" for="tel">{{__('web/public.tel')}} :
+                                        <label class="col-md-6 col-sm-6 control-label" for="tel">{{__('admin/public.tel')}} :
                                             <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="tel" id="tel"
-                                                   placeholder="{{__('web/public.example')}} : 02122334455"
+                                                   placeholder="{{__('admin/public.example')}} : 02122334455"
                                                    value="{{$student->tel}}"
                                                    class="form-control  @error('tel') is-invalid @enderror" />
                                             @error('tel')
@@ -310,7 +336,7 @@
                                     </div>
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="email">{{__('web/public.email')}} :</label>
+                                               for="email">{{__('admin/public.email')}} :</label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="email" name="email" id="email" value="{{$student->email}}"
                                                    class="form-control  @error('email') is-invalid @enderror"/>
@@ -325,12 +351,12 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="province">{{__('web/public.province')}} : <span
+                                               for="province">{{__('admin/public.province')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <select name='province' class='form-control' id="select-province" required>
                                                 <option value="0" selected
-                                                        disabled>{{__('web/public.select_option')}}</option>
+                                                        disabled>{{__('admin/public.select_option')}}</option>
                                                 @foreach ($provinces as $item)
                                                     <option value="{{$item->id}}" class="option-province"
                                                             id="option-province-id" @php if($student->province==$item->id) echo "selected"; @endphp>{{$item->name}}</option>
@@ -344,12 +370,12 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-6 col-sm-6 control-label" for="city">{{__('web/public.city')}}
+                                        <label class="col-md-6 col-sm-6 control-label" for="city">{{__('admin/public.city')}}
                                             : <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <select name='city' class='form-control' id="select-city" required>
                                                 <option value="0" selected
-                                                        disabled>{{__('web/public.select_option')}}</option>
+                                                        disabled>{{__('admin/public.select_option')}}</option>
                                                 @foreach ($cities as $item)
                                                     <option value="{{$item->id}}"
                                                             class="option-city option-city-{{$item->province_id}}"
@@ -368,7 +394,7 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="address">{{__('web/public.address')}} : <span class="required">*</span></label>
+                                               for="address">{{__('admin/public.address')}} : <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="address" id="address" value="{{$student->address}}"
                                                    class="form-control  @error('address') is-invalid @enderror" required/>
@@ -381,7 +407,7 @@
                                     </div>
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="post_number">{{__('web/public.post_number')}} : <span
+                                               for="post_number">{{__('admin/public.post_number')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="number" name="post_number" id="post_number" minlength="10"  maxlength="10"
@@ -399,7 +425,7 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-6 col-sm-6 control-label"
-                                               for="education">{{__('web/public.education')}} : <span
+                                               for="education">{{__('admin/public.education')}} : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="education" id="education" value="{{$student->education}}"
@@ -412,7 +438,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-6 col-sm-6 control-label" for="job">{{__('web/public.job')}} :
+                                        <label class="col-md-6 col-sm-6 control-label" for="job">{{__('admin/public.job')}} :
                                             <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-10">
                                             <input type="text" name="job" id="job" value="{{$student->job}}" id="input-name"
@@ -426,10 +452,73 @@
                                     </div>
                                 </div>
                                 <br><br>
+
+                                <p class="bu-margin-bottom-30">مدارک بارگذاری شده: </p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>جهت مشاهده مدک روی عنوان آن کلیک نماید</th>
+                                            {{--<th>{{__('web/public.setting')}}</th>--}}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @php $i=1; @endphp
+                                        @foreach($student->documents as $item)
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td><a href="{{asset($item->url)}}" target="_blank">{{$item->title}}</a></td>
+                                            </tr>
+                                            @php $i++; @endphp
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                                <p class="bu-margin-bottom-30">{{__('web/public.student_field_select')}} : </p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>{{__('web/public.title_field')}}</th>
+                                            <th>{{__('web/public.price')}}({{__('web/public.currency_name_IRR')}})</th>
+                                            {{--<th>{{__('web/public.setting')}}</th>--}}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @php $i=1; $finalPrice=0;@endphp
+                                        @foreach($student->studentsFields as $item)
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td>{{$item->title}}</td>
+                                                <td>{{number_format($item->price)}}</td>
+                                                {{--<td><a class="btn btn-danger btn-sm"--}}
+                                                       {{--href="{{ route('web.students.field.delete',$item->id) }}">{{__('web/public.delete')}}</a>--}}
+                                                {{--</td>--}}
+                                            </tr>
+                                            @php $i++; $finalPrice+=$item->price; @endphp
+                                        @endforeach
+                                        <tr class="table-primary">
+                                            <td colspan='2'>{{__('web/public.price_final')}}
+                                                ({{__('web/public.currency_name_IRR')}}) :
+                                            </td>
+                                            <td colspan='2'>{{$finalPrice}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
                                 <div class="d-flex justify-content-center mb-2">
                                     <div class="p-2 ">
-                                        <button type="submit"
-                                                class="btn btn-primary">{{__('web/public.next')}}</button>
+                                        {{--<button type="submit"--}}
+                                                {{--class="btn btn-primary">{{__('admin/public.next')}}</button>--}}
                                     </div>
                                 </div>
 

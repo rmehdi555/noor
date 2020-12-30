@@ -64,6 +64,32 @@
                         </ul>
 
                     </li>
+                    <li class="@if($SID>=50 and $SID<60) active @endif">
+                        <a href="#slider" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>{{__('admin/public.teachers')}}</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==40 ) active @endif"><a
+                                        href="{{ route('teachers.index',['SID' => '50']) }}">{{__('admin/public.teachers_list')}}</a>
+                            </li>
+                            {{--<li class="@if($SID==41 ) active @endif"><a--}}
+                            {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}
+                            {{--</li>--}}
+                        </ul>
+
+                    </li>
+                    <li class="@if($SID>=60 and $SID<70) active @endif">
+                        <a href="#slider" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>{{__('admin/public.noors')}}</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==60 ) active @endif"><a
+                                        href="{{ route('noors.index',['SID' => '50']) }}">{{__('admin/public.noors_list')}}</a>
+                            </li>
+                            {{--<li class="@if($SID==41 ) active @endif"><a--}}
+                            {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}
+                            {{--</li>--}}
+                        </ul>
+
+                    </li>
                     {{--<li class="@if($SID>=100 and $SID<200) active @endif">--}}
                     {{--<a href="#slider" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.slider')}}</span></a>--}}
                     {{--<ul aria-expanded="false" class="collapse">--}}
@@ -146,6 +172,8 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li><a href="{{ route('logout') }}"><i class="icon-logout"></i><span>{{__('admin/public.logout')}}</span></a></li>
 
 
                 </ul>

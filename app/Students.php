@@ -10,7 +10,7 @@ class Students extends Model
     use SoftDeletes;
     protected $fillable = ['flag_cookie','class_type', 'user_id','student_id', 'name', 'family', 'f_name', 'sh_number','meli_number', 'sh_sodor', 'tavalod_date', 'married',
         'phone_1', 'phone_2', 'phone_f', 'phone_m', 'tel', 'city', 'province',
-        'address','post_number','education','job','email','number_of_children','status'];
+        'address','post_number','education','job','email','number_of_children','sex','status'];
     protected $dates = ['deleted_at'];
 
 
@@ -33,5 +33,9 @@ class Students extends Model
     public function user()
     {
         return $this->hasOne(User::class, 'id','user_id');
+    }
+    public function documents()
+    {
+        return $this->hasMany(StudentsDocuments::class,'user_id','user_id');
     }
 }

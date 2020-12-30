@@ -12,7 +12,9 @@ $locale = App::getLocale();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="{{asset('web/2020/image/favicon.png" rel="icon')}}" />
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
-    <meta name="description" content="noor"/>
+    <meta name="description" content="قرآنکده نور موعود (عج)"/>
+    <meta name="keywords" content="قرآنکده نور موعود (عج), ثبت نام در قرآنکده آنلاین و حضوری, نور موعود,سهمی از نور,پرداخت خمس, پرداخت نذر ">
+    <meta name="author" content="rmehdi555">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <meta name="theme-color" content="#3e42e9">

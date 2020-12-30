@@ -16,7 +16,7 @@ return [
 
     ],
     'bankPay' => [
-        'active'      =>  'meli',
+        'active'      =>  'meli1',
     ],
 
 

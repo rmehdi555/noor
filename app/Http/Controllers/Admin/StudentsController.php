@@ -23,6 +23,7 @@ class StudentsController extends  AdminController
     {
         $SID="40";
         $student=Students::find($student);
+        //dd($student->user->studentsDocuments);
         $fields = Field::all();
         $provinces = Provinces::all();
         $cities = Cities::all();

@@ -166,5 +166,7 @@ return array(
         'm_image'=>'مدرک تحصیلی',
         'profile_image'=>'عکس پرسنلی',
         'file_more'=>'مدارک بیشتر',
+        'male'=>'مرد',
+        'female'=>'زن',
     ),
 );

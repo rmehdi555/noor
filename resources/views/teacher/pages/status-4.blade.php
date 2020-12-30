@@ -33,7 +33,8 @@
                             {{$user->teacher->teacher_id }}
                             <br>
                             تاریخ ایجاد :
-                            {{\App\Providers\MyProvider::show_date($user->created_at,'%B %d، %Y ')}}
+                            <span >{{\App\Providers\MyProvider::show_date($user->created_at,'H:i j-n-Y ')}}</span>
+
 
                         </p>
                     </div>
@@ -56,6 +57,32 @@
                         </ul>
                     </div>
                 @endif
+                <div class="row">
+                    <div class="col-md-6 padding-top-15">
+                        <label class="col-md-6 col-sm-6 control-label" for="name">{{__('web/public.sex')}}
+                            : <span class="required">*</span></label>
+                        <div class="col-md-12 col-sm-10" >
+                            <label class="radio-inline" style="padding: 10px 40px 10px">
+                                <input type="radio" name="sex"
+                                       value="male" @if($user->teacher->sex=="male") checked @endif
+                                >{{__('web/public.male')}}
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio"
+                                       name="sex"
+                                       value="female" @if($user->teacher->sex=="female") checked @endif>{{__('web/public.female')}}
+                            </label>
+                            @error('sex')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6 padding-top-15">
+
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6 padding-top-15">
                         <label class="col-md-6 col-sm-6 control-label" for="name">{{__('web/public.name')}}

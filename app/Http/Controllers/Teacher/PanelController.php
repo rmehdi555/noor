@@ -83,6 +83,7 @@ class PanelController extends TeacherController
             'job' => ['string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
+            'sex' => ['required', 'string', 'max:255'],
 
         ]);
 
@@ -108,6 +109,7 @@ class PanelController extends TeacherController
             'job' => $request->job,
             'email' => strtolower($request->email),
             'number_of_children' => $request->number_of_children,
+            'sex'=>$request->sex,
             'status' => '2',
         ]);
 

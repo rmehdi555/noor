@@ -83,7 +83,7 @@
                                                    name="class_type"
                                                    value="{{__('web/public.select_class_type_verbal')}}">{{__('web/public.select_class_type_verbal')}}
                                         </label>
-                                        @error('name')
+                                        @error('class_type')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

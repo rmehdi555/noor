@@ -48,7 +48,7 @@ class ForgotPasswordSmsController extends Controller
             $token = $this->createToken($user, config('auth.passwords.users.table'));
             $this->sendSmsLink($user, $token);
 
-            alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;
+            alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'));
             return view('auth.passwords.confirm-sms-code',compact('user'));
         }
 

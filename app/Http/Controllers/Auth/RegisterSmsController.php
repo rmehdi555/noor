@@ -98,7 +98,7 @@ class RegisterSmsController extends Controller
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         event(new UserActivationSms($user));
-        alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;
+        alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'));
         return view('auth.confirm-sms-code',compact('user'));
     }
 

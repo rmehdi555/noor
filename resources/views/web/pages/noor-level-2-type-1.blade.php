@@ -37,6 +37,17 @@
             </div>
         </div>
     </section>
+
+
+    <section class="bu-inner-main ">
+        <div class="container">
+            <div class="row alert alert-info m-1">
+                <div class="col-8" ><span>   تاریخ : </span> <span>{{\App\Providers\MyProvider::show_date($noor->created_at,'H:i j-n-Y')}} </span> </div>
+                <div class="col-4" >  <span> شماره رسید :</span>  <span>{{$noor->id}}</span></div>
+            </div>
+        </div>
+    </section>
+
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
@@ -44,11 +55,9 @@
                     <div class="alert alert-info m-1">
 
                         <p class="p-1 text-justify">جناب
+                            {{__('web/public.sex_sms_'.$noor->sex)}}
                             {{$noor->name}}  {{$noor->family}}
                             درخواست شما با موفقیت ثبت گردید
-                            <br>
-                            تاریخ :
-                        {{\App\Providers\MyProvider::show_date($noor->created_at,'%B %d، %Y ')}}
 
                     </div>
                 </div>

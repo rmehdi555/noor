@@ -99,7 +99,7 @@ return [
     'select_field_main'=>'انتخاب دسته اصلی رشته',
     'select_field_child'=>'انتخاب دسته فرعی',
     'title_field'=>'عنوان رشته',
-    'setting'=>'تنظیمات',
+    'setting'=>'ویرایش',
     'btn_add_field'=>'اضافه کردن رشته جدید',
     'price_final'=>'جمع کل هزینه ها',
     'delete'=>'حذف',
@@ -152,6 +152,12 @@ return [
     'add_more_file_name'=>'عنوان فایل را وارد نمایید',
     'print'=>'چاپ',
     'monthly_payment'=>'تمایل به شراکت ماهیانه دارم .',
+    'sex'=>'جنسیت',
+    'male'=>'مرد',
+    'female'=>'زن',
+    'sex_sms_male'=>'آقای',
+    'sex_sms_female'=>'خانم',
+
 
 
 

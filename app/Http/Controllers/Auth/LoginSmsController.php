@@ -89,7 +89,7 @@ class LoginSmsController extends Controller
                     }
                 }else{
                     event(new UserActivationSms($user));
-                    alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'))->persistent(__('web/public.ok'));;
+                    alert()->success(__('web/messages.save_register_and_send_sms'),__('web/messages.success'));;
                     return view('auth.confirm-sms-code',compact('user'));
                 }
             }

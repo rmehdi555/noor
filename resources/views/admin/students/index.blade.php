@@ -31,8 +31,10 @@
                                     <thead>
                                     <tr>
                                         <th>{{__('admin/public.student_id')}}</th>
+                                        <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.level')}}</th>
                                         <th>{{__('admin/public.class_type')}}</th>
+                                        <th>{{__('admin/public.sex')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>
                                         <th>{{__('admin/public.f_name')}}</th>
@@ -60,8 +62,10 @@
                                     @foreach($students as $item)
                                         <tr class="gradeA">
                                             <td>{{$item->student_id}}</td>
-                                            <th>{{__('admin/public.status_level_'.$item->user->status)}}</th>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
+                                            <th>{{__('admin/public.student_status_level_'.$item->user->status)}}</th>
                                             <td>{{$item->class_type}}</td>
+                                            <td>{{__('admin/public.'.$item->sex)}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->family}}</td>
                                             <td>{{$item->f_name}}</td>
@@ -105,8 +109,10 @@
                                     <tfoot>
                                     <tr>
                                         <th>{{__('admin/public.student_id')}}</th>
+                                        <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.level')}}</th>
                                         <th>{{__('admin/public.class_type')}}</th>
+                                        <th>{{__('admin/public.sex')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>
                                         <th>{{__('admin/public.f_name')}}</th>

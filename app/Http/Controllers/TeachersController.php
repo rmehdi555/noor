@@ -61,6 +61,7 @@ class TeachersController extends TeacherController
             'job' => ['string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
+            'sex' => ['required', 'string', 'max:255'],
             'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
@@ -96,6 +97,7 @@ class TeachersController extends TeacherController
             'job' => $request->job,
             'email' => strtolower($request->email),
             'number_of_children' => $request->number_of_children,
+            'sex'=>$request->sex,
             'status' => '1',
         ]);
 
@@ -188,7 +190,7 @@ class TeachersController extends TeacherController
 
 
         event(new UserActivationSms($user));
-        alert()->success(__('web/messages.save_register_and_send_sms'), __('web/messages.success'))->persistent(__('web/public.ok'));;
+        alert()->success(__('web/messages.save_register_and_send_sms'), __('web/messages.success'));;
         return view('auth.confirm-sms-code', compact('user'));
 
     }

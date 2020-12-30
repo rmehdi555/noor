@@ -69,7 +69,7 @@
                                                 <option class="option-type-noor" value="نذر">نذر</option>
                                                 <option class="option-type-noor" value="خمس">خمس</option>
                                                 <option class="option-type-noor" value="زکات">زکات</option>
-                                                <option class="option-type-noor" value="کمک های نقدی دیگر ">کمک های نقدی
+                                                <option class="option-type-noor" value="5">کمک های نقدی
                                                     دیگر
                                                 </option>
                                             </select>
@@ -154,7 +154,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 padding-top-15 ">
+                                <div class="col-md-6 padding-top-15 div-type-noor-5">
 
                                     <div class="col-md-12 col-sm-10 form-check ">
                                         <label class="col-md-6 col-sm-6 control-label"
@@ -171,7 +171,32 @@
 
 
 
+                            <div class="row">
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label" for="name">{{__('web/public.sex')}}
+                                        : <span class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-10" >
+                                        <label class="radio-inline" style="padding: 10px 40px 10px">
+                                            <input type="radio" name="sex"
+                                                   value="male"
+                                                   checked>{{__('web/public.male')}}
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio"
+                                                   name="sex"
+                                                   value="female">{{__('web/public.female')}}
+                                        </label>
+                                        @error('sex')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6 padding-top-15">
 
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label" for="name">{{__('web/public.name')}}
