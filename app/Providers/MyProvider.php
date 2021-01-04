@@ -209,6 +209,7 @@ class MyProvider extends ServiceProvider
         if($lang=="fa")
         {
             $v = new Verta($date);
+			$v = $v->timezone('Asia/Tehran');
             return $v->format($format);
 
         }else{

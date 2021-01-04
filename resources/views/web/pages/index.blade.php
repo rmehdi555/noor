@@ -9,7 +9,7 @@
                 </div>
                 <div class="card text-white col-md-5" style="background-color: #fefe33 ; margin : 10px ; width: 100%">
                     <div class="card-header text-dark">{{\App\Providers\MyProvider::_text($siteDetailsProvider["hadis_roz_title"]->value)}}</div>
-                    <div class="card-body">
+                    <div class="card-body text-dark">
                         <p class="card-text text-dark">{!! \App\Providers\MyProvider::_text($siteDetailsProvider["hadis_roz_body"]->value) !!}</p>
                     </div>
                 </div>

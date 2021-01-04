@@ -68,6 +68,7 @@
                                         <select id="single-selection" name="type" class="multiselect multiselect-custom" >
                                             <option value="text">{{__('admin/public.text')}}</option>
                                             <option value="image">{{__('admin/public.image')}}</option>
+                                            <option value="number">{{__('admin/public.number')}}</option>
                                         </select>
                                     </div>
                                 </div>

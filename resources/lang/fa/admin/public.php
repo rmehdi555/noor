@@ -152,4 +152,5 @@ return [
     'noor_id'=>'شماره رسید',
     'noor_type'=>'نوع شراکت',
     'noor_description'=>'توضیح و موضوع وقف',
+    'number'=>'عدد',
 ];

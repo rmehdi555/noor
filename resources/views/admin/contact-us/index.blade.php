@@ -30,6 +30,7 @@
                                 <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                                     <thead>
                                     <tr>
+                                        <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>
                                         <th>{{__('admin/public.phone')}}</th>
@@ -40,11 +41,12 @@
                                     <tbody>
                                     @foreach($allContactUs as $item)
                                         <tr class="gradeA">
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->family}}</td>
                                             <td>{{$item->phone}}</td>
                                             <td>{{$item->email}}</td>
-                                            <td>{{$item->body}}</td>
+                                            <td><textarea class="form-control" rows="5" cols="30" >{{$item->body}}</textarea></td>
                                         </tr>
                                     @endforeach
 
@@ -53,6 +55,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>
                                         <th>{{__('admin/public.phone')}}</th>
