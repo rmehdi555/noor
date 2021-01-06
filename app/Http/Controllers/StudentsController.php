@@ -95,9 +95,11 @@ class StudentsController extends StudentController
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
             'sex' => ['required', 'string', 'max:255'],
-            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'meli_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_3_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_4_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'profile_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf',
             'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
@@ -135,7 +137,7 @@ class StudentsController extends StudentController
             'job' => $request->job,
             'email' => strtolower($request->email),
             'number_of_children' => $request->number_of_children,
-            'sex'=>$request->sex,
+            'sex' => $request->sex,
             'status' => '1',
         ]);
 
@@ -162,15 +164,17 @@ class StudentsController extends StudentController
             ]
         );
 
-
-        $url = $this->uploadImage($request->file('meli_image'), 'student');
-        StudentsDocuments::create([
-            'title' => __('web/public.meli_image'),
-            'flag_cookie' => $student->flag_cookie,
-            'user_id' => $user->id,
-            'url' => $url,
-            'status' => '1',
-        ]);
+        $file = $request->file('meli_image');
+        if ($file) {
+            $url = $this->uploadImage($request->file('meli_image'), 'student');
+            StudentsDocuments::create([
+                'title' => __('web/public.meli_image'),
+                'flag_cookie' => $student->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
+                'status' => '1',
+            ]);
+        }
         $url = $this->uploadImage($request->file('sh_1_image'), 'student');
         StudentsDocuments::create([
             'title' => __('web/public.sh_1_image'),
@@ -182,6 +186,37 @@ class StudentsController extends StudentController
         $url = $this->uploadImage($request->file('sh_2_image'), 'student');
         StudentsDocuments::create([
             'title' => __('web/public.sh_2_image'),
+            'flag_cookie' => $student->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
+            'status' => '1',
+        ]);
+        $file = $request->file('sh_3_image');
+        if ($file) {
+            $url = $this->uploadImage($request->file('sh_3_image'), 'student');
+            StudentsDocuments::create([
+                'title' => __('web/public.sh_3_image'),
+                'flag_cookie' => $student->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
+                'status' => '1',
+            ]);
+        }
+        $file = $request->file('sh_4_image');
+        if ($file) {
+            $url = $this->uploadImage($request->file('sh_4_image'), 'student');
+            StudentsDocuments::create([
+                'title' => __('web/public.sh_4_image'),
+                'flag_cookie' => $student->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
+                'status' => '1',
+            ]);
+        }
+
+        $url = $this->uploadImage($request->file('profile_image'), 'student');
+        StudentsDocuments::create([
+            'title' => __('web/public.profile_image'),
             'flag_cookie' => $student->flag_cookie,
             'user_id' => $user->id,
             'url' => $url,
@@ -210,7 +245,7 @@ class StudentsController extends StudentController
                 'status' => '1',
             ]);
         }
-        if($request->file('file_more')) {
+        if ($request->file('file_more')) {
             foreach ($request->file('file_more') as $key => $file) {
                 if ($file) {
                     $url = $this->uploadImage($file, 'student');

@@ -495,8 +495,9 @@
                                                 class="required">*</span> </label>
                                     <div class="col-md-12 col-sm-10">
                                         <div class="custom-file ">
-                                            <input type="file" class="custom-file-input " id="customFile" name="meli_image" required>
+                                            <input type="file" class="custom-file-input " id="customFile" name="meli_image" >
                                             <label class="custom-file-label text-align-left" for="customFile"></label>
+                                            <span>{{__('web/public.meli_image_help')}}</span>
                                         </div>
                                         @error('meli_image')
                                         <span class="invalid-feedback" role="alert">
@@ -515,6 +516,7 @@
                                         <div class="custom-file ">
                                             <input type="file" class="custom-file-input " id="customFile" name="sh_1_image" required>
                                             <label class="custom-file-label text-align-left" for="customFile"></label>
+                                            <span>{{__('web/public.sh_1_image_help')}}</span>
                                         </div>
                                         @error('sh_1_image')
                                         <span class="invalid-feedback" role="alert">
@@ -531,6 +533,7 @@
                                         <div class="custom-file ">
                                             <input type="file" class="custom-file-input" id="customFile" name="sh_2_image" required>
                                             <label class="custom-file-label" for="customFile"></label>
+                                            <span>{{__('web/public.sh_2_image_help')}}</span>
                                         </div>
                                         @error('sh_2_image')
                                         <span class="invalid-feedback" role="alert">
@@ -541,11 +544,49 @@
                                 </div>
                             </div>
 
+                            <div class="row div-married div-married-yes">
+
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label"
+                                           for="sh_1_image">{{__('web/public.sh_3_image')}} : </label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <div class="custom-file ">
+                                            <input type="file" class="custom-file-input " id="customFile" name="sh_3_image">
+                                            <label class="custom-file-label text-align-left" for="customFile"></label>
+                                            <span>{{__('web/public.sh_3_image_help')}}</span>
+                                        </div>
+                                        @error('sh_3_image')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label"
+                                           for="sh_2_image">{{__('web/public.sh_4_image')}} : </label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <div class="custom-file ">
+                                            <input type="file" class="custom-file-input" id="customFile" name="sh_4_image" >
+                                            <label class="custom-file-label" for="customFile"></label>
+                                            <span>{{__('web/public.sh_4_image_help')}}</span>
+                                        </div>
+                                        @error('sh_4_image')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label"
-                                           for="profile_image">{{__('web/public.profile_image')}} : <span
-                                                class="required">*</span> </label>
+                                           for="profile_image">{{__('web/public.profile_image')}} :<span
+                                                class="required">*</span>
+                                                </label>
                                     <div class="col-md-12 col-sm-10">
                                         <div class="custom-file ">
                                             <input type="file" class="custom-file-input" id="customFile"

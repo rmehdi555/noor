@@ -23,7 +23,7 @@ class HomeController extends Controller
 //        $v=Verta::now();
 //        dd($v->formatWord('l').' '.$v->format('d').' '.$v->formatWord('F').' '.$v->format('Y'));
         $slider=Slider::where('status','=','1')->orderBy('priority')->get();
-        $news=News::where('status','=','1')->orderBy('priority')->get();
+        $news=News::where('status','=','1')->orderBy('priority')->orderBy('id','DESC')->get();
         return view('web.pages.index',compact('slider','news'));
     }
     public function showCategory($id)

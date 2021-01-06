@@ -62,9 +62,11 @@ class TeachersController extends TeacherController
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
             'sex' => ['required', 'string', 'max:255'],
-            'meli_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'meli_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'sh_1_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'sh_2_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_3_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+            'sh_4_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'profile_image' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             'p_image' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf',
             'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
@@ -97,7 +99,7 @@ class TeachersController extends TeacherController
             'job' => $request->job,
             'email' => strtolower($request->email),
             'number_of_children' => $request->number_of_children,
-            'sex'=>$request->sex,
+            'sex' => $request->sex,
             'status' => '1',
         ]);
 
@@ -125,15 +127,17 @@ class TeachersController extends TeacherController
             ]
         );
 
-
-        $url = $this->uploadImage($request->file('meli_image'), 'teacher');
-        TeachersDocuments::create([
-            'title' => __('web/public.meli_image'),
-            'flag_cookie' => $teacher->flag_cookie,
-            'user_id' => $user->id,
-            'url' => $url,
-            'status' => '1',
-        ]);
+        $file = $request->file('meli_image');
+        if ($file) {
+            $url = $this->uploadImage($request->file('meli_image'), 'teacher');
+            TeachersDocuments::create([
+                'title' => __('web/public.meli_image'),
+                'flag_cookie' => $teacher->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
+                'status' => '1',
+            ]);
+        }
         $url = $this->uploadImage($request->file('sh_1_image'), 'teacher');
         TeachersDocuments::create([
             'title' => __('web/public.sh_1_image'),
@@ -142,9 +146,41 @@ class TeachersController extends TeacherController
             'url' => $url,
             'status' => '1',
         ]);
+
         $url = $this->uploadImage($request->file('sh_2_image'), 'teacher');
         TeachersDocuments::create([
             'title' => __('web/public.sh_2_image'),
+            'flag_cookie' => $teacher->flag_cookie,
+            'user_id' => $user->id,
+            'url' => $url,
+            'status' => '1',
+        ]);
+
+        $file = $request->file('sh_3_image');
+        if ($file) {
+            $url = $this->uploadImage($request->file('sh_3_image'), 'teacher');
+            TeachersDocuments::create([
+                'title' => __('web/public.sh_3_image'),
+                'flag_cookie' => $teacher->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
+                'status' => '1',
+            ]);
+        }
+        $file = $request->file('sh_4_image');
+        if ($file) {
+            $url = $this->uploadImage($request->file('sh_4_image'), 'teacher');
+            TeachersDocuments::create([
+                'title' => __('web/public.sh_4_image'),
+                'flag_cookie' => $teacher->flag_cookie,
+                'user_id' => $user->id,
+                'url' => $url,
+                'status' => '1',
+            ]);
+        }
+        $url = $this->uploadImage($request->file('profile_image'), 'teacher');
+        TeachersDocuments::create([
+            'title' => __('web/public.profile_image'),
             'flag_cookie' => $teacher->flag_cookie,
             'user_id' => $user->id,
             'url' => $url,
