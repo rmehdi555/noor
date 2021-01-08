@@ -69,6 +69,11 @@ class StudentsController extends StudentController
 
     public function level2Save(Request $request)
     {
+        $request->phone_1=\App\Providers\MyProvider::convert_phone_number($request->phone_1);
+        $request->phone_2=\App\Providers\MyProvider::convert_phone_number($request->phone_2);
+        $request->phone_m=\App\Providers\MyProvider::convert_phone_number($request->phone_m);
+        $request->phone_f=\App\Providers\MyProvider::convert_phone_number($request->phone_f);
+        $request->tel=\App\Providers\MyProvider::convert_phone_number($request->tel);
         $request->validate([
             'class_type' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],

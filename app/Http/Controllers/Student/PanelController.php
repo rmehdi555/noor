@@ -100,6 +100,10 @@ class PanelController extends StudentController
     public function level4Save(Request $request)
     {
         $user=Auth::user();
+        $request->phone_2=\App\Providers\MyProvider::convert_phone_number($request->phone_2);
+        $request->phone_m=\App\Providers\MyProvider::convert_phone_number($request->phone_m);
+        $request->phone_f=\App\Providers\MyProvider::convert_phone_number($request->phone_f);
+        $request->tel=\App\Providers\MyProvider::convert_phone_number($request->tel);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'family' => ['required', 'string', 'max:255'],

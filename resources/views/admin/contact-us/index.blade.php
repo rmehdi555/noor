@@ -27,7 +27,7 @@
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                     <tr>
                                         <th>{{__('admin/public.created_at')}}</th>

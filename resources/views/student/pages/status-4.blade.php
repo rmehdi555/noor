@@ -329,7 +329,7 @@
                         <label class="col-md-6 col-sm-6 control-label" for="tel">{{__('web/public.tel')}} :
                             <span class="required">*</span></label>
                         <div class="col-md-12 col-sm-10">
-                            <input type="text" name="tel" id="tel"
+                            <input type="tel" name="tel" id="tel"
                                    placeholder="{{__('web/public.example')}} : 02122334455"
                                    value="{{$user->student->tel}}"
                                    class="form-control  @error('tel') is-invalid @enderror" />
