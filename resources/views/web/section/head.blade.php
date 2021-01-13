@@ -7,6 +7,15 @@ $locale = App::getLocale();
 <!DOCTYPE html>
 <html dir="@if($locale=="fa") rtl @else ltr @endif">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0SCH5DLEX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-F0SCH5DLEX');
+    </script>
     <!-- Meta Tags -->
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +60,11 @@ $locale = App::getLocale();
     <!-- Main Stylesheet -->
     <link type="text/css" href="{{asset('web/2020/assets/css/style-v-3.css')}}" rel="stylesheet" />
 
-
+    <style>
+        img{
+            max-width:100%;
+        }
+    </style>
     <!-- JavaScript -->
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-3.3.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-migrate-1.4.1.min.js')}}"></script>

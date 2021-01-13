@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Visit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,14 @@ class PanelController extends Controller
     public function index(Request $request)
     {
         //
-        return redirect(route('news.index',['SID' => '20']));
-        //return view('admin.panel');
+        //return redirect(route('news.index',['SID' => '20']));
+        $visit=new Visit;
+        $visitArray=[];
+        $visitArray["getAllUser"]=$visit->getAllUser();
+        $visitArray["getAllPage"]=$visit->getAllPage();
+        $visitArray["getAllUserToday"]=$visit->getAllUserToday();
+        $visitArray["getAllPageToday"]=$visit->getAllPageToday();
+        return view('admin.panel',compact('visitArray'));
     }
 
     /**

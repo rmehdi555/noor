@@ -1,5 +1,11 @@
 @extends('web.master-product')
 @section('content')
+    <style>
+        .show-news-body img{
+
+            max-width : 100%;
+        }
+    </style>
     <div class="main-inner-banner">
         <div class="container">
             <div class="row">
@@ -34,8 +40,8 @@
                                         {{--<span>نظرات: 234</span>--}}
                                     </div>
                                     {{--<a href="" class="bu-inner-ns-like">--}}
-                                        {{--<i class="fal fa-heart"></i>--}}
-                                        {{--<span>67</span>--}}
+                                    {{--<i class="fal fa-heart"></i>--}}
+                                    {{--<span>67</span>--}}
                                     {{--</a>--}}
 
                                 </div>
@@ -44,7 +50,7 @@
 
 
                                     <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1520px;"><div class="owl-item active" style="width: 760px;"><div class="bu-event-slider-item"><img src="assets/img/dummy/sample-img.jpg" alt=""></div></div><div class="owl-item" style="width: 760px;"><div class="bu-event-slider-item"><img src="assets/img/dummy/sample-img.jpg" alt=""></div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div></div>
-                                <div class="bu-inner-ns-text">
+                                <div class="bu-inner-ns-text show-news-body" >
                                     {!!  \App\Providers\MyProvider::_text($news->body) !!}
                                 </div>
                                 <div class="bu-inner-ns-detail">
@@ -72,7 +78,8 @@
                                     @foreach($allNews as $item)
 
                                         <li>
-                                            <h2 class="main-events-list-title bu-title-effect"><a href="{{ route('web.show.news',$item->id) }}">  {{\App\Providers\MyProvider::_text($item->title)}} </a></h2>
+                                            <div> <a href="{{ route('web.show.news',$item->id) }}">  {{\App\Providers\MyProvider::_text($item->title)}} </a></div>
+
                                             <span class="main-events-list-date">{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j H:i')}}</span>
                                         </li>
                                     @endforeach

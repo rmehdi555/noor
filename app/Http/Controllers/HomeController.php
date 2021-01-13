@@ -9,6 +9,7 @@ use App\Products;
 use App\Providers\MyProvider;
 use App\Provinces;
 use App\Slider;
+use App\Visit;
 use App\WebPages;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         //shamsi date
         //https://hekmatinasser.github.io/verta/
 //        $v=Verta::now();

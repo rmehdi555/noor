@@ -29,7 +29,7 @@ class ContactUsRequest extends FormRequest
                 'name' => 'required|max:191',
                 'family' => 'required|max:191',
                 'phone' => ['required', 'numeric', 'digits:11'],
-                'email' => ['required', 'string', 'email', 'max:255'],
+                'email' => ['nullable', 'string', 'email', 'max:255'],
                 'body' => 'required',
             ];
         }
@@ -38,7 +38,7 @@ class ContactUsRequest extends FormRequest
             'name' => 'required|max:191',
             'family' => 'required|max:191',
             'phone' => ['required', 'numeric', 'digits:11'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['nullable', 'string', 'email', 'max:255'],
             'body' => 'required',
         ];
 

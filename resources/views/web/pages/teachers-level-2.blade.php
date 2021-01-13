@@ -73,12 +73,13 @@
                                         <label class="radio-inline" style="padding: 10px 40px 10px">
                                             <input type="radio" name="sex"
                                                    value="male"
-                                                   checked>{{__('web/public.male')}}
+                                                   @if(old('sex')=="male") checked @endif>{{__('web/public.male')}}
                                         </label>
                                         <label class="radio-inline">
                                             <input type="radio"
                                                    name="sex"
-                                                   value="female">{{__('web/public.female')}}
+                                                   value="female"
+                                                   @if(old('sex')=="female") checked @endif>{{__('web/public.female')}}
                                         </label>
                                         @error('sex')
                                         <span class="invalid-feedback" role="alert">
