@@ -153,4 +153,5 @@ return [
     'noor_type'=>'نوع شراکت',
     'noor_description'=>'توضیح و موضوع وقف',
     'number'=>'عدد',
+    'upload'=>'بارگذاری',
 ];
