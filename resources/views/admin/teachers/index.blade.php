@@ -30,6 +30,7 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                     <tr>
+                                        <th>{{__('admin/public.actions')}}</th>
                                         <th>{{__('admin/public.teacher_id')}}</th>
                                         <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.level')}}</th>
@@ -54,12 +55,26 @@
                                         <th>{{__('admin/public.job')}}</th>
                                         <th>{{__('admin/public.email')}}</th>
                                         <th>{{__('admin/public.number_of_children')}}</th>
-                                        <th>{{__('admin/public.actions')}}</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($teachers as $item)
                                         <tr class="gradeA">
+                                            <td class="actions">
+
+                                                {{--<form action="{{ route('teachers.destroy', $item->id) }}" method="POST">--}}
+                                                {{--@csrf--}}
+                                                {{--@method('DELETE')--}}
+                                                <a href="{{ route('teachers.show',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-show"
+                                                   data-toggle="tooltip" data-original-title="{{__('admin/public.show')}}"><i class="icon-eye" aria-hidden="true"></i></a>
+                                                <a href="{{ route('teachers.edit',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
+                                                data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>
+                                                {{--<button type="submit" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"--}}
+                                                {{--data-toggle="tooltip" data-original-title="{{__('admin/public.remove')}}"><i class="icon-trash" aria-hidden="true"></i></button>--}}
+                                                {{--</form>--}}
+
+                                            </td>
                                             <td>{{$item->teacher_id}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
                                             <th>{{__('admin/public.teacher_status_level_'.$item->user->status)}}</th>
@@ -84,20 +99,7 @@
                                             <td>{{$item->job }}</td>
                                             <td>{{$item->email}}</td>
                                             <td>{{$item->number_of_children }}</td>
-                                            <td class="actions">
 
-                                                {{--<form action="{{ route('teachers.destroy', $item->id) }}" method="POST">--}}
-                                                    {{--@csrf--}}
-                                                    {{--@method('DELETE')--}}
-                                                    <a href="{{ route('teachers.show',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-show"
-                                                       data-toggle="tooltip" data-original-title="{{__('admin/public.show')}}"><i class="icon-eye" aria-hidden="true"></i></a>
-                                                    {{--<a href="{{ route('teachers.edit',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"--}}
-                                                       {{--data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>--}}
-                                                    {{--<button type="submit" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"--}}
-                                                            {{--data-toggle="tooltip" data-original-title="{{__('admin/public.remove')}}"><i class="icon-trash" aria-hidden="true"></i></button>--}}
-                                                {{--</form>--}}
-
-                                            </td>
                                         </tr>
                                     @endforeach
 
