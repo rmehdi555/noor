@@ -42,11 +42,18 @@
                                         <th>{{__('admin/public.family')}}</th>
                                         <th>{{__('admin/public.f_name')}}</th>
                                         <th>{{__('admin/public.meli_number')}}</th>
+                                        <th>{{__('admin/public.monthly_payment')}}</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($noors as $item)
+                                        @php
+                                            $item->monthly_payment=$item->monthly_payment==0?'no':'yes';
+                                        @endphp
+
+                                        @php if($item->type!='کمک های نقدی')$item->monthly_payment='no';@endphp
+
                                         <tr class="gradeA">
                                             <td>{{$item->id}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
@@ -60,6 +67,7 @@
                                             <td>{{$item->family}}</td>
                                             <td>{{$item->f_name}}</td>
                                             <td>{{$item->meli_number}}</td>
+                                            <td>{{__('admin/public.'.$item->monthly_payment)}}</td>
                                         </tr>
                                     @endforeach
 
@@ -80,6 +88,7 @@
                                         <th>{{__('admin/public.family')}}</th>
                                         <th>{{__('admin/public.f_name')}}</th>
                                         <th>{{__('admin/public.meli_number')}}</th>
+                                        <th>{{__('admin/public.monthly_payment')}}</th>
 
                                     </tr>
                                     </tfoot>

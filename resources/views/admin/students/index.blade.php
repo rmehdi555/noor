@@ -110,6 +110,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>{{__('admin/public.actions')}}</th>
                                         <th>{{__('admin/public.student_id')}}</th>
                                         <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.level')}}</th>
@@ -135,7 +136,7 @@
                                         <th>{{__('admin/public.job')}}</th>
                                         <th>{{__('admin/public.email')}}</th>
                                         <th>{{__('admin/public.number_of_children')}}</th>
-                                        <th>{{__('admin/public.actions')}}</th>
+
                                     </tr>
                                     </tfoot>
                                 </table>

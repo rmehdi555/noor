@@ -154,4 +154,7 @@ return [
     'noor_description'=>'توضیح و موضوع وقف',
     'number'=>'عدد',
     'upload'=>'بارگذاری',
+    'yes'=>'بله',
+    'no'=>'خیر',
+    'monthly_payment'=>'درخواست اشراک ماهیانه',
 ];

@@ -33,7 +33,6 @@ class PanelController extends StudentController
     public function index(Request $request)
     {
         $user=Auth::user();
-        //dd($user->student->studentsFields);
         switch (Auth::user()->status)
         {
             case 0:

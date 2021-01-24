@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/noor-send-sms-monthly', function() {
+    $output = [];
+    \Illuminate\Support\Facades\Artisan::call('noor:monthly', $output);
+    dd($output);
+});
 
 Route::middleware('language','visit')->group(function (){
     //Auth::routes();
