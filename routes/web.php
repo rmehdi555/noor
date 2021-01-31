@@ -83,7 +83,9 @@ Route::middleware('language','visit')->group(function (){
     Route::post('/noor/level/2/save','NoorController@level2Save')->name('web.noor.level.2.save');
     Route::get('/noor/level/2/show/{id}/{mobile}','NoorController@noorLevel2Show')->name('web.noor.level.2.show');
 
-
+    //mosabeghe maleke zaman
+    Route::get('/mosabeghe','MosabegheMalekeZamanController@level1')->name('web.mosabeghe.maleke.zaman.level.1');
+    Route::post('/mosabeghe/save/level/1','MosabegheMalekeZamanController@level1Save')->name('web.mosabeghe.maleke.zaman.level.1.save');
 
     // error page
 
