@@ -25,6 +25,29 @@
             </div>
         </div>
     </section>
+    <section class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                <div class="card text-white  col-md-10" style="background-color: #008B8B ; margin : 10px ; width: 100%">
+                    <div class="card-header "><a href="{{route('web.mosabeghe.maleke.zaman.level.1')}}" style="color:#fff">
+                            *****
+                            مسابقه کتابخوانی و هنرنمایی در قاب نقاشی، با موضوع کتاب مالک زمان
+                           همراه
+                            با جوایز نفیس، جهت ثبت نام اینجا کلیک نمایید .
+                            *****
+                               </a></div>
+
+                </div>
+
+                <div class="col-md-1">
+
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Start: Iconbox -->
     <section class="main-iconbox">
         <div class="container">

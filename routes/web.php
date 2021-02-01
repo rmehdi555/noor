@@ -133,6 +133,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('teachers','TeachersController');
     Route::post('/teachers/add/file/{id}','TeachersController@addFile')->name('teachers.add.file');
     Route::resource('noors','NoorsController');
+    Route::resource('mosabeghe','MosabegheMalekeZamanController');
 });
 
 // end admin  route

@@ -90,6 +90,19 @@
                         </ul>
 
                     </li>
+                    <li class="@if($SID>=70 and $SID<80) active @endif">
+                        <a href="#slider" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>{{__('admin/public.mosabeghe_maleke_zaman')}}</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==70 ) active @endif"><a
+                                        href="{{ route('mosabeghe.index',['SID' => '70']) }}">{{__('admin/public.mosabeghe_maleke_zaman')}}</a>
+                            </li>
+                            {{--<li class="@if($SID==41 ) active @endif"><a--}}
+                            {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}
+                            {{--</li>--}}
+                        </ul>
+
+                    </li>
                     {{--<li class="@if($SID>=100 and $SID<200) active @endif">--}}
                     {{--<a href="#slider" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.slider')}}</span></a>--}}
                     {{--<ul aria-expanded="false" class="collapse">--}}

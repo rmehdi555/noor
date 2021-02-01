@@ -24,6 +24,7 @@ class CreateMosabegheMalekeZamenTable extends Migration
             $table->string('province')->nullable();
             $table->text('address')->nullable();
             $table->integer('status')->default(0);
+            $table->text('type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

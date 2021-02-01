@@ -86,22 +86,8 @@
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label"
-                                           for="f_name">{{__('web/public.f_name')}} : <span
-                                            class="required">*</span></label>
-                                    <div class="col-md-12 col-sm-10">
-                                        <input type="text" name="f_name" id="f_name" value="{{old('f_name')}}"
-                                               class="form-control  @error('f_name') is-invalid @enderror"/>
-                                        @error('f_name')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6 padding-top-15">
-                                    <label class="col-md-6 col-sm-6 control-label"
                                            for="meli_number">{{__('web/public.meli_number')}} : <span
-                                            class="required">*</span> </label>
+                                                class="required">*</span> </label>
                                     <div class="col-md-12 col-sm-10">
                                         <input type="number" pattern="[0-9]{10}" maxlength="10" minlength="10"
                                                name="meli_number" id="meli_number"
@@ -116,6 +102,21 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label"
+                                           for="f_name">{{__('web/public.f_name')}} : <span
+                                            class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <input type="text" name="f_name" id="f_name" value="{{old('f_name')}}"
+                                               class="form-control  @error('f_name') is-invalid @enderror"/>
+                                        @error('f_name')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
@@ -135,19 +136,29 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-md-6 padding-top-15">
-                                    <label class="col-md-6 col-sm-6 control-label"
-                                           for="address">{{__('web/public.address')}} : <span class="required">*</span></label>
-                                    <div class="col-md-12 col-sm-10">
-                                        <input type="text" name="address" id="address" value="{{old('address')}}"
-                                               class="form-control  @error('address') is-invalid @enderror" required/>
-                                        @error('address')
+                                    <label class="col-md-9 col-sm-9 control-label"
+                                           for="phone_1">علاقه مند به شرکت در کدام بخش از مسابقه هستید : <span class="required">*</span></label>
+                                    <div class="col-md-10 col-sm-9 padding-top-15">
+                                        <label class="form-check-inline">
+                                            <input type="checkbox" name="type[]"
+                                                   value="کتاب خوانی"
+                                                   checked>کتاب خوانی
+                                        </label>
+                                        <label class="form-check-inline">
+                                            <input type="checkbox"
+                                                   name="type[]"
+                                                   value="هنرنمایی در قاب نقاشی">هنرنمایی در قاب نقاشی
+                                        </label>
+                                        @error('class_type')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                         @enderror
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
@@ -191,6 +202,21 @@
                                     </div>
                                 </div>
 
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label"
+                                           for="address">{{__('web/public.address')}} : <span class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <input type="text" name="address" id="address" value="{{old('address')}}"
+                                               class="form-control  @error('address') is-invalid @enderror" required/>
+                                        @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <br><br>
 

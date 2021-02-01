@@ -25,10 +25,14 @@ class MosabegheMalekeZamanController extends Controller
             'f_name' => ['required', 'string', 'max:191'],
             'meli_number' => ['required', 'numeric', 'digits:10','unique:mosabeghe_maleke_zamen'],
             'phone' => ['required', 'numeric', 'digits:11'],
-            'city' => ['required', 'string', 'max:255'],
-            'province' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:191'],
+            'province' => ['required', 'string', 'max:191'],
+            'address' => ['required', 'string', 'max:191'],
+            'type' => ['required', 'array', 'max:191'],
+            'type.*' => ['required', 'string', 'max:191'],
         ]);
+        $request->type=implode("&",$request->type);
+
         $mosabegheMalekeZaman = MosabegheMalekeZaman::create([
             'name' => $request->name,
             'family' => $request->family,
@@ -38,6 +42,7 @@ class MosabegheMalekeZamanController extends Controller
             'city' => $request->city,
             'province' => $request->province,
             'address' => $request->address,
+            'type' =>$request->type,
         ]);
         $this->send_sms_register_mosabeghe($mosabegheMalekeZaman->phone,$mosabegheMalekeZaman->id);
         return view('web.pages.mosabeghe-level-2',compact('mosabegheMalekeZaman'));

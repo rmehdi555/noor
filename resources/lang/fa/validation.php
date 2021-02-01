@@ -168,5 +168,6 @@ return array(
         'file_more'=>'مدارک بیشتر',
         'male'=>'مرد',
         'female'=>'زن',
+        'type'=>'نوع',
     ),
 );

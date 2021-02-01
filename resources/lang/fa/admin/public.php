@@ -131,7 +131,7 @@ return [
     'student_status_level_2'=>'درخواست بررسی نهاد برای پرداخت نکردن',
     'student_status_level_3'=>'تایید درخواست جهت پرداخت نکردن',
     'student_status_level_4'=>'پرداخت تایید شده و در حال نمایش و ویرایش اطلاعات',
-    'student_status_level_5'=>'اطلاعات توسط کاربر تایید شده',
+    'student_status_level_5'=>'پرداخت و تایید نهایی',
     'sex'=>'جنسیت',
     'male'=>'مرد',
     'female'=>'زن',
@@ -157,4 +157,6 @@ return [
     'yes'=>'بله',
     'no'=>'خیر',
     'monthly_payment'=>'درخواست اشراک ماهیانه',
+    'mosabeghe_maleke_zaman_list'=>'لیست ثبت نام کننده ها در مسابقه مالک زمان',
+    'mosabeghe_maleke_zaman'=>' مسابقه مالک زمان',
 ];
