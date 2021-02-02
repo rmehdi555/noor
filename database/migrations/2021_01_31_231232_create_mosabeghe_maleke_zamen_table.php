@@ -18,8 +18,8 @@ class CreateMosabegheMalekeZamenTable extends Migration
             $table->string('name')->nullable();
             $table->string('family')->nullable();
             $table->string('f_name')->nullable();
-            $table->string('meli_number')->nullable();
-            $table->string('phone')->unique();
+            $table->string('meli_number')->unique();
+            $table->string('phone')->nullable();
             $table->string('city')->nullable();
             $table->string('province')->nullable();
             $table->text('address')->nullable();

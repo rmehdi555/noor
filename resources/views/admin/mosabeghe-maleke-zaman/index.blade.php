@@ -30,6 +30,7 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                     <tr>
+                                        <th>{{__('admin/public.actions')}}</th>
                                         <th>{{__('admin/public.id')}}</th>
                                         <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.type')}}</th>
@@ -46,6 +47,10 @@
                                     <tbody>
                                     @foreach($fields as $item)
                                         <tr class="gradeA">
+                                            <td class="actions">
+                                                <a href="{{ route('mosabeghe.edit',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
+                                                   data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>
+                                            </td>
                                             <td>{{$item->id}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
                                             <th>{!! $item->type !!}</th>
@@ -66,6 +71,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>{{__('admin/public.actions')}}</th>
                                         <th>{{__('admin/public.id')}}</th>
                                         <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.type')}}</th>
