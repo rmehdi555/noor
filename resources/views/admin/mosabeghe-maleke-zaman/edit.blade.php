@@ -70,7 +70,7 @@
                                                    name="meli_number" id="meli_number"
                                                    value="{{$field->meli_number}}"
                                                    class="form-control  @error('meli_number') is-invalid @enderror"
-                                                   />
+                                                   disabled/>
                                             <span> ({{__('web/public.meli_number_help')}})</span>
                                             @error('meli_number')
                                             <span class="invalid-feedback" role="alert">
