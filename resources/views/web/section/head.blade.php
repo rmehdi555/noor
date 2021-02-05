@@ -64,6 +64,10 @@ $locale = App::getLocale();
         img{
             max-width:100%;
         }
+        .custom-control-label::before, .custom-file-label, .custom-select
+        {
+            overflow : hidden;
+        }
     </style>
     <!-- JavaScript -->
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-3.3.1.min.js')}}"></script>

@@ -85,7 +85,7 @@ class PanelController extends TeacherController
             'post_number' => ['required', 'numeric', 'digits:10'],
             'education' => ['required', 'string', 'max:255'],
             'job' => ['string', 'max:255'],
-            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
             'sex' => ['required', 'string', 'max:255'],
 

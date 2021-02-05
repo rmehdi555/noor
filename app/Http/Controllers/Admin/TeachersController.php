@@ -67,7 +67,7 @@ class TeachersController extends TeacherController
             'post_number' => ['required', 'numeric', 'digits:10'],
             'education' => ['required', 'string', 'max:255'],
             'job' => ['string', 'max:255'],
-            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users,email,'.$teacher->user->id],
             'number_of_children' => ['nullable', 'numeric', 'min:0', 'max:50'],
             'sex' => ['required', 'string', 'max:255'],
         ]);
@@ -95,6 +95,11 @@ class TeachersController extends TeacherController
             'email' => strtolower($request->email),
             'number_of_children' => $request->number_of_children,
             'sex'=>$request->sex,
+        ]);
+        $teacher->user->update([
+            'name' => $request->name,
+            'family' => $request->family,
+            'email' => strtolower($request->email),
         ]);
 
         alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
