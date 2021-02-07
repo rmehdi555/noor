@@ -68,6 +68,10 @@ $locale = App::getLocale();
         {
             overflow : hidden;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fac1b931e4b3343169d6af1daf1e071471c7aa13
     </style>
     <!-- JavaScript -->
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-3.3.1.min.js')}}"></script>

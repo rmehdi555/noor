@@ -87,6 +87,7 @@ class StudentsController extends StudentController
             'tavalod_date_d' => ['required', 'numeric', 'min:1', 'max:31'],
             'married' => ['required', 'string', 'max:255'],
             'phone_1' => ['required', 'numeric', 'digits:11', 'unique:users,phone'],
+            //'phone_1' => ['required', 'numeric', 'digits:11', 'unique:users,phone,NULL,id,deleted_at,NULL'],
             'phone_2' => ['nullable', 'numeric', 'digits:11'],
             'phone_f' => ['nullable', 'numeric', 'digits:11'],
             'phone_m' => ['nullable', 'numeric', 'digits:11'],

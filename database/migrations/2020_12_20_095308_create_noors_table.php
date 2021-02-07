@@ -31,6 +31,7 @@ class CreateNoorsTable extends Migration
             $table->integer('monthly_payment')->default('1');
             $table->string('sex')->nullable();
             $table->integer('status')->default(0);
+            $table->timestamp('sms_monthly')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

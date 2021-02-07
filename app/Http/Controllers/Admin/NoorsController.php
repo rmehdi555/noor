@@ -13,6 +13,5 @@ class NoorsController extends Controller
         $SID=$request->SID;
         $noors=Noor::all();
         return view('admin.noors.index',compact('noors','SID'));
-
     }
 }

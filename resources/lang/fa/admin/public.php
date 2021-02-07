@@ -154,4 +154,9 @@ return [
     'noor_description'=>'توضیح و موضوع وقف',
     'number'=>'عدد',
     'upload'=>'بارگذاری',
+    'yes'=>'بله',
+    'no'=>'خیر',
+    'monthly_payment'=>'درخواست اشراک ماهیانه',
+    'mosabeghe_maleke_zaman_list'=>'لیست ثبت نام کننده ها در مسابقه مالک زمان',
+    'mosabeghe_maleke_zaman'=>' مسابقه مالک زمان',
 ];
