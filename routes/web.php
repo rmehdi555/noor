@@ -87,6 +87,13 @@ Route::middleware('language','visit')->group(function (){
     Route::get('/mosabeghe','MosabegheMalekeZamanController@level1')->name('web.mosabeghe.maleke.zaman.level.1');
     Route::post('/mosabeghe/save/level/1','MosabegheMalekeZamanController@level1Save')->name('web.mosabeghe.maleke.zaman.level.1.save');
 
+    // mosabeghe javab
+    Route::get('/mosabeghe/javab/login','MosabegheJavabController@login')->name('web.mosabeghe.javab.login');
+    Route::post('/mosabeghe/javab/login/check','MosabegheJavabController@loginCheck')->name('web.mosabeghe.javab.login.check');
+    Route::post('/mosabeghe/javab/test/save','MosabegheJavabController@testSave')->name('web.mosabeghe.javab.test.save');
+    Route::post('/mosabeghe/javab/naghashi/save','MosabegheJavabController@naghashiSave')->name('web.mosabeghe.javab.naghashi.save');
+
+
     // error page
 
     Route::get('/404', 'HomeController@web404')->name('web.404');

@@ -28,8 +28,7 @@ class MosabegheMalekeZamanController extends Controller
             'city' => ['required', 'string', 'max:191'],
             'province' => ['required', 'string', 'max:191'],
             'address' => ['required', 'string', 'max:191'],
-            'type' => ['required', 'array', 'max:191'],
-            'type.*' => ['required', 'string', 'max:191'],
+
         ]);
         $request->type=implode("&",$request->type);
 

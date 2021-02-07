@@ -169,5 +169,6 @@ return array(
         'male'=>'مرد',
         'female'=>'زن',
         'type'=>'نوع',
+        'id'=>'کد',
     ),
 );
