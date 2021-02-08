@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\MosabegheJavabNaghashi;
 use App\MosabegheMalekeZaman;
+use App\MosabegheMalekeZamanNazar;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MosabegheJavabController extends Controller
@@ -16,6 +19,7 @@ class MosabegheJavabController extends Controller
     }
     public function loginCheck(Request $request)
     {
+        $request->meli_number=\App\Providers\MyProvider::convert_phone_number($request->meli_number);
         $request->validate([
             'meli_number' => ['required', 'numeric', 'digits:10'],
             'id' => ['required', 'numeric'],
@@ -61,5 +65,75 @@ class MosabegheJavabController extends Controller
             return view('web.pages.mosabeghe-javab-naghashi',compact('mosabegheMalekeZaman'));
         }
 
+    }
+
+    public function naghashiSave(Request $request)
+    {
+        $request->validate([
+            'user_meli_number' => ['required', 'numeric', 'digits:10'],
+            'user_mosabeghe_id' => ['required', 'numeric'],
+            'description' => ['required', 'string'],
+            'file_url' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
+        ]);
+        $mosabegheMalekeZaman = MosabegheMalekeZaman::where([['meli_number','=',$request->user_meli_number],['id','=',$request->user_mosabeghe_id]])->get()->first();
+        if(!isset($mosabegheMalekeZaman->id))
+        {
+            return back()->withErrors(['code'=>'کاربری با این مشخصات در مسابقه ثبت نام نکرده است .']);
+        }
+        $file=$request->file('file_url');
+        $year = Carbon::now()->year;
+        $month = Carbon::now()->month;
+        $imagePath = "/upload/file/mosabeghe-maleke-zaman/{$year}/{$month}/";
+        $filename = $file->getClientOriginalName();
+        $filename=explode('.',$filename);
+        $filename=end($filename);
+        $filename = $request->user_meli_number.'-'.$request->user_mosabeghe_id.'.'.$filename;
+        $file = $file->move(public_path($imagePath) , $filename);
+        $url=$imagePath .$filename;
+        MosabegheJavabNaghashi::create([
+            'mosabeghe_name' => 'مالک زمان',
+            'file_url' => $url,
+            'description' => $request->description,
+            'user_meli_number' => $request->user_meli_number,
+            'user_mosabeghe_id' => $request->user_mosabeghe_id,
+        ]);
+        if($mosabegheMalekeZaman->status==0)
+        {
+            $status=2;
+        }
+        if($mosabegheMalekeZaman->status==1)
+        {
+            $status=3;
+        }
+        $mosabegheMalekeZaman->update([
+            'status'=>$status,
+        ]);
+        $type="هنرنمایی در قاب نقاشی";
+        return view('web.pages.mosabeghe-nazar',compact('mosabegheMalekeZaman','type'));
+    }
+
+    public function nazarSave(Request $request)
+    {
+        $mosabegheMalekeZaman = MosabegheMalekeZaman::where([['meli_number','=',$request->user_meli_number],['id','=',$request->user_mosabeghe_id]])->get()->first();
+        if(!isset($mosabegheMalekeZaman->id))
+        {
+            return redirect()->route('web.mosabeghe.javab.login')->withErrors(['code'=>'کاربری با این مشخصات در مسابقه ثبت نام نکرده است .']);
+        }
+        foreach ($request->title as $key=>$value)
+        {
+            MosabegheMalekeZamanNazar::create([
+                'type' => $request->type,
+                'title' => $request->title[$key],
+                'value' => $request->value[$key],
+                'user_meli_number' => $request->user_meli_number,
+                'user_mosabeghe_id' => $request->user_mosabeghe_id,
+            ]);
+        }
+        return redirect()->route('web.mosabeghe.end');
+
+    }
+    public function end()
+    {
+        return view('web.pages.mosabeghe-end');
     }
 }

@@ -92,6 +92,10 @@ Route::middleware('language','visit')->group(function (){
     Route::post('/mosabeghe/javab/login/check','MosabegheJavabController@loginCheck')->name('web.mosabeghe.javab.login.check');
     Route::post('/mosabeghe/javab/test/save','MosabegheJavabController@testSave')->name('web.mosabeghe.javab.test.save');
     Route::post('/mosabeghe/javab/naghashi/save','MosabegheJavabController@naghashiSave')->name('web.mosabeghe.javab.naghashi.save');
+    Route::post('/mosabeghe/nazar/save','MosabegheJavabController@nazarSave')->name('web.mosabeghe.nazar.save');
+    Route::get('/mosabeghe/end','MosabegheJavabController@end')->name('web.mosabeghe.end');
+
+
 
 
     // error page

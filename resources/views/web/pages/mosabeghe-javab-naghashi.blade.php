@@ -70,7 +70,6 @@
                             <input type="hidden" name="user_meli_number" value="{{$mosabegheMalekeZaman->meli_number}}">
                             <input type="hidden" name="user_mosabeghe_id" value="{{$mosabegheMalekeZaman->id}}">
 
-
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label"
@@ -90,13 +89,26 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label" for="job">توضیحاتی از حال و هوای نقاشی :
+                                        <span class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <input type="text" name="description" id="description" value="{{old('description')}}" id="input-name"
+                                               class="form-control  @error('description') is-invalid @enderror" required/>
+                                        @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <br><br>
 
                             <div class="d-flex justify-content-center mb-2">
 
                                 <div class="p-2 ">
-                                    <button type="submit" class="btn btn-primary">بارگذاری نقاشی</button>
+                                    <button type="submit" class="btn btn-primary">ثبت نهایی</button>
                                 </div>
                             </div>
                         </form>

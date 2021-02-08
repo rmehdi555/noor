@@ -17,6 +17,7 @@ class CreateMosabegheJavabNaghashisTable extends Migration
             $table->id();
             $table->text('mosabeghe_name')->nullable();
             $table->text('file_url')->nullable();
+            $table->text('description')->nullable();
             $table->string('user_meli_number')->nullable();
             $table->string('user_mosabeghe_id')->nullable();
             $table->timestamps();
