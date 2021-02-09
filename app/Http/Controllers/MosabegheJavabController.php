@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\MosabegheJavab;
 use App\MosabegheJavabNaghashi;
 use App\MosabegheMalekeZaman;
 use App\MosabegheMalekeZamanNazar;
+use App\MosabegheSoal;
+use App\MosabegheSoalJavab;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -28,6 +31,12 @@ class MosabegheJavabController extends Controller
         ]);
         $nextM=false;
 
+        if($request->key555!="m555")
+        {
+            return back()->withErrors(['code'=>'کد ادمین جهت تست را درست وارد نمایید']);
+        }
+
+
         $mosabegheMalekeZaman = MosabegheMalekeZaman::where([['meli_number','=',$request->meli_number],['id','=',$request->id]])->get()->first();
         if(!isset($mosabegheMalekeZaman->id))
         {
@@ -36,6 +45,10 @@ class MosabegheJavabController extends Controller
         if($this->mosabegheTimeTestPasokh)
         {
             return view('web.pages.mosabeghe-pasohk',compact('mosabegheMalekeZaman'));
+        }
+        if($mosabegheMalekeZaman->status==3)
+        {
+            return back()->withErrors(['code'=>'شما در هردو آزمون شرکت کرده ایید و دیگر امکان آزمون مجدد نمیباشد.']);
         }
 
         if(count($request->type)==2)
@@ -49,18 +62,38 @@ class MosabegheJavabController extends Controller
             {
                 return back()->withErrors(['code'=>'در حال حاظر امکان شرکت در آزمون هنرنمایی در قاب نقاشی وجود ندارد']);
             }
-            return view('web.pages.mosabeghe-javab-test',compact('mosabegheMalekeZaman','nextM'));
+            if($mosabegheMalekeZaman->status==1)
+            {
+                return back()->withErrors(['code'=>'شما در آزمون کتاب خوانی شرکت کرده اید و دیگر امکان آزمون مجدد نمیباشد .']);
+            }
+            if($mosabegheMalekeZaman->status==2)
+            {
+                return back()->withErrors(['code'=>'شما در آزمون هنرنمایی در قاب نقاشی شرکت کرده اید و دیگر امکان آزمون مجدد نمیباشد .']);
+            }
+
+            $soals=MosabegheSoal::where('type','=',rand(1,2))->get();
+            return view('web.pages.mosabeghe-javab-test',compact('mosabegheMalekeZaman','nextM','soals'));
         }else if(in_array('کتاب خوانی',$request->type))
         {
             if(!$this->mosabegheTimeTest)
             {
                 return back()->withErrors(['code'=>'در حال حاظر امکان شرکت در آزمون کتاب خوانی وجود ندارد']);
             }
-            return view('web.pages.mosabeghe-javab-test',compact('mosabegheMalekeZaman','nextM'));
+            if($mosabegheMalekeZaman->status==1)
+            {
+                return back()->withErrors(['code'=>'شما در آزمون کتاب خوانی شرکت کرده اید و دیگر امکان آزمون مجدد نمیباشد .']);
+            }
+
+            $soals=MosabegheSoal::where('type','=',rand(1,2))->get();
+            return view('web.pages.mosabeghe-javab-test',compact('mosabegheMalekeZaman','nextM','soals'));
         }else{
             if(!$this->mosabegheTimeNaghashi)
             {
                 return back()->withErrors(['code'=>'در حال حاظر امکان شرکت در آزمون هنرنمایی در قاب نقاشی وجود ندارد']);
+            }
+            if($mosabegheMalekeZaman->status==2)
+            {
+                return back()->withErrors(['code'=>'شما در آزمون هنرنمایی در قاب نقاشی شرکت کرده اید و دیگر امکان آزمون مجدد نمیباشد .']);
             }
             return view('web.pages.mosabeghe-javab-naghashi',compact('mosabegheMalekeZaman'));
         }
@@ -78,7 +111,7 @@ class MosabegheJavabController extends Controller
         $mosabegheMalekeZaman = MosabegheMalekeZaman::where([['meli_number','=',$request->user_meli_number],['id','=',$request->user_mosabeghe_id]])->get()->first();
         if(!isset($mosabegheMalekeZaman->id))
         {
-            return back()->withErrors(['code'=>'کاربری با این مشخصات در مسابقه ثبت نام نکرده است .']);
+            return redirect()->route('web.mosabeghe.javab.login')->withErrors(['code'=>'کاربری با این مشخصات در مسابقه ثبت نام نکرده است .']);
         }
         $file=$request->file('file_url');
         $year = Carbon::now()->year;
@@ -135,5 +168,43 @@ class MosabegheJavabController extends Controller
     public function end()
     {
         return view('web.pages.mosabeghe-end');
+    }
+
+    public function testSave(Request $request)
+    {
+        $mosabegheMalekeZaman = MosabegheMalekeZaman::where([['meli_number','=',$request->user_meli_number],['id','=',$request->user_mosabeghe_id]])->get()->first();
+        if(!isset($mosabegheMalekeZaman->id))
+        {
+            return redirect()->route('web.mosabeghe.javab.login')->withErrors(['code'=>'کاربری با این مشخصات در مسابقه ثبت نام نکرده است .']);
+        }
+        foreach ($request->javabs as $key=>$value)
+        {
+            $pasokh=MosabegheSoalJavab::where([['soal_id','=',$key],['type','=',1]])->get()->first();
+            MosabegheJavab::create([
+                'soal_id' => $key,
+                'javab_id' => $pasokh->id,
+                'javab_user_id' => $value,
+                'user_meli_number' => $request->user_meli_number,
+                'user_mosabeghe_id' => $request->user_mosabeghe_id,
+            ]);
+        }
+
+        if($mosabegheMalekeZaman->status==0)
+        {
+            $status=1;
+        }
+        if($mosabegheMalekeZaman->status==2)
+        {
+            $status=3;
+        }
+        $mosabegheMalekeZaman->update([
+            'status'=>$status,
+        ]);
+        if($request->nextM)
+        {
+            return view('web.pages.mosabeghe-javab-naghashi',compact('mosabegheMalekeZaman'));
+        }
+        $type="کتاب خوانی";
+        return view('web.pages.mosabeghe-nazar',compact('mosabegheMalekeZaman','type'));
     }
 }

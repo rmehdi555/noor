@@ -67,9 +67,29 @@
                             <input type="hidden" name="user_meli_number" value="{{$mosabegheMalekeZaman->meli_number}}">
                             <input type="hidden" name="user_mosabeghe_id" value="{{$mosabegheMalekeZaman->id}}">
                             <input type="hidden" name="nextM" value="{{$nextM}}">
+                            @php $i=1; @endphp
+
+                            @foreach($soals as $value)
+
+                            <div class="row">
+                                <div class="col-md-12 padding-top-15">
+                                    <label class="col-md-12 col-sm-12 control-label" for="job">{{$i}} - {{$value->title}}
+                                        <span class="required">*</span></label>
+                                    @foreach($value->javabs as $valueJavabs)
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="javabs[{{$value->id}}]" id="" value="{{$valueJavabs->id}}" required>
+                                                <label class="form-check-label p-2" for="inlineRadio1">{{$valueJavabs->title}}</label>
+                                            </div>
+                                        </div>
+                                    @endforeach
 
 
+                                    @php $i++; @endphp
 
+                                </div>
+                            </div>
+                            @endforeach
                             <br><br>
 
                             <div class="d-flex justify-content-center mb-2">

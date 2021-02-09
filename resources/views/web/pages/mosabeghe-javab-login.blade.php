@@ -90,6 +90,24 @@
                                     </div>
                                 </div>
 
+
+
+
+
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label"
+                                           for="f_name">کد ادمین جهت تست : <span
+                                                class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <input type="text" name="key555" id="key555" value="{{old('key555')}}"
+                                               class="form-control  @error('key555') is-invalid @enderror"/>
+                                    </div>
+                                </div>
+
+
+
+
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
