@@ -11,4 +11,9 @@ class MosabegheJavab extends Model
     protected $fillable = [ 'soal_id','javab_id','javab_user_id','user_meli_number','user_mosabeghe_id'];
 
     protected $dates = ['deleted_at'];
+
+    public function soalRow()
+    {
+        return $this->hasOne(MosabegheSoal::class,'id','soal_id')->first();
+    }
 }

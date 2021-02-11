@@ -24,22 +24,31 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-info m-1">
-                        <p class="p-1 text-justify">
-                            جناب
+                        <p class="p-2 text-justify">
+                            <h5>
+                            متسابق عزیز
                             {{$mosabegheMalekeZaman->name}} {{$mosabegheMalekeZaman->family}}
                             خوش آمدید .
+                        </h5>
 
                         </p>
-                        <p class="p-1 text-justify">
+                        <p class="p-2 text-justify">
+                        <h5>
                            تصویر نقاشی باید باکیفیت بالا و یکی از فرمت های
                             .png,
                             .jpg
                             .jpeg
                             باشد .
+                        </h5>
+                        <br>
+
+                        <h5>
+
+                                * بعد از بارگذاری تصویر امکان ویرایش آن امکان پذیر نمیباشد لذا در انتخاب دقت نمایید .
+
+                        </h5>
                         </p>
-                        <p class="p-1 text-justify">
-                            * بعد از بارگذاری تصویر امکان ویرایش آن امکان پذیر نمیباشد لذا در انتخاب دقت نمایید .
-                        </p>
+
                     </div>
                 </div>
             </div>

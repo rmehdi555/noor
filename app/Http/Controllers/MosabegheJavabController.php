@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 
 class MosabegheJavabController extends Controller
 {
-    private $mosabegheTimeTest=true;
-    private $mosabegheTimeNaghashi=true;
+    private $mosabegheTimeTest=false;
+    private $mosabegheTimeNaghashi=false;
     private $mosabegheTimeTestPasokh=false;
     public function login()
     {
@@ -31,11 +31,6 @@ class MosabegheJavabController extends Controller
         ]);
         $nextM=false;
 
-        if($request->key555!="m555")
-        {
-            return back()->withErrors(['code'=>'کد ادمین جهت تست را درست وارد نمایید']);
-        }
-
 
         $mosabegheMalekeZaman = MosabegheMalekeZaman::where([['meli_number','=',$request->meli_number],['id','=',$request->id]])->get()->first();
         if(!isset($mosabegheMalekeZaman->id))
@@ -44,7 +39,12 @@ class MosabegheJavabController extends Controller
         }
         if($this->mosabegheTimeTestPasokh)
         {
-            return view('web.pages.mosabeghe-pasohk',compact('mosabegheMalekeZaman'));
+            $mosabegheJavabs=MosabegheJavab::where('user_mosabeghe_id','=',$mosabegheMalekeZaman->id)->take(10)->get();
+            if(count($mosabegheJavabs)<10)
+            {
+                return back()->withErrors(['code'=>'شما در مسابقه کتابخوانی شرکت نکرده اید.']);
+            }
+            return view('web.pages.mosabeghe-pasokh',compact('mosabegheMalekeZaman','mosabegheJavabs'));
         }
         if($mosabegheMalekeZaman->status==3)
         {
@@ -102,12 +102,6 @@ class MosabegheJavabController extends Controller
 
     public function naghashiSave(Request $request)
     {
-        $request->validate([
-            'user_meli_number' => ['required', 'numeric', 'digits:10'],
-            'user_mosabeghe_id' => ['required', 'numeric'],
-            'description' => ['required', 'string'],
-            'file_url' => 'required|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
-        ]);
         $mosabegheMalekeZaman = MosabegheMalekeZaman::where([['meli_number','=',$request->user_meli_number],['id','=',$request->user_mosabeghe_id]])->get()->first();
         if(!isset($mosabegheMalekeZaman->id))
         {

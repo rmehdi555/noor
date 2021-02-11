@@ -25,7 +25,7 @@
                 <div class="col-md-12">
                     <div class="alert alert-info m-1">
                         <p class="p-1 text-justify">
-                            جناب
+                            متسابق عزیز
                             {{$mosabegheMalekeZaman->name}} {{$mosabegheMalekeZaman->family}}
                             خوش آمدید .
 

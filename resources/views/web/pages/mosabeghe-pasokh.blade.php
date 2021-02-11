@@ -31,21 +31,37 @@
 
                         </p>
                         <p class="p-1 text-justify">
-                            لطفا سوالات را با دقت جواب دهید، ضمنا پاسخ صحیح سؤالات+نمره آزمون شما بعد از اتمام زمان مسابقه (ساعت 12) در همین صفحه آزمون با وارد کردن مشخصات قابل مشاهده خواهد بود.
+                            نتیجه آزمون شما به شرح زیر میباشد:
                         </p>
+                        @php
+                            $pTrue=0;
+                            $pFalse=0;
+                                foreach($mosabegheJavabs as $rowJ)
+                                {
+                                 if($rowJ->javab_id==$rowJ->javab_user_id)
+                                 {
+                                 $pTrue++;
+                                 }else{
+                                 $pFalse++;
+                                 }
+                                }
+
+                        @endphp
                         <p class="p-1 text-justify">
-                            * تنها یک بار میتوانید دکمه ثبت نهایی را انتخاب کنید و قابل ویرایش نمیباشند لذا در پاسخ دادن به سوالات دقت نمایید .
+                            تعداد پاسخ های صحیح شما
+                            {{$pTrue}}
+                           عدد  میباشد که نمره شما
+                            {{$pTrue*2}}
+                            از بیست نمره شده .
                         </p>
-                    </div>
+
+
                 </div>
             </div>
         </div>
     </section>
     <!-- Start: Inner main -->
 
-
-    @if($mosabegheMalekeZaman->status==0)
-    @endif
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
@@ -66,20 +82,21 @@
                             @csrf
                             <input type="hidden" name="user_meli_number" value="{{$mosabegheMalekeZaman->meli_number}}">
                             <input type="hidden" name="user_mosabeghe_id" value="{{$mosabegheMalekeZaman->id}}">
-                            <input type="hidden" name="nextM" value="{{$nextM}}">
+                            {{--<input type="hidden" name="nextM" value="{{$nextM}}">--}}
                             @php $i=1; @endphp
 
-                            @foreach($soals as $value)
+                            @foreach($mosabegheJavabs as $j)
+                                @php  $value=$j->soalRow();@endphp
 
                             <div class="row">
                                 <div class="col-md-12 padding-top-15">
-                                    <label class="col-md-12 col-sm-12 control-label" for="job">{{$i}} - {{$value->title}}
-                                        <span class="required">*</span></label>
+                                    <label class="col-md-12 col-sm-12 control-label" for="job">{{$i}} - {{$value->title}}  @php if($j->javab_id==$j->javab_user_id) echo "(صحیح)"; else echo "(غلط)";  @endphp
+                                       </label>
                                     @foreach($value->javabs as $valueJavabs)
                                         <div class="col-md-12 col-sm-12">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="javabs[{{$value->id}}]" id="" value="{{$valueJavabs->id}}" required>
-                                                <label class="form-check-label p-2" for="inlineRadio1">{{$valueJavabs->title}}</label>
+                                                <input class="form-check-input" type="radio" name="javabs[{{$value->id}}]" id="" value="{{$valueJavabs->id}}" @php if($valueJavabs->id==$j->javab_user_id) echo "checked";  @endphp required disabled>
+                                                <label class="form-check-label p-2 " for="inlineRadio1">{{$valueJavabs->title}} @php if($valueJavabs->id==$j->javab_id) echo '<i class="fa fa-check" aria-hidden="true"></i>';  @endphp</label>
                                             </div>
                                         </div>
                                     @endforeach
@@ -92,12 +109,12 @@
                             @endforeach
                             <br><br>
 
-                            <div class="d-flex justify-content-center mb-2">
+                            {{--<div class="d-flex justify-content-center mb-2">--}}
 
-                                <div class="p-2 ">
-                                    <button type="submit" class="btn btn-primary">ثبت نهایی پاسخ ها</button>
-                                </div>
-                            </div>
+                                {{--<div class="p-2 ">--}}
+                                    {{--<button type="submit" class="btn btn-primary">ثبت نهایی پاسخ ها</button>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </form>
 
                     </div>
