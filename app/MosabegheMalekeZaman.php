@@ -27,4 +27,9 @@ class MosabegheMalekeZaman extends Model
     {
         return $this->hasOne(Cities::class,'id','city');
     }
+
+    public function javabs()
+    {
+        return $this->hasMany(MosabegheJavab::class,'user_mosabeghe_id','id');
+    }
 }

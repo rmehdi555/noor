@@ -15,7 +15,7 @@ class MosabegheJavabController extends Controller
 {
     private $mosabegheTimeTest=false;
     private $mosabegheTimeNaghashi=false;
-    private $mosabegheTimeTestPasokh=false;
+    private $mosabegheTimeTestPasokh=true;
     public function login()
     {
         return view('web.pages.mosabeghe-javab-login');

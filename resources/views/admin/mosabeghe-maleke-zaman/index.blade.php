@@ -32,6 +32,7 @@
                                     <tr>
                                         <th>{{__('admin/public.actions')}}</th>
                                         <th>{{__('admin/public.id')}}</th>
+                                        <th>نمره آزمون کتاب خوانی</th>
                                         <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.type')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
@@ -52,6 +53,27 @@
                                                    data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>
                                             </td>
                                             <td>{{$item->id}}</td>
+                                            @php
+                                                $pTrue=0;
+                                                $pFalse=0;
+                                                $i=0;
+                                                    foreach($item->javabs as $rowJ)
+                                                    {
+                                                     if($rowJ->javab_id==$rowJ->javab_user_id)
+                                                     {
+                                                     $pTrue++;
+                                                     }else{
+                                                     $pFalse++;
+                                                     }
+                                                      $i++;
+                                                     if($i>9)
+                                                      break;
+
+                                                    }
+
+                                            @endphp
+
+                                            <td>{{$pTrue*2}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
                                             <th>{!! $item->type !!}</th>
                                             <td>{{$item->name}}</td>
@@ -73,6 +95,7 @@
                                     <tr>
                                         <th>{{__('admin/public.actions')}}</th>
                                         <th>{{__('admin/public.id')}}</th>
+                                        <th>نمره آزمون کتاب خوانی</th>
                                         <th>{{__('admin/public.created_at')}}</th>
                                         <th>{{__('admin/public.type')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
