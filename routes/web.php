@@ -142,6 +142,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('fields','FieldController');
     Route::resource('students','StudentsController');
     Route::post('/students/add/file/{id}','StudentsController@addFile')->name('students.add.file');
+    Route::get('/reports/students','StudentsController@reports')->name('students.reports');
     Route::resource('teachers','TeachersController');
     Route::post('/teachers/add/file/{id}','TeachersController@addFile')->name('teachers.add.file');
     Route::resource('noors','NoorsController');

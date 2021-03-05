@@ -10,6 +10,7 @@ use App\Provinces;
 use App\Students;
 use App\StudentsDocuments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentsController extends  StudentController
 {
@@ -128,4 +129,39 @@ class StudentsController extends  StudentController
         alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
         return redirect(route('students.edit',$studentId));
     }
+
+    public function reports(Request $request)
+    {
+
+        $SID=$request->SID;
+        if(isset($request->field_child) and !empty($request->field_child))
+        {
+            $field = Field::find($request->field_child);
+            if(isset($field->id))
+            {
+                $studentsN = DB::table('students')
+                    ->select('students.*', 'students_fields.title' )
+                    ->join('students_fields', 'students.flag_cookie', '=', 'students_fields.flag_cookie')
+                    ->where('students_fields.field_id','=',$request->field_child)
+                    ->get();
+                $students=array();
+                foreach ($studentsN as $key=>$student)
+                {
+                    $s=Students::find($student->id);
+                    if(isset($s->id))
+                        $students[$key]=$s;
+                }
+
+                $fields = Field::all();
+                return view('admin.students.reports',compact('students','fields','SID'));
+            }
+        }
+        $students=Students::all();
+        $fields = Field::all();
+        return view('admin.students.reports',compact('students','fields','SID'));
+
+    }
+
+
+
 }

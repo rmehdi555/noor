@@ -159,4 +159,5 @@ return [
     'monthly_payment'=>'درخواست اشراک ماهیانه',
     'mosabeghe_maleke_zaman_list'=>'لیست ثبت نام کننده ها در مسابقه مالک زمان',
     'mosabeghe_maleke_zaman'=>' مسابقه مالک زمان',
+    'students_reports'=>'گزارش قرآن آموز ها',
 ];
