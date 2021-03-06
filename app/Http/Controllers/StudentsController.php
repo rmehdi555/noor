@@ -15,6 +15,7 @@ use App\StudentsDocuments;
 use App\StudentsFields;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,6 +36,7 @@ class StudentsController extends StudentController
 
     public function level1Save(Request $request)
     {
+        Auth::logout();
         $student_flag_cookie = Cookie::get('student_flag_cookie');
         if (empty($student_flag_cookie)) {
             return redirect()->route('web.students.level.1');
@@ -56,6 +58,7 @@ class StudentsController extends StudentController
 
     public function level2(Request $request)
     {
+
         $student_flag_cookie = Cookie::get('student_flag_cookie');
         if (empty($student_flag_cookie) OR empty($request->class_type)) {
             return redirect()->route('web.students.level.1');
@@ -69,6 +72,7 @@ class StudentsController extends StudentController
 
     public function level2Save(Request $request)
     {
+        Auth::logout();
         $request->phone_1=\App\Providers\MyProvider::convert_phone_number($request->phone_1);
         $request->phone_2=\App\Providers\MyProvider::convert_phone_number($request->phone_2);
         $request->phone_m=\App\Providers\MyProvider::convert_phone_number($request->phone_m);

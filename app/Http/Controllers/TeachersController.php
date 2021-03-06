@@ -12,6 +12,7 @@ use App\Field;
 use App\Provinces;
 use App\Teachers;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,6 +31,7 @@ class TeachersController extends TeacherController
 
     public function level2(Request $request)
     {
+        Auth::logout();
         $provinces = Provinces::all();
         $cities = Cities::all();
         return view('web.pages.teachers-level-2', compact('provinces', 'cities'));
