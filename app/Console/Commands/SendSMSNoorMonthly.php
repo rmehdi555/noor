@@ -47,7 +47,7 @@ class SendSMSNoorMonthly extends Command
                 $username = config('app.smsPanelUser');
                 $password = config('app.smsPanelPass');
                 $from = config('app.smsPanelFrom');
-                $pattern_code = "uhcz4lwsez";
+                $pattern_code = "i374m9uo04";
                 $to = array($key);
                 $input_data = array("name" => ' ');
                 $url = config('app.smsPanelUrl') .'?username='. $username . "&password=" . urlencode($password) . "&from=$from&to=" . json_encode($to) . "&input_data=" . urlencode(json_encode($input_data)) . "&pattern_code=$pattern_code";
