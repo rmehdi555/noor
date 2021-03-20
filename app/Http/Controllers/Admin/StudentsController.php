@@ -9,6 +9,7 @@ use App\Http\Controllers\Student\StudentController;
 use App\Provinces;
 use App\Students;
 use App\StudentsDocuments;
+use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -134,6 +135,21 @@ class StudentsController extends  StudentController
     {
 
         $SID=$request->SID;
+        switch ($request->sex)
+        {
+            case "male":
+                $operatorSex="=";
+                $valueSex="male";
+                break;
+            case "female":
+                $operatorSex="=";
+                $valueSex="female";
+                break;
+            default:
+                $operatorSex="!=";
+                $valueSex="all";
+                break;
+        }
         if(isset($request->field_child) and !empty($request->field_child))
         {
             $field = Field::find($request->field_child);
@@ -143,6 +159,7 @@ class StudentsController extends  StudentController
                     ->select('students.*', 'students_fields.title' )
                     ->join('students_fields', 'students.flag_cookie', '=', 'students_fields.flag_cookie')
                     ->where('students_fields.field_id','=',$request->field_child)
+                    ->where('students.sex',$operatorSex,$valueSex)
                     ->get();
                 $students=array();
                 foreach ($studentsN as $key=>$student)

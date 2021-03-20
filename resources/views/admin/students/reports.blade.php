@@ -75,7 +75,34 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="col-md-4">
+                                <label class="col-md-6 col-sm-6 control-label" for="name">{{__('admin/public.sex')}}
+                                    : <span class="required">*</span></label>
+                                <div class="col-md-12 col-sm-10" >
+                                    <label class="radio-inline" style="padding: 10px 20px 10px">
+                                        <input type="radio" name="sex"
+                                               value="all" checked
+                                        >همه
+                                    </label>
+                                    <label class="radio-inline" style="padding: 0px 20px 0px" >
+                                        <input type="radio" name="sex"
+                                               value="male"
+                                        >{{__('admin/public.male')}}
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               name="sex"
+                                               value="female">{{__('admin/public.female')}}
+                                    </label>
+                                    @error('sex')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
                                     <div class="col-md-4">
                                         <label class=" control-label"
                                                for="input-name"><br></label>
