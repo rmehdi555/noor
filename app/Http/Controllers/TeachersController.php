@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Events\UserActivationSms;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Specialization;
 use App\TeachersDocuments;
+use App\TeachersSpecialization;
 use Illuminate\Http\Request;
 use App\Cities;
 use App\Field;
@@ -34,7 +36,8 @@ class TeachersController extends TeacherController
         Auth::logout();
         $provinces = Provinces::all();
         $cities = Cities::all();
-        return view('web.pages.teachers-level-2', compact('provinces', 'cities'));
+        $allSpecialization=Specialization::latest()->get();
+        return view('web.pages.teachers-level-2', compact('provinces', 'cities','allSpecialization'));
     }
 
     public function level2Save(Request $request)
@@ -79,7 +82,8 @@ class TeachersController extends TeacherController
             'm_imagee' => 'nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp',
             "file_more" => "nullable|array",
             "file_more.*" => "nullable|max:2048|mimes:jpeg,png,bmp,jpg,jpeg,bmp,pdf",
-
+            "specialization" => "required|array",
+            "specialization.*" => "required",
         ]);
 
 
@@ -110,7 +114,15 @@ class TeachersController extends TeacherController
             'status' => '1',
         ]);
 
-
+        foreach ($request->specialization as $item)
+        {
+            TeachersSpecialization::create([
+                'specialization_id' => $item,
+                'teacher_id' => $teacher->id,
+                'price ' => 0,
+                'status' => 0,
+            ]);
+        }
         $user = User::create([
             'name' => $request->name,
             'family' => $request->family,

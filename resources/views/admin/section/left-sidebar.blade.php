@@ -74,6 +74,12 @@
                             <li class="@if($SID==50 ) active @endif"><a
                                         href="{{ route('teachers.index',['SID' => '50']) }}">{{__('admin/public.teachers_list')}}</a>
                             </li>
+                            <li class="@if($SID==51 ) active @endif"><a
+                                        href="{{ route('specialization.index',['SID' => '51']) }}">{{__('admin/public.specialization_index')}}</a>
+                            </li>
+                            <li class="@if($SID==52 ) active @endif"><a
+                                        href="{{ route('specialization.create',['SID' => '52']) }}">{{__('admin/public.specialization_add')}}</a>
+                            </li>
                             {{--<li class="@if($SID==41 ) active @endif"><a--}}
                             {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}
                             {{--</li>--}}

@@ -160,4 +160,7 @@ return [
     'mosabeghe_maleke_zaman_list'=>'لیست ثبت نام کننده ها در مسابقه مالک زمان',
     'mosabeghe_maleke_zaman'=>' مسابقه مالک زمان',
     'students_reports'=>'گزارش قرآن آموز ها',
+    'specialization_index'=>'لیست رشته های ثبت نامی معلم ها',
+    'specialization_add'=>'اضافه کردن رشته معلم ها',
+    'specialization_list'=>'لیست رشته های ثبت نامی معلم ها',
 ];

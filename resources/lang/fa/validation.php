@@ -170,5 +170,6 @@ return array(
         'female'=>'زن',
         'type'=>'نوع',
         'id'=>'کد',
+        'specialization'=>'رشته مورد علاقه',
     ),
 );

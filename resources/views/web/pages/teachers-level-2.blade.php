@@ -471,6 +471,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12 padding-top-15">
+                                    <label class="col-md-12 col-sm-12 control-label"
+                                           for="education">لطفا رشته های مورد علاقه خود را مشخص نمایید : <span
+                                                class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-10">
+                                        @foreach($allSpecialization as $item)
+                                            <div class="form-check ">
+                                                <input class=" form-check-input" type="checkbox" id="pecialization-{{$item->id}}" name="specialization[]" value="{{$item->id}}">
+                                                <label class=" form-check-label" for="pecialization-{{$item->id}}" style="padding-right:  20px">{{$item->title}}</label>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <br><br>
                             <section class="bu-inner-main">
                                 <div class="container">

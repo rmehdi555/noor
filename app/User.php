@@ -124,5 +124,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(TeachersDocuments::class, 'user_id');
     }
+    public function specialization()
+    {
+        return $this->hasMany(Specialization::class);
+    }
 
 }
