@@ -38,4 +38,8 @@ class Teachers extends Model
     {
         return $this->hasMany(TeachersDocuments::class,'user_id','user_id');
     }
+    public function teachersSpecialization()
+    {
+        return $this->hasMany(TeachersSpecialization::class,'teacher_id','id');
+    }
 }

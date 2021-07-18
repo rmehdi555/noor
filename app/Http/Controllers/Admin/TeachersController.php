@@ -7,6 +7,7 @@ use App\Field;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Provinces;
+use App\Specialization;
 use App\Teachers;
 use App\TeachersDocuments;
 use Illuminate\Http\Request;

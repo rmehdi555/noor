@@ -452,7 +452,26 @@
                                     </div>
                                 </div>
                                 <br><br>
+                                <div class="row">
+                                    <div class="col-md-12 padding-top-15">
+                                        <label class="col-md-12 col-sm-12 control-label"
+                                               for="education">رشته هایی که انتخاب نموده است: <span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            @foreach($teacher->teachersSpecialization as $item)
+                                                @php $item=$item->specialization[0];@endphp
+                                                <div class="form-check ">
+                                                    <input class=" form-check-input" type="checkbox" id="pecialization-{{$item->id}}" name="specialization[]" value="{{$item->id}}" checked>
+                                                    <label class=" form-check-label" for="pecialization-{{$item->id}}" style="padding-right:  20px">{{$item->title}}</label>
+                                                </div>
+                                            @endforeach
 
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <br><br>
                                 <p class="bu-margin-bottom-30">مدارک بارگذاری شده: </p>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
@@ -464,7 +483,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @php $i=1; @endphp
+                                        @php $i=1;@endphp
                                         @foreach($teacher->documents as $item)
                                             <tr>
                                                 <td>{{$i}}</td>
