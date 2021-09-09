@@ -9,6 +9,7 @@ use App\Http\Controllers\Teacher\TeacherController;
 use App\Provinces;
 use App\Specialization;
 use App\Teachers;
+use App\TeachersDeleted;
 use App\TeachersDocuments;
 use Illuminate\Http\Request;
 
@@ -128,5 +129,41 @@ class TeachersController extends TeacherController
 
         alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
         return redirect(route('teachers.edit',$teacherId));
+    }
+    public function destroy(Request $request,$teacherId)
+    {
+        $teacher=Teachers::find($teacherId);
+        TeachersDeleted::create([
+            'flag_cookie'=>$teacher->flag_cookie,
+            'user_id'=>$teacher->user_id,
+            'teacher_id'=>$teacher->teacher_id,
+            'name'=>$teacher->name,
+            'family'=>$teacher->family,
+            'f_name'=>$teacher->f_name,
+            'sh_number'=>$teacher->sh_number,
+            'meli_number'=>$teacher->meli_number,
+            'sh_sodor'=>$teacher->sh_sodor,
+            'tavalod_date'=>$teacher->tavalod_date,
+            'married'=>$teacher->married,
+            'phone_1'=>$teacher->phone_1,
+            'phone_2'=>$teacher->phone_2,
+            'phone_f'=>$teacher->phone_f,
+            'phone_m'=>$teacher->phone_m,
+            'tel'=>$teacher->tel,
+            'city'=>$teacher->city,
+            'province'=>$teacher->province,
+            'address'=>$teacher->address,
+            'post_number'=>$teacher->post_number,
+            'education'=>$teacher->education,
+            'job'=>$teacher->job,
+            'email'=>$teacher->email,
+            'number_of_children'=>$teacher->number_of_children,
+            'sex'=>$teacher->sex,
+            'status'=>$teacher->status,
+            'old_id'=>$teacher->id,
+        ]);
+        $teacher->forceDelete();
+        alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
+        return redirect(route('teachers.index',['SID' => '50']));
     }
 }

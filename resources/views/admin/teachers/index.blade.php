@@ -63,16 +63,16 @@
                                         <tr class="gradeA">
                                             <td class="actions">
 
-                                                {{--<form action="{{ route('teachers.destroy', $item->id) }}" method="POST">--}}
-                                                {{--@csrf--}}
-                                                {{--@method('DELETE')--}}
+                                                <form action="{{ route('teachers.destroy', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
                                                 <a href="{{ route('teachers.show',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-show"
                                                    data-toggle="tooltip" data-original-title="{{__('admin/public.show')}}"><i class="icon-eye" aria-hidden="true"></i></a>
                                                 <a href="{{ route('teachers.edit',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
                                                 data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>
-                                                {{--<button type="submit" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"--}}
-                                                {{--data-toggle="tooltip" data-original-title="{{__('admin/public.remove')}}"><i class="icon-trash" aria-hidden="true"></i></button>--}}
-                                                {{--</form>--}}
+                                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
+                                                data-toggle="tooltip" data-original-title="{{__('admin/public.remove')}}"><i class="icon-trash" aria-hidden="true"></i></button>
+                                                </form>
 
                                             </td>
                                             <td>{{$item->teacher_id}}</td>
