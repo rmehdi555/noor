@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/sweetalert/sweetalert.css')}}"/>
     <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css')}}">
     <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/parsleyjs/css/parsley.css')}}">
+    <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-3.3.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-migrate-1.4.1.min.js')}}"></script>
+    <script src="{{asset('web/2020/assets/js/sweetalert.min.js')}}"></script>
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{asset('admin/2020/rtl/assets/css/main.css')}}">

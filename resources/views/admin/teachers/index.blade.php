@@ -70,7 +70,7 @@
                                                    data-toggle="tooltip" data-original-title="{{__('admin/public.show')}}"><i class="icon-eye" aria-hidden="true"></i></a>
                                                 <a href="{{ route('teachers.edit',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
                                                 data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>
-                                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
+                                                <button type="submit" onclick="deleteFunction()" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
                                                 data-toggle="tooltip" data-original-title="{{__('admin/public.remove')}}"><i class="icon-trash" aria-hidden="true"></i></button>
                                                 </form>
 

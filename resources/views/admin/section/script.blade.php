@@ -125,7 +125,33 @@
         var editor = CKEDITOR.replace( 'ckfinder' );
         CKFinder.setupCKEditor( editor );
     });
+
+
+
+function deleteFunction() {
+    event.preventDefault(); // prevent form submit
+    var form = event.target.form; // storing the form
+    swal({
+        title: "آیا از حذف مطمعن هستید؟",
+        text: "درصورت تایید حذف دیگر دسترسی به آن نخواهید داشت.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "بله",
+        cancelButtonText: "نه",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function(isConfirm){
+        if (isConfirm) {
+            form.submit();          // submitting the form when user press yes
+        } else {
+         swal("انصراف", "شما از حذف کردن منصرف شدین ", "error");
+        }
+    });
+}
 </script>
+
 @yield('script')
 </body>
 </html>

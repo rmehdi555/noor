@@ -1,4 +1,5 @@
 <body class="theme-blue rtl">
+@include('sweet::alert')
 
 <!-- Page Loader -->
 {{--<div class="page-loader-wrapper">--}}
