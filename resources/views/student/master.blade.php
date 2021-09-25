@@ -2,6 +2,7 @@
 @include('web.section.header')
 @include('student.section.user-side')
 @yield('content')
+@include('student.section.user-side-end')
 @include('web.section.footer')
 @include('web.section.script')
 

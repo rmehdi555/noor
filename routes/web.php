@@ -207,6 +207,9 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::post('level/1/save','PanelController@level1Save')->name('student.level.1.save');
     Route::get('payment','PaymentController@index')->name('student.payment.index');
     Route::post('level/4/save','PanelController@level4Save')->name('student.level.4.save');
+
+    Route::get('panel/print/details','PanelController@printDetails')->name('student.panel.print.details');
+
 });
 
 // end student  route

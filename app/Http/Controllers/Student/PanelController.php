@@ -55,18 +55,22 @@ class PanelController extends StudentController
                 return view('student.pages.status-4', compact('fields', 'user','provinces','cities'));
                 break;
             case 5:
-                $fields = Field::all();
-                $provinces = Provinces::all();
-                $cities = Cities::all();
-               // $pdf = new PdfWrapper();
-                //$pdf->loadView('pdf.test',compact('fields', 'user','provinces','cities'),[],[ ])->save(base_path('public/pdf/').$user->student->id.'.pdf');
-                return view('student.pages.status-5', compact('fields', 'user','provinces','cities'));
+                return view('student.pages.panel', compact( 'user'));
                 break;
             default:
-                return view('user.pages.panel');
+                return view('student.pages.panel', compact( 'user'));
                 break;
         }
 
+    }
+
+    public function printDetails()
+    {
+        $user=Auth::user();
+        $fields = Field::all();
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        return view('student.pages.status-5', compact('fields', 'user','provinces','cities'));
     }
 
     public function level1Save(Request $request)
