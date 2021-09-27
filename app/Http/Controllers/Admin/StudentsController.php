@@ -8,7 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Student\StudentController;
 use App\Provinces;
 use App\Students;
+use App\StudentsDeleted;
 use App\StudentsDocuments;
+use App\User;
+use App\UsersDeleted;
 use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -178,6 +181,62 @@ class StudentsController extends  StudentController
         return view('admin.students.reports',compact('students','fields','SID'));
 
     }
+
+    public function destroy(Request $request,$studentId)
+    {
+        $student=Students::find($studentId);
+        StudentsDeleted::create([
+            'flag_cookie'=>$student->flag_cookie,
+            'user_id'=>$student->user_id,
+            'student_id'=>$student->student_id,
+            'name'=>$student->name,
+            'family'=>$student->family,
+            'f_name'=>$student->f_name,
+            'sh_number'=>$student->sh_number,
+            'meli_number'=>$student->meli_number,
+            'sh_sodor'=>$student->sh_sodor,
+            'tavalod_date'=>$student->tavalod_date,
+            'married'=>$student->married,
+            'phone_1'=>$student->phone_1,
+            'phone_2'=>$student->phone_2,
+            'phone_f'=>$student->phone_f,
+            'phone_m'=>$student->phone_m,
+            'tel'=>$student->tel,
+            'city'=>$student->city,
+            'province'=>$student->province,
+            'address'=>$student->address,
+            'post_number'=>$student->post_number,
+            'education'=>$student->education,
+            'job'=>$student->job,
+            'email'=>$student->email,
+            'number_of_children'=>$student->number_of_children,
+            'sex'=>$student->sex,
+            'status'=>$student->status,
+            'old_id'=>$student->id,
+        ]);
+        $userD=User::find($student->user_id);
+        UsersDeleted::create([
+                'name'=>$userD->name,
+                'family'=>$userD->family,
+                'email'=>$userD->email,
+                'phone'=>$userD->phone,
+                'password'=>$userD->password,
+                'active'=>$userD->active,
+                'level'=>$userD->level,
+                'user_name'=>$userD->user_name,
+                'email_verified_at'=>$userD->email_verified_at,
+                'phone_verified_at'=>$userD->phone_verified_at,
+                'priority'=>$userD->priority,
+                'status'=>$userD->status,
+                'old_id'=>$userD->id,
+            ]
+        );
+        $student->forceDelete();
+        $userD->forceDelete();
+        alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
+        return redirect(route('teachers.index',['SID' => '50']));
+    }
+
 
 
 

@@ -11,7 +11,10 @@ use App\Specialization;
 use App\Teachers;
 use App\TeachersDeleted;
 use App\TeachersDocuments;
+use App\User;
+use App\UsersDeleted;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeachersController extends TeacherController
 {
@@ -162,8 +165,42 @@ class TeachersController extends TeacherController
             'status'=>$teacher->status,
             'old_id'=>$teacher->id,
         ]);
+        $userD=User::find($teacher->user_id);
+        UsersDeleted::create([
+                'name'=>$userD->name,
+                'family'=>$userD->family,
+                'email'=>$userD->email,
+                'phone'=>$userD->phone,
+                'password'=>$userD->password,
+                'active'=>$userD->active,
+                'level'=>$userD->level,
+                'user_name'=>$userD->user_name,
+                'email_verified_at'=>$userD->email_verified_at,
+                'phone_verified_at'=>$userD->phone_verified_at,
+                'priority'=>$userD->priority,
+                'status'=>$userD->status,
+                'old_id'=>$userD->id,
+            ]
+        );
         $teacher->forceDelete();
+        $userD->forceDelete();
         alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
         return redirect(route('teachers.index',['SID' => '50']));
+    }
+
+
+    public function reportsSpecialization(Request $request)
+    {
+        $id=empty($request->id)?1:$request->id;
+        $teachers=DB::select('SELECT SP.title,T.*,C.name as city,P.name as province 
+                            FROM `teachers` T 
+                            INNER JOIN `teachers_specializations` TSP ON T.id=TSP.teacher_id
+                            INNER JOIN `specializations` SP ON SP.id=TSP.specialization_id
+                            INNER JOIN `provinces` P ON P.id=T.province 
+                            INNER JOIN `cities` C ON C.id=T.city
+                            WHERE SP.id='.$id);
+        $SID=53;
+        $specializations=Specialization::all();
+        return view('admin.teachers.reports-specialization',compact('teachers','specializations','SID','id'));
     }
 }

@@ -5,7 +5,7 @@
             <div class="block-header">
                 <div class="row">
                     <div class="col-lg-5 col-md-8 col-sm-12">
-                        <h2>{{__('admin/public.students_list')}}</h2>
+                        <h2>{{__('admin/public.teachers_list')}}</h2>
                     </div>
                     <div class="col-lg-7 col-md-4 col-sm-12 text-right">
                         {{--<ul class="breadcrumb justify-content-end">--}}
@@ -14,27 +14,62 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="header">
-                            <h2>{{__('admin/public.students_list')}}</h2>
+                            <h2>{{__('admin/public.teachers_list')}}</h2>
                         </div>
+
+                        <form class="form-horizontal" method="GET" action="{{ route('teachers.reports.specialization') }}">
+                            @csrf
+                            <input type="hidden" name="SID" value="53">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class=" control-label"
+                                               for="input-name">نوع کلاس را انتخاب نمایید : <span class="required">*</span> </label>
+                                        <div class="col-md-10 col-sm-9">
+                                            <select name="id" id="select-field-main"
+                                                    class="form-control">
+                                                @foreach($specializations as $item)
+                                                        <option class="option-field-main"
+                                                                id="{{$item->id}}"
+                                                                value="{{$item->id}}" @php if($id==$item->id)echo"selected";@endphp>{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                @endforeach
+
+                                            </select>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" control-label"
+                                           for="input-name"><br></label>
+                                    <div class="buttons">
+                                        <div class="pull-right">
+                                            <input type="submit" class="btn btn-primary"
+                                                   value="نمایش گزارش">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+
+
+
                         <div class="body">
 
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                     <tr>
-                                        <th>{{__('admin/public.actions')}}</th>
-                                        <th>{{__('admin/public.student_id')}}</th>
+                                        <th>نوع کلاس</th>
+                                        <th>{{__('admin/public.teacher_id')}}</th>
                                         <th>{{__('admin/public.created_at')}}</th>
-                                        <th>{{__('admin/public.level')}}</th>
-                                        <th>{{__('admin/public.class_type')}}</th>
                                         <th>{{__('admin/public.sex')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>
@@ -60,26 +95,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($students as $item)
+                                    @foreach($teachers as $item)
                                         <tr class="gradeA">
-                                            <td class="actions">
-
-                                                <form action="{{ route('students.destroy', $item->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <a href="{{ route('students.show',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-show"
-                                                   data-toggle="tooltip" data-original-title="{{__('admin/public.show')}}"><i class="icon-eye" aria-hidden="true"></i></a>
-                                                <a href="{{ route('students.edit',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
-                                                data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>
-                                                    <button type="submit" onclick="deleteFunction()" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
-                                                            data-toggle="tooltip" data-original-title="{{__('admin/public.remove')}}"><i class="icon-trash" aria-hidden="true"></i></button>
-                                                </form>
-
-                                            </td>
-                                            <td>{{$item->student_id}}</td>
+                                            <td>{{$item->title}}</td>
+                                            <td>{{$item->teacher_id}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
-                                            <th>{{__('admin/public.student_status_level_'.$item->user->status)}}</th>
-                                            <td>{{$item->class_type}}</td>
                                             <td>{{__('admin/public.'.$item->sex)}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->family}}</td>
@@ -93,15 +113,14 @@
                                             <td>{{$item->phone_f}}</td>
                                             <td>{{$item->phone_m}}</td>
                                             <td>{{$item->tel}}</td>
-                                            <td>{{$item->studentsProvince->name}}</td>
-                                            <td>{{$item->studentsCity->name}}</td>
+                                            <td>{{$item->province}}</td>
+                                            <td>{{$item->city}}</td>
                                             <td>{{$item->address}}</td>
-                                            <td>{{$item->post_number }}</td>
+                                            <td>{{$item->post_number}}</td>
                                             <td>{{$item->education }}</td>
                                             <td>{{$item->job }}</td>
                                             <td>{{$item->email}}</td>
                                             <td>{{$item->number_of_children }}</td>
-
                                         </tr>
                                     @endforeach
 
@@ -110,11 +129,9 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>{{__('admin/public.actions')}}</th>
-                                        <th>{{__('admin/public.student_id')}}</th>
+                                        <th>نوع کلاس</th>
+                                        <th>{{__('admin/public.teacher_id')}}</th>
                                         <th>{{__('admin/public.created_at')}}</th>
-                                        <th>{{__('admin/public.level')}}</th>
-                                        <th>{{__('admin/public.class_type')}}</th>
                                         <th>{{__('admin/public.sex')}}</th>
                                         <th>{{__('admin/public.name')}}</th>
                                         <th>{{__('admin/public.family')}}</th>

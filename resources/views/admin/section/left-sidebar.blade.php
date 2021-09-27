@@ -80,6 +80,9 @@
                             <li class="@if($SID==52 ) active @endif"><a
                                         href="{{ route('specialization.create',['SID' => '52']) }}">{{__('admin/public.specialization_add')}}</a>
                             </li>
+                            <li class="@if($SID==53 ) active @endif"><a
+                                        href="{{ route('teachers.reports.specialization',['id'=>1,'SID' => '53']) }}">گزارش معلم ها </a>
+                            </li>
                             {{--<li class="@if($SID==41 ) active @endif"><a--}}
                             {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}
                             {{--</li>--}}
