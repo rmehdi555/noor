@@ -80,11 +80,11 @@
                                             {{ __('web/public.btn_login') }}
                                         </button>
 
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+
+                                            <a class="btn btn-link" href="{{ route('password.request.sms') }}">
                                                 {{ __('web/public.forgot_yor_password') }}
                                             </a>
-                                        @endif
+
                                     </div>
                                 </div>
                             </form>

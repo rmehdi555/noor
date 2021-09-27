@@ -10,6 +10,7 @@ class PanelController extends Controller
 {
     public function index(Request $request)
     {
+
         if(Auth::user()->level=='student')
         {
             return redirect()->route('student.panel');

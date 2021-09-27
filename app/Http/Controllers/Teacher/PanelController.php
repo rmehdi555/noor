@@ -31,9 +31,9 @@ class PanelController extends TeacherController
     public function index(Request $request)
     {
         $user=Auth::user();
-        //dd($user->teacher->name);
         switch (Auth::user()->status)
         {
+
 
             case 0:
                 $provinces = Provinces::all();
@@ -51,7 +51,8 @@ class PanelController extends TeacherController
                 break;
 
             default:
-                return view('user.pages.panel');
+
+                return view('teacher.pages.panel');
                 break;
         }
 
