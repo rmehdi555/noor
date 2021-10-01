@@ -17,7 +17,7 @@ class PanelController extends Controller
         }elseif (Auth::user()->level=='teacher'){
             return redirect()->route('teacher.panel');
         }elseif (Auth::user()->level=='admin'){
-            return redirect()->route('admin.panel');
+            return redirect()->route('students.index');
         }{
             return redirect()->route('web.home');
         }

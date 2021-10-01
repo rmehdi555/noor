@@ -1,5 +1,15 @@
 <?php
 
+
+
+
+
+
+
+
+
+
+
 namespace Composer;
 
 use Composer\Semver\VersionParser;
@@ -19,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '6d53facfb840efa10666dc5a692e5e90f8f3b60f',
+    'reference' => 'ca25a3cf2db6391d0bb020e8c99848c6ba9a887f',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -50,6 +60,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd15a231355e4435fc33bab83df075ec31edd0a9b',
+    ),
+    'barryvdh/laravel-debugbar' => 
+    array (
+      'pretty_version' => 'v3.6.2',
+      'version' => '3.6.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '70b89754913fd89fef16d0170a91dbc2a5cd633a',
     ),
     'brick/math' => 
     array (
@@ -543,7 +562,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '6d53facfb840efa10666dc5a692e5e90f8f3b60f',
+      'reference' => 'ca25a3cf2db6391d0bb020e8c99848c6ba9a887f',
     ),
     'laravel/tinker' => 
     array (
@@ -607,6 +626,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '353f66d7555d8a90781f6f5e7091932f9a4250aa',
+    ),
+    'maximebf/debugbar' => 
+    array (
+      'pretty_version' => 'v1.17.1',
+      'version' => '1.17.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0a3532556be0145603f8a9de23e76dc28eed7054',
     ),
     'mobiledetect/mobiledetectlib' => 
     array (
@@ -1142,6 +1170,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b8d8eb06b0942e84a69e7acebc3e9c1e6e6e7256',
+    ),
+    'symfony/debug' => 
+    array (
+      'pretty_version' => 'v4.4.31',
+      'version' => '4.4.31.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '43ede438d4cb52cd589ae5dc070e9323866ba8e0',
     ),
     'symfony/deprecation-contracts' => 
     array (
