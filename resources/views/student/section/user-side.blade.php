@@ -40,7 +40,12 @@
                                         <span class="badge badge-primary badge-pill"></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Dapibus ac facilisis in
+                                        <a href="{{ route('student.class.register') }}" >    ثبت نام کلاس جدید</a>
+                                    </li>
+
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        پیام ها
                                         <span class="badge badge-primary badge-pill">جدید 2</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color : #FF0000">

@@ -36,10 +36,10 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '4364d9898253482270d33c3e7d349234' => __DIR__ . '/..' . '/hekmatinasser/notowo/src/helpers.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         '4ad677cf23be1eeec8c74951804d4cb0' => __DIR__ . '/..' . '/hekmatinasser/verta/src/helpers.php',
         'e45cfea11e5f327d4009ce1fae8fa9fc' => __DIR__ . '/..' . '/shetabit/visitor/src/helpers.php',
         'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
-        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -714,9 +714,11 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'App\\Http\\Controllers\\MosabegheMalekeZamanController' => __DIR__ . '/../..' . '/app/Http/Controllers/MosabegheMalekeZamanController.php',
         'App\\Http\\Controllers\\NoorController' => __DIR__ . '/../..' . '/app/Http/Controllers/NoorController.php',
         'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
+        'App\\Http\\Controllers\\Student\\ClassController' => __DIR__ . '/../..' . '/app/Http/Controllers/Student/ClassController.php',
         'App\\Http\\Controllers\\Student\\PanelController' => __DIR__ . '/../..' . '/app/Http/Controllers/Student/PanelController.php',
         'App\\Http\\Controllers\\Student\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Student/PaymentController.php',
         'App\\Http\\Controllers\\Student\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Student/StudentController.php',
+        'App\\Http\\Controllers\\Student\\StudentsFieldsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Student/StudentsFieldsController.php',
         'App\\Http\\Controllers\\StudentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentsController.php',
         'App\\Http\\Controllers\\StudentsDocumentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentsDocumentsController.php',
         'App\\Http\\Controllers\\StudentsFieldsController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentsFieldsController.php',
@@ -758,6 +760,7 @@ class ComposerStaticInita3e195f2d0bd46859ae0c0d554f6ff87
         'App\\Listeners\\UserActivation\\SendMailNotification' => __DIR__ . '/../..' . '/app/Listeners/UserActivation/SendMailNotification.php',
         'App\\Listeners\\UserActivation\\SendSmsNotification' => __DIR__ . '/../..' . '/app/Listeners/UserActivation/SendSmsNotification.php',
         'App\\Mail\\ActivationUserAccount' => __DIR__ . '/../..' . '/app/Mail/ActivationUserAccount.php',
+        'App\\Mali' => __DIR__ . '/../..' . '/app/Mali.php',
         'App\\Menu' => __DIR__ . '/../..' . '/app/Menu.php',
         'App\\MenuCategories' => __DIR__ . '/../..' . '/app/MenuCategories.php',
         'App\\MosabegheJavab' => __DIR__ . '/../..' . '/app/MosabegheJavab.php',

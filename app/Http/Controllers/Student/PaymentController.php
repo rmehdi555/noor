@@ -17,6 +17,7 @@ use SoapClient;
  */
 class PaymentController extends Controller
 {
+
     public function index()
     {
         if (config('app.bankPay.active') == 'meli') {

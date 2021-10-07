@@ -1,5 +1,14 @@
 <?php
 
+/*USER
+ * status=0ثبت نام اولیه
+ * status=1ایجاد فاکتور و ارسال به درگاه پرداخت
+ * status=2درخواست بررسی نهاد برای پرداخت نکردن
+ * status=3تایید پرداخت نکردن
+ * status=4پرداخت تایید شده و در حال نمایش و ویرایش اطلاعات
+ * status=اطلاعات توسط کاربر تایید شده ان5
+ */
+
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;

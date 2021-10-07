@@ -19,14 +19,13 @@ use Illuminate\Support\Facades\Cookie;
 use niklasravnsborg\LaravelPdf\PdfWrapper;
 use SoapClient;
 
-/*
+/*USER
  * status=0ثبت نام اولیه
  * status=1ایجاد فاکتور و ارسال به درگاه پرداخت
  * status=2درخواست بررسی نهاد برای پرداخت نکردن
  * status=3تایید پرداخت نکردن
  * status=4پرداخت تایید شده و در حال نمایش و ویرایش اطلاعات
  * status=اطلاعات توسط کاربر تایید شده ان5
- * status=10 تایید نهایی
  */
 class PanelController extends StudentController
 {
@@ -189,7 +188,7 @@ class PanelController extends StudentController
             $allPrice=1000;
         }
         Payment::where([['status','=','1'],['user_id','=',$user->id]])->delete();
-        Payment::create([
+        $payment=Payment::create([
             'price' => $allPrice,
             'description' => '',
             'user_id' => $user->id,
@@ -200,6 +199,12 @@ class PanelController extends StudentController
             'callbackURL'=>route($url),
             'status'=>'1'
         ]);
+        foreach ($user->student->studentsFields as $field)
+        {
+            $field->update([
+                'payment_id'=>$payment->id
+            ]);
+        }
 
     }
 }

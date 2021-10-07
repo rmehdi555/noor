@@ -1,85 +1,30 @@
-ALTER TABLE `payments` ADD `Token` TEXT NULL AFTER `extraDetail`, ADD `RetrivalRefNo` TEXT NULL AFTER `Token`, ADD `SystemTraceNo` TEXT NULL AFTER `RetrivalRefNo`;
+-- 1400-07-16
+ALTER TABLE `students_fields` ADD `user_id` INT(20) NOT NULL DEFAULT '0' AFTER `student_id`;
 
 
---1400-07-05
+--  حذف ثبت نام کلاس هایی که پرداخت نشده اند
+DELETE FROM `students_fields` WHERE `deleted_at` IS NOT NULL
 
-CREATE TABLE `users_deleteds` (
+
+
+INSERT INTO `site_details` (`id`, `title`, `key`, `user_id`, `value`, `images`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES (NULL, 'متن صفحه ثبت نام کلاس جدید در چتنل قرآن آموز', 'page_students_class_register_body', '40', '<p>قرآنی عزیز لطفا با مطالعه بخش کلاس ها و طرح های آموزشی، پس از انتخاب نوع کلاس (آنلاین یا حضوری) رشته مورد نظر خود را انتخاب کنید:</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>چند نکته :</p>\r\n\r\n<p>1- رشته هایی که با رنگ قرمز نمایش داده شده اند فعلا قابلیت ثبت نام ندارند.</p>\r\n\r\n<p>2- از هر دسته اصلی رشته تنها&nbsp;یک زیر دسته میتوان انتخاب نمود.</p>\r\n', '[]', 'text', '1', '2020-12-06 13:01:41', '2020-12-16 05:12:58', NULL);
+
+
+-- id payment
+ALTER TABLE `students_fields` ADD `payment_id` INT(20) NOT NULL DEFAULT '0' AFTER `user_id`;
+
+
+
+
+CREATE TABLE `malis` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `family` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT 0,
-  `level` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `phone_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT 0,
-  `status` int(11) NOT NULL DEFAULT 0,
-  `old_id` int(11) NOT NULL DEFAULT 0,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `users_deleteds`
---
-ALTER TABLE `users_deleteds`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_deleteds_phone_unique` (`phone`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `users_deleteds`
---
-ALTER TABLE `users_deleteds`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
-
-
-
-
-
-CREATE TABLE `students_deleteds` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `flag_cookie` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `class_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
-  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `family` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `f_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sh_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meli_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sh_sodor` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tavalod_date` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `married` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
-  `phone_1` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_f` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_m` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tel` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `province` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `post_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `education` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `number_of_children` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sex` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_id` bigint(20) NOT NULL DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0,
-  `old_id` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -90,20 +35,19 @@ CREATE TABLE `students_deleteds` (
 --
 
 --
--- Indexes for table `students_deleteds`
+-- Indexes for table `malis`
 --
-ALTER TABLE `students_deleteds`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `students_deleteds_phone_1_unique` (`phone_1`);
+ALTER TABLE `malis`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `students_deleteds`
+-- AUTO_INCREMENT for table `malis`
 --
-ALTER TABLE `students_deleteds`
+ALTER TABLE `malis`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 

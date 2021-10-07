@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Noor;
 use App\Payment;
+use App\StudentsFields;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -211,6 +212,74 @@ class PaymentController extends Controller
     }
 
 
+    public function payZarinpalCallbackStudentClassRegister(Request $request)
+    {
+
+        //dd($request->Authority);
+        $payment = Payment::where('authority', '=', $request->Authority)->first();
+        if (isset($payment->id)) {
+            $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';
+            $Amount = $payment->price; //Amount will be based on Toman
+            $Authority = $request->Authority;
+
+            if ($request->Status == 'OK') {
+
+                $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+
+                $result = $client->PaymentVerification(
+                    [
+                        'MerchantID' => $MerchantID,
+                        'Authority' => $Authority,
+                        'Amount' => $Amount,
+                    ]
+                );
+
+                if ($result->Status == 100) {
+                    //echo 'Transaction success. RefID:'.$result->RefID;
+                    $payment->update([
+                        'refId' => $result->RefID,
+//                        'extraDetail'=>$result->ExtraDetail,
+                        'status' => '5',
+                    ]);
+                    $user=User::find($payment->user_id);
+                    if(isset($user))
+                    {
+                       StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
+                           'status'=>2
+                    ]);
+                    }
+
+                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
+                    return redirect()->route('student.panel');
+                } else {
+                    //echo 'Transaction failed. Status:'.$result->Status;
+                    $payment->update([
+                        'status' => '4',
+                    ]);
+                    alert()->error(__('web/messages.error_payment_72'));
+                    return redirect()->route('student.panel');
+                }
+            } else {
+
+                $payment->update([
+                    'status' => '3',
+                ]);
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
+                return redirect()->route('student.panel');
+            }
+
+
+        } else {
+            //رکورد وجود ندارد
+            alert()->error(__('web/messages.not_exist'));
+            return redirect()->route('student.panel');
+
+        }
+    }
+
+
+
+
     public function payMeliCallback(Request $request)
     {
         if(!isset($request->token) or empty($request->token) )
@@ -370,5 +439,67 @@ class PaymentController extends Controller
         }
 
     }
+
+
+    public function payMeliCallbackStudentClassRegister(Request $request)
+    {
+        if(!isset($request->token) or empty($request->token) )
+        {
+            alert()->error(__('web/messages.error_payment_cancel_by_user'));
+            return redirect()->route('login');
+        }
+
+        $key = config('app.bankMeli.Key');
+        $OrderId = $request->OrderId;
+        $Token = $request->token;
+        $ResCode = $request->ResCode;
+        $payment = Payment::where('Token', '=', $Token)->first();
+        if (isset($payment->id)) {
+            if ($ResCode == 0) {
+                $verifyData = array('Token' => $Token, 'SignData' => $this->encrypt_pkcs7($Token, $key));
+                $str_data = json_encode($verifyData);
+                $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
+                $arrres = json_decode($res);
+            }else{
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
+                return redirect()->route('student.panel');
+            }
+            if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
+                $payment->update([
+                    'RetrivalRefNo' => $arrres->RetrivalRefNo,
+                    'SystemTraceNo' => $arrres->SystemTraceNo,
+                    'status' => '5',
+                ]);
+                $user=User::find($payment->user_id);
+                if(isset($user))
+                {
+                    StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
+                        'status'=>2
+                    ]);
+                }
+
+
+                if(!Auth::check()) {
+                    Auth::loginUsingId($payment->user_id);
+                }
+                alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
+                return redirect()->route('student.panel');
+
+            } else
+                $payment->update([
+                    'status' => '4',
+                ]);
+            alert()->error(__('web/messages.error_payment_72'));
+            return redirect()->route('student.panel');
+        } else {
+            //رکورد وجود ندارد
+            alert()->error(__('web/messages.not_exist'));
+            return redirect()->route('student.panel');
+
+        }
+
+    }
+
+
 
 }
