@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mali;
 use App\Noor;
 use App\Payment;
 use App\StudentsFields;
@@ -53,6 +54,19 @@ class PaymentController extends Controller
                     ]);
                     User::where('id', '=', $payment->user_id)->update([
                         'status' => '4',
+                    ]);
+                    $user=User::find($payment->user_id);
+                    StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
+                        'status'=>2
+                    ]);
+                    Mali::create([
+                        'user_id'=>$payment->user_id,
+                        'price'=>$payment->price,
+                        'description'=>'پرداخت هزینه ثبت نام کلاس',
+                        'type'=>'bestankar',
+                        'table_name'=>'students_fields',
+                        'payment_id'=>$payment->id,
+                        'status'=>1
                     ]);
                     alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                     return redirect()->route('login');
@@ -181,6 +195,19 @@ class PaymentController extends Controller
                     $noor->update([
                         'status' => '4',
                     ]);
+                    if (Auth::check()) {
+                        $user=Auth::user();
+                        Mali::create([
+                            'user_id'=>$payment->user_id,
+                            'price'=>$payment->price,
+                            'description'=>$noor->type.'/'.$noor->description,
+                            'type'=>'noor',
+                            'table_name'=>'noors',
+                            'payment_id'=>$payment->id,
+                            'status'=>1
+                        ]);
+                    }
+
                     alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
                     return view('web.pages.noor-level-2-type-all', compact('noor'));
                 } else {
@@ -242,6 +269,16 @@ class PaymentController extends Controller
                         'status' => '5',
                     ]);
                     $user=User::find($payment->user_id);
+                    Mali::create([
+                        'user_id'=>$user->id,
+                        'price'=>$payment->price,
+                        'description'=>'پرداخت هزینه ثبت نام کلاس',
+                        'type'=>'bestankar',
+                        'table_name'=>'students_fields',
+                        'payment_id'=>$payment->id,
+                        'status'=>1
+
+                    ]);
                     if(isset($user))
                     {
                        StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
@@ -311,6 +348,19 @@ class PaymentController extends Controller
                 ]);
                 User::where('id', '=', $payment->user_id)->update([
                     'status' => '4',
+                ]);
+                $user=User::find($payment->user_id);
+                StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
+                    'status'=>2
+                ]);
+                Mali::create([
+                    'user_id'=>$payment->user_id,
+                    'price'=>$payment->price,
+                    'description'=>'پرداخت هزینه ثبت نام کلاس',
+                    'type'=>'bestankar',
+                    'table_name'=>'students_fields',
+                    'payment_id'=>$payment->id,
+                    'status'=>1
                 ]);
                 if(!Auth::check()) {
                     Auth::loginUsingId($payment->user_id);
@@ -475,6 +525,15 @@ class PaymentController extends Controller
                 {
                     StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
                         'status'=>2
+                    ]);
+                    Mali::create([
+                        'user_id'=>$user->id,
+                        'price'=>$payment->price,
+                        'description'=>'پرداخت هزینه ثبت نام کلاس',
+                        'type'=>'bestankar',
+                        'table_name'=>'students_fields',
+                        'payment_id'=>$payment->id,
+                        'status'=>1
                     ]);
                 }
 

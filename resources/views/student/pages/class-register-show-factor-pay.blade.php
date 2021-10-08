@@ -6,8 +6,8 @@
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
-
             <div class="row">
+                <div class="col-md-12">
                 <p class="bu-margin-bottom-30">{{__('web/public.student_field_select')}} : </p>
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -58,7 +58,7 @@
 
 
 
-
+            </div>
 
         </div>
     </section>

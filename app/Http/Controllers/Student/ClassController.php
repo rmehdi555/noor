@@ -21,6 +21,13 @@ use SoapClient;
 
 class ClassController extends StudentController
 {
+    public function list()
+    {
+        $fields = Field::all();
+        $user=Auth::user();
+        $studentFields = StudentsFields::where([['user_id', '=',$user->id],['status','>',1]])->orderBy('id','desc')->get();
+        return view('student.pages.class-list', compact('fields', 'studentFields'));
+    }
     public function register()
     {
         $fields = Field::all();

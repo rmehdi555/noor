@@ -211,11 +211,13 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::post('level/4/save','PanelController@level4Save')->name('student.level.4.save');
     Route::get('panel/print/details','PanelController@printDetails')->name('student.panel.print.details');
 
-    Route::get('/class/register','ClassController@register')->name('student.class.register');
-    Route::post('/class/register/save','ClassController@registerSave')->name('student.class.register.save');
-    Route::post('/class/register/field/add','StudentsFieldsController@add')->name('students.class.register.field.add');
-    Route::get('/class/register/field/delete/{id}','StudentsFieldsController@delete')->name('students.class.register.field.delete');
+    Route::get('class/register','ClassController@register')->name('student.class.register');
+    Route::post('class/register/save','ClassController@registerSave')->name('student.class.register.save');
+    Route::post('class/register/field/add','StudentsFieldsController@add')->name('students.class.register.field.add');
+    Route::get('class/register/field/delete/{id}','StudentsFieldsController@delete')->name('students.class.register.field.delete');
 
+    Route::get('class/list','ClassController@list')->name('student.class.list');
+    Route::get('mali/list','MaliController@list')->name('student.mali.list');
 
 });
 

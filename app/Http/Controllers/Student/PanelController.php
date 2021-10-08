@@ -202,7 +202,8 @@ class PanelController extends StudentController
         foreach ($user->student->studentsFields as $field)
         {
             $field->update([
-                'payment_id'=>$payment->id
+                'payment_id'=>$payment->id,
+                'user_id' => $user->id,
             ]);
         }
 
