@@ -230,6 +230,20 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::post('level/2/save','PanelController@level2Save')->name('teacher.level.2.save');
     Route::post('level/3/save','PanelController@level3Save')->name('teacher.level.3.save');
     Route::get('payment','PaymentController@index')->name('teacher.payment.index');
+
+    Route::get('panel/print/details','PanelController@printDetails')->name('teacher.panel.print.details');
+
+    //ایجاد کلاس جدید
+    Route::get('class/create','ClassController@create')->name('teacher.class.create');
+    Route::post('class/create/save','ClassController@createSave')->name('teacher.class.create.save');
+    //ثبت نام قران آموز ها در کلاس مدنظر
+    Route::get('class/register','ClassController@register')->name('student.class.register');
+    Route::post('class/register/save','ClassController@registerSave')->name('teacher.class.register.save');
+
+    Route::get('class/list','ClassController@list')->name('teacher.class.list');
+    //Route::get('mali/list','MaliController@list')->name('teacher.mali.list');
+
+
 });
 
 // end teacher  route

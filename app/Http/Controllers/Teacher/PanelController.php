@@ -58,6 +58,13 @@ class PanelController extends TeacherController
 
     }
 
+    public function printDetails()
+    {
+        $user=Auth::user();
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        return view('teacher.pages.status-4', compact('user','provinces','cities'));
+    }
 
     public function level2Save(Request $request)
     {

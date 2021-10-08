@@ -14,42 +14,12 @@ INSERT INTO `site_details` (`id`, `title`, `key`, `user_id`, `value`, `images`, 
 ALTER TABLE `students_fields` ADD `payment_id` INT(20) NOT NULL DEFAULT '0' AFTER `user_id`;
 
 
+--create table
+malis
+class_rooms
+class_rooms_students
 
 
-CREATE TABLE `malis` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
-  `price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payment_id` bigint(20) NOT NULL DEFAULT 0,
-  `status` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `malis`
---
-ALTER TABLE `malis`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `malis`
---
-ALTER TABLE `malis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 
 
