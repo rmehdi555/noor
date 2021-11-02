@@ -22,6 +22,11 @@ class StudentsFields extends Model
         return $this->code();
     }
 
+    public function student()
+    {
+        return $this->hasOne(Students::class,'id','student_id');
+    }
+
     private function code()
     {
         do {

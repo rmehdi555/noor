@@ -239,8 +239,10 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     //ثبت نام قران آموز ها در کلاس مدنظر
     Route::get('class/register','ClassController@register')->name('student.class.register');
     Route::post('class/register/save','ClassController@registerSave')->name('teacher.class.register.save');
+    Route::post('class/register/delete','ClassController@registerDelete')->name('teacher.class.register.delete');
 
     Route::get('class/list','ClassController@list')->name('teacher.class.list');
+    Route::get('class/show/{id}','ClassController@show')->name('teacher.class.show');
     //Route::get('mali/list','MaliController@list')->name('teacher.mali.list');
 
 

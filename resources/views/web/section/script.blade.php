@@ -11,8 +11,12 @@
 <script src="{{asset('web/2020/assets/js/custom-v-4.js')}}"></script>
 
 <!-- JS Part End-->
-
-
+<script>
+// In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 <script>
     // Add the following code if you want the name of the file appear on select
     $(".custom-file-input").on("change", function() {
@@ -51,6 +55,34 @@ return false;
         w.document.write(printContents);
         w.print();
         w.close();
+    }
+
+</script>
+
+
+<script type="text/javascript">
+
+function deleteFunction() {
+    event.preventDefault(); // prevent form submit
+    var form = event.target.form; // storing the form
+    swal({
+        title: "آیا از حذف مطمعن هستید؟",
+        text: "درصورت تایید حذف دیگر دسترسی به آن نخواهید داشت.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "بله",
+        cancelButtonText: "نه",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    })
+        .then((isConfirm) => {
+            if (isConfirm) {
+                form.submit();          // submitting the form when user press yes
+            } else {
+                swal("انصراف", "شما از حذف کردن منصرف شدین ", "error");
+            }
+        });;
     }
 </script>
 <!-- JS Part End--
