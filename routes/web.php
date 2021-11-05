@@ -219,6 +219,12 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::get('class/list','ClassController@list')->name('student.class.list');
     Route::get('mali/list','MaliController@list')->name('student.mali.list');
 
+    Route::get('practice/list','PracticeController@list')->name('student.practice.list');
+    Route::get('practice/show/{id}','PracticeController@show')->name('student.practice.show');
+    Route::get('practice/add','PracticeController@add')->name('student.practice.add');
+    Route::post('practice/save','PracticeController@save')->name('student.practice.save');
+    Route::post('practice/save/ans','PracticeController@saveAns')->name('student.practice.save.ans');
+
 });
 
 // end student  route
@@ -237,13 +243,20 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::get('class/create','ClassController@create')->name('teacher.class.create');
     Route::post('class/create/save','ClassController@createSave')->name('teacher.class.create.save');
     //ثبت نام قران آموز ها در کلاس مدنظر
-    Route::get('class/register','ClassController@register')->name('student.class.register');
+    Route::get('class/register','ClassController@register')->name('teacher.class.register');
     Route::post('class/register/save','ClassController@registerSave')->name('teacher.class.register.save');
     Route::post('class/register/delete','ClassController@registerDelete')->name('teacher.class.register.delete');
 
     Route::get('class/list','ClassController@list')->name('teacher.class.list');
     Route::get('class/show/{id}','ClassController@show')->name('teacher.class.show');
     //Route::get('mali/list','MaliController@list')->name('teacher.mali.list');
+
+
+    Route::get('practice/list','PracticeController@list')->name('teacher.practice.list');
+    Route::get('practice/show/{id}','PracticeController@show')->name('teacher.practice.show');
+    Route::get('practice/add','PracticeController@add')->name('teacher.practice.add');
+    Route::post('practice/save','PracticeController@save')->name('teacher.practice.save');
+    Route::post('practice/save/ans','PracticeController@saveAns')->name('teacher.practice.save.ans');
 
 
 });

@@ -49,6 +49,9 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('student.mali.list') }}" >مالی</a>
                                     </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('student.practice.list') }}" > ثبت فعالیت</a>
+                                    </li>
 
 
                                     <li class="list-group-item d-flex justify-content-between align-items-center">

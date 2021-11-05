@@ -1,5 +1,12 @@
 <?php
 
+/* class
+ * status=1 تازه ایجاد شده
+ * status=2 در حال برگذاری
+ * status=4 آزمون
+ * status=5 اتمام رسیده
+ */
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -17,10 +24,10 @@ class ClassRooms extends Model
 
     public function fieldid()
     {
-        return $this->hasOne(StudentsFields::class,'id','field_id');
+        return $this->hasOne(Field::class,'id','field_id');
     }
     public function fieldParentId()
     {
-        return $this->hasOne(StudentsFields::class,'id','field_parent_id');
+        return $this->hasOne(Field::class,'id','field_parent_id');
     }
 }

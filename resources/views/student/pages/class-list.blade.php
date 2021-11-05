@@ -22,7 +22,7 @@
                         @if(count($studentFields)>0)
                             <p class="bu-margin-bottom-30">لیست کلاس ها : </p>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-bordered table-hover js-basic-example dataTable">
                                     <thead>
                                     <tr>
                                         <th>#</th>

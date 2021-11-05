@@ -66,10 +66,10 @@ class ClassController extends TeacherController
             return redirect()->route('teacher.class.create');
         }
 
-        ClassRooms::create([
+        $classRoom=ClassRooms::create([
             'user_id'=>$user->id,
-            'field_id' => $request->field_main,
-            'field_parent_id'=>$request->field_child,
+            'field_id' => $request->field_child,
+            'field_parent_id'=>$request->field_main,
             'name'=>$request->name,
             'description'=>$request->description,
             'number_students'=>$request->number_students,
@@ -80,7 +80,7 @@ class ClassController extends TeacherController
             'status' => '1',
         ]);
         alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
-        return redirect()->route('teacher.class.create');
+        return redirect()->route('teacher.class.show',$classRoom->id);
     }
 
     public function list()

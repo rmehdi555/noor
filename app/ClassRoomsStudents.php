@@ -1,5 +1,12 @@
 <?php
 
+/* classRoomstudent
+ * status=1 تازه ایجاد شده
+ * status=2 در حال برگذاری
+ * status=4 آزمون
+ * status=5 اتمام رسیده
+ */
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

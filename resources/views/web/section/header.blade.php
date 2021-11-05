@@ -80,7 +80,7 @@
                                 @if(auth()->check())
                                     <li class=""><a href="{{ route('logout') }}">{{__('web/public.btn_logout')}}</a></li>
                                 @else
-                                    {{--<li class=""><a href="{{ route('login') }}">{{__('web/public.btn_login')}}</a></li>--}}
+                                    <li class=""><a href="{{ route('login') }}">{{__('web/public.btn_login')}}</a></li>
                                 @endif
                         </ul>
                     </div>

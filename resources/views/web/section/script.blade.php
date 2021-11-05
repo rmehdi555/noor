@@ -8,6 +8,15 @@
 <script src="{{asset('web/2020/assets/plg/easing/js/jquery.easing.min.js')}}"></script>
 <script src="{{asset('web/2020/assets/plg/OwlCarousel2-2.3.4/js/owl.carousel.min.js')}}"></script>
 
+<script src="{{asset('admin/2020/rtl/assets/bundles/datatablescripts.bundle.js')}}"></script>
+<script src="{{asset('admin/2020/assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('admin/2020/assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/2020/assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('admin/2020/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js')}}"></script>
+<script src="{{asset('admin/2020/assets/vendor/jquery-datatable/buttons/buttons.print.min.js')}}"></script>
+
+<script src="{{asset('admin/2020/rtl/assets/js/pages/tables/jquery-datatable.js')}}"></script>
+
 <script src="{{asset('web/2020/assets/js/custom-v-4.js')}}"></script>
 
 <!-- JS Part End-->

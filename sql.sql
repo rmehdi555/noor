@@ -18,6 +18,9 @@ ALTER TABLE `students_fields` ADD `payment_id` INT(20) NOT NULL DEFAULT '0' AFTE
 malis
 class_rooms
 class_rooms_students
+practices
+practices_accesses
+practices_details
 
 
 

@@ -22,11 +22,11 @@
                         @if(count($classes)>0)
                             <p class="bu-margin-bottom-30">لیست کلاس ها : </p>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-bordered table-hover js-basic-example dataTable">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        {{--<th>عنوان رشته (اصلی)</th>--}}
+                                        <th>عنوان رشته (اصلی)</th>
                                         <th>عنوان رشته (فرعی)</th>
                                         <th>نام</th>
                                         <th>توضیح</th>
@@ -41,8 +41,8 @@
                                     @foreach($classes as $item)
                                         <tr>
                                             <td>{{$i}}</td>
-                                            {{--<td>{{$item->fieldId->title}}</td>--}}
                                             <td>{{$item->fieldParentId->title}}</td>
+                                            <td>{{$item->fieldId->title}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->description}}</td>
                                             {{--<td>{{$item->address}}</td>--}}

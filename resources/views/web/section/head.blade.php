@@ -56,7 +56,10 @@ $locale = App::getLocale();
     <link type="text/css" href="{{asset('web/2020/assets/plg/Bootstrap-Offcanvas-master/css/bootstrap.offcanvas.min.css')}}" rel="stylesheet" />
     <link type="text/css" href="{{asset('web/2020/assets/plg/OwlCarousel2-2.3.4/css/owl.carousel.min.css')}}" rel="stylesheet" />
     <link type="text/css" href="{{asset('web/2020/assets/plg/OwlCarousel2-2.3.4/css/owl.theme.default.min.css')}}" rel="stylesheet" />
-
+    <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css')}}">
+    <link type="text/css" href="{{asset('web/2020/assets/css/message-box.css')}}" rel="stylesheet" />
     <!-- Main Stylesheet -->
     <link type="text/css" href="{{asset('web/2020/assets/css/style-v-4.css')}}" rel="stylesheet" />
 
