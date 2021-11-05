@@ -225,6 +225,12 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::post('practice/save','PracticeController@save')->name('student.practice.save');
     Route::post('practice/save/ans','PracticeController@saveAns')->name('student.practice.save.ans');
 
+    Route::get('ticket/list','TicketController@list')->name('student.ticket.list');
+    Route::get('ticket/show/{id}','TicketController@show')->name('student.ticket.show');
+    Route::get('ticket/add','TicketController@add')->name('student.ticket.add');
+    Route::post('ticket/save','TicketController@save')->name('student.ticket.save');
+    Route::post('ticket/save/ans','TicketController@saveAns')->name('student.ticket.save.ans');
+
 });
 
 // end student  route
@@ -257,6 +263,13 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::get('practice/add','PracticeController@add')->name('teacher.practice.add');
     Route::post('practice/save','PracticeController@save')->name('teacher.practice.save');
     Route::post('practice/save/ans','PracticeController@saveAns')->name('teacher.practice.save.ans');
+
+
+    Route::get('ticket/list','TicketController@list')->name('teacher.ticket.list');
+    Route::get('ticket/show/{id}','TicketController@show')->name('teacher.ticket.show');
+    Route::get('ticket/add','TicketController@add')->name('teacher.ticket.add');
+    Route::post('ticket/save','TicketController@save')->name('teacher.ticket.save');
+    Route::post('ticket/save/ans','TicketController@saveAns')->name('teacher.ticket.save.ans');
 
 
 });

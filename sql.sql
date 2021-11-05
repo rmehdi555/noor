@@ -21,7 +21,9 @@ class_rooms_students
 practices
 practices_accesses
 practices_details
-
+-- شماره شروع از 1000
+tickets
+tickets_details
 
 
 
