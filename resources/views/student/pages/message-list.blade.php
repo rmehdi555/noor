@@ -17,30 +17,24 @@
                             </div>
                         @endif
 
-                            <a class="btn btn-info" href="{{ route('student.ticket.add') }}">ثبت تیکت جدید</a>
 
-                        <br>
-                            <br>
-                            <hr>
-                        @if(count($tickets)>0)
-                            <p class="bu-margin-bottom-30">لیست پشتیبانی های ثبت شده : </p>
+                        @if(count($messages)>0)
+                            <p class="bu-margin-bottom-30">لیست پیام ها : </p>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>کد پیگیری</th>
                                         <th>تاریخ</th>
                                         <th>عنوان تیکت</th>
                                         <th>نام ارسال کننده </th>
                                         <th>نام دریافت کننده</th>
-                                        <th>وضعیت</th>
                                         <th>تنظیمات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @php $i=1@endphp
-                                    @foreach($tickets as $item)
+                                    @foreach($messages as $item)
                                         @php
                                             if($item->updated_at!=null)
                                             $item->created_at=$item->updated_at;
@@ -48,19 +42,15 @@
 
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$item->id}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->userSender->name}} {{$item->userSender->family}}</td>
-                                            <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>
-                                            @switch($item->status)
-                                                @case(1)
-                                                <td>پاسخ داده شده</td>
-                                                @break
-                                                @default
-                                                <td>در انتظار پاسخ</td>
-                                            @endswitch
-                                            <td><a class="btn btn-info" href="{{ route('student.ticket.show',$item->id) }}">نمایش تیکت</a></td>
+                                            @if($user->user_id_reciver==0)
+                                                <td>پیام عمومی</td>
+                                                @else
+                                                <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>
+                                            @endif
+                                            <td><a class="btn btn-info" href="{{ route('student.message.show',$item->id) }}">نمایش پیام</a></td>
                                         </tr>
                                         @php $i++ @endphp
                                     @endforeach

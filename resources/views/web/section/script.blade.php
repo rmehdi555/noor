@@ -22,9 +22,9 @@
 <!-- JS Part End-->
 <script>
 // In your Javascript (external .js resource or <script> tag)
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2();
-    });
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
 </script>
 <script>
     // Add the following code if you want the name of the file appear on select
@@ -94,6 +94,9 @@ function deleteFunction() {
         });;
     }
 </script>
+
+
+
 <!-- JS Part End--
 </body>
 </html>

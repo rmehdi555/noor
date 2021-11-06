@@ -18,14 +18,14 @@
                             </div>
                         @endif
                         <h5>
-                            عنوان فعالیت :
-                            {{$practice->title}}
+                            عنوان تیکت پشتیبانی :
+                            {{$ticket->title}}
                         </h5>
                         <div class="row">
 
                             <div class="mesgs">
                                 <div class="msg_history">
-                                    @foreach($practice->practicesDetails as $item)
+                                    @foreach($ticket->ticketsDetails as $item)
                                         @if($item->user_id==$user->id)
                                             <div class="outgoing_msg">
                                                 <div class="sent_msg">
@@ -63,10 +63,10 @@
 
                         </div>
 
-                            <h5>برای پاسخ و یا اضافه کردن به فعالیت اطلاعات زیر را وارد نمایید</h5>
+                            <h5>برای پاسخ به تیکت پشتیبانی اطلاعات زیر را وارد نمایید</h5>
 
 
-                            <form class="form-horizontal" method="POST" action="{{ route('student.practice.save.ans') }}" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="POST" action="{{ route('student.ticket.save.ans') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row">
@@ -93,7 +93,7 @@
                                 <div class="row">
 
                                     <label class="col-md-12 col-sm-6 control-label"
-                                           for="province">متن فعالیت: <span
+                                           for="province">متن پاسخ: <span
                                                 class="required">*</span></label>
                                     <div class="col-md-12 col-sm-6">
                                         <textarea name="description" rows="10" id="input-enquiry" class="form-control  @error('description') is-invalid @enderror"></textarea>
@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <input type="hidden" name="practice_id" value="{{$practice->id}}">
+                                    <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
 
                                     <div class="col-md-6 padding-top-15">
 
@@ -110,7 +110,7 @@
                                         <div class="buttons">
                                             <div class="pull-right">
                                                 <input type="submit" class="btn btn-primary"
-                                                       value="ثبت ادامه / پاسخ فعالیت">
+                                                       value="ثبت ادامه / پاسخ تیکت">
                                             </div>
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-@extends('student.master')
+@extends('teacher.master')
 @section('content')
 
 
@@ -21,21 +21,25 @@
 
 
 
-                            <form class="form-horizontal" method="POST" action="{{ route('student.ticket.save') }}" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="POST" action="{{ route('teacher.message.save') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-12 col-sm-6 control-label"
-                                               for="province">ابتدا دریافت کننده تیکت پشتیبانی را انتخاب کنید : <span
+                                               for="province">ابتدا دریافت کننده پیام را انتخاب کنید : ( درصورتی که عومی انتخاب کنید برای همهی اعضا ارسال میشود ) <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-6">
 
-                                            <select class="js-example-basic-single form-control" name="user_id_reciver">
+                                            <select class=" form-control js-example-basic-single" name="user_id_reciver">
+                                                <option value="0"> عمومی </option>
                                                 @foreach ($reciversAdmin as $item)
-                                                    <option value="{{$item->id}}"> {{$item->name}} {{$item->family}} </option>
+                                                    <option value="{{$item->id}}"> ادمین : {{$item->name}} {{$item->family}} </option>
                                                 @endforeach
-                                                @foreach ($recivers as $item)
-                                                    <option value="{{$item->user_id}}"> {{$item->name}} {{$item->family}} </option>
+                                                @foreach ($reciversTeacher as $item)
+                                                    <option value="{{$item->id}}"> معلم : {{$item->name}} {{$item->family}} </option>
+                                                @endforeach
+                                                @foreach ($reciversStudent as $item)
+                                                    <option value="{{$item->id}}"> قرآن آموز : {{$item->name}} {{$item->family}} </option>
                                                 @endforeach
                                             </select>
 
@@ -47,7 +51,7 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-12 col-sm-6 control-label"
-                                               for="province">عنوان تیکت پشتیبانی: <span
+                                               for="province">عنوان پیام: <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-6">
                                             <input type="text" name="title" id="title" value="{{old('title')}}"

@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tickets extends Model
+class Messages extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'user_id','user_id_sender','user_id_reciver', 'title','visited_sender','visited_reciver','status'
+        'user_id','user_id_sender','user_id_reciver', 'title','visited_reciver','status'
     ];
 
     protected $dates = ['deleted_at'];
@@ -21,15 +21,15 @@ class Tickets extends Model
     }
     public function userSender()
     {
-         return $this->hasOne(User::class,'id','user_id_sender');
+        return $this->hasOne(User::class,'id','user_id_sender');
     }
 
     public function userReciver()
     {
         return $this->hasOne(User::class,'id','user_id_reciver');
     }
-    public function ticketsDetails()
+    public function messagesDetails()
     {
-        return $this->hasMany(TicketsDetails::class,'ticket_id','id');
+        return $this->hasMany(MessagesDetails::class,'message_id','id');
     }
 }

@@ -1,4 +1,4 @@
-@extends('teacher.master')
+@extends('student.master')
 @section('content')
 
 
@@ -18,14 +18,14 @@
                             </div>
                         @endif
                         <h5>
-                            عنوان تیکت پشتیبانی :
-                            {{$ticket->title}}
+                            عنوان پیام :
+                            {{$message->title}}
                         </h5>
                         <div class="row">
 
                             <div class="mesgs">
                                 <div class="msg_history">
-                                    @foreach($ticket->ticketsDetails as $item)
+                                    @foreach($message->messagesDetails as $item)
                                         @if($item->user_id==$user->id)
                                             <div class="outgoing_msg">
                                                 <div class="sent_msg">
@@ -63,65 +63,6 @@
 
                         </div>
 
-                            <h5>برای پاسخ به تیکت پشتیبانی اطلاعات زیر را وارد نمایید</h5>
-
-
-                            <form class="form-horizontal" method="POST" action="{{ route('teacher.ticket.save.ans') }}" enctype="multipart/form-data">
-                                @csrf
-
-                                <div class="row">
-
-
-                                    <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-6 col-sm-6 control-label"
-                                               for="meli_image">فایل : </label>
-                                        <div class="col-md-12 col-sm-10">
-                                            <div class="custom-file ">
-                                                <input type="file" class="custom-file-input " id="file" name="file">
-                                                <label class="custom-file-label text-align-left" for="customFile"></label>
-                                            </div>
-                                            <span ><strong>تنها فایل : jpg,jpeg,png,pdf قابل بارگذاری میباشد</strong></span>
-                                            @error('file')
-                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                                <div class="row">
-
-                                    <label class="col-md-12 col-sm-6 control-label"
-                                           for="province">متن پاسخ: <span
-                                                class="required">*</span></label>
-                                    <div class="col-md-12 col-sm-6">
-                                        <textarea name="description" rows="10" id="input-enquiry" class="form-control  @error('description') is-invalid @enderror"></textarea>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
-
-                                    <div class="col-md-6 padding-top-15">
-
-                                        <label class=" control-label"
-                                               for="input-name"><br></label>
-                                        <div class="buttons">
-                                            <div class="pull-right">
-                                                <input type="submit" class="btn btn-primary"
-                                                       value="ثبت ادامه / پاسخ تیکت">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </form>
-
-
-                            <br><br>
-                            <hr>
 
 
 

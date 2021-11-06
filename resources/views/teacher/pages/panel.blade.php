@@ -25,5 +25,48 @@
     </section>
     <!-- Start: Inner main -->
 
+    @if(count($panelMessages)>0)
+        <p class="bu-margin-bottom-30">لیست آخرین پیام ها : </p>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>تاریخ</th>
+                    <th>عنوان تیکت</th>
+                    <th>نام ارسال کننده </th>
+                    <th>نام دریافت کننده</th>
+                    <th>تنظیمات</th>
+                </tr>
+                </thead>
+                <tbody>
+                @php $i=1@endphp
+                @foreach($panelMessages as $item)
+                    @php
+                        if($item->updated_at!=null)
+                        $item->created_at=$item->updated_at;
+                    @endphp
+
+                    <tr>
+                        <td>{{$i}}</td>
+                        <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                        <td>{{$item->title}}</td>
+                        <td>{{$item->userSender->name}} {{$item->userSender->family}}</td>
+                        @if($user->user_id_reciver==0)
+                            <td>پیام عمومی</td>
+                        @else
+                            <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>
+                        @endif
+                        <td><a class="btn btn-info" href="{{ route('student.message.show',$item->id) }}">نمایش پیام</a></td>
+                    </tr>
+                    @php $i++ @endphp
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    @endif
+
 
 @endsection

@@ -231,6 +231,9 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::post('ticket/save','TicketController@save')->name('student.ticket.save');
     Route::post('ticket/save/ans','TicketController@saveAns')->name('student.ticket.save.ans');
 
+    Route::get('message/list','MessageController@list')->name('student.message.list');
+    Route::get('message/show/{id}','MessageController@show')->name('student.message.show');
+
 });
 
 // end student  route
@@ -270,6 +273,12 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::get('ticket/add','TicketController@add')->name('teacher.ticket.add');
     Route::post('ticket/save','TicketController@save')->name('teacher.ticket.save');
     Route::post('ticket/save/ans','TicketController@saveAns')->name('teacher.ticket.save.ans');
+
+
+    Route::get('message/list','MessageController@list')->name('teacher.message.list');
+    Route::get('message/show/{id}','MessageController@show')->name('teacher.message.show');
+    Route::get('message/add','MessageController@add')->name('teacher.message.add');
+    Route::post('message/save','MessageController@save')->name('teacher.message.save');
 
 
 });

@@ -45,9 +45,10 @@ class PanelController extends TeacherController
                 return view('teacher.pages.status-3', compact( 'user'));
                 break;
             case 4:
-                $provinces = Provinces::all();
-                $cities = Cities::all();
-                return view('teacher.pages.status-4', compact('user','provinces','cities'));
+//                $provinces = Provinces::all();
+//                $cities = Cities::all();
+//                return view('teacher.pages.status-4', compact('user','provinces','cities'));
+                return view('teacher.pages.panel');
                 break;
 
             default:

@@ -60,6 +60,8 @@ $locale = App::getLocale();
     <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/2020/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css')}}">
     <link type="text/css" href="{{asset('web/2020/assets/css/message-box.css')}}" rel="stylesheet" />
+
+
     <!-- Main Stylesheet -->
     <link type="text/css" href="{{asset('web/2020/assets/css/style-v-4.css')}}" rel="stylesheet" />
 
@@ -77,6 +79,8 @@ $locale = App::getLocale();
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-migrate-1.4.1.min.js')}}"></script>
 
     <script src="{{asset('web/2020/assets/js/sweetalert.min.js')}}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 

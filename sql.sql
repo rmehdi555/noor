@@ -24,6 +24,8 @@ practices_details
 -- شماره شروع از 1000
 tickets
 tickets_details
+messages
+messages_details
 
 
 

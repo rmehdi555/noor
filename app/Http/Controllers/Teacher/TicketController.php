@@ -98,9 +98,6 @@ class TicketController extends TeacherController
         }
         if($ticket->user_id_reciver==$user->id or $ticket->user_id_sender==$user->id )
         {
-            $ticket->update([
-                'user_id_reciver'=>'1'
-            ]);
             return view('teacher.pages.ticket-show', compact('ticket'));
         }else{
             alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
@@ -134,10 +131,16 @@ class TicketController extends TeacherController
             if ($file) {
                 $urlFile = $this->uploadImage($request->file('file'), 'teacher');
             }
+            if($ticket->user_id_reciver==$user->id)
+            {
+                $status=1;
+            }else{
+                $status=0;
+            }
             $ticket->update([
                 'visited_sender'=>0,
                 'visited_reciver'=>0,
-                'status'=>1,
+                'status'=>$status,
             ]);
             $ticketDetails=TicketsDetails::create([
                 'user_id'=>$user->id,

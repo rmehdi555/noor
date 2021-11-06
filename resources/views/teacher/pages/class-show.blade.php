@@ -46,7 +46,7 @@
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-6">
 
-                                            <select class=" form-control js-example-basic-single" name="studentFieldId">
+                                            <select class="form-control js-example-basic-single" name="studentFieldId">
                                                 @foreach ($studentsRegister as $item)
                                                     <option value="{{$item->id}}">{{$item->student->student_id}} : {{$item->student->name}} {{$item->student->family}} </option>
                                                 @endforeach
