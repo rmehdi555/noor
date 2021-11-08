@@ -31,6 +31,10 @@
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-3.3.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('web/2020/assets/js/jquery-migrate-1.4.1.min.js')}}"></script>
     <script src="{{asset('web/2020/assets/js/sweetalert.min.js')}}"></script>
+    <link type="text/css" href="{{asset('web/2020/assets/css/message-box.css')}}" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{asset('admin/2020/rtl/assets/css/main.css')}}">

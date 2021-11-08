@@ -149,7 +149,16 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
 
     Route::resource('noors','NoorsController');
     Route::resource('mosabeghe','MosabegheMalekeZamanController');
-     Route::resource('specialization','SpecializationController');
+    Route::resource('specialization','SpecializationController');
+
+
+   // message route admin panel
+    Route::get('message/list','MessageController@list')->name('admin.message.list');
+    Route::get('message/show/{id}','MessageController@show')->name('admin.message.show');
+    Route::get('message/add','MessageController@add')->name('admin.message.add');
+    Route::post('message/save','MessageController@save')->name('admin.message.save');
+
+
 });
 
 // end admin  route

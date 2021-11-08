@@ -1,6 +1,7 @@
-@extends('teacher.master')
+@extends('admin.master')
 @section('content')
-
+    <div id="main-content">
+        <div class="container-fluid">
 
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
@@ -21,7 +22,7 @@
 
 
 
-                            <form class="form-horizontal" method="POST" action="{{ route('teacher.message.save') }}" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="POST" action="{{ route('admin.message.save') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
@@ -127,7 +128,8 @@
     </section>
     <!-- Start: Inner main -->
 
-
+</div>
+</div>
 
 
 

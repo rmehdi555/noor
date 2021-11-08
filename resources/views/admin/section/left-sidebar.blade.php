@@ -115,6 +115,19 @@
                         </ul>
 
                     </li>
+                    <li class="@if($SID>=80 and $SID<90) active @endif">
+                        <a href="#slider" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>پیام ها</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==80 ) active @endif"><a
+                                        href="{{ route('admin.message.list',['SID' => '80']) }}">لیست پیام ها</a>
+                            </li>
+                            <li class="@if($SID==81 ) active @endif"><a
+                                        href="{{ route('admin.message.add',['SID' => '81']) }}">ارسال پیام جدید</a>
+                            </li>
+                        </ul>
+
+                    </li>
                     {{--<li class="@if($SID>=100 and $SID<200) active @endif">--}}
                     {{--<a href="#slider" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.slider')}}</span></a>--}}
                     {{--<ul aria-expanded="false" class="collapse">--}}

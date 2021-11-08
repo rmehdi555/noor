@@ -33,9 +33,14 @@
 <script src="{{asset('admin/2020/assets/vendor/nouislider/nouislider.js')}}"></script> <!-- noUISlider Plugin Js -->
 
 <script src="{{asset('admin/2020/rtl/assets/js/pages/forms/advanced-form-elements.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
-
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 <script>
     $(function() {
         // validation needs name of the element
@@ -151,6 +156,9 @@ function deleteFunction() {
     });
 }
 </script>
+
+
+
 
 @yield('script')
 </body>

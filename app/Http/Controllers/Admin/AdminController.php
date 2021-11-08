@@ -46,6 +46,20 @@ class AdminController extends Controller
         return $images;
     }
 
+    public function uploadImage($file,$type="public")
+    {
+        $year = Carbon::now()->year;
+        $month = Carbon::now()->month;
+        $imagePath = "/upload/file/{$type}/{$year}/{$month}/";
+        $filename = $file->getClientOriginalName();
+        $filename=explode('.',$filename);
+        $filename=end($filename);
+        $filename = uniqid().'.'.$filename;
+        $file = $file->move(public_path($imagePath) , $filename);
+        $url=$imagePath .$filename;
+        return $url;
+    }
+
 
 
 }
