@@ -128,12 +128,35 @@
                         </ul>
 
                     </li>
-                    <li class="@if($SID>=90 and $SID<95) active @endif">
+                    <li class="@if($SID>=90 and $SID<100) active @endif">
                         <a href="#slider" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>درخواست ها</span></a>
+                                    class="icon-diamond"></i><span>درخواست های پشتیبانی</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==90 ) active @endif"><a
-                                        href="{{ route('admin.ticket.list',['SID' => '90']) }}">لیست درخواست ها</a>
+                                        href="{{ route('admin.ticket.list',['SID' => '90']) }}">لیست درخواست های پشتیبانی</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="@if($SID>=520 and $SID<530) active @endif">
+                        <a href="#slider" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>فعالیت ها</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==520 ) active @endif"><a
+                                        href="{{ route('admin.practice.list',['SID' => '520']) }}">لیست فعالیت های قرآن آموزها</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="@if($SID>=530 and $SID<540) active @endif">
+                        <a href="#slider" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>شیوه نامه ها</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==530 ) active @endif"><a
+                                        href="{{ route('methodOfLetter.index',['SID' => '530']) }}">لیست شیوه نامه ها</a>
+                            </li>
+                            <li class="@if($SID==531 ) active @endif"><a
+                                        href="{{ route('methodOfLetter.create',['SID' => '531']) }}">ایجاد شیوه نامه جدید</a>
                             </li>
                         </ul>
 
@@ -175,7 +198,7 @@
                         </ul>
                     </li>
 
-                    <li class="@if($SID>=500 and $SID<600) active @endif">
+                    <li class="@if($SID>=500 and $SID<510) active @endif">
                         <a href="#menus" class="has-arrow"><i
                                     class="icon-diamond"></i><span>{{__('admin/public.menus')}}</span></a>
                         <ul aria-expanded="false" class="collapse">

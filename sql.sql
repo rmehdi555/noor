@@ -26,6 +26,7 @@ tickets
 tickets_details
 messages
 messages_details
+method_of_letters
 
 
 

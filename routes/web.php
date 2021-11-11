@@ -151,13 +151,12 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('mosabeghe','MosabegheMalekeZamanController');
     Route::resource('specialization','SpecializationController');
 
-
-    // message route admin panel
-    Route::get('message/list','MessageController@list')->name('admin.message.list');
-    Route::get('message/show/{id}','MessageController@show')->name('admin.message.show');
-    Route::get('message/add','MessageController@add')->name('admin.message.add');
-    Route::post('message/save','MessageController@save')->name('admin.message.save');
-
+    // practice route admin panel
+    Route::get('practice/list','PracticeController@list')->name('admin.practice.list');
+    Route::get('practice/show/{id}','PracticeController@show')->name('admin.practice.show');
+   // Route::get('practice/add','PracticeController@add')->name('admin.practice.add');
+   // Route::post('practice/save','PracticeController@save')->name('admin.practice.save');
+    Route::post('practice/save/ans','PracticeController@saveAns')->name('admin.practice.save.ans');
 
     // ticket route admin panel
     Route::get('ticket/list','TicketController@list')->name('admin.ticket.list');
@@ -165,6 +164,17 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
 //    Route::get('ticket/add','TicketController@add')->name('admin.ticket.add');
 //    Route::post('ticket/save','TicketController@save')->name('admin.ticket.save');
     Route::post('ticket/save/ans','TicketController@saveAns')->name('admin.ticket.save.ans');
+
+    // message route admin panel
+    Route::get('message/list','MessageController@list')->name('admin.message.list');
+    Route::get('message/show/{id}','MessageController@show')->name('admin.message.show');
+    Route::get('message/add','MessageController@add')->name('admin.message.add');
+    Route::post('message/save','MessageController@save')->name('admin.message.save');
+
+    Route::resource('methodOfLetter','MethodOfLetterController');
+
+
+
 
 
 
@@ -297,6 +307,9 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::get('message/show/{id}','MessageController@show')->name('teacher.message.show');
     Route::get('message/add','MessageController@add')->name('teacher.message.add');
     Route::post('message/save','MessageController@save')->name('teacher.message.save');
+
+
+    Route::get('methodOfLetter/list','MethodOfLetterController@list')->name('teacher.methodOfLetter.list');
 
 
 });

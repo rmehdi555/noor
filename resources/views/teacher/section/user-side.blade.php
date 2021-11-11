@@ -62,6 +62,10 @@
                                         <a href="{{ route('teacher.message.list') }}" > پیام ها</a>
                                         {{--<span class="badge badge-primary badge-pill">جدید 2</span>--}}
                                     </li>
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.methodOfLetter.list') }}" > شیوه نامه ها</a>
+                                    </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color : #FF0000">
                                         <a href="{{ route('logout') }}">{{__('web/public.btn_logout')}}</a>
                                         <span class="badge badge-primary badge-pill"></span>
