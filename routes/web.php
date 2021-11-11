@@ -152,11 +152,20 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('specialization','SpecializationController');
 
 
-   // message route admin panel
+    // message route admin panel
     Route::get('message/list','MessageController@list')->name('admin.message.list');
     Route::get('message/show/{id}','MessageController@show')->name('admin.message.show');
     Route::get('message/add','MessageController@add')->name('admin.message.add');
     Route::post('message/save','MessageController@save')->name('admin.message.save');
+
+
+    // ticket route admin panel
+    Route::get('ticket/list','TicketController@list')->name('admin.ticket.list');
+    Route::get('ticket/show/{id}','TicketController@show')->name('admin.ticket.show');
+//    Route::get('ticket/add','TicketController@add')->name('admin.ticket.add');
+//    Route::post('ticket/save','TicketController@save')->name('admin.ticket.save');
+    Route::post('ticket/save/ans','TicketController@saveAns')->name('admin.ticket.save.ans');
+
 
 
 });

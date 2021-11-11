@@ -128,6 +128,16 @@
                         </ul>
 
                     </li>
+                    <li class="@if($SID>=90 and $SID<95) active @endif">
+                        <a href="#slider" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>درخواست ها</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==90 ) active @endif"><a
+                                        href="{{ route('admin.ticket.list',['SID' => '90']) }}">لیست درخواست ها</a>
+                            </li>
+                        </ul>
+
+                    </li>
                     {{--<li class="@if($SID>=100 and $SID<200) active @endif">--}}
                     {{--<a href="#slider" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.slider')}}</span></a>--}}
                     {{--<ul aria-expanded="false" class="collapse">--}}
