@@ -172,6 +172,8 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::post('message/save','MessageController@save')->name('admin.message.save');
 
     Route::resource('methodOfLetter','MethodOfLetterController');
+    Route::resource('meeting','MeetingController');
+
 
 
 
@@ -310,6 +312,7 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
 
 
     Route::get('methodOfLetter/list','MethodOfLetterController@list')->name('teacher.methodOfLetter.list');
+    Route::get('meeting/list','MeetingController@list')->name('teacher.meeting.list');
 
 
 });

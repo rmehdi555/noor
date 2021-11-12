@@ -26,7 +26,7 @@ class MessageController extends AdminController
         $user=User::find($user->id);
         $reciversAdmin=User::where('level','=','admin')->get();
         $reciversStudent=User::where('level','=','student')->get();
-        $reciversTeacher=User::where('level','=','admin')->get();
+        $reciversTeacher=User::where('level','=','teacher')->get();
         $SID=$request->SID;
         return view('admin.message.add', compact('reciversAdmin','reciversStudent','reciversTeacher','SID'));
     }

@@ -20,8 +20,8 @@
                         <br>
                             <br>
                             <hr>
-                        @if(count($methodOfLetters)>0)
-                            <p class="bu-margin-bottom-30">لیست شیوه نامه ها : </p>
+                        @if(count($meetings)>0)
+                            <p class="bu-margin-bottom-30">لیست جلسه ها : </p>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable">
                                     <thead>
@@ -29,12 +29,13 @@
                                         <th>#</th>
                                         <th>تاریخ</th>
                                         <th>عنوان </th>
+                                        <th>متن </th>
                                         <th>مشاهده فایل</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @php $i=1@endphp
-                                    @foreach($methodOfLetters as $item)
+                                    @foreach($meetings as $item)
                                         @php
                                             if($item->updated_at!=null)
                                             $item->created_at=$item->updated_at;
@@ -44,6 +45,7 @@
                                             <td>{{$i}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
                                             <td>{{$item->title}}</td>
+                                            <td><span>{{$item->description}}</span></td>
                                             <td> <a href="{{asset($item->file_url)}}" target="_blank">اینجا کلیک کنید</a>
                                             </td>
                                         </tr>

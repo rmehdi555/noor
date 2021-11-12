@@ -1,4 +1,4 @@
-@extends('student.master')
+@extends('teacher.master')
 @section('content')
 
 
@@ -6,21 +6,19 @@
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
-
             <div class="row">
-                <!--Middle Part Start-->
-                <div id="content" class="col-sm-12">
-                    <h1 class="title-404 text-center">404</h1>
-                    <p class="text-center lead">{{__('web/messages.404_1')}}<br>
-                        {{__('web/messages.404_2')}} </p>
-                    <div class="buttons text-center"><a class="btn btn-primary btn-lg"
-                                                        href="{{ route('web.index') }}"> {{__('web/public.continuation')}}</a>
+                <div class="col-md-12">
+                    <div class="alert alert-success m-1">
+                        <p class="p-1 text-justify">
+                            کد معلمی:
+                            {{$user->teacher->teacher_id }}
+                            <br>
+                            تاریخ ایجاد :
+                            <span >{{\App\Providers\MyProvider::show_date($user->created_at,'H:i j-n-Y ')}}</span>
+                        </p>
                     </div>
                 </div>
-                <!--Middle Part End -->
             </div>
-
-
         </div>
     </section>
     <!-- Start: Inner main -->

@@ -1,12 +1,8 @@
 <div id="leftsidebar" class="sidebar">
-    @if(!isset($SID))
-        {{$SID=100}}
-    @endif
     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 65px);">
         <div class="sidebar-scroll" style="overflow: hidden; width: auto; height: calc(100vh - 65px);">
             <nav id="leftsidebar-nav" class="sidebar-nav">
                 <ul id="main-menu" class="metismenu">
-                    <li class="heading">{{__('admin/public.main')}}</li>
                     <li><a href="{{ route('admin.panel') }}"><i
                                     class="icon-home"></i><span>{{__('admin/public.dashboard')}}</span></a></li>
                     {{--<li class="heading">App</li>--}}
@@ -15,9 +11,9 @@
                     {{--<li><a href="app-calendar.html"><i class="icon-calendar"></i><span>Calendar</span></a></li>--}}
                     {{--<li><a href="app-taskboard.html"><i class="icon-notebook"></i><span>Taskboard</span></a></li>--}}
                     {{--<li class="heading">UI Elements</li>--}}
-                    <li class="@if($SID>=10 and $SID<20) active @endif">
-                        <a href="#news_categories" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.news_categories')}}</span></a>
+                    <li class="@if($SID>=10 and $SID<30) active @endif">
+                        <a href="#news" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>{{__('admin/public.news')}}</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==10 ) active @endif"><a
                                         href="{{ route('newsCategories.index',['SID' => '10']) }}">{{__('admin/public.news_categories_list')}}</a>
@@ -25,12 +21,6 @@
                             <li class="@if($SID==11 ) active @endif"><a
                                         href="{{ route('newsCategories.create',['SID' => '11']) }}">{{__('admin/public.news_categories_add')}}</a>
                             </li>
-                        </ul>
-                    </li>
-                    <li class="@if($SID>=20 and $SID<30) active @endif">
-                        <a href="#news" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.news')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==20 ) active @endif"><a
                                         href="{{ route('news.index',['SID' => '20']) }}">{{__('admin/public.news_list')}}</a>
                             </li>
@@ -115,23 +105,15 @@
                         </ul>
 
                     </li>
-                    <li class="@if($SID>=80 and $SID<90) active @endif">
-                        <a href="#slider" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>پیام ها</span></a>
+                    <li class="@if($SID>=80 and $SID<100) active @endif">
+                        <a href="#message" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>پیام ها و پشتیبانی ها</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==80 ) active @endif"><a
                                         href="{{ route('admin.message.list',['SID' => '80']) }}">لیست پیام ها</a>
                             </li>
                             <li class="@if($SID==81 ) active @endif"><a
                                         href="{{ route('admin.message.add',['SID' => '81']) }}">ارسال پیام جدید</a>
-                            </li>
-                        </ul>
-
-                    </li>
-                    <li class="@if($SID>=90 and $SID<100) active @endif">
-                        <a href="#slider" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>درخواست های پشتیبانی</span></a>
-                        <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==90 ) active @endif"><a
                                         href="{{ route('admin.ticket.list',['SID' => '90']) }}">لیست درخواست های پشتیبانی</a>
                             </li>
@@ -139,7 +121,7 @@
 
                     </li>
                     <li class="@if($SID>=520 and $SID<530) active @endif">
-                        <a href="#slider" class="has-arrow"><i
+                        <a href="#practice" class="has-arrow"><i
                                     class="icon-diamond"></i><span>فعالیت ها</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==520 ) active @endif"><a
@@ -148,9 +130,9 @@
                         </ul>
 
                     </li>
-                    <li class="@if($SID>=530 and $SID<540) active @endif">
-                        <a href="#slider" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>شیوه نامه ها</span></a>
+                    <li class="@if($SID>=530 and $SID<550) active @endif">
+                        <a href="#methodOfLetter" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>شیوه نامه ها و جلسات</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==530 ) active @endif"><a
                                         href="{{ route('methodOfLetter.index',['SID' => '530']) }}">لیست شیوه نامه ها</a>
@@ -158,31 +140,16 @@
                             <li class="@if($SID==531 ) active @endif"><a
                                         href="{{ route('methodOfLetter.create',['SID' => '531']) }}">ایجاد شیوه نامه جدید</a>
                             </li>
+
+                            <li class="@if($SID==540 ) active @endif"><a
+                                        href="{{ route('meeting.index',['SID' => '540']) }}">لیست جلسات</a>
+                            </li>
+                            <li class="@if($SID==541 ) active @endif"><a
+                                        href="{{ route('meeting.create',['SID' => '541']) }}">ایجاد جلسه جدید</a>
+                            </li>
                         </ul>
 
                     </li>
-                    {{--<li class="@if($SID>=100 and $SID<200) active @endif">--}}
-                    {{--<a href="#slider" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.slider')}}</span></a>--}}
-                    {{--<ul aria-expanded="false" class="collapse">--}}
-                    {{--<li class="@if($SID==100 ) active @endif"><a href="{{ route('slider.index',['SID' => '100']) }}">{{__('admin/public.slider_list')}}</a></li>--}}
-                    {{--<li class="@if($SID==101 ) active @endif"><a href="{{ route('slider.create',['SID' => '101']) }}">{{__('admin/public.slider_add')}}</a></li>--}}
-                    {{--</ul>--}}
-                    {{--</li>--}}
-                    {{--<li class="@if($SID>=200 and $SID<300) active @endif">--}}
-                    {{--<a href="#products" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.products')}}</span></a>--}}
-                    {{--<ul aria-expanded="false" class="collapse">--}}
-                    {{--<li class="@if($SID==200 ) active @endif"><a href="{{ route('products.index',['SID' => '200']) }}">{{__('admin/public.products_list')}}</a></li>--}}
-                    {{--<li class="@if($SID==201 ) active @endif"><a href="{{ route('products.create',['SID' => '201']) }}">{{__('admin/public.product_add')}}</a></li>--}}
-                    {{--</ul>--}}
-                    {{--</li>--}}
-
-                    {{--<li class="@if($SID>=300 and $SID<400) active @endif">--}}
-                    {{--<a href="#product_categories" class="has-arrow"><i class="icon-diamond"></i><span>{{__('admin/public.product_categories')}}</span></a>--}}
-                    {{--<ul aria-expanded="false" class="collapse">--}}
-                    {{--<li class="@if($SID==300 ) active @endif"><a href="{{ route('productCategories.index',['SID' => '300']) }}">{{__('admin/public.product_categories_list')}}</a></li>--}}
-                    {{--<li class="@if($SID==301 ) active @endif"><a href="{{ route('productCategories.create',['SID' => '301']) }}">{{__('admin/public.product_categories_add')}}</a></li>--}}
-                    {{--</ul>--}}
-                    {{--</li>--}}
 
 
                     <li class="@if($SID>=400 and $SID<500) active @endif">
@@ -208,13 +175,6 @@
                             <li class="@if($SID==501 ) active @endif"><a
                                         href="{{ route('menus.create',['SID' => '501']) }}">{{__('admin/public.menus_add')}}</a>
                             </li>
-                        </ul>
-                    </li>
-
-                    <li class="@if($SID>=700 and $SID<800) active @endif">
-                        <a href="#menu_categories" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.menu_categories')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
                             <li class="@if($SID==700 ) active @endif"><a
                                         href="{{ route('menuCategories.index',['SID' => '700']) }}">{{__('admin/public.menu_categories_list')}}</a>
                             </li>
