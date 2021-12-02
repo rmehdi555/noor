@@ -208,4 +208,31 @@ jQuery(function ($) {
         });
     });
 
+
+
+    $("#select-deposits-type").change(function () {
+        var id = $(this).val();
+        var type = $("#d-t-type-value-"+id).val();
+        var title=$("#d-t-title-value-"+id).val();
+        var price=$("#d-t-price-value-"+id).val();
+
+        if(type=="amount")
+        {
+            $("#price").val(price);
+            $("#title").val(title);
+            $("#price").prop('disabled',true);
+            $("#title").prop('disabled',true);
+            $("#price").prop('required',false);
+            $("#title").prop('required',false);
+        }else{
+            $("#price").val('');
+            $("#title").val('');
+            $("#price").prop('disabled',false);
+            $("#title").prop('disabled',false);
+            $("#title").prop('required',true);
+            $("#price").prop('required',true);
+        }
+
+    });
+
 });

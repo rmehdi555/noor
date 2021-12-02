@@ -175,7 +175,7 @@ class NoorController extends Controller
             'price' => $noor->price,
             'description' => $noor->type,
             'user_type' => $noor->type,
-            'user_code'=>$noor->id,
+            'user_id'=>$noor->user_id,
             'mobile' => $noor->mobile,
             'callbackURL'=>route($url),
             'status'=>'1'

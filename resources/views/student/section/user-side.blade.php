@@ -45,6 +45,9 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('student.class.list') }}" >کلاس ها</a>
                                     </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('student.deposits.create') }}" >پرداختی</a>
+                                    </li>
 
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('student.mali.list') }}" >مالی</a>

@@ -176,6 +176,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
 
 
     Route::resource('depositsType','DepositsTypeController');
+    Route::resource('deposits','DepositsController');
 
 
 
@@ -267,6 +268,10 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::get('message/list','MessageController@list')->name('student.message.list');
     Route::get('message/show/{id}','MessageController@show')->name('student.message.show');
 
+
+    Route::get('deposits/create','DepositsController@create')->name('student.deposits.create');
+    Route::post('deposits/save','DepositsController@save')->name('student.deposits.save');
+
 });
 
 // end student  route
@@ -316,6 +321,9 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
 
     Route::get('methodOfLetter/list','MethodOfLetterController@list')->name('teacher.methodOfLetter.list');
     Route::get('meeting/list','MeetingController@list')->name('teacher.meeting.list');
+
+
+
 
 
 });

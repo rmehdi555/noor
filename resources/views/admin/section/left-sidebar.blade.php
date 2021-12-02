@@ -81,6 +81,54 @@
                     </li>
 
 
+                    <li class="@if($SID>=900 and $SID<1000) active @endif">
+                        <a href="#site-setting" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>{{__('admin/public.site_settings')}}</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==900 ) active @endif"><a
+                                        href="{{ route('siteDetails.index',['SID' => '900']) }}">{{__('admin/public.site_settings_list')}}</a>
+                            </li>
+                            <li class="@if($SID==901 ) active @endif"><a
+                                        href="{{ route('siteDetails.create',['SID' => '901']) }}">{{__('admin/public.site_settings_add')}}</a>
+                            </li>
+                            <li class="@if($SID==902 ) active @endif"><a
+                                        href="{{ route('contactUs.index',['SID' => '902']) }}">{{__('admin/public.contact_us_list')}}</a>
+                            </li>
+                            <li class="@if($SID==903 ) active @endif"><a
+                                        href="{{ route('complaint.index',['SID' => '903']) }}">{{__('admin/public.complaint_list')}}</a>
+                            </li>
+                            <li class="@if($SID==904 ) active @endif"><a
+                                        href="{{ route('depositsType.index',['SID' => '904']) }}">مدیریت نوع های پرداختی</a>
+                            </li>
+                            <li class="@if($SID==907 ) active @endif"><a
+                                        href="{{ route('deposits.index',['SID' => '907']) }}">مشاهده پرداختی ها</a>
+                            </li>
+                            <li class="@if($SID==910 ) active @endif"><a
+                                        href="{{ route('mosabeghe.index',['SID' => '910']) }}">{{__('admin/public.mosabeghe_maleke_zaman')}}</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="@if($SID>=530 and $SID<550) active @endif">
+                        <a href="#methodOfLetter" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>شیوه نامه ها و جلسات</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==530 ) active @endif"><a
+                                        href="{{ route('methodOfLetter.index',['SID' => '530']) }}">لیست شیوه نامه ها</a>
+                            </li>
+                            <li class="@if($SID==531 ) active @endif"><a
+                                        href="{{ route('methodOfLetter.create',['SID' => '531']) }}">ایجاد شیوه نامه جدید</a>
+                            </li>
+
+                            <li class="@if($SID==540 ) active @endif"><a
+                                        href="{{ route('meeting.index',['SID' => '540']) }}">لیست جلسات</a>
+                            </li>
+                            <li class="@if($SID==541 ) active @endif"><a
+                                        href="{{ route('meeting.create',['SID' => '541']) }}">ایجاد جلسه جدید</a>
+                            </li>
+                        </ul>
+
+                    </li>
                     <li class="@if($SID>=80 and $SID<100) active @endif">
                         <a href="#message" class="has-arrow"><i
                                     class="icon-diamond"></i><span>پیام ها و پشتیبانی ها</span></a>
@@ -106,50 +154,7 @@
                         </ul>
 
                     </li>
-                    <li class="@if($SID>=530 and $SID<550) active @endif">
-                        <a href="#methodOfLetter" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>شیوه نامه ها و جلسات</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="@if($SID==530 ) active @endif"><a
-                                        href="{{ route('methodOfLetter.index',['SID' => '530']) }}">لیست شیوه نامه ها</a>
-                            </li>
-                            <li class="@if($SID==531 ) active @endif"><a
-                                        href="{{ route('methodOfLetter.create',['SID' => '531']) }}">ایجاد شیوه نامه جدید</a>
-                            </li>
 
-                            <li class="@if($SID==540 ) active @endif"><a
-                                        href="{{ route('meeting.index',['SID' => '540']) }}">لیست جلسات</a>
-                            </li>
-                            <li class="@if($SID==541 ) active @endif"><a
-                                        href="{{ route('meeting.create',['SID' => '541']) }}">ایجاد جلسه جدید</a>
-                            </li>
-                        </ul>
-
-                    </li>
-                    <li class="@if($SID>=900 and $SID<1000) active @endif">
-                        <a href="#site-setting" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.site_settings')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="@if($SID==900 ) active @endif"><a
-                                        href="{{ route('siteDetails.index',['SID' => '900']) }}">{{__('admin/public.site_settings_list')}}</a>
-                            </li>
-                            <li class="@if($SID==901 ) active @endif"><a
-                                        href="{{ route('siteDetails.create',['SID' => '901']) }}">{{__('admin/public.site_settings_add')}}</a>
-                            </li>
-                            <li class="@if($SID==902 ) active @endif"><a
-                                        href="{{ route('contactUs.index',['SID' => '902']) }}">{{__('admin/public.contact_us_list')}}</a>
-                            </li>
-                            <li class="@if($SID==903 ) active @endif"><a
-                                        href="{{ route('complaint.index',['SID' => '903']) }}">{{__('admin/public.complaint_list')}}</a>
-                            </li>
-                            <li class="@if($SID==904 ) active @endif"><a
-                                        href="{{ route('depositsType.index',['SID' => '904']) }}">مدیریت نوع های پرداختی</a>
-                            </li>
-                            <li class="@if($SID==910 ) active @endif"><a
-                                        href="{{ route('mosabeghe.index',['SID' => '910']) }}">{{__('admin/public.mosabeghe_maleke_zaman')}}</a>
-                            </li>
-                        </ul>
-                    </li>
 
                     <li class="@if($SID>=400 and $SID<500) active @endif">
                         <a href="#page" class="has-arrow"><i
