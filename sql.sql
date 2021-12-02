@@ -29,6 +29,8 @@ messages_details
 method_of_letters
 meetings
 meeting_accesses
+deposits
+deposits_types
 
 
 

@@ -175,6 +175,9 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('meeting','MeetingController');
 
 
+    Route::resource('depositsType','DepositsTypeController');
+
+
 
 
 
