@@ -357,6 +357,7 @@ Route::get('payment/online/zarinpal/callback','PaymentController@payZarinpalCall
 Route::get('payment/online/zarinpal/callback/teacher','PaymentController@payZarinpalCallbackTeacher')->name('web.payment.online.zarinpal.callback.teacher');
 Route::get('payment/online/zarinpal/callback/noor','PaymentController@payZarinpalCallbackNoor')->name('web.payment.online.zarinpal.callback.noor');
 Route::get('payment/online/zarinpal/callback/student/class/register','PaymentController@payZarinpalCallbackStudentClassRegister')->name('payment.online.zarinpal.callback.student.class.register');
+Route::get('payment/online/zarinpal/callback/student/deposit','PaymentController@payZarinpalCallbackStudentDeposit')->name('payment.online.zarinpal.callback.student.deposit');
 
 Route::post('payment/online/meli','PaymentController@payMeli')->name('web.payment.online.meli');
 Route::post('payment/online/meli/callback','PaymentController@payMeliCallback')->name('web.payment.online.meli.callback');
@@ -364,4 +365,5 @@ Route::post('payment/online/meli/callback/teacher','PaymentController@payMeliCal
 Route::post('payment/online/meli/callback/noor','PaymentController@payMeliCallbackNoor')->name('web.payment.online.meli.callback.noor');
 Route::get('payment/online/meli/callback/noor','PaymentController@payMeliCallbackNoor')->name('web.payment.online.meli.callback.noor.get');
 Route::post('payment/online/meli/callback/student/class/register','PaymentController@payMeliCallbackStudentClassRegister')->name('payment.online.meli.callback.student.class.register');
+Route::post('payment/online/meli/callback/student/deposit','PaymentController@payMeliCallbackStudentDeposit')->name('payment.online.meli.callback.student.deposit');
 // end route payment

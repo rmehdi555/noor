@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use Adlino\Locations\Facades\locations;
 use App\Cities;
+use App\Deposits;
 use App\DepositsType;
 use App\Field;
 use App\Http\Controllers\Controller;
@@ -34,39 +35,49 @@ class DepositsController extends StudentController
         $user=Auth::user();
         $depositsType = DepositsType::where('status', '=',1)->orderBy('id','desc')->get();
 
-
-        $noor = Noor::create([
-            'type' => $request->type,
-            'name' => $request->name,
-            'family' => $request->family,
-            'f_name' => $request->f_name,
-            'meli_number' => $request->meli_number,
-            'mobile' => \App\Providers\MyProvider::convert_phone_number($request->mobile),
-            'price' => $request->price,
-            'monthly_payment' => $request->monthly_payment,
-            'sex'=>$request->sex,
-            'status' => '1',
+        $request->validate([
+            'deposits_type_id' => ['required', 'numeric'],
         ]);
-        if (config('app.bankPay.active') == 'meli') {
-            $url='payment.online.meli.callback.student.class.register';
+        $depositsType=DepositsType::find($request->deposits_type_id);
+        if(!isset($depositsType->id))
+        {
+            alert()->error(__('خطا رخ داده است مجدد تلاش کنید'),__('web/messages.alert'));
+            return redirect()->route('student.deposits.create');
+        }
+        if($depositsType->type=="amount")
+        {
+            $deposit= Deposits::create([
+                'price' => $depositsType->price,
+                'deposits_type_id' => $depositsType->id,
+                'user_id' => $user->id,
+                'payment_id' => 0,
+                'title' => $depositsType->title,
+                'status' => 0,
+            ]);
         }else{
-            $url='payment.online.zarinpal.callback.student.class.register';
+            $request->validate([
+                'price' => ['required','numeric', 'min:10000'],
+            ]);
+            $deposit= Deposits::create([
+                'price' => $request->price,
+                'deposits_type_id' => $depositsType->id,
+                'user_id' => $user->id,
+                'payment_id' => 0,
+                'title' => $request->title,
+                'status' => 0,
+            ]);
+
         }
-        $user=Auth::user();
-        $studentFields = StudentsFields::where([['user_id', '=',$user->id],['status','=',1]])->orderBy('id')->get();
-        $allPrice=0;
-        foreach ($studentFields as $field)
-        {
-            $allPrice+=$field->price;
+
+        if (config('app.bankPay.active') == 'meli') {
+            $url='payment.online.meli.callback.student.deposit';
+        }else{
+            $url='payment.online.zarinpal.callback.student.deposit';
         }
-        if($allPrice<1000)
-        {
-            $allPrice=1000;
-        }
-        Payment::where([['status','=','1'],['user_id','=',$user->id]])->delete();
+
         $payment=Payment::create([
-            'price' => $allPrice,
-            'description' => '',
+            'price' => $deposit->price,
+            'description' => $deposit->title,
             'user_id' => $user->id,
             'user_type' => $user->level,
             'user_code' => $user->student->student_id,
@@ -74,6 +85,10 @@ class DepositsController extends StudentController
             'mobile' => $user->phone,
             'callbackURL'=>route($url),
             'status'=>'1'
+        ]);
+
+        $deposit->update([
+            'payment_id' => $payment->id,
         ]);
 
 
@@ -112,8 +127,8 @@ class DepositsController extends StudentController
             $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'; //Required
             $Amount = $payment->price; //Amount will be based on Toman - Required
             $Description = 'توضیحات تراکنش تستی'; // Required
-            $Email = $noor->email; // Optional
-            $Mobile = $noor->phone; // Optional
+            $Email = $user->email; // Optional
+            $Mobile = $user->phone; // Optional
             $CallbackURL = $payment->callbackURL; // Required
             $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
             $result = $client->PaymentRequest(

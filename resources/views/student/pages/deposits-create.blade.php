@@ -27,7 +27,7 @@
                                         <label class=" control-label"
                                                for="input-name">نوع پرداختی را انتخاب نمایید : <span class="required">*</span> </label>
                                         <div class="col-md-10 col-sm-9">
-                                            <select name="field_main" id="select-deposits-type"
+                                            <select name="deposits_type_id" id="select-deposits-type"
                                                     class="form-control  @error('field_main') is-invalid @enderror">
                                                 @foreach($depositsType as $item)
                                                         <option class="deposits-type deposits-type-{{$item->type}}" id="deposits-type-{{$item->id}}"

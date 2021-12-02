@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Deposits;
 use App\Http\Controllers\Controller;
 use App\Mali;
 use App\Noor;
@@ -314,6 +315,82 @@ class PaymentController extends Controller
         }
     }
 
+    public function payZarinpalCallbackStudentDeposit(Request $request)
+    {
+
+        //dd($request->Authority);
+        $payment = Payment::where('authority', '=', $request->Authority)->first();
+        if (isset($payment->id)) {
+            $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';
+            $Amount = $payment->price; //Amount will be based on Toman
+            $Authority = $request->Authority;
+
+            if ($request->Status == 'OK') {
+
+                $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+
+                $result = $client->PaymentVerification(
+                    [
+                        'MerchantID' => $MerchantID,
+                        'Authority' => $Authority,
+                        'Amount' => $Amount,
+                    ]
+                );
+
+                if ($result->Status == 100) {
+                    //echo 'Transaction success. RefID:'.$result->RefID;
+                    $payment->update([
+                        'refId' => $result->RefID,
+//                        'extraDetail'=>$result->ExtraDetail,
+                        'status' => '5',
+                    ]);
+                    $user=User::find($payment->user_id);
+                    Mali::create([
+                        'user_id'=>$user->id,
+                        'price'=>$payment->price,
+                        'description'=>$payment->description,
+                        'type'=>'bestankar',
+                        'table_name'=>'deposit',
+                        'payment_id'=>$payment->id,
+                        'status'=>1
+
+                    ]);
+                    if(isset($user))
+                    {
+                        Deposits::where([['user_id', '=',$user->id],['status','=',0],['payment_id','=',$payment->id]])->update([
+                            'status'=>1
+                        ]);
+                    }
+
+                    alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
+                    return redirect()->route('student.panel');
+                } else {
+                    //echo 'Transaction failed. Status:'.$result->Status;
+                    $payment->update([
+                        'status' => '4',
+                    ]);
+                    alert()->error(__('web/messages.error_payment_72'));
+                    return redirect()->route('student.panel');
+                }
+            } else {
+
+                $payment->update([
+                    'status' => '3',
+                ]);
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
+                return redirect()->route('student.panel');
+            }
+
+
+        } else {
+            //رکورد وجود ندارد
+            alert()->error(__('web/messages.not_exist'));
+            return redirect()->route('student.panel');
+
+        }
+    }
+
+
 
 
 
@@ -559,6 +636,73 @@ class PaymentController extends Controller
 
     }
 
+    public function payMeliCallbackStudentDeposit(Request $request)
+    {
+        if(!isset($request->token) or empty($request->token) )
+        {
+            alert()->error(__('web/messages.error_payment_cancel_by_user'));
+            return redirect()->route('login');
+        }
+
+        $key = config('app.bankMeli.Key');
+        $OrderId = $request->OrderId;
+        $Token = $request->token;
+        $ResCode = $request->ResCode;
+        $payment = Payment::where('Token', '=', $Token)->first();
+        if (isset($payment->id)) {
+            if ($ResCode == 0) {
+                $verifyData = array('Token' => $Token, 'SignData' => $this->encrypt_pkcs7($Token, $key));
+                $str_data = json_encode($verifyData);
+                $res = $this->CallAPI('https://sadad.shaparak.ir/vpg/api/v0/Advice/Verify', $str_data);
+                $arrres = json_decode($res);
+            }else{
+                alert()->error(__('web/messages.error_payment_cancel_by_user'));
+                return redirect()->route('student.panel');
+            }
+            if ($arrres->ResCode != -1 && $arrres->ResCode == 0) {
+                $payment->update([
+                    'RetrivalRefNo' => $arrres->RetrivalRefNo,
+                    'SystemTraceNo' => $arrres->SystemTraceNo,
+                    'status' => '5',
+                ]);
+                $user=User::find($payment->user_id);
+                if(isset($user))
+                {
+                    Deposits::where([['user_id', '=',$user->id],['status','=',0],['payment_id','=',$payment->id]])->update([
+                        'status'=>1
+                    ]);
+                    Mali::create([
+                        'user_id'=>$user->id,
+                        'price'=>$payment->price,
+                        'description'=>$payment->description,
+                        'type'=>'bestankar',
+                        'table_name'=>'deposit',
+                        'payment_id'=>$payment->id,
+                        'status'=>1
+                    ]);
+                }
+
+
+                if(!Auth::check()) {
+                    Auth::loginUsingId($payment->user_id);
+                }
+                alert()->success(__('web/messages.success_payment'), __('web/messages.success'));
+                return redirect()->route('student.panel');
+
+            } else
+                $payment->update([
+                    'status' => '4',
+                ]);
+            alert()->error(__('web/messages.error_payment_72'));
+            return redirect()->route('student.panel');
+        } else {
+            //رکورد وجود ندارد
+            alert()->error(__('web/messages.not_exist'));
+            return redirect()->route('student.panel');
+
+        }
+
+    }
 
 
 }
