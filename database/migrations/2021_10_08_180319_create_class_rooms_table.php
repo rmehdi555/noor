@@ -19,6 +19,8 @@ class CreateClassRoomsTable extends Migration
             $table->bigInteger('field_id')->nullable();
             $table->bigInteger('field_parent_id')->nullable();
             $table->string('name')->nullable();
+            $table->string('mark_type')->nullable();
+            $table->bigInteger('mark_type_id')->default(1);
             $table->text('description')->nullable();
             $table->string('number_students')->nullable();
             $table->string('old')->default(0);

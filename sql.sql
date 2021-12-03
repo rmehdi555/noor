@@ -31,6 +31,8 @@ meetings
 meeting_accesses
 deposits
 deposits_types
+mark_types
+mark_type_grades
 
 
 

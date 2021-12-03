@@ -9,6 +9,7 @@ use App\ClassRoomsStudents;
 use App\Field;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Controller;
+use App\MarkType;
 use App\Payment;
 use App\Provinces;
 use App\SiteDetails;
@@ -37,7 +38,8 @@ class ClassController extends TeacherController
         $fields = Field::all();
         $provinces = Provinces::all();
         $cities = Cities::all();
-        return view('teacher.pages.class-create', compact('fields','provinces','cities'));
+        $markTypes=MarkType::where('status','=',1)->get();
+        return view('teacher.pages.class-create', compact('fields','provinces','cities','markTypes'));
     }
 
     public function createSave(Request $request)
@@ -52,6 +54,7 @@ class ClassController extends TeacherController
             'city' => ['required', 'string', 'max:255'],
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
+            'mark_type_id'=>['required', 'numeric'],
         ]);
         $user=Auth::user();
         $field=Field::find($request->field_child);
@@ -65,12 +68,20 @@ class ClassController extends TeacherController
             alert()->error(__('web/messages.disabled_student_field'),__('web/messages.alert'));
             return redirect()->route('teacher.class.create');
         }
+        $markType=MarkType::find($request->mark_type_id);
+        if(!isset($markType->id))
+        {
+            alert()->error('نوع نمره دهی را انتخاب نمایید',__('web/messages.alert'));
+            return redirect()->route('teacher.class.create');
+        }
 
         $classRoom=ClassRooms::create([
             'user_id'=>$user->id,
             'field_id' => $request->field_child,
             'field_parent_id'=>$request->field_main,
             'name'=>$request->name,
+            'mark_type'=>$markType->type,
+            'mark_type_id'=>$request->mark_type_id,
             'description'=>$request->description,
             'number_students'=>$request->number_students,
             'old'=>$request->old,

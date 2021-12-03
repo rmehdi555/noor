@@ -16,7 +16,7 @@ class ClassRoomsStudents extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'user_id','field_id', 'field_parent_id', 'student_id','students_field_id','class_rooms_id','teacher_id','status','user_id_delete'
+        'user_id','field_id', 'field_parent_id', 'student_id','students_field_id','class_rooms_id','teacher_id','mark','status','user_id_delete'
     ];
 
     protected $dates = ['deleted_at'];

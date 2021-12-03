@@ -22,6 +22,7 @@ class CreateClassRoomsStudentsTable extends Migration
             $table->bigInteger('students_field_id')->nullable();
             $table->bigInteger('class_rooms_id')->nullable();
             $table->bigInteger('teacher_id')->nullable();
+            $table->string('mark')->default(0);
             $table->integer('status')->default(0);
             $table->bigInteger('user_id_delete')->nullable();
             $table->timestamps();

@@ -209,6 +209,29 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 padding-top-15">
+                                        <label class=" col-md-12 col-sm-12 control-label"
+                                               for="input-name">نوع نمره دهی را انتخاب نمایید : <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-10">
+                                            <select name="mark_type_id" id="mark_type_id"
+                                                    class="form-control  @error('mark_type_id') is-invalid @enderror" required >
+                                                @foreach($markTypes as $item)
+                                                        <option class=""
+                                                                id=""
+                                                                value="{{$item->id}}">{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('mark_type_id')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 padding-top-15">
                                     <label class=" control-label"
                                            for="input-name"><br></label>
                                     <div class="buttons">
