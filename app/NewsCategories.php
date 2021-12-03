@@ -59,4 +59,10 @@ class NewsCategories extends Model
     {
         return $this->hasMany('App\News'); // This only gets the news of the CURRENT category
     }
+
+    public function newsShow()
+    {
+        return $this->hasMany('App\News','news_categories_id','id')->where('status','=','1')->orderBy('id','DESC')->limit(5)->get();
+    }
+
 }

@@ -35,6 +35,7 @@ Route::middleware('language','visit')->group(function (){
     Route::get('/product/{id}','HomeController@showProduct')->name('web.show.product');
 
     Route::get('/news/{id}','HomeController@showNews')->name('web.show.news');
+    Route::get('/news/category/{id}','HomeController@showNewsCategory')->name('web.show.news.category');
 
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/user/active/email/{token}', 'UserController@activationAccountByEmail')->name('activation.account.by.email');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Adlino\Locations\Facades\locations;
 use App\News;
+use App\NewsCategories;
 use App\ProductCategories;
 use App\Products;
 use App\Providers\MyProvider;
@@ -24,8 +25,9 @@ class HomeController extends Controller
         //https://hekmatinasser.github.io/verta/
 //        $v=Verta::now();
 //        dd($v->formatWord('l').' '.$v->format('d').' '.$v->formatWord('F').' '.$v->format('Y'));
+        $news=NewsCategories::where('status','=','1')->orderBy('priority')->get();
         $slider=Slider::where('status','=','1')->orderBy('priority')->get();
-        $news=News::where('status','=','1')->orderBy('priority')->orderBy('id','DESC')->get();
+        //$news=News::where('status','=','1')->orderBy('priority')->orderBy('id','DESC')->get();
         return view('web.pages.index',compact('slider','news'));
     }
     public function showCategory($id)
@@ -38,6 +40,14 @@ class HomeController extends Controller
         //جدید ترین محصولات
         $newProducts=Products::where('status','=','1')->orderBy('created_at','desc')->limit(10)->get();
         return view('web.pages.category',compact('category','specialProducts','newProducts'));
+    }
+    public function showNewsCategory($id)
+    {
+        $category=NewsCategories::find($id);
+        if(!isset($category))
+            return redirect()->route('web.404');
+        $news=News::where([['news_categories_id','=',$category->id],['status','=','1']])->orderBy('priority')->orderBy('id','DESC')->paginate(20);
+        return view('web.pages.news-category',compact('category','news'));
     }
     public function showProduct($id)
     {

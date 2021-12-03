@@ -112,7 +112,7 @@
         </div>
     </section>
      End: Banner -->
-
+    @foreach($news as $newsCategory)
     <!-- Start: Events -->
     <section class="main-events">
         <div class="container">
@@ -128,14 +128,14 @@
                             <ul class="nav nav-tabs " id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#t1" role="tab"
-                                       aria-selected="true">آخرین اخبار</a>
+                                       aria-selected="true">{{\App\Providers\MyProvider::_text($newsCategory->title)}}</a>
                                 </li>
 
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="t1" role="tabpanel">
                                     <ul class="main-events-list bu-margin-bottom-30">
-                                        @foreach($news as $item)
+                                        @foreach($newsCategory->newsShow() as $item)
 
                                             <li>
                                                 <h2 class="main-events-list-title bu-title-effect"><a href="{{ route('web.show.news',$item->id) }}">  {{\App\Providers\MyProvider::_text($item->title)}} </a></h2>
@@ -143,12 +143,12 @@
                                             </li>
                                         @endforeach
                                     </ul>
-                                    {{--<div class="main-events-more">--}}
-                                    {{--<a href="" class="bu-more">--}}
-                                    {{--<span>اخبار بیشتر</span>--}}
-                                    {{--<i class="fal fa-long-arrow-left"></i>--}}
-                                    {{--</a>--}}
-                                    {{--</div>--}}
+                                    <div class="main-events-more">
+                                    <a href="{{ route('web.show.news.category',$newsCategory->id) }}" class="bu-more">
+                                    <span>{{\App\Providers\MyProvider::_text($newsCategory->title)}} بیشتر</span>
+                                    <i class="fal fa-long-arrow-left"></i>
+                                    </a>
+                                    </div>
                                 </div>
                                 {{--<div class="tab-pane fade" id="t2" role="tabpanel">...</div>--}}
                                 {{--<div class="tab-pane fade" id="t3" role="tabpanel">...</div>--}}
@@ -171,6 +171,7 @@
         </div>
     </section>
     <!-- End: Events -->
+    @endforeach
 
     <!-- Start: Iconbox -->
     {{--<section class="main-iconbox">--}}
