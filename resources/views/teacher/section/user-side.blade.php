@@ -45,6 +45,9 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.class.list') }}" >مدیریت کلاس ها</a>
                                     </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.exams.list') }}" >مدیریت آزمون ها</a>
+                                    </li>
 
                                     {{--<li class="list-group-item d-flex justify-content-between align-items-center">--}}
                                         {{--<a href="{{ route('teacher.mali.list') }}" >مالی</a>--}}

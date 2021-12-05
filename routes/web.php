@@ -325,6 +325,11 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
 
 
 
+    // آزمون
+    Route::get('exams/list','ExamsController@list')->name('teacher.exams.list');
+    Route::get('exams/create','ExamsController@create')->name('teacher.exams.create');
+    Route::post('exams/create/save','ExamsController@createSave')->name('teacher.exams.create.save');
+    Route::get('exams/show/{id}','ExamsController@show')->name('teacher.exams.show');
 
 
 });

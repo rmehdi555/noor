@@ -33,6 +33,10 @@ deposits
 deposits_types
 mark_types
 mark_type_grades
+exams
+exams_questions
+exams_questions_options
+exams_response_students
 
 
 
