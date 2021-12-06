@@ -235,4 +235,48 @@ jQuery(function ($) {
 
     });
 
+
+    var type = $("#question-type-select").val();
+    if(type=="test")
+    {
+        $(".question-type-test-div").show();
+        $(".question-type-adj-div").hide();
+        $(".question-type-test-q-div").hide();
+        $(".question-type-test-q-div-4").show();
+    }else{
+        $(".question-type-test-div").hide();
+        $(".question-type-adj-div").show();
+        $(".question-type-test-q-div").hide();
+    }
+    $("#question-type-select").change(function () {
+        var type = $(this).val();
+        if(type=="test")
+        {
+            $(".question-type-test-div").show();
+            $(".question-type-adj-div").hide();
+            $(".question-type-test-q-div").hide();
+            $(".question-type-test-q-div-4").show();
+        }else{
+            $(".question-type-test-div").hide();
+            $(".question-type-adj-div").show();
+            $(".question-type-test-q-div").hide();
+        }
+
+    });
+
+    var id = $("#type-adj-number-select").val();
+    $(".question-type-test-q-div").hide();
+    $(".question-type-test-q-div-"+id).show();
+
+    $("#type-adj-number-select").change(function () {
+        var id = $(this).val();
+        $(".question-type-test-q-div").hide();
+        $(".question-type-test-q-div-"+id).show();
+    });
+
+
+
+
+
+
 });

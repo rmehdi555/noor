@@ -20,6 +20,7 @@ class CreateExamsGuestionsOptionsTable extends Migration
             $table->bigInteger('exams_questions_id')->nullable();
             $table->text('title')->nullable();
             $table->string('type')->nullable();
+            $table->string('response')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

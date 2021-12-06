@@ -158,6 +158,25 @@ function deleteFunction() {
 
 
 
+    $('.persian-datepicker-time').persianDatepicker({
+        format: 'YYYY-MM-DD H:M:s',
+        timePicker: {
+            enabled: true,
+        },
+    });
+
+    $('#start-exam-show').persianDatepicker({
+        format: 'YYYY-MM-DD H:M:s',
+        timePicker: {
+            enabled: true,
+        },
+        altField: '#start-exam'
+    });
+
+</script>
+
+
+
 
 </script>
 

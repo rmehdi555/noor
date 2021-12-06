@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ExamsQuestions extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'user_id','exams_id','title','type', 'mark','response','status'
     ];

@@ -54,4 +54,11 @@
         .demo-card label{ display: block; position: relative;}
         .demo-card .col-lg-4{ margin-bottom: 30px;}
     </style>
+
+
+
+    <link rel="stylesheet" href="{{asset('persian-date/persian-datepicker.css')}}"/>
+    <script src="{{asset('persian-date/persian-date.js')}}"></script>
+    <script src="{{asset('persian-date/persian-datepicker.js')}}"></script>
+
 </head>
