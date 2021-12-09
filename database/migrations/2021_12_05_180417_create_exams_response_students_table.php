@@ -21,6 +21,8 @@ class CreateExamsResponseStudentsTable extends Migration
             $table->bigInteger('exams_questions_id')->nullable();
             $table->string('exams_questions_type')->nullable();
             $table->text('response')->nullable();
+            $table->string('t_mark')->default(0);
+            $table->string('a_mark')->default(0);
             $table->string('mark')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();

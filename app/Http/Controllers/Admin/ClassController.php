@@ -1,28 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\Admin;
 
-use Adlino\Locations\Facades\locations;
 use App\Cities;
 use App\ClassRooms;
 use App\ClassRoomsStudents;
+use App\ClassRoomsTeachers;
 use App\Field;
-use App\Http\Controllers\Teacher\TeacherController;
-use App\Http\Controllers\Controller;
 use App\MarkType;
-use App\Payment;
 use App\Provinces;
-use App\SiteDetails;
 use App\StudentsFields;
 use App\Teachers;
-use App\TeachersDocuments;
-use App\TeachersFields;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
-use SoapClient;
 
 /* class
  * status=1 تازه ایجاد شده
@@ -30,16 +21,18 @@ use SoapClient;
  * status=4 آزمون
  * status=5 اتمام رسیده
  */
-class ClassController extends TeacherController
+class ClassController extends AdminController
 {
 
     public function create()
     {
-        $fields = Field::where('type','=','student')->get();;
+        $fields = Field::all();
         $provinces = Provinces::all();
         $cities = Cities::all();
         $markTypes=MarkType::where('status','=',1)->get();
-        return view('teacher.pages.class-create', compact('fields','provinces','cities','markTypes'));
+        $teachers=Teachers::all();
+        $SID=400;
+        return view('admin.class.create', compact('fields','provinces','cities','markTypes','SID','teachers'));
     }
 
     public function createSave(Request $request)
@@ -61,22 +54,22 @@ class ClassController extends TeacherController
         if(!isset($field->id))
         {
             alert()->error(__('web/messages.not_exist_student_field'),__('web/messages.alert'));
-            return redirect()->route('teacher.class.create');
+            return redirect()->route('admin.class.create');
         }
         if($field->id==0)
         {
             alert()->error(__('web/messages.disabled_student_field'),__('web/messages.alert'));
-            return redirect()->route('teacher.class.create');
+            return redirect()->route('admin.class.create');
         }
         $markType=MarkType::find($request->mark_type_id);
         if(!isset($markType->id))
         {
             alert()->error('نوع نمره دهی را انتخاب نمایید',__('web/messages.alert'));
-            return redirect()->route('teacher.class.create');
+            return redirect()->route('admin.class.create');
         }
 
         $classRoom=ClassRooms::create([
-            'user_id'=>$user->id,
+            'user_id'=>$request->teacher_id,
             'field_id' => $request->field_child,
             'field_parent_id'=>$request->field_main,
             'name'=>$request->name,
@@ -88,49 +81,48 @@ class ClassController extends TeacherController
             'city'=>$request->city,
             'province'=>$request->province,
             'address'=>$request->address,
-            'type'=>'student',
+            'type'=>$request->type,
             'status' => '1',
         ]);
         alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
-        return redirect()->route('teacher.class.show',$classRoom->id);
+        return redirect()->route('admin.class.show',$classRoom->id);
     }
 
-    public function list()
+
+    public function list(Request $request)
     {
+        $SID=400;
         $user=Auth::user();
-        $classes=ClassRooms::where([['user_id','=',$user->id],['status','>',0]])->orderBy('id','DESC')->get();
+        $classes=ClassRooms::all();
         $fields = Field::all();
         $provinces = Provinces::all();
         $cities = Cities::all();
-        return view('teacher.pages.class-list', compact('fields','provinces','cities','classes'));
+        return view('admin.class.list', compact('fields','provinces','cities','classes','SID'));
     }
 
     public function show(Request $request,$id)
     {
+        $SID=400;
         $classRoms=ClassRooms::find($id);
         if(!isset($classRoms->id))
         {
-
             alert()->error(__('not_exist'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $user=Auth::user();
-        if($classRoms->user_id!=$user->id) {
-            alert()->error(__('not_exist'));
-            return redirect()->route('teacher.class.list');
-        }
         $fields = Field::all();
         $provinces = Provinces::all();
         $cities = Cities::all();
+        $teachers=Teachers::all();
         $students=ClassRoomsStudents::where('class_rooms_id','=',$classRoms->id)->orderBy('id','DESC')->get();
+        $teachersR=ClassRoomsTeachers::where('class_rooms_id','=',$classRoms->id)->orderBy('id','DESC')->get();
         $studentsRegister=StudentsFields::where([['status','=',2],['field_id','=',$classRoms->field_id],['field_parent_id','=',$classRoms->field_parent_id]])->orderBy('id','DESC')->get();
-        return view('teacher.pages.class-show', compact('fields','provinces','cities','classRoms','students','studentsRegister'));
+        return view('admin.class.show', compact('fields','provinces','cities','classRoms','students','studentsRegister','SID','teachers','teachersR'));
     }
 
        public function registerSave(Request $request)
     {
         $request->validate([
-            'studentFieldId' => ['required', 'numeric'],
             'classRoomsId'=> ['required', 'numeric'],
         ]);
         $user=Auth::user();
@@ -139,29 +131,61 @@ class ClassController extends TeacherController
         if(!isset($classRoom->id))
         {
             alert()->error(__('کلاس به درستی انتخاب نشده'),__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
-        $field=StudentsFields::find($request->studentFieldId);
-        if(!isset($field->id))
+        if($classRoom->type=="student")
         {
-            alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
-            return redirect()->route('teacher.class.show',$classRoom->id);
+            $teacher=User::find($classRoom->user_id);
+            if(!isset($teacher->id))
+            {
+                alert()->error(__('معلم این کلاس به درستی انتخاب نشده است'),__('web/messages.alert'));
+                return redirect()->route('admin.class.show',$classRoom->id);
+            }
+            $field=StudentsFields::find($request->studentFieldId);
+            if(!isset($field->id))
+            {
+                alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
+                return redirect()->route('admin.class.show',$classRoom->id);
+            }
+            ClassRoomsStudents::create([
+                'user_id'=>$teacher->id,
+                'field_id' => $field->field_id,
+                'field_parent_id'=>$field->field_parent_id,
+                'student_id'=>$field->student_id,
+                'students_field_id'=>$field->id,
+                'class_rooms_id'=>$classRoom->id,
+                'teacher_id'=>$teacher->teacher->id,
+                'status' => '1',
+            ]);
+            $field->update([
+                'status'=>'3',
+            ]);
+        }else{
+
+            $teacher=User::find($classRoom->user_id);
+            if(!isset($teacher->id))
+            {
+                alert()->error(__('معلم این کلاس به درستی انتخاب نشده است'),__('web/messages.alert'));
+                return redirect()->route('admin.class.show',$classRoom->id);
+            }
+            $teacherld=Teachers::find($request->teacher_id);
+            if(!isset($teacherld->id))
+            {
+                alert()->error(__('معلم به درستی انتخاب نشده'),__('web/messages.alert'));
+                return redirect()->route('admin.class.show',$classRoom->id);
+            }
+            ClassRoomsTeachers::create([
+                'user_id'=>$teacher->id,
+                'field_id' => $classRoom->field_id,
+                'field_parent_id'=>$classRoom->field_parent_id,
+                'class_rooms_id'=>$classRoom->id,
+                'teacher_id'=>$teacherld->id,
+                'status' => '1',
+            ]);
         }
-        ClassRoomsStudents::create([
-            'user_id'=>$user->id,
-            'field_id' => $field->field_id,
-            'field_parent_id'=>$field->field_parent_id,
-            'student_id'=>$field->student_id,
-            'students_field_id'=>$field->id,
-            'class_rooms_id'=>$classRoom->id,
-            'teacher_id'=>$user->teacher->id,
-            'status' => '1',
-        ]);
-        $field->update([
-            'status'=>'3',
-        ]);
+
         alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
-        return redirect()->route('teacher.class.show',$classRoom->id);
+        return redirect()->route('admin.class.show',$classRoom->id);
     }
 
 
@@ -175,13 +199,13 @@ class ClassController extends TeacherController
         if(!isset($classRoomsStuden->id))
         {
             alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $field=StudentsFields::find($classRoomsStuden->students_field_id);
         if(!isset($field->id))
         {
             alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
-            return redirect()->route('teacher.class.show',$classRoomsStuden->class_rooms_id);
+            return redirect()->route('admin.class.show',$classRoomsStuden->class_rooms_id);
         }
         $field->update([
             'status'=>'2',
@@ -191,7 +215,27 @@ class ClassController extends TeacherController
         ]);
         $classRoomsStuden->delete();
         alert()->success('حذف قرآن آموز از کلاس با موفقیت انجام شد', __('web/messages.success'));
-        return redirect()->route('teacher.class.show',$classRoomsStuden->class_rooms_id);
+        return redirect()->route('admin.class.show',$classRoomsStuden->class_rooms_id);
+    }
+    public function registerTeacherDelete(Request $request)
+    {
+        $request->validate([
+            'class_room_student_id' => ['required', 'numeric'],
+        ]);
+        $user=Auth::user();
+        $classRoomsTracher=ClassRoomsTeachers::find($request->class_room_student_id);
+        if(!isset($classRoomsTracher->id))
+        {
+            alert()->error(__('معلم به درستی انتخاب نشده'),__('web/messages.alert'));
+            return redirect()->route('admin.class.list');
+        }
+
+        $classRoomsTracher->update([
+            'user_id_delete'=>$user->id,
+        ]);
+        $classRoomsTracher->delete();
+        alert()->success('حذف معلم از کلاس با موفقیت انجام شد', __('web/messages.success'));
+        return redirect()->route('admin.class.show',$classRoomsTracher->class_rooms_id);
     }
 
 

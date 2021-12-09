@@ -89,6 +89,7 @@ $locale = App::getLocale();
 
 
 
+
     <!-- CSS Part End-->
     @if($locale=="fa")
 

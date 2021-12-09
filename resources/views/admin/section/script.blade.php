@@ -34,7 +34,7 @@
 
 <script src="{{asset('admin/2020/rtl/assets/js/pages/forms/advanced-form-elements.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+@yield('script')
 <script>
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
@@ -178,11 +178,72 @@ function deleteFunction() {
 
 
 
+<script type="text/javascript">
+
+    $('.persian-datepicker-time').persianDatepicker({
+        format: 'YYYY-MM-DD H:m:s',
+        timePicker: {
+            enabled: true,
+        },
+    });
+
+    $('#start-exam-show').persianDatepicker({
+        format: 'YYYY-MM-DD H:m:s',
+        timePicker: {
+            enabled: true,
+        },
+        altField: '#start-exam'
+    });
+
+
+
+    var type = $("#question-type-select").val();
+    if(type=="test")
+    {
+        $(".question-type-test-div").show();
+        $(".question-type-adj-div").hide();
+        $(".question-type-test-q-div").hide();
+        $(".question-type-test-q-div-4").show();
+    }else{
+        $(".question-type-test-div").hide();
+        $(".question-type-adj-div").show();
+        $(".question-type-test-q-div").hide();
+    }
+    $("#question-type-select").change(function () {
+        var type = $(this).val();
+        if(type=="test")
+        {
+            $(".question-type-test-div").show();
+            $(".question-type-adj-div").hide();
+            $(".question-type-test-q-div").hide();
+            $(".question-type-test-q-div-4").show();
+        }else{
+            $(".question-type-test-div").hide();
+            $(".question-type-adj-div").show();
+            $(".question-type-test-q-div").hide();
+        }
+
+    });
+
+    var id = $("#type-adj-number-select").val();
+    $(".question-type-test-q-div").hide();
+    $(".question-type-test-q-div-"+id).show();
+
+    $("#type-adj-number-select").change(function () {
+        var id = $(this).val();
+        $(".question-type-test-q-div").hide();
+        $(".question-type-test-q-div-"+id).show();
+    });
+
+
+
+
+
 </script>
 
 
 
 
-@yield('script')
+
 </body>
 </html>

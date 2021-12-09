@@ -37,6 +37,8 @@ exams
 exams_questions
 exams_questions_options
 exams_response_students
+class_rooms_teachers
+exams_response_teachers
 
 
 --1400-09-18

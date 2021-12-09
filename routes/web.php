@@ -175,9 +175,36 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('methodOfLetter','MethodOfLetterController');
     Route::resource('meeting','MeetingController');
 
-
     Route::resource('depositsType','DepositsTypeController');
     Route::resource('deposits','DepositsController');
+
+
+    //ایجاد کلاس جدید توسط ادمین
+    Route::get('class/create','ClassController@create')->name('admin.class.create');
+    Route::post('class/create/save','ClassController@createSave')->name('admin.class.create.save');
+    Route::get('class/edit/{id}','ClassController@edit')->name('admin.class.edit');
+    Route::post('class/edit/save','ClassController@editSave')->name('admin.class.edit.save');
+   //ثبت نام قران آموز ها در کلاس مدنظر
+    Route::get('class/register','ClassController@register')->name('admin.class.register');
+    Route::post('class/register/save','ClassController@registerSave')->name('admin.class.register.save');
+    Route::post('class/register/delete','ClassController@registerDelete')->name('admin.class.register.delete');
+    Route::post('class/register/teacher/delete','ClassController@registerTeacherDelete')->name('admin.class.register.teacher.delete');
+    Route::get('class/list','ClassController@list')->name('admin.class.list');
+    Route::get('class/show/{id}','ClassController@show')->name('admin.class.show');
+
+
+    // آزمون
+    Route::get('exams/list','ExamsController@list')->name('admin.exams.list');
+    Route::get('exams/create','ExamsController@create')->name('admin.exams.create');
+    Route::post('exams/create/save','ExamsController@createSave')->name('admin.exams.create.save');
+    Route::get('exams/show/{id}','ExamsController@show')->name('admin.exams.show');
+    Route::get('exams/edit/{id}','ExamsController@edit')->name('admin.exams.edit');
+    Route::post('exams/edit/save','ExamsController@editSave')->name('admin.exams.edit.save');
+
+    Route::get('exams/questions/create/{id}','ExamsController@questionsCreate')->name('admin.exams.questions.create');
+    Route::post('exams/questions/create/save','ExamsController@questionsCreateSave')->name('admin.exams.questions.create.save');
+    Route::get('exams/questions/edit/{id}','ExamsController@questionsEdit')->name('admin.exams.questions.edit');
+    Route::post('exams/questions/edit/save','ExamsController@questionsEditSave')->name('admin.exams.questions.edit.save');
 
 
 

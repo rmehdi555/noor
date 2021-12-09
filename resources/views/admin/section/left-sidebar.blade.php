@@ -63,6 +63,23 @@
                         </ul>
                     </li>
 
+                    <li class="@if($SID>=400 and $SID<420) active @endif">
+                        <a href="#class" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>مدیریت کلاس ها و آزمون ها</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==400 ) active @endif"><a
+                                        href="{{ route('admin.class.list',['SID' => '400']) }}">لیست کلاس ها</a>
+                            </li>
+                            <li class="@if($SID==401 ) active @endif"><a
+                                        href="{{ route('admin.class.create',['SID' => '401']) }}">ایجاد کلاس جدید</a>
+                            </li>
+                            <li class="@if($SID==410 ) active @endif"><a
+                                        href="{{ route('admin.exams.list',['SID' => '410']) }}">مدیریت آزمون ها</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
                     <li class="@if($SID>=10 and $SID<30) active @endif">
                         <a href="#news" class="has-arrow"><i
                                     class="icon-diamond"></i><span>{{__('admin/public.news')}}</span></a>
@@ -179,13 +196,6 @@
                     </li>
 
 
-                    {{--<li class="@if($SID>=400 and $SID<500) active @endif">--}}
-                        {{--<a href="#page" class="has-arrow"><i--}}
-                                    {{--class="icon-diamond"></i><span>{{__('admin/public.web_pages')}}</span></a>--}}
-                        {{--<ul aria-expanded="false" class="collapse">--}}
-                           {{----}}
-                        {{--</ul>--}}
-                    {{--</li>--}}
 
                     {{--<li class="@if($SID>=500 and $SID<510) active @endif">--}}
                         {{--<a href="#menus" class="has-arrow"><i--}}
