@@ -29,6 +29,7 @@
                                         <th>#</th>
                                         <th>تاریخ</th>
                                         <th>عنوان </th>
+                                        <th>متن </th>
                                         <th>مشاهده فایل</th>
                                     </tr>
                                     </thead>
@@ -44,6 +45,7 @@
                                             <td>{{$i}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
                                             <td>{{$item->title}}</td>
+                                            <td><span>{{\App\Providers\MyProvider::_text($item->description)}}</span></td>
                                             <td> <a href="{{asset($item->file_url)}}" target="_blank">اینجا کلیک کنید</a>
                                             </td>
                                         </tr>

@@ -92,6 +92,16 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group col-lg-4 col-md-12">
+                                    <label>{{__('admin/public.type')}} :</label>
+                                    <div class="multiselect_div">
+                                        <select id="single-selection" name="type" class="multiselect multiselect-custom" >
+                                            <option value="student">برای قرآن آموزها</option>
+                                            <option value="teacher">برای معلم ها</option>
+                                        </select>
+                                    </div>
+                                </div>
+
 
                                 <div class="form-group col-lg-4 col-md-12">
                                     <label>{{__('admin/public.status')}} :</label>

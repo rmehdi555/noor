@@ -25,6 +25,7 @@ class CreateFieldsTable extends Migration
             $table->text('images')->nullable();
             $table->text('tags')->nullable();
             $table->text('price')->nullable();
+            $table->string('type')->default('student');
             $table->integer('priority')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();

@@ -10,7 +10,7 @@ class FieldController extends Controller
 {
     public  function index()
     {
-        $allField=Field::all();
+        $allField=Field::where('type','=','student')->get();
         return view('web.pages.fields',compact('allField'));
     }
     public  function show($id)

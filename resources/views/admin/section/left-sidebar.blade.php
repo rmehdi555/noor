@@ -11,6 +11,58 @@
                     {{--<li><a href="app-calendar.html"><i class="icon-calendar"></i><span>Calendar</span></a></li>--}}
                     {{--<li><a href="app-taskboard.html"><i class="icon-notebook"></i><span>Taskboard</span></a></li>--}}
                     {{--<li class="heading">UI Elements</li>--}}
+
+
+
+                    <li class="@if($SID>=900 and $SID<1000) active @endif">
+                        <a href="#site-setting" class="has-arrow"><i
+                                    class="icon-diamond"></i><span>{{__('admin/public.site_settings')}}</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="@if($SID==900 ) active @endif"><a
+                                        href="{{ route('siteDetails.index',['SID' => '900']) }}">{{__('admin/public.site_settings_list')}}</a>
+                            </li>
+                            <li class="@if($SID==901 ) active @endif"><a
+                                        href="{{ route('siteDetails.create',['SID' => '901']) }}">{{__('admin/public.site_settings_add')}}</a>
+                            </li>
+                            <li class="@if($SID==902 ) active @endif"><a
+                                        href="{{ route('contactUs.index',['SID' => '902']) }}">{{__('admin/public.contact_us_list')}}</a>
+                            </li>
+                            <li class="@if($SID==903 ) active @endif"><a
+                                        href="{{ route('complaint.index',['SID' => '903']) }}">{{__('admin/public.complaint_list')}}</a>
+                            </li>
+                            <li class="@if($SID==904 ) active @endif"><a
+                                        href="{{ route('depositsType.index',['SID' => '904']) }}">مدیریت نوع های پرداختی</a>
+                            </li>
+                            <li class="@if($SID==907 ) active @endif"><a
+                                        href="{{ route('deposits.index',['SID' => '907']) }}">مشاهده پرداختی ها</a>
+                            </li>
+                            <li class="@if($SID==910 ) active @endif"><a
+                                        href="{{ route('mosabeghe.index',['SID' => '910']) }}">{{__('admin/public.mosabeghe_maleke_zaman')}}</a>
+                            </li>
+                            <li class="@if($SID==920 ) active @endif"><a
+                                        href="{{ route('webPages.index',['SID' => '920']) }}">{{__('admin/public.web_pages_list')}}</a>
+                            </li>
+                            <li class="@if($SID==921 ) active @endif"><a
+                                        href="{{ route('webPages.create',['SID' => '921']) }}">{{__('admin/public.web_pages_add')}}</a>
+                            </li>
+                            <li class="@if($SID==930 ) active @endif"><a
+                                        href="{{ route('menus.index',['SID' => '930']) }}">{{__('admin/public.menus_list')}}</a>
+                            </li>
+                            <li class="@if($SID==931 ) active @endif"><a
+                                        href="{{ route('menus.create',['SID' => '931']) }}">{{__('admin/public.menus_add')}}</a>
+                            </li>
+                            <li class="@if($SID==940 ) active @endif"><a
+                                        href="{{ route('menuCategories.index',['SID' => '940']) }}">{{__('admin/public.menu_categories_list')}}</a>
+                            </li>
+                            <li class="@if($SID==941 ) active @endif"><a
+                                        href="{{ route('menuCategories.create',['SID' => '941']) }}">{{__('admin/public.menu_categories_add')}}</a>
+                            </li>
+                            <li class="@if($SID==950 ) active @endif"><a
+                                        href="{{ route('noors.index',['SID' => '950']) }}">{{__('admin/public.noors_list')}}</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="@if($SID>=10 and $SID<30) active @endif">
                         <a href="#news" class="has-arrow"><i
                                     class="icon-diamond"></i><span>{{__('admin/public.news')}}</span></a>
@@ -80,35 +132,6 @@
 
                     </li>
 
-
-                    <li class="@if($SID>=900 and $SID<1000) active @endif">
-                        <a href="#site-setting" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.site_settings')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="@if($SID==900 ) active @endif"><a
-                                        href="{{ route('siteDetails.index',['SID' => '900']) }}">{{__('admin/public.site_settings_list')}}</a>
-                            </li>
-                            <li class="@if($SID==901 ) active @endif"><a
-                                        href="{{ route('siteDetails.create',['SID' => '901']) }}">{{__('admin/public.site_settings_add')}}</a>
-                            </li>
-                            <li class="@if($SID==902 ) active @endif"><a
-                                        href="{{ route('contactUs.index',['SID' => '902']) }}">{{__('admin/public.contact_us_list')}}</a>
-                            </li>
-                            <li class="@if($SID==903 ) active @endif"><a
-                                        href="{{ route('complaint.index',['SID' => '903']) }}">{{__('admin/public.complaint_list')}}</a>
-                            </li>
-                            <li class="@if($SID==904 ) active @endif"><a
-                                        href="{{ route('depositsType.index',['SID' => '904']) }}">مدیریت نوع های پرداختی</a>
-                            </li>
-                            <li class="@if($SID==907 ) active @endif"><a
-                                        href="{{ route('deposits.index',['SID' => '907']) }}">مشاهده پرداختی ها</a>
-                            </li>
-                            <li class="@if($SID==910 ) active @endif"><a
-                                        href="{{ route('mosabeghe.index',['SID' => '910']) }}">{{__('admin/public.mosabeghe_maleke_zaman')}}</a>
-                            </li>
-                        </ul>
-                    </li>
-
                     <li class="@if($SID>=530 and $SID<550) active @endif">
                         <a href="#methodOfLetter" class="has-arrow"><i
                                     class="icon-diamond"></i><span>شیوه نامه ها و جلسات</span></a>
@@ -156,50 +179,32 @@
                     </li>
 
 
-                    <li class="@if($SID>=400 and $SID<500) active @endif">
-                        <a href="#page" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.web_pages')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="@if($SID==400 ) active @endif"><a
-                                        href="{{ route('webPages.index',['SID' => '400']) }}">{{__('admin/public.web_pages_list')}}</a>
-                            </li>
-                            <li class="@if($SID==401 ) active @endif"><a
-                                        href="{{ route('webPages.create',['SID' => '401']) }}">{{__('admin/public.web_pages_add')}}</a>
-                            </li>
-                        </ul>
-                    </li>
+                    {{--<li class="@if($SID>=400 and $SID<500) active @endif">--}}
+                        {{--<a href="#page" class="has-arrow"><i--}}
+                                    {{--class="icon-diamond"></i><span>{{__('admin/public.web_pages')}}</span></a>--}}
+                        {{--<ul aria-expanded="false" class="collapse">--}}
+                           {{----}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
 
-                    <li class="@if($SID>=500 and $SID<510) active @endif">
-                        <a href="#menus" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.menus')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="@if($SID==500 ) active @endif"><a
-                                        href="{{ route('menus.index',['SID' => '500']) }}">{{__('admin/public.menus_list')}}</a>
-                            </li>
-                            <li class="@if($SID==501 ) active @endif"><a
-                                        href="{{ route('menus.create',['SID' => '501']) }}">{{__('admin/public.menus_add')}}</a>
-                            </li>
-                            <li class="@if($SID==700 ) active @endif"><a
-                                        href="{{ route('menuCategories.index',['SID' => '700']) }}">{{__('admin/public.menu_categories_list')}}</a>
-                            </li>
-                            <li class="@if($SID==701 ) active @endif"><a
-                                        href="{{ route('menuCategories.create',['SID' => '701']) }}">{{__('admin/public.menu_categories_add')}}</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="@if($SID>=60 and $SID<70) active @endif">
-                        <a href="#noors" class="has-arrow"><i
-                                    class="icon-diamond"></i><span>{{__('admin/public.noors')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="@if($SID==60 ) active @endif"><a
-                                        href="{{ route('noors.index',['SID' => '60']) }}">{{__('admin/public.noors_list')}}</a>
-                            </li>
+                    {{--<li class="@if($SID>=500 and $SID<510) active @endif">--}}
+                        {{--<a href="#menus" class="has-arrow"><i--}}
+                                    {{--class="icon-diamond"></i><span>{{__('admin/public.menus')}}</span></a>--}}
+                        {{--<ul aria-expanded="false" class="collapse">--}}
+                            {{----}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                    {{--<li class="@if($SID>=60 and $SID<70) active @endif">--}}
+                        {{--<a href="#noors" class="has-arrow"><i--}}
+                                    {{--class="icon-diamond"></i><span>{{__('admin/public.noors')}}</span></a>--}}
+                        {{--<ul aria-expanded="false" class="collapse">--}}
+                            {{----}}
                             {{--<li class="@if($SID==41 ) active @endif"><a--}}
                             {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}
                             {{--</li>--}}
-                        </ul>
+                        {{--</ul>--}}
 
-                    </li>
+                    {{--</li>--}}
 
 
 

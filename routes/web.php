@@ -330,6 +330,8 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::get('exams/create','ExamsController@create')->name('teacher.exams.create');
     Route::post('exams/create/save','ExamsController@createSave')->name('teacher.exams.create.save');
     Route::get('exams/show/{id}','ExamsController@show')->name('teacher.exams.show');
+    Route::get('exams/edit/{id}','ExamsController@edit')->name('teacher.exams.edit');
+    Route::post('exams/edit/save','ExamsController@editSave')->name('teacher.exams.edit.save');
 
     Route::get('exams/questions/create/{id}','ExamsController@questionsCreate')->name('teacher.exams.questions.create');
     Route::post('exams/questions/create/save','ExamsController@questionsCreateSave')->name('teacher.exams.questions.create.save');

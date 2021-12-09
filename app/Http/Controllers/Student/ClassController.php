@@ -23,14 +23,14 @@ class ClassController extends StudentController
 {
     public function list()
     {
-        $fields = Field::all();
+        $fields = Field::where('type','=','student')->get();
         $user=Auth::user();
         $studentFields = StudentsFields::where([['user_id', '=',$user->id],['status','>',1]])->orderBy('id','desc')->get();
         return view('student.pages.class-list', compact('fields', 'studentFields'));
     }
     public function register()
     {
-        $fields = Field::all();
+        $fields = Field::where('type','=','student')->get();
         $user=Auth::user();
         $studentFields = StudentsFields::where([['user_id', '=',$user->id],['status','=',1]])->orderBy('id')->get();
         return view('student.pages.class-register', compact('fields', 'studentFields'));
@@ -40,7 +40,7 @@ class ClassController extends StudentController
     {
         $this->createPayment();
         $user=Auth::user();
-        $fields = Field::all();
+        $fields = Field::where('type','=','student')->get();
         $studentFields = StudentsFields::where([['user_id', '=',$user->id],['status','=',1]])->orderBy('id')->get();
         return view('student.pages.class-register-show-factor-pay', compact('fields','studentFields'));
     }

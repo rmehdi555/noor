@@ -56,6 +56,7 @@ class MethodOfLetterController extends AdminController
         MethodOfLetter::create([
             'user_id'=>$user->id,
             'title'=>$inputs["title"],
+            'description'=>$inputs["description"],
             'file_url'=>$urlFile,
             'status'=>1,
         ]);

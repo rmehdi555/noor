@@ -29,6 +29,11 @@
                                 <?php
                                 }
                                 ?>
+                                <div class="form-group">
+                                    <label>{{__('admin/public.description')}}:</label>
+                                    <textarea name="description" id="description" class="form-control" rows="5" cols="30" >{{$methodOfLetter->description}}</textarea>
+
+                                </div>
 
 
 

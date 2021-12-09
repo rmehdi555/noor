@@ -99,14 +99,14 @@ function deleteFunction() {
 <script type="text/javascript">
 
     $('.persian-datepicker-time').persianDatepicker({
-        format: 'YYYY-MM-DD H:M:s',
+        format: 'YYYY-MM-DD H:m:s',
         timePicker: {
             enabled: true,
         },
     });
 
     $('#start-exam-show').persianDatepicker({
-        format: 'YYYY-MM-DD H:M:s',
+        format: 'YYYY-MM-DD H:m:s',
         timePicker: {
             enabled: true,
         },

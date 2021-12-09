@@ -26,7 +26,7 @@ class StudentsController extends StudentController
         //Cookie::queue('student_code', 124891, 720);
         $result = $this->checkCodeCookie(1);
         if ($result == 'true') {
-            $fields = Field::all();
+            $fields = Field::where('type','=','student')->get();
             $studentFields = StudentsFields::where('flag_cookie', '=', Cookie::get('student_flag_cookie'))->orderBy('id')->get();
             return view('web.pages.students-level-1', compact('fields', 'studentFields'));
         } else {

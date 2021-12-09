@@ -34,6 +34,7 @@
                                         <th>تاریخ شروع آزمون</th>
                                         <th>تاریخ پایان آزمون</th>
                                         <th>تنظیمات</th>
+                                        <th>تنظیمات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -45,6 +46,7 @@
                                             <td>{{\App\Providers\MyProvider::show_date($item->start_exam,'%B %d، %Y  H:i')}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->end_exam,'%B %d، %Y  H:i')}}</td>
                                             <td><a class="btn btn-info" href="{{ route('teacher.exams.show',$item->id) }}">نمایش سوالات آزمون</a></td>
+                                            <td><a class="btn btn-info" href="{{ route('teacher.exams.edit',$item->id) }}">ویرایش ساعت آزمون</a></td>
                                         </tr>
 
                                         @php $i++ @endphp

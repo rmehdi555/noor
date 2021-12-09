@@ -65,6 +65,61 @@ class ExamsController extends TeacherController
         return redirect()->route('teacher.exams.show',$exam->id);
     }
 
+    public function edit(Request $request,$id)
+    {
+        $exam=Exams::find($id);
+        $user=Auth::user();
+        if(!isset($exam->id) or $exam->user_id!=$user->id)
+        {
+            alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
+            return redirect()->route('teacher.exams.list');
+        }
+        $examQuestions=ExamsQuestions::where('exams_id','=',$exam->id)->orderBy('id','DESC')->get();
+        $examSumMark=ExamsQuestions::where([['exams_id','=',$exam->id],['status','>',0]])->sum('mark');
+        return view('teacher.pages.exams.edit',compact('exam','examQuestions','examSumMark'));
+    }
+    public function editSave(Request $request)
+    {
+        $request->validate([
+            'title' => ['required'],
+            'start_exam' => ['required'],
+            'end_exam' => ['required'],
+            'exam_id' => ['required'],
+        ]);
+        $exam=Exams::find($request->exam_id);
+        $user=Auth::user();
+        if(!isset($exam->id) or $exam->user_id!=$user->id)
+        {
+            alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
+            return redirect()->route('teacher.exams.list');
+        }
+        $user=Auth::user();
+        $request->end_exam=MyProvider::convert_phone_number($request->end_exam);
+        $end_exam=explode(' ',$request->end_exam);
+        $end_exam_date=explode('-',$end_exam[0]);
+        $end_exam_time=$end_exam[1];
+        $end_exam_date=Verta::getGregorian($end_exam_date[0],$end_exam_date[1],$end_exam_date[2]);
+        $end_exam_date=implode('-',$end_exam_date);
+        $end_exam=$end_exam_date.' '.$end_exam_time;
+        $request->start_exam=MyProvider::convert_phone_number($request->start_exam);
+        $start_exam=explode(' ',$request->start_exam);
+        $start_exam_date=explode('-',$start_exam[0]);
+        $start_exam_time=$start_exam[1];
+        $start_exam_date=Verta::getGregorian($start_exam_date[0],$start_exam_date[1],$start_exam_date[2]);
+        $start_exam_date=implode('-',$start_exam_date);
+        $start_exam=$start_exam_date.' '.$start_exam_time;
+
+
+        $exam->update([
+            'title'=>$request->title,
+            'start_exam' => $start_exam,
+            'end_exam'=>$end_exam,
+        ]);
+        alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
+        return redirect()->route('teacher.exams.show',$exam->id);
+    }
+
+
     public function show(Request $request,$id)
     {
         $exam=Exams::find($id);

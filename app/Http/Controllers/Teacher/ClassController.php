@@ -35,7 +35,7 @@ class ClassController extends TeacherController
 
     public function create()
     {
-        $fields = Field::all();
+        $fields = Field::where('type','=','student')->get();;
         $provinces = Provinces::all();
         $cities = Cities::all();
         $markTypes=MarkType::where('status','=',1)->get();
@@ -88,6 +88,7 @@ class ClassController extends TeacherController
             'city'=>$request->city,
             'province'=>$request->province,
             'address'=>$request->address,
+            'type'=>'student',
             'status' => '1',
         ]);
         alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));

@@ -33,6 +33,7 @@
                                     <tr>
                                         <th>{{__('admin/public.id')}}</th>
                                         <th>{{__('admin/public.title')}}</th>
+                                        <th>{{__('admin/public.description')}}</th>
                                         <th>نمایش فایل</th>
                                         <th>{{__('admin/public.status')}}</th>
                                         <th>{{__('admin/public.actions')}}</th>
@@ -43,6 +44,7 @@
                                         <tr class="gradeA">
                                             <td>{{$item->id}}</td>
                                             <td>{{\App\Providers\MyProvider::_text($item->title)}}</td>
+                                            <td><span>{{\App\Providers\MyProvider::_text($item->description)}}</span></td>
                                             <td>  <a href="{{asset($item->file_url)}}" target="_blank">اینجا کلیک کنید</a></td>
                                             <td>{{$item->status?__('admin/public.active'):__('admin/public.inactive')}}</td>
                                             <td class="actions">

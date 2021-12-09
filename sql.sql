@@ -39,5 +39,8 @@ exams_questions_options
 exams_response_students
 
 
+--1400-09-18
+ALTER TABLE `fields` ADD `type` VARCHAR(191) NOT NULL DEFAULT 'student' AFTER `price`;
+
 
 

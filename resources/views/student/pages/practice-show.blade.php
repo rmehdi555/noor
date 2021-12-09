@@ -40,7 +40,7 @@
                                             </div>
                                             @else
                                             <div class="incoming_msg">
-                                                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                                <div class="incoming_msg_img"> <img src="{{asset('web/2020/assets/img/theme/user-profile.png')}}" alt="sunil"> </div>
                                                 <div class="received_msg">
                                                     <div class="received_withd_msg">
                                                         <p><span>{!! $item->description !!}</span></p>

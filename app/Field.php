@@ -15,7 +15,7 @@ class Field extends Model
      */
     use SoftDeletes;
     protected $fillable = [
-        'title', 'slug', 'description','body','parent_id','images','tags','price','priority','status',
+        'title', 'slug', 'description','body','parent_id','images','tags','price','type','priority','status',
     ];
     protected $casts = [
         'images' => 'array'

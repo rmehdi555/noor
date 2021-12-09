@@ -28,6 +28,7 @@ class CreateClassRoomsTable extends Migration
             $table->string('city')->nullable();
             $table->string('province')->nullable();
             $table->string('address')->nullable();
+            $table->string('type')->default('student');
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

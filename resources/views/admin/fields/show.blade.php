@@ -100,6 +100,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group col-lg-4 col-md-12">
+                                    <label>{{__('admin/public.status')}} :</label>
+                                    <div class="multiselect_div">
+                                        <select id="single-selection" name="status" class="multiselect multiselect-custom" >
+                                            <option value="0">{{__('admin/public.inactive')}}</option>
+                                            <option value="1" {{$field->status?"selected":""}}>{{__('admin/public.active')}}</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="form-group col-lg-4 col-md-12">
                                     <label>{{__('admin/public.status')}} :</label>

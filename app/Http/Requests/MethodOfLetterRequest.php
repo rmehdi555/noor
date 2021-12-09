@@ -32,7 +32,7 @@ class MethodOfLetterRequest extends FormRequest
 
         if($this->method() == 'POST') {
             $result=array_merge($result , [
-                'file' => 'required|mimes:png,bmp,jpg,jpeg,bmp,pdf',
+                'file' => 'mimes:png,bmp,jpg,jpeg,bmp,pdf',
                 'status'=>'required|integer',
             ]);
             return $result;

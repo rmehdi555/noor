@@ -27,10 +27,14 @@
                                 <?php
                                 }
                                 ?>
+                                <div class="form-group">
+                                    <label>{{__('admin/public.description')}}:</label>
+                                    <textarea name="description" id="description" class="form-control" rows="5" cols="30" >{{old('description')}}</textarea>
 
+                                </div>
                                 <div class="form-group">
                                     <label>فایل شیوه نامه :</label>
-                                    <input type="file" name="file" class="form-control" value="" required>
+                                    <input type="file" name="file" class="form-control" value="" >
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-12">
