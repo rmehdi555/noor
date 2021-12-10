@@ -20,7 +20,7 @@
 
                         <br>
                         @if(count($classes)>0)
-                            <p class="bu-margin-bottom-30">لیست کلاس ها : </p>
+                            <p class="bu-margin-bottom-30">لیست کلاس ها ی معلم القرآن : </p>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover js-basic-example dataTable">
                                     <thead>
@@ -29,10 +29,10 @@
                                         <th>عنوان رشته (اصلی)</th>
                                         <th>عنوان رشته (فرعی)</th>
                                         <th>نام</th>
-                                        <th>توضیح</th>
-                                        {{--<th>آدرس</th>--}}
-                                        {{--<th>تاریخ ایجاد</th>--}}
                                         <th>وضعیت کلاس</th>
+                                        <th>تاریخ شروع آزمون</th>
+                                        <th>تاریخ پایان آزمون</th>
+                                        <th>عنوان آزمون</th>
                                         <th>تنظیمات</th>
                                     </tr>
                                     </thead>
@@ -41,40 +41,46 @@
                                     @foreach($classes as $item)
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$item->fieldParentId->title}}</td>
-                                            <td>{{$item->fieldId->title}}</td>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->description}}</td>
-                                            {{--<td>{{$item->address}}</td>--}}
-                                            {{--<td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>--}}
-                                            @switch($item->status)
+                                            <td>{{$item->classRoms->fieldParentId->title}}</td>
+                                            <td>{{$item->classRoms->fieldId->title}}</td>
+                                            <td>{{$item->classRoms->name}}</td>
+
+                                            @switch($item->classRoms->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
-                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(2)
                                                 <td>درحال برگذاری</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
-                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(3)
                                                 <td>آزمون</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
-                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(5)
                                                 <td>اتمام شده</td>
-                                                <td></td>
                                                 @break
 
                                                 @default
                                                 <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
-                                                <td></td>
                                             @endswitch
+                                            @if(isset($item->classRoms->exam))
+                                                <th>{{\App\Providers\MyProvider::show_date($item->classRoms->exam->start_exam,'%B %d، %Y  H:i')}}</th>
+                                                <th>{{\App\Providers\MyProvider::show_date($item->classRoms->exam->ثدی_exam,'%B %d، %Y  H:i')}}</th>
+                                                <th>{{$item->classRoms->exam->title}}</th>
+                                                @if($item->classRoms->exam->start_exam<now() and $item->classRoms->exam->end_exam>now() )
+                                                    <td>درحال آزمون</td>
+                                                    @else
+                                                    <td>111</td>
+                                                    @endif
+                                                @else
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+
+                                            @endif
 
 
 

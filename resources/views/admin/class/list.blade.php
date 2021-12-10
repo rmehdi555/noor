@@ -59,17 +59,20 @@
                                             @switch($item->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
-                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a></td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(2)
                                                 <td>درحال برگذاری</td>
-                                                <td></td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(3)
                                                 <td>آزمون</td>
-                                                <td></td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(5)

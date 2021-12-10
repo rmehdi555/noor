@@ -317,6 +317,8 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     //ایجاد کلاس جدید
     Route::get('class/create','ClassController@create')->name('teacher.class.create');
     Route::post('class/create/save','ClassController@createSave')->name('teacher.class.create.save');
+    Route::get('class/edit/{id}','ClassController@edit')->name('teacher.class.edit');
+    Route::post('class/edit/save','ClassController@editSave')->name('teacher.class.edit.save');
     //ثبت نام قران آموز ها در کلاس مدنظر
     Route::get('class/register','ClassController@register')->name('teacher.class.register');
     Route::post('class/register/save','ClassController@registerSave')->name('teacher.class.register.save');
@@ -364,6 +366,10 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::post('exams/questions/create/save','ExamsController@questionsCreateSave')->name('teacher.exams.questions.create.save');
     Route::get('exams/questions/edit/{id}','ExamsController@questionsEdit')->name('teacher.exams.questions.edit');
     Route::post('exams/questions/edit/save','ExamsController@questionsEditSave')->name('teacher.exams.questions.edit.save');
+
+
+    Route::get('class/teacher/list','ClassController@teacherList')->name('teacher.class.teacher.list');
+
 });
 
 // end teacher  route

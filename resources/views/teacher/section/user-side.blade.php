@@ -40,13 +40,16 @@
                                         <span class="badge badge-primary badge-pill"></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('teacher.class.create') }}" >ایجاد کلاس جدید</a>
+                                        <a href="{{ route('teacher.class.teacher.list') }}" >مدیریت کلاس ها ی معلم القرآن</a>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('teacher.class.list') }}" >مدیریت کلاس ها</a>
+                                        <a href="{{ route('teacher.class.create') }}" >ایجاد کلاس برای قرآن آموز</a>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('teacher.exams.list') }}" >مدیریت آزمون ها</a>
+                                        <a href="{{ route('teacher.class.list') }}" >مدیریت کلاس ها ی قرآن آموز</a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.exams.list') }}" >مدیریت آزمون ها ی قرآن آموز</a>
                                     </li>
 
                                     {{--<li class="list-group-item d-flex justify-content-between align-items-center">--}}

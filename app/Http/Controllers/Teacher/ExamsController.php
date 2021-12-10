@@ -312,6 +312,7 @@ class ExamsController extends TeacherController
                 'response'=>$request->response,
                 'status' =>$request->status,
             ]);
+            ExamsQuestionsOptions::where('exams_questions_id','=',$examsQuestion->id)->delete();
             alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
             return redirect()->route('teacher.exams.show',$exam->id);
         }else{

@@ -21,6 +21,10 @@ class ClassRooms extends Model
 
     protected $dates = ['deleted_at'];
 
+    public function exam()
+    {
+        return $this->hasOne(Exams::class,'id','exam_id');
+    }
 
     public function fieldid()
     {

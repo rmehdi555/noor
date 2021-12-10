@@ -22,4 +22,5 @@ class ClassRoomsTeachers extends Model
     {
         return $this->hasOne(ClassRooms::class,'id','class_rooms_id');
     }
+
 }

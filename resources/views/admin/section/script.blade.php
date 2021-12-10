@@ -112,6 +112,71 @@
         $(".option-field-child-" + id).show();
     });
 </script>
+<script src="{{asset('persian-date/persian-date.js')}}"></script>
+<script src="{{asset('persian-date/persian-datepicker.js')}}"></script>
+<script type="text/javascript">
+
+
+
+
+
+    var type = $("#question-type-select").val();
+    if(type=="test")
+    {
+        $(".question-type-test-div").show();
+        $(".question-type-adj-div").hide();
+        $(".question-type-test-q-div").hide();
+        $(".question-type-test-q-div-4").show();
+    }else{
+        $(".question-type-test-div").hide();
+        $(".question-type-adj-div").show();
+        $(".question-type-test-q-div").hide();
+    }
+    $("#question-type-select").change(function () {
+        var type = $(this).val();
+        if(type=="test")
+        {
+            $(".question-type-test-div").show();
+            $(".question-type-adj-div").hide();
+            $(".question-type-test-q-div").hide();
+            $(".question-type-test-q-div-4").show();
+        }else{
+            $(".question-type-test-div").hide();
+            $(".question-type-adj-div").show();
+            $(".question-type-test-q-div").hide();
+        }
+
+    });
+
+    var id = $("#type-adj-number-select").val();
+    $(".question-type-test-q-div").hide();
+    $(".question-type-test-q-div-"+id).show();
+
+    $("#type-adj-number-select").change(function () {
+        var id = $(this).val();
+        $(".question-type-test-q-div").hide();
+        $(".question-type-test-q-div-"+id).show();
+    });
+
+
+    $('.persian-datepicker-time').persianDatepicker({
+        format: 'YYYY-MM-DD H:m:s',
+        timePicker: {
+            enabled: true,
+        },
+    });
+
+    $('#start-exam-show').persianDatepicker({
+        format: 'YYYY-MM-DD H:m:s',
+        timePicker: {
+            enabled: true,
+        },
+        altField: '#start-exam'
+    });
+
+
+
+</script>
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 
 <script type="text/javascript">
@@ -158,88 +223,11 @@ function deleteFunction() {
 
 
 
-    $('.persian-datepicker-time').persianDatepicker({
-        format: 'YYYY-MM-DD H:M:s',
-        timePicker: {
-            enabled: true,
-        },
-    });
-
-    $('#start-exam-show').persianDatepicker({
-        format: 'YYYY-MM-DD H:M:s',
-        timePicker: {
-            enabled: true,
-        },
-        altField: '#start-exam'
-    });
-
 </script>
 
 
 
 
-<script type="text/javascript">
-
-    $('.persian-datepicker-time').persianDatepicker({
-        format: 'YYYY-MM-DD H:m:s',
-        timePicker: {
-            enabled: true,
-        },
-    });
-
-    $('#start-exam-show').persianDatepicker({
-        format: 'YYYY-MM-DD H:m:s',
-        timePicker: {
-            enabled: true,
-        },
-        altField: '#start-exam'
-    });
-
-
-
-    var type = $("#question-type-select").val();
-    if(type=="test")
-    {
-        $(".question-type-test-div").show();
-        $(".question-type-adj-div").hide();
-        $(".question-type-test-q-div").hide();
-        $(".question-type-test-q-div-4").show();
-    }else{
-        $(".question-type-test-div").hide();
-        $(".question-type-adj-div").show();
-        $(".question-type-test-q-div").hide();
-    }
-    $("#question-type-select").change(function () {
-        var type = $(this).val();
-        if(type=="test")
-        {
-            $(".question-type-test-div").show();
-            $(".question-type-adj-div").hide();
-            $(".question-type-test-q-div").hide();
-            $(".question-type-test-q-div-4").show();
-        }else{
-            $(".question-type-test-div").hide();
-            $(".question-type-adj-div").show();
-            $(".question-type-test-q-div").hide();
-        }
-
-    });
-
-    var id = $("#type-adj-number-select").val();
-    $(".question-type-test-q-div").hide();
-    $(".question-type-test-q-div-"+id).show();
-
-    $("#type-adj-number-select").change(function () {
-        var id = $(this).val();
-        $(".question-type-test-q-div").hide();
-        $(".question-type-test-q-div-"+id).show();
-    });
-
-
-
-
-
-</script>
 
 
 

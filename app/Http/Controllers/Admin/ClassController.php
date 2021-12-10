@@ -6,6 +6,8 @@ use App\Cities;
 use App\ClassRooms;
 use App\ClassRoomsStudents;
 use App\ClassRoomsTeachers;
+use App\Exams;
+use App\ExamsQuestions;
 use App\Field;
 use App\MarkType;
 use App\Provinces;
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 /* class
  * status=1 تازه ایجاد شده
- * status=2 در حال برگذاری
+ * status=2 در حال برگزاری
  * status=4 آزمون
  * status=5 اتمام رسیده
  */
@@ -31,8 +33,9 @@ class ClassController extends AdminController
         $cities = Cities::all();
         $markTypes=MarkType::where('status','=',1)->get();
         $teachers=Teachers::all();
+        $exams=Exams::all();
         $SID=400;
-        return view('admin.class.create', compact('fields','provinces','cities','markTypes','SID','teachers'));
+        return view('admin.class.create', compact('fields','provinces','cities','markTypes','SID','teachers','exams'));
     }
 
     public function createSave(Request $request)
@@ -67,6 +70,8 @@ class ClassController extends AdminController
             alert()->error('نوع نمره دهی را انتخاب نمایید',__('web/messages.alert'));
             return redirect()->route('admin.class.create');
         }
+        if(!isset($request->exam_id) or empty($request->exam_id))
+            $request->exam_id=0;
 
         $classRoom=ClassRooms::create([
             'user_id'=>$request->teacher_id,
@@ -78,11 +83,76 @@ class ClassController extends AdminController
             'description'=>$request->description,
             'number_students'=>$request->number_students,
             'old'=>$request->old,
+            'exam_id'=>$request->exam_id,
             'city'=>$request->city,
             'province'=>$request->province,
             'address'=>$request->address,
             'type'=>$request->type,
-            'status' => '1',
+            'status' =>$request->status,
+        ]);
+        alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
+        return redirect()->route('admin.class.show',$classRoom->id);
+    }
+
+
+    public function edit(Request $request,$id)
+    {
+        $classRoom=ClassRooms::find($id);
+        if(!isset($classRoom->id))
+        {
+            alert()->error(__('not_exist'));
+            return redirect()->route('admin.class.list');
+        }
+        $fields = Field::all();
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        $markTypes=MarkType::where('status','=',1)->get();
+        $teachers=Teachers::all();
+        $exams=Exams::all();
+        $SID=400;
+        return view('admin.class.edit', compact('fields','provinces','cities','markTypes','SID','teachers','exams','classRoom'));
+    }
+
+    public function editSave(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'number_students' => ['required', 'string', 'max:255'],
+            'old' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'province' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'mark_type_id'=>['required', 'numeric'],
+        ]);
+        $classRoom=ClassRooms::find($request->class_room_id);
+        if(!isset($classRoom->id))
+        {
+            alert()->error(__('not_exist'));
+            return redirect()->route('admin.class.list');
+        }
+        $user=Auth::user();
+
+        $markType=MarkType::find($request->mark_type_id);
+        if(!isset($markType->id))
+        {
+            alert()->error('نوع نمره دهی را انتخاب نمایید',__('web/messages.alert'));
+            return redirect()->route('admin.class.list');
+        }
+        if(!isset($request->exam_id) or empty($request->exam_id))
+            $request->exam_id=0;
+
+        $classRoom->update([
+            'name'=>$request->name,
+            'mark_type'=>$markType->type,
+            'mark_type_id'=>$request->mark_type_id,
+            'description'=>$request->description,
+            'number_students'=>$request->number_students,
+            'old'=>$request->old,
+            'exam_id'=>$request->exam_id,
+            'address'=>$request->address,
+            'type'=>$request->type,
+            'status' =>$request->status,
         ]);
         alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
         return redirect()->route('admin.class.show',$classRoom->id);
@@ -120,7 +190,7 @@ class ClassController extends AdminController
         return view('admin.class.show', compact('fields','provinces','cities','classRoms','students','studentsRegister','SID','teachers','teachersR'));
     }
 
-       public function registerSave(Request $request)
+    public function registerSave(Request $request)
     {
         $request->validate([
             'classRoomsId'=> ['required', 'numeric'],

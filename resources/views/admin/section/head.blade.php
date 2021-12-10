@@ -58,7 +58,6 @@
 
 
     <link rel="stylesheet" href="{{asset('persian-date/persian-datepicker.css')}}"/>
-    <script src="{{asset('persian-date/persian-date.js')}}"></script>
-    <script src="{{asset('persian-date/persian-datepicker.js')}}"></script>
+
 
 </head>

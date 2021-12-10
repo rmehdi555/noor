@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-primary m-1">
-                       جهت ایجاد کلاس جدید اطلاعات را بادقت وارد نمایید
+                       جهت ویرایش کلاس جدید اطلاعات را بادقت وارد نمایید
                     </div>
                 </div>
             </div>
@@ -42,66 +42,15 @@
 
 
 
-                        <form class="form-horizontal" method="POST" action="{{ route('admin.class.create.save') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('admin.class.edit.save') }}">
                             @csrf
-                            <p class="bu-margin-bottom-30">نوع کلاس را انتخاب کنید : </p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group ">
-                                        <label class=" control-label"
-                                               for="input-name">{{__('web/public.select_field_main')}} : <span class="required">*</span> </label>
-                                        <div class="col-md-10 col-sm-9">
-                                            <select name="field_main" id="select-field-main"
-                                                    class="form-control  @error('field_main') is-invalid @enderror">
-                                                @foreach($fields as $item)
-                                                    @if($item->parent_id==0)
-                                                        <option class="option-field-main"
-                                                                id="option-field-main-{{$item->id}}"
-                                                                value="{{$item->id}}" @php if($item->status==0)echo"disabled";@endphp>{{\App\Providers\MyProvider::_text($item->title)}}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            @error('field_main')
-                                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group ">
-                                        <label class=" control-label"
-                                               for="input-name">{{__('web/public.select_field_child')}} : <span class="required">*</span></label>
-                                        <div class="col-md-10 col-sm-9">
-                                            <select name="field_child" id="select-field-child"
-                                                    class="form-control  @error('field_main') is-invalid @enderror" required >
-                                                {{--<option selected>{{__('web/public.select_field_child')}}</option>--}}
-                                                @foreach($fields as $item)
-                                                    @if($item->parent_id!=0 OR !isset($item->children[1]))
-                                                        <option class="option-field-child option-field-child-{{$item->parent_id==0?$item->id:$item->parent_id}}"
-                                                                id="option-field-child-{{$item->id}}"
-                                                                value="{{$item->id}}" @php if($item->status==0)echo"disabled";@endphp>{{\App\Providers\MyProvider::_text($item->title)}}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            @error('field_child')
-                                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                          <input value="{{$classRoom->id}}" type="hidden" name="class_room_id">
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label" for="name">عنوان کلاس
                                         : <span class="required">*</span></label>
                                     <div class="col-md-12 col-sm-10">
-                                        <input type="text" name="name" id="name"
+                                        <input type="text" name="name" id="name" value="{{$classRoom->name}}"
                                                class="form-control  @error('name') is-invalid @enderror" required/>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -115,7 +64,7 @@
                                            for="description">{{__('web/public.description')}} : <span
                                                 class="required">*</span></label>
                                     <div class="col-md-12 col-sm-10">
-                                        <input type="text" name="description" id="description"
+                                        <input type="text" name="description" id="description" value="{{$classRoom->description}}"
                                                class="form-control  @error('description') is-invalid @enderror" required/>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
@@ -131,7 +80,7 @@
                                     <label class="col-md-6 col-sm-6 control-label" for="number_students">تعداد قرآن آموزان
                                         : <span class="required">*</span></label>
                                     <div class="col-md-12 col-sm-10">
-                                        <input type="number" name="number_students" id="number_students"
+                                        <input type="number" name="number_students" id="number_students" value="{{$classRoom->number_students}}"
                                                class="form-control  @error('number_students') is-invalid @enderror" required/>
                                         @error('number_students')
                                         <span class="invalid-feedback" role="alert">
@@ -145,7 +94,7 @@
                                            for="old">رده سنی  : <span
                                                 class="required">*</span></label>
                                     <div class="col-md-12 col-sm-10">
-                                        <input type="text" name="old" id="old" placeholder="مثلا : 10-15"
+                                        <input type="text" name="old" id="old" placeholder="مثلا : 10-15" value="{{$classRoom->old}}"
                                                class="form-control  @error('old') is-invalid @enderror" required/>
                                         @error('old')
                                         <span class="invalid-feedback" role="alert">
@@ -167,7 +116,7 @@
                                                     disabled>{{__('web/public.select_option')}}</option>
                                             @foreach ($provinces as $item)
                                                 <option value="{{$item->id}}" class="option-province"
-                                                        id="option-province-id" >{{$item->name}}</option>
+                                                        id="option-province-id" @if($classRoom->province==$item->id) selected @endif >{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                         @error('province')
@@ -187,7 +136,7 @@
                                             @foreach ($cities as $item)
                                                 <option value="{{$item->id}}"
                                                         class="option-city option-city-{{$item->province_id}}"
-                                                        id="option-city-{{$item->id}}" >{{$item->name}}</option>
+                                                        id="option-city-{{$item->id}}"  @if($classRoom->city==$item->id) selected @endif>{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                         @error('city')
@@ -205,7 +154,7 @@
                                     <label class="col-md-6 col-sm-6 control-label" for="address">آدرس
                                         : <span class="required">*</span></label>
                                     <div class="col-md-12 col-sm-10">
-                                        <input type="text" name="address" id="address"
+                                        <input type="text" name="address" id="address" value="{{$classRoom->address}}"
                                                class="form-control  @error('address') is-invalid @enderror" required/>
                                         @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -223,7 +172,7 @@
                                                 @foreach($markTypes as $item)
                                                         <option class=""
                                                                 id=""
-                                                                value="{{$item->id}}">{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                                value="{{$item->id}}" @if($classRoom->mark_type_id==$item->id) selected @endif>{{\App\Providers\MyProvider::_text($item->title)}}</option>
                                                 @endforeach
                                             </select>
                                             @error('mark_type_id')
@@ -242,7 +191,7 @@
                                     <div class="col-md-12 col-sm-10">
                                         <select class="form-control js-example-basic-single" name="teacher_id">
                                             @foreach ($teachers as $item)
-                                                <option value="{{$item->user_id}}">{{$item->teacher_id}} : {{$item->name}} {{$item->family}} </option>
+                                                <option value="{{$item->user_id}}" @if($classRoom->user_id==$item->user_id) selected @endif>{{$item->teacher_id}} : {{$item->name}} {{$item->family}} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -252,7 +201,7 @@
                                     <div class="multiselect_div">
                                         <select id="single-selection" name="type" class="multiselect multiselect-custom" >
                                             <option value="student">برای قرآن آموزها</option>
-                                            <option value="teacher">برای معلم ها</option>
+                                            <option value="teacher"  @if($classRoom->type=="teacher") selected @endif>برای معلم ها</option>
                                         </select>
                                     </div>
 
@@ -269,7 +218,7 @@
                                                 class="form-control  @error('exam_id') is-invalid @enderror" >
                                             <option  value="0">هنوز آزمونی درنظر گرفته نشده</option>
                                             @foreach($exams as $item)
-                                                <option  value="{{$item->id}}">{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                <option  value="{{$item->id}}"  @if($classRoom->exam_id==$item->id) selected @endif>{{\App\Providers\MyProvider::_text($item->title)}}</option>
                                             @endforeach
                                         </select>
                                         @error('exam_id')
@@ -286,10 +235,10 @@
                                     <div class="col-md-12 col-sm-10">
                                         <select name="status" id="status"
                                                 class="form-control  @error('status') is-invalid @enderror" >
-                                            <option  value="1" selected>تازه ایجاد شده</option>
-                                            <option  value="2">در حال برگزاری</option>
-                                            <option  value="4">آزمون</option>
-                                            <option  value="5">اتمام رسیده</option>
+                                            <option  value="1" @if($classRoom->status==1) selected @endif>تازه ایجاد شده</option>
+                                            <option  value="2" @if($classRoom->status==2) selected @endif>در حال برگزاری</option>
+                                            <option  value="4" @if($classRoom->status==4) selected @endif>آزمون</option>
+                                            <option  value="5" @if($classRoom->status==5) selected @endif>اتمام رسیده</option>
 
                                         </select>
                                         @error('status')

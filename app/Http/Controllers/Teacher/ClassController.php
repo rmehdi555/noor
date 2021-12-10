@@ -6,6 +6,8 @@ use Adlino\Locations\Facades\locations;
 use App\Cities;
 use App\ClassRooms;
 use App\ClassRoomsStudents;
+use App\ClassRoomsTeachers;
+use App\Exams;
 use App\Field;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Controller;
@@ -39,7 +41,8 @@ class ClassController extends TeacherController
         $provinces = Provinces::all();
         $cities = Cities::all();
         $markTypes=MarkType::where('status','=',1)->get();
-        return view('teacher.pages.class-create', compact('fields','provinces','cities','markTypes'));
+        $exams=Exams::all();
+        return view('teacher.pages.class-create', compact('fields','provinces','cities','markTypes','exams'));
     }
 
     public function createSave(Request $request)
@@ -95,6 +98,68 @@ class ClassController extends TeacherController
         return redirect()->route('teacher.class.show',$classRoom->id);
     }
 
+    public function edit(Request $request,$id)
+    {
+        $classRoom=ClassRooms::find($id);
+        $user=Auth::user();
+        if(!isset($classRoom->id) or $user->id!=$classRoom->user_id)
+        {
+            alert()->error(__('not_exist'));
+            return redirect()->route('teacher.class.list');
+        }
+        $fields = Field::where('type','=','student')->get();;
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        $markTypes=MarkType::where('status','=',1)->get();
+        $exams=Exams::all();
+        return view('teacher.pages.class-edit', compact('fields','provinces','cities','markTypes','classRoom','exams'));
+    }
+
+    public function editSave(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'number_students' => ['required', 'string', 'max:255'],
+            'old' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'province' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'mark_type_id'=>['required', 'numeric'],
+        ]);
+        $classRoom=ClassRooms::find($request->class_room_id);
+        $user=Auth::user();
+        if(!isset($classRoom->id) or $user->id!=$classRoom->user_id)
+        {
+            alert()->error(__('not_exist'));
+            return redirect()->route('teacher.class.list');
+        }
+
+        $markType=MarkType::find($request->mark_type_id);
+        if(!isset($markType->id))
+        {
+            alert()->error('نوع نمره دهی را انتخاب نمایید',__('web/messages.alert'));
+            return redirect()->route('teacher.class.list');
+        }
+
+        $classRoom->update([
+            'name'=>$request->name,
+            'mark_type'=>$markType->type,
+            'mark_type_id'=>$request->mark_type_id,
+            'description'=>$request->description,
+            'number_students'=>$request->number_students,
+            'old'=>$request->old,
+            'city'=>$request->city,
+            'province'=>$request->province,
+            'address'=>$request->address,
+            'exam_id'=>$request->exam_id,
+            'status' => $request->status,
+        ]);
+        alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
+        return redirect()->route('teacher.class.show',$classRoom->id);
+    }
+
+
     public function list()
     {
         $user=Auth::user();
@@ -127,7 +192,7 @@ class ClassController extends TeacherController
         return view('teacher.pages.class-show', compact('fields','provinces','cities','classRoms','students','studentsRegister'));
     }
 
-       public function registerSave(Request $request)
+    public function registerSave(Request $request)
     {
         $request->validate([
             'studentFieldId' => ['required', 'numeric'],
@@ -136,7 +201,7 @@ class ClassController extends TeacherController
         $user=Auth::user();
         $user=User::find($user->id);
         $classRoom=ClassRooms::find($request->classRoomsId);
-        if(!isset($classRoom->id))
+        if(!isset($classRoom->id)  or $user->id!=$classRoom->user_id)
         {
             alert()->error(__('کلاس به درستی انتخاب نشده'),__('web/messages.alert'));
             return redirect()->route('teacher.class.list');
@@ -192,6 +257,15 @@ class ClassController extends TeacherController
         $classRoomsStuden->delete();
         alert()->success('حذف قرآن آموز از کلاس با موفقیت انجام شد', __('web/messages.success'));
         return redirect()->route('teacher.class.show',$classRoomsStuden->class_rooms_id);
+    }
+
+    public function teacherList()
+    {
+        $user=Auth::user();
+        $user=User::find($user->id);
+        $classes=ClassRoomsTeachers::where([['teacher_id','=',$user->teacher->id],['status','>',0]])->orderBy('id','DESC')->get();
+        return view('teacher.pages.class-teacher-list', compact('classes'));
+
     }
 
 
