@@ -17,6 +17,8 @@ class CreateExamsResponseTeachersTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('teacher_id')->nullable();
+            $table->bigInteger('class_rooms_id')->nullable();
+            $table->bigInteger('class_rooms_teachers_id')->nullable();
             $table->bigInteger('exams_id')->nullable();
             $table->bigInteger('exams_questions_id')->nullable();
             $table->string('exams_questions_type')->nullable();

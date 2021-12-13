@@ -1,7 +1,12 @@
 <?php
 
 namespace App;
-
+/*
+ * status=1
+ * status=2  آزمون تستی ثبت شده
+ * status=3  آزمون تشریحی ثبت شده
+ * status=4  پاسخ آزمون آمده
+ */
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,7 +23,7 @@ class ClassRoomsTeachers extends Model
     {
         return $this->hasOne(Teachers::class,'id','teacher_id');
     }
-    public function classRoms()
+    public function classRooms()
     {
         return $this->hasOne(ClassRooms::class,'id','class_rooms_id');
     }

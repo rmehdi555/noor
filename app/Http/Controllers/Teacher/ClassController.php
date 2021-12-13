@@ -28,7 +28,7 @@ use SoapClient;
 
 /* class
  * status=1 تازه ایجاد شده
- * status=2 در حال برگذاری
+ * status=2 در حال برگزاری
  * status=4 آزمون
  * status=5 اتمام رسیده
  */
@@ -172,24 +172,24 @@ class ClassController extends TeacherController
 
     public function show(Request $request,$id)
     {
-        $classRoms=ClassRooms::find($id);
-        if(!isset($classRoms->id))
+        $classRooms=ClassRooms::find($id);
+        if(!isset($classRooms->id))
         {
 
             alert()->error(__('not_exist'));
             return redirect()->route('teacher.class.list');
         }
         $user=Auth::user();
-        if($classRoms->user_id!=$user->id) {
+        if($classRooms->user_id!=$user->id) {
             alert()->error(__('not_exist'));
             return redirect()->route('teacher.class.list');
         }
         $fields = Field::all();
         $provinces = Provinces::all();
         $cities = Cities::all();
-        $students=ClassRoomsStudents::where('class_rooms_id','=',$classRoms->id)->orderBy('id','DESC')->get();
-        $studentsRegister=StudentsFields::where([['status','=',2],['field_id','=',$classRoms->field_id],['field_parent_id','=',$classRoms->field_parent_id]])->orderBy('id','DESC')->get();
-        return view('teacher.pages.class-show', compact('fields','provinces','cities','classRoms','students','studentsRegister'));
+        $students=ClassRoomsStudents::where('class_rooms_id','=',$classRooms->id)->orderBy('id','DESC')->get();
+        $studentsRegister=StudentsFields::where([['status','=',2],['field_id','=',$classRooms->field_id],['field_parent_id','=',$classRooms->field_parent_id]])->orderBy('id','DESC')->get();
+        return view('teacher.pages.class-show', compact('fields','provinces','cities','classRooms','students','studentsRegister'));
     }
 
     public function registerSave(Request $request)

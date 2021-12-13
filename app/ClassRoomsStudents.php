@@ -2,7 +2,7 @@
 
 /* classRoomstudent
  * status=1 تازه ایجاد شده
- * status=2 در حال برگذاری
+ * status=2 در حال برگزاری
  * status=4 آزمون
  * status=5 اتمام رسیده
  */
@@ -30,7 +30,7 @@ class ClassRoomsStudents extends Model
     {
         return $this->hasOne(Teachers::class,'id','teacher_id');
     }
-    public function classRoms()
+    public function classRooms()
     {
         return $this->hasOne(ClassRooms::class,'id','class_rooms_id');
     }

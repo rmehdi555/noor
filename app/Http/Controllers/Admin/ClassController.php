@@ -173,8 +173,8 @@ class ClassController extends AdminController
     public function show(Request $request,$id)
     {
         $SID=400;
-        $classRoms=ClassRooms::find($id);
-        if(!isset($classRoms->id))
+        $classRooms=ClassRooms::find($id);
+        if(!isset($classRooms->id))
         {
             alert()->error(__('not_exist'));
             return redirect()->route('admin.class.list');
@@ -184,10 +184,10 @@ class ClassController extends AdminController
         $provinces = Provinces::all();
         $cities = Cities::all();
         $teachers=Teachers::all();
-        $students=ClassRoomsStudents::where('class_rooms_id','=',$classRoms->id)->orderBy('id','DESC')->get();
-        $teachersR=ClassRoomsTeachers::where('class_rooms_id','=',$classRoms->id)->orderBy('id','DESC')->get();
-        $studentsRegister=StudentsFields::where([['status','=',2],['field_id','=',$classRoms->field_id],['field_parent_id','=',$classRoms->field_parent_id]])->orderBy('id','DESC')->get();
-        return view('admin.class.show', compact('fields','provinces','cities','classRoms','students','studentsRegister','SID','teachers','teachersR'));
+        $students=ClassRoomsStudents::where('class_rooms_id','=',$classRooms->id)->orderBy('id','DESC')->get();
+        $teachersR=ClassRoomsTeachers::where('class_rooms_id','=',$classRooms->id)->orderBy('id','DESC')->get();
+        $studentsRegister=StudentsFields::where([['status','=',2],['field_id','=',$classRooms->field_id],['field_parent_id','=',$classRooms->field_parent_id]])->orderBy('id','DESC')->get();
+        return view('admin.class.show', compact('fields','provinces','cities','classRooms','students','studentsRegister','SID','teachers','teachersR'));
     }
 
     public function registerSave(Request $request)

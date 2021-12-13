@@ -46,8 +46,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php $i=1@endphp
+                                    @php $i=1; @endphp
                                     @foreach($classes as $item)
+                                        @php
+                                            $typeTitle="قرآن آموز ها";
+                                            if($item->type=="teacher")
+                                                $typeTitle="معلم ها";
+                                        @endphp
+
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>{{$item->fieldParentId->title}}</td>
@@ -59,19 +65,19 @@
                                             @switch($item->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
-                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a>
                                                     <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(2)
-                                                <td>درحال برگذاری</td>
-                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                <td>درحال برگزاری</td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a>
                                                     <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
-                                                @case(3)
+                                                @case(4)
                                                 <td>آزمون</td>
-                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a>
                                                     <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
@@ -89,7 +95,7 @@
 
                                         </tr>
 
-                                        @php $i++ @endphp
+                                        @php $i++; @endphp
                                     @endforeach
                                     </tbody>
                                 </table>

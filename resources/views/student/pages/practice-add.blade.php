@@ -32,7 +32,7 @@
 
                                             <select class=" form-control js-example-basic-single" name="class_room_student_id">
                                                 @foreach ($classActive as $item)
-                                                    <option value="{{$item->id}}">{{$item->classRoms->name}} : {{$item->teacher->name}} {{$item->teacher->family}} </option>
+                                                    <option value="{{$item->id}}">{{$item->classRooms->name}} : {{$item->teacher->name}} {{$item->teacher->family}} </option>
                                                 @endforeach
                                             </select>
 

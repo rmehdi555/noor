@@ -9,7 +9,7 @@ class ExamsResponseStudents extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'user_id','student_id','exams_id','exams_questions_id','exams_questions_type','response','t_mark','a_mark','mark', 'status'
+        'user_id','student_id','class_rooms_id','class_rooms_students_id','exams_id','exams_questions_id','exams_questions_type','response','t_mark','a_mark','mark', 'status'
     ];
 
     protected $dates = ['deleted_at'];

@@ -50,19 +50,19 @@
                                             @switch($item->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">قرآن آموز ها</a>
                                                     <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
                                                 @case(2)
-                                                <td>درحال برگذاری</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                <td>درحال برگزاری</td>
+                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">قرآن آموز ها</a>
                                                     <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 
-                                                @case(3)
+                                                @case(4)
                                                 <td>آزمون</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">دانش آموزان</a>
+                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">قرآن آموز ها</a>
                                                     <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
                                                 @break
 

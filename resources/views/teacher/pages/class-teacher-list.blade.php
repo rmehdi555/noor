@@ -41,17 +41,17 @@
                                     @foreach($classes as $item)
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$item->classRoms->fieldParentId->title}}</td>
-                                            <td>{{$item->classRoms->fieldId->title}}</td>
-                                            <td>{{$item->classRoms->name}}</td>
+                                            <td>{{$item->classRooms->fieldParentId->title}}</td>
+                                            <td>{{$item->classRooms->fieldId->title}}</td>
+                                            <td>{{$item->classRooms->name}}</td>
 
-                                            @switch($item->classRoms->status)
+                                            @switch($item->classRooms->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
                                                 @break
 
                                                 @case(2)
-                                                <td>درحال برگذاری</td>
+                                                <td>درحال برگزاری</td>
                                                 @break
 
                                                 @case(3)
@@ -65,16 +65,12 @@
                                                 @default
                                                 <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
                                             @endswitch
-                                            @if(isset($item->classRoms->exam))
-                                                <th>{{\App\Providers\MyProvider::show_date($item->classRoms->exam->start_exam,'%B %d، %Y  H:i')}}</th>
-                                                <th>{{\App\Providers\MyProvider::show_date($item->classRoms->exam->ثدی_exam,'%B %d، %Y  H:i')}}</th>
-                                                <th>{{$item->classRoms->exam->title}}</th>
-                                                @if($item->classRoms->exam->start_exam<now() and $item->classRoms->exam->end_exam>now() )
-                                                    <td>درحال آزمون</td>
-                                                    @else
-                                                    <td>111</td>
-                                                    @endif
-                                                @else
+                                            @if(isset($item->classRooms->exam))
+                                                <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->start_exam,'%B %d، %Y  H:i')}}</th>
+                                                <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->end_exam,'%B %d، %Y  H:i')}}</th>
+                                                <th>{{$item->classRooms->exam->title}}</th>
+                                                <td><a href="{{ route('teacher.exams.response',$item->id) }}" class="btn btn-info">شرکت در آزمون</a></td>
+                                            @else
                                                 <td>-</td>
                                                 <td>-</td>
                                                 <td>-</td>

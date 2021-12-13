@@ -370,6 +370,10 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
 
     Route::get('class/teacher/list','ClassController@teacherList')->name('teacher.class.teacher.list');
 
+
+    Route::get('exams/response/{id}','ExamsController@response')->name('teacher.exams.response');
+    Route::post('exams/response/test/save','ExamsController@responseTestSave')->name('teacher.exams.response.test.save');
+    Route::post('exams/response/adj/save','ExamsController@responseAdjSave')->name('teacher.exams.response.adj.save');
 });
 
 // end teacher  route

@@ -28,12 +28,12 @@
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-12 col-sm-6 control-label">نام کلاس :  </label>
-                                    <label class="col-md-12 col-sm-6 control-label">{{$classRoms->name}}</label>
+                                    <label class="col-md-12 col-sm-6 control-label">{{$classRooms->name}}</label>
 
                                 </div>
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-12 col-sm-6 control-label">توضیح :  </label>
-                                    <label class="col-md-12 col-sm-6 control-label">{{$classRoms->description}}</label>
+                                    <label class="col-md-12 col-sm-6 control-label">{{$classRooms->description}}</label>
 
                                 </div>
 
@@ -44,7 +44,7 @@
 
                             <form class="form-horizontal" method="POST" action="{{ route('admin.class.register.save') }}">
                                 @csrf
-                                @if($classRoms->type=="student")
+                                @if($classRooms->type=="student")
                                     <div class="row">
                                         <div class="col-md-6 padding-top-15">
                                             <label class="col-md-12 col-sm-6 control-label"
@@ -84,7 +84,7 @@
 
                                                 </div>
                                     @endif
-                                        <input type="hidden" name="classRoomsId" value="{{$classRoms->id}}">
+                                        <input type="hidden" name="classRoomsId" value="{{$classRooms->id}}">
 
                                         <div class="col-md-6 padding-top-15">
 
@@ -121,7 +121,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if($classRoms->type=="student")
+                                    @if($classRooms->type=="student")
                                     @php $i=1@endphp
                                     @foreach($students as $item)
                                         <tr>
