@@ -1,20 +1,26 @@
 @extends('teacher.master')
 @section('content')
 
-
     <!-- Start: Inner main -->
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-primary m-1">
-                      آزمون
-                        {{$exam->title}}
-                        در حال برگزاری میباشد .
+
+                        بسم الله النور
                         <br>
-                        زمان اتمام آزمون :
-                        {{\App\Providers\MyProvider::show_date($exam->end_exam,'%B %d، %Y  H:i')}}
-                        میباشد که حتما قبل آن باید پاسخ ها را ارسال نمایید درغیر اینصورت پاسخ آزمون برای شما ثبت نخواهد شد .
+                        قرآن آموز گرامی،  آزمون {{$exam->title}}  در حال برگزاری می باشد .
+                        <br>
+                        قابل توجه است که زمان اتمام آزمون :
+                        {{\App\Providers\MyProvider::show_date($exam->end_exam,'Y/m/d')}}
+                        رأس ساعت
+                        {{\App\Providers\MyProvider::show_date($exam->end_exam,'H:i')}}
+                        می باشد و لازم است که قبل از زمان یاد شده به سؤالات پاسخ داده و بر روی گزینه ثبت کلیک نمایید، در غیر این صورت پاسخ آزمون برای شما ثبت نشده و نمره شما 0 تلقی می گردد.
+                        <br>
+                        لازم به ذکر است که  بعد از پاسخ و کلیک بر روی گزینه ثبت ، پاسخ ها در سیستم ثبت نهایی شده و قابل ویرایش نمی باشند، بنابراین لطفا با دقت به سوالات پاسخ دهید.
+
+
                     </div>
                 </div>
             </div>
@@ -26,7 +32,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-primary m-1">
-                   لطفا با دقت به سوالات تستی پاسخ نمایید . لازم به ذکر میباشد بعد از پاسخ و کلیک به روی دکمه ثبت ، پاسخ ها در سیستم ثبت نهایی شده و قابل ویرایش نمی باشند .
+                   لطفا با دقت به سوالات  پاسخ نمایید . لازم به ذکر میباشد بعد از پاسخ و کلیک به روی دکمه ثبت ، پاسخ ها در سیستم ثبت نهایی شده و قابل ویرایش نمی باشند .
                     </div>
                 </div>
             </div>
@@ -79,7 +85,7 @@
                                             <label class="col-md-12 col-sm-12 control-label" for="title"></label>
                                             <div class="col-md-12 col-sm-10">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="test_response_{{$examsQuestion->id}}" value="{{$j}}" required>
+                                                    <input type="radio" name="test_response_{{$examsQuestion->id}}" value="{{$j}}" >
                                                 </label>
                                             </div>
                                         </div>
@@ -99,7 +105,7 @@
                                     <div class="buttons">
                                         <div class="pull-right">
                                             <input type="submit" class="btn btn-primary"
-                                                   value="{{__('web/public.submit')}}">
+                                                   value="ثبت">
                                         </div>
                                     </div>
                                 </div>

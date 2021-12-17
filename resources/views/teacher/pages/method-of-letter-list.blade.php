@@ -43,7 +43,7 @@
 
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{$item->title}}</td>
                                             <td><span>{{\App\Providers\MyProvider::_text($item->description)}}</span></td>
                                             <td> <a href="{{asset($item->file_url)}}" target="_blank">اینجا کلیک کنید</a>

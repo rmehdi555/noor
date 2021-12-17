@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="alert alert-success m-1">
                         <p class="p-1 text-justify">
-                            کد معلمی:
+                            کد معلم القرآن:
                             {{$user->teacher->teacher_id }}
                             <br>
                             تاریخ ایجاد :
@@ -47,15 +47,15 @@
 
                     <tr>
                         <td>{{$i}}</td>
-                        <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                        <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                         <td>{{$item->title}}</td>
                         <td>{{$item->userSender->name}} {{$item->userSender->family}}</td>
-                        @if($user->user_id_reciver==0)
+                        @if($item->user_id_reciver==0)
                             <td>پیام عمومی</td>
                         @else
                             <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>
                         @endif
-                        <td><a class="btn btn-info" href="{{ route('student.message.show',$item->id) }}">نمایش پیام</a></td>
+                        <td><a class="btn btn-info" href="{{ route('teacher.message.show',$item->id) }}">نمایش پیام</a></td>
                     </tr>
                     @php $i++ @endphp
                 @endforeach

@@ -467,6 +467,17 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group col-lg-4 col-md-12">
+                                    <label>{{__('admin/public.type')}} :</label>
+                                    <div class="multiselect_div">
+                                        <select id="single-selection" name="type"
+                                                class="multiselect multiselect-custom">
+                                            <option value="student" {{($teacher->type=='student')?"selected":""}}>معلم القرآن در حال تحصیل</option>
+                                            <option value="teacher" {{($teacher->type=='teacher')?"selected":""}}>معلم با دسترسی کامل پنل معلمی</option>
+                                        </select>
+                                    </div>
+                                </div>
+
 
                                 <br><br>
                                 <div class="d-flex justify-content-center mb-2">

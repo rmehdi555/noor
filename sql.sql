@@ -16,6 +16,7 @@ ALTER TABLE `students_fields` ADD `payment_id` INT(20) NOT NULL DEFAULT '0' AFTE
 
 --create table
 malis
+-- با دیتا
 class_rooms
 class_rooms_students
 practices
@@ -31,12 +32,15 @@ meetings
 meeting_accesses
 deposits
 deposits_types
+-- با دیتا
 mark_types
+-- با دیتا
 mark_type_grades
 exams
 exams_questions
 exams_questions_options
 exams_response_students
+-- با دیتا
 class_rooms_teachers
 exams_response_teachers
 
@@ -44,5 +48,6 @@ exams_response_teachers
 --1400-09-18
 ALTER TABLE `fields` ADD `type` VARCHAR(191) NOT NULL DEFAULT 'student' AFTER `price`;
 
+ALTER TABLE `teachers` ADD `type` VARCHAR(191) NOT NULL DEFAULT 'student' AFTER `sex`;
 
 

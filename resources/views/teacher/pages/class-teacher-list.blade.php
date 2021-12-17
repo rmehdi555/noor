@@ -30,6 +30,7 @@
                                         <th>عنوان رشته (فرعی)</th>
                                         <th>نام</th>
                                         <th>وضعیت کلاس</th>
+                                        <th>نمره نهایی</th>
                                         <th>تاریخ شروع آزمون</th>
                                         <th>تاریخ پایان آزمون</th>
                                         <th>عنوان آزمون</th>
@@ -48,27 +49,32 @@
                                             @switch($item->classRooms->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
+                                                <th>نمره نهایی ثبت نشده</th>
                                                 @break
 
                                                 @case(2)
                                                 <td>درحال برگزاری</td>
+                                                <th>نمره نهایی ثبت نشده</th>
                                                 @break
 
-                                                @case(3)
+                                                @case(4)
                                                 <td>آزمون</td>
+                                                <th>نمره نهایی ثبت نشده</th>
                                                 @break
 
                                                 @case(5)
                                                 <td>اتمام شده</td>
+                                                <th>{{$item->mark}}</th>
                                                 @break
 
                                                 @default
                                                 <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
                                             @endswitch
                                             @if(isset($item->classRooms->exam))
-                                                <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->start_exam,'%B %d، %Y  H:i')}}</th>
-                                                <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->end_exam,'%B %d، %Y  H:i')}}</th>
+                                                <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->start_exam,'H:i Y/m/d')}}</th>
+                                                <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->end_exam,'H:i Y/m/d')}}</th>
                                                 <th>{{$item->classRooms->exam->title}}</th>
+
                                                 <td><a href="{{ route('teacher.exams.response',$item->id) }}" class="btn btn-info">شرکت در آزمون</a></td>
                                             @else
                                                 <td>-</td>

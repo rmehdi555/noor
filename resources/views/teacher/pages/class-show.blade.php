@@ -100,7 +100,7 @@
                                             <td>{{$i}}</td>
                                             <td>{{$item->student->name}}</td>
                                             <td>{{$item->student->family}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>
 
                                                 <form class="form-horizontal" method="POST" action="{{ route('teacher.class.register.delete') }}">

@@ -33,7 +33,7 @@
                                 <h1 class="bu-inner-ns-title">{{\App\Providers\MyProvider::_text($news->title)}}</h1>
                                 <div class="bu-inner-news-li-footer bu-inner-ns-footer">
                                     <div class="bu-inner-news-li-meta bu-inner-ns-meta">
-                                        <span>{{\App\Providers\MyProvider::show_date($news->created_at,'%B %d، %Y H:i')}}</span>
+                                        <span>{{\App\Providers\MyProvider::show_date($news->created_at,'H:i Y/m/d')}}</span>
                                         {{--<span>|</span>--}}
                                         {{--<span>بازدید: 34</span>--}}
                                         {{--<span>|</span>--}}

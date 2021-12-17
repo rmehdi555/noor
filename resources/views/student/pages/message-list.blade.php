@@ -42,10 +42,10 @@
 
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->userSender->name}} {{$item->userSender->family}}</td>
-                                            @if($user->user_id_reciver==0)
+                                            @if($item->user_id_reciver==0)
                                                 <td>پیام عمومی</td>
                                                 @else
                                                 <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>

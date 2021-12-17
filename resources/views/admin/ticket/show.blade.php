@@ -37,7 +37,7 @@
                                                         کلیک کنید</p>
                                                         @endif
 
-                                                    <span class="time_date"> {{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</span> </div>
+                                                    <span class="time_date"> {{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</span> </div>
                                             </div>
                                             @else
                                             <div class="incoming_msg">
@@ -50,7 +50,7 @@
                                                                 <a href="{{asset($item->file_url)}}" target="_blank">اینجا</a>
                                                                 کلیک کنید</p>
                                                         @endif
-                                                        <span class="time_date"> {{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</span></div>
+                                                        <span class="time_date"> {{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</span></div>
                                                 </div>
                                             </div>
                                             @endif

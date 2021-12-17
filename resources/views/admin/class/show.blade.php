@@ -107,7 +107,7 @@
 
 
 
-                        @if(count($students)>0 OR count($teachersR)>0)
+                        @if(count($students)>0 and $classRooms->type=="student")
                             <p class="bu-margin-bottom-30">لیست قرآن آموزان این کلاس : </p>
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -121,14 +121,13 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if($classRooms->type=="student")
                                     @php $i=1@endphp
                                     @foreach($students as $item)
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>{{$item->student->name}}</td>
                                             <td>{{$item->student->family}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>
 
                                                 <form class="form-horizontal" method="POST" action="{{ route('admin.class.register.delete') }}">
@@ -142,28 +141,50 @@
 
                                         @php $i++ @endphp
                                     @endforeach
-                                        @else
+                                 @elseif(count($teachersR)>0 and $classRooms->type=="teacher")
+                                                <p class="bu-margin-bottom-30">لیست معلم های این کلاس : </p>
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>نام</th>
+                                                            <th>نام خانوادگی</th>
+                                                            <th>تاریخ ایجاد</th>
+                                                            <th>نمره نهایی</th>
+                                                            <th>تنظیمات</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
                                         @php $i=1@endphp
                                         @foreach($teachersR as $item)
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>{{$item->teacher->name}}</td>
                                                 <td>{{$item->teacher->family}}</td>
-                                                <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                                <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
+                                                <td>{{$item->mark}}</td>
                                                 <td>
-
                                                     <form class="form-horizontal" method="POST" action="{{ route('admin.class.register.teacher.delete') }}">
                                                         @csrf
                                                         <input type="hidden" name="class_room_student_id" value="{{$item->id}}">
                                                         <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف معلم از کلاس</button>
 
                                                     </form>
-
+                                                    @if($classRooms->exam_id!=0)
+                                                        <form class="form-horizontal" method="POST" action="{{ route('admin.exams.show.result') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_rooms_teachers_id" value="{{$item->id}}">
+                                                            <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
+                                                            <input type="hidden" name="exams_id" value="{{$classRooms->exam_id}}">
+                                                            <button type="submit" class="btn btn-info">مشاهده نتایج آزمون و نمرات</button>
+                                                        </form>
+                                                        @endif
                                                 </td>
 
                                             @php $i++ @endphp
                                         @endforeach
-                                    @endif
+
                                     </tbody>
                                 </table>
                             </div>

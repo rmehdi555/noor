@@ -40,6 +40,7 @@ class CreateTeachersTable extends Migration
             $table->string('email')->nullable();
             $table->string('number_of_children')->nullable();
             $table->string('sex')->nullable();
+            $table->string('type')->default('student');
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

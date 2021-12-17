@@ -355,6 +355,10 @@ class ExamsController extends TeacherController
         $examsQuestionsTest=ExamsQuestions::where([['type','=','test'],['status','=','1'],['exams_id','=',$exam->id]])->get();
         $examsQuestionsAdj=ExamsQuestions::where([['type','=','adj'],['status','=','1'],['exams_id','=',$exam->id]])->get();
         $countAdj=count($examsQuestionsAdj);
+        if($classRoomsTeachers->status>2)
+        {
+            alert()->error('شما قبلا در آزمون شرکت کرده اید',__('web/messages.alert'));
+            return redirect()->route('teacher.class.teacher.list');        }
         if($classRoomsTeachers->status==1 and count($examsQuestionsTest)>0)
         {
             return view('teacher.pages.exams.response-test',compact('exam','classRoomsTeachers','examsQuestionsTest','countAdj'));
@@ -368,10 +372,8 @@ class ExamsController extends TeacherController
         if($classRoomsTeachers->status==2 or count($examsQuestionsTest)<1)
         {
             return view('teacher.pages.exams.response-adj',compact('exam','classRoomsTeachers','examsQuestionsAdj'));
-
         }
-        alert()->error('شما قبلا در آزمون شرکت کرده اید',__('web/messages.alert'));
-        return redirect()->route('teacher.class.teacher.list');
+
 
     }
 
@@ -397,13 +399,14 @@ class ExamsController extends TeacherController
             alert()->error('هنوز زمان شروع آزمون فرانرسیده است .',__('web/messages.alert'));
             return redirect()->route('teacher.class.teacher.list');
         }
-        if($exam->end_exam<now())
+        if($exam->end_exam<now().'-10 minutes')
         {
             alert()->error('به دلیل اتمام زمان آزمون پاسخ های شما ثبت نخواهد شد .',__('web/messages.alert'));
             return redirect()->route('teacher.class.teacher.list');
         }
         $examsQuestionsTest=ExamsQuestions::where([['type','=','test'],['status','=','1'],['exams_id','=',$exam->id]])->get();
 
+        $mark_all=0;
         foreach ($examsQuestionsTest as $question)
         {
             if(isset($request['test_response_'.$question->id]))
@@ -413,6 +416,7 @@ class ExamsController extends TeacherController
                 {
                     $mark=$question->mark;
                 }
+                $mark_all+=$mark;
                 ExamsResponseTeachers::create([
                     'user_id'=>$user->id,
                     'teacher_id'=>$user->teacher->id,
@@ -427,14 +431,16 @@ class ExamsController extends TeacherController
                 ]);
             }
             $classRoomsTeachers->update([
-               'status'=>2,
+                'status'=>2,
+                't_mark'=>$mark_all,
+                'mark'=>$mark_all,
             ]);
         }
 
         $examsQuestionsAdj=ExamsQuestions::where([['type','=','adj'],['status','=','1'],['exams_id','=',$exam->id]])->get();
         if(count($examsQuestionsAdj)<1)
         {
-            alert()->success('پاسخ های شما با موفقیت ثبت گردید. ',__('web/messages.alert'));
+            alert()->success('پاسخ های شما با موفقیت ثبت گردید. ',__('web/messages.success'));
             return redirect()->route('teacher.class.teacher.list');
         }else{
             return redirect()->route('teacher.exams.response',$classRoomsTeachers->id);
@@ -464,7 +470,7 @@ class ExamsController extends TeacherController
             alert()->error('هنوز زمان شروع آزمون فرانرسیده است .',__('web/messages.alert'));
             return redirect()->route('teacher.class.teacher.list');
         }
-        if($exam->end_exam<now())
+        if($exam->end_exam<now().'-10 minutes')
         {
             alert()->error('به دلیل اتمام زمان آزمون پاسخ های شما ثبت نخواهد شد .',__('web/messages.alert'));
             return redirect()->route('teacher.class.teacher.list');
@@ -494,7 +500,7 @@ class ExamsController extends TeacherController
             ]);
         }
 
-            alert()->success('پاسخ های شما با موفقیت ثبت گردید. ',__('web/messages.alert'));
+            alert()->success('پاسخ های شما با موفقیت ثبت گردید. ',__('web/messages.success'));
             return redirect()->route('teacher.class.teacher.list');
 
     }

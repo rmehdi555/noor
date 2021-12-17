@@ -33,7 +33,7 @@
 
                         <div class="card ">
                             <article class="card-group-item">
-                                <header class="card-header" style="background-color : #fefe33"><h6 class="title">{{$user->name }}  {{$user->family}}<br>کد معلمی : {{$user->teacher->teacher_id }} </h6></header>
+                                <header class="card-header" style="background-color : #fefe33"><h6 class="title">{{$user->name }}  {{$user->family}}<br>کد معلم القرآن : {{$user->teacher->teacher_id }} </h6></header>
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.panel.print.details') }}" >چاپ کردن اطلاعات ثبت نامی</a>
@@ -42,6 +42,7 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.class.teacher.list') }}" >مدیریت کلاس ها ی معلم القرآن</a>
                                     </li>
+                                    @if($user->teacher->type=="teacher")
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.class.create') }}" >ایجاد کلاس برای قرآن آموز</a>
                                     </li>
@@ -59,6 +60,13 @@
                                         <a href="{{ route('teacher.practice.list') }}" >مشاهده فعالیت قرآن آموز ها</a>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.methodOfLetter.list') }}" > شیوه نامه ها</a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.meeting.list') }}" > جلسات</a>
+                                    </li>
+                                    @endif
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.ticket.list') }}" >پشتیبانی</a>
                                     </li>
 
@@ -69,12 +77,7 @@
                                         {{--<span class="badge badge-primary badge-pill">جدید 2</span>--}}
                                     </li>
 
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('teacher.methodOfLetter.list') }}" > شیوه نامه ها</a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('teacher.meeting.list') }}" > جلسات</a>
-                                    </li>
+
                                     <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color : #FF0000">
                                         <a href="{{ route('logout') }}">{{__('web/public.btn_logout')}}</a>
                                         <span class="badge badge-primary badge-pill"></span>

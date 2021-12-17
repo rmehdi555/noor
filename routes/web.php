@@ -206,6 +206,8 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::get('exams/questions/edit/{id}','ExamsController@questionsEdit')->name('admin.exams.questions.edit');
     Route::post('exams/questions/edit/save','ExamsController@questionsEditSave')->name('admin.exams.questions.edit.save');
 
+    Route::post('exams/show/result','ExamsController@showResult')->name('admin.exams.show.result');
+    Route::post('exams/show/result/save','ExamsController@showResultSave')->name('admin.exams.show.result.save');
 
 
 

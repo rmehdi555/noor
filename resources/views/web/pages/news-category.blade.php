@@ -27,7 +27,7 @@
 
                                             <li>
                                                 <h2 class="main-events-list-title bu-title-effect"><a href="{{ route('web.show.news',$item->id) }}">  {{\App\Providers\MyProvider::_text($item->title)}} </a></h2>
-                                                <span class="main-events-list-date">{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</span>
+                                                <span class="main-events-list-date">{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</span>
                                             </li>
                                         @endforeach
                                     </ul>

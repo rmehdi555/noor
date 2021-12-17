@@ -28,28 +28,28 @@
                             </div>
                         </div>
                         <div class=" col-md-4">
-                        <div class="main-header-tc-search">
-                            <div class="main-header-tc-topheader">
-                                <div class="main-header-tct-item main-date">
-                                    <span class="main-header-tcti-date">@php use Hekmatinasser\Verta\Verta;$v=Verta::now();    echo($v->formatWord('l').' '.$v->format('d').' '.$v->formatWord('F').' '.$v->format('Y'));@endphp</span>
-                                </div>
-                                <div class="main-header-tct-item">
-                                    <ul class="main-header-trs-list">
-                                        {{--<li><a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["telegram"]->value)}}"><i class="fab fa-telegram"></i></a></li>--}}
-                                        <li><a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["instagram"]->value)}}"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
+                            <div class="main-header-tc-search">
+                                <div class="main-header-tc-topheader">
+                                    <div class="main-header-tct-item main-date">
+                                        <span class="main-header-tcti-date">@php use Hekmatinasser\Verta\Verta;$v=Verta::now();    echo($v->formatWord('l').' '.$v->format('d').' '.$v->formatWord('F').' '.$v->format('Y'));@endphp</span>
+                                    </div>
+                                    <div class="main-header-tct-item">
+                                        <ul class="main-header-trs-list">
+                                            {{--<li><a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["telegram"]->value)}}"><i class="fab fa-telegram"></i></a></li>--}}
+                                            <li><a href="{{\App\Providers\MyProvider::_text($siteDetailsProvider["instagram"]->value)}}"><i class="fab fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
 
-                            </div>
-                            <form class="main-header-tc-search-form" method="get" >
-                                <i class="far fa-search main-header-tc-search-icon" id="main-search-btn"></i>
-                                <div class="main-header-tc-search-box" id="main-search-box">
-                                    <div class="main-header-tc-search-close" id="main-search-close"><i class="fal fa-times"></i></div>
-                                    <input class="form-control main-header-tc-search-input main-search-placeholder" name="s" placeholder="جستجو کنید..." id="main-search-input" autocomplete="off">
-                                    <button type="submit" class="main-header-tc-search-btn"><i class="far fa-search"></i></button>
                                 </div>
-                            </form>
-                        </div>
+                                <form class="main-header-tc-search-form" method="get" >
+                                    <i class="far fa-search main-header-tc-search-icon" id="main-search-btn"></i>
+                                    <div class="main-header-tc-search-box" id="main-search-box">
+                                        <div class="main-header-tc-search-close" id="main-search-close"><i class="fal fa-times"></i></div>
+                                        <input class="form-control main-header-tc-search-input main-search-placeholder" name="s" placeholder="جستجو کنید..." id="main-search-input" autocomplete="off">
+                                        <button type="submit" class="main-header-tc-search-btn"><i class="far fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,11 +77,11 @@
                                 @endif
                             @endforeach
 
-                                @if(auth()->check())
-                                    <li class=""><a href="{{ route('logout') }}">{{__('web/public.btn_logout')}}</a></li>
-                                @else
-                                    <li class=""><a href="{{ route('login') }}">{{__('web/public.btn_login')}}</a></li>
-                                @endif
+                            @if(auth()->check())
+                                <li class=""><a href="{{ route('logout') }}">{{__('web/public.btn_logout')}}</a></li>
+                            @else
+                                <li class=""><a href="{{ route('login') }}">ورود به سامانه</a></li>
+                            @endif
                         </ul>
                     </div>
                     <button class="navbar-toggler offcanvas-toggle" type="button" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">

@@ -49,8 +49,8 @@
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>{{$item->title}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->start_exam,'%B %d، %Y  H:i')}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->end_exam,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->start_exam,'H:i Y/m/d')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->end_exam,'H:i Y/m/d')}}</td>
                                             <td><a class="btn btn-info" href="{{ route('admin.exams.show',$item->id) }}">نمایش سوالات آزمون</a></td>
                                             <td><a class="btn btn-info" href="{{ route('admin.exams.edit',$item->id) }}">ویرایش ساعت آزمون</a></td>
                                         </tr>

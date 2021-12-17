@@ -29,7 +29,7 @@
                 <div class="col-md-12">
                     <div class="alert alert-success m-1">
                         <p class="p-1 text-justify">
-                            کد معلم القرآنی :
+                            کد معلم القرآن :
                             {{$user->teacher->teacher_id }}
                             <br>
                             تاریخ ایجاد :

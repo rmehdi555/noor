@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ClassRooms;
+use App\ClassRoomsTeachers;
 use App\Exams;
 use App\ExamsQuestions;
 use App\ExamsQuestionsOptions;
+use App\ExamsResponseStudents;
+use App\ExamsResponseTeachers;
 use App\Providers\MyProvider;
 use App\User;
 use Carbon\Carbon;
@@ -330,11 +334,79 @@ class ExamsController extends AdminController
     }
 
 
+    public function showResult(Request $request)
+    {
+//        class_rooms_teachers_id
+//        class_rooms_id
+//        exams_id
+        $classRoomsTeachers=ClassRoomsTeachers::find($request->class_rooms_teachers_id);
+        if(!isset($classRoomsTeachers->id))
+        {
+            alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
+            return redirect()->route('admin.class.list');
+        }
+        $classRooms=ClassRooms::find($request->class_rooms_id);
+        if(!isset($classRooms->id))
+        {
+            alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
+            return redirect()->route('admin.class.list');
+        }
+        $exam=Exams::find($request->exams_id);
+        if(!isset($exam->id))
+        {
+            alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
+            return redirect()->route('admin.class.list');
+        }
+        $examsResponseTeachers=ExamsResponseTeachers::where([['class_rooms_teachers_id','=',$classRoomsTeachers->id],['exams_id','=',$exam->id],['class_rooms_id','=',$classRooms->id]])->get();
+        $examsResponseTeachersArray=array();
+        foreach ($examsResponseTeachers as $examsResponseTeacher)
+        {
+            $examsResponseTeachersArray[$examsResponseTeacher->exams_questions_id]=$examsResponseTeacher;
+        }
+        $SID=410;
+        //dd($exam->examsQuestions()[1]->examsQuestionsOptions()->get());
+        return view('admin.exams.show-result',compact('exam','examsResponseTeachers','classRoomsTeachers','examsResponseTeachersArray','SID'));
 
+    }
 
+    public function showResultSave(Request $request)
+    {
+        $request->validate([
+            'class_rooms_teachers_id' => ['required'],
+            't_mark' => ['required'],
+            'a_mark' => ['required'],
+            'mark' => ['required'],
+        ]);
+        $classRoomsTeachers=ClassRoomsTeachers::find($request->class_rooms_teachers_id);
 
+        if(!isset($classRoomsTeachers->id))
+        {
+            alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
+            return redirect()->route('admin.class.list');
+        }
+        if(isset($request->flag_mark) and !empty($request->flag_mark))
+        {
+            foreach ($request->flag_mark as $examsResponseTeacherId )
+            {
+                $examsResponseTeacher=ExamsResponseTeachers::find($examsResponseTeacherId);
+                if(isset($examsResponseTeacher->id) and $examsResponseTeacher->class_rooms_teachers_id == $classRoomsTeachers->id and isset($request['mark_'.$examsResponseTeacherId]))
+                {
+                    $examsResponseTeacher->update([
+                        'mark'=>$request['mark_'.$examsResponseTeacherId],
+                    ]);
+                }
 
+            }
+        }
+        //dd($classRoomsTeachers);
+        $classRoomsTeachers->update([
+            't_mark'=>$request->t_mark,
+            'a_mark'=>$request->a_mark,
+            'mark'=>$request->mark,
+        ]);
 
+        return redirect()->route('admin.class.show',$classRoomsTeachers->class_rooms_id);
 
+    }
 
 }

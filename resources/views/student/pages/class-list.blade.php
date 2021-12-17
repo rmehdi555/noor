@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>{{$item->title}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             @switch($item->status)
                                                 @case(1)
                                                 <td>ثبت نام اولیه و پرداخت نشده</td>

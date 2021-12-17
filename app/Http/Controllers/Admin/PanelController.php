@@ -18,13 +18,14 @@ class PanelController extends Controller
     {
         //
         //return redirect(route('news.index',['SID' => '20']));
+        $SID=100;
         $visit=new Visit;
         $visitArray=[];
         $visitArray["getAllUser"]=$visit->getAllUser();
         $visitArray["getAllPage"]=$visit->getAllPage();
         $visitArray["getAllUserToday"]=$visit->getAllUserToday();
         $visitArray["getAllPageToday"]=$visit->getAllPageToday();
-        return view('admin.panel',compact('visitArray'));
+        return view('admin.panel',compact('visitArray','SID'));
     }
 
     /**

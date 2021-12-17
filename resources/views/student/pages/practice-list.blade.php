@@ -47,7 +47,7 @@
                                         @endphp
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{$item->title}}</td>
                                             @switch($item->status)
                                                 @case(1)

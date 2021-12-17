@@ -137,7 +137,7 @@ return [
     'female'=>'زن',
     'teachers'=>'معلم ها',
     'teachers_list'=>'لیست معلم ها',
-    'teacher_id'=>'کد معلمی',
+    'teacher_id'=>' کد معلم القرآن',
     'teacher_status_level_0'=>'ثبت نام اولیه',
     'teacher_status_level_2'=>'اطلاعات توسط کاربر تایید شده و منتظر پرداخت',
     'teacher_status_level_4'=>'پرداخت و تایید نهایی',

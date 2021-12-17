@@ -80,7 +80,7 @@
                                     <label class="col-md-6 col-sm-6 control-label" for="title">نمره
                                         : <span class="required">*</span></label>
                                     <div class="col-md-12 col-sm-10">
-                                        <input type="text" name="mark" id="mark" value="{{$examsQuestion->mark}}"
+                                        <input type="number" step="0.001"  name="mark" id="mark" value="{{$examsQuestion->mark}}"
                                                class="form-control  @error('mark') is-invalid @enderror" required/>
                                         @error('mark')
                                         <span class="invalid-feedback" role="alert">

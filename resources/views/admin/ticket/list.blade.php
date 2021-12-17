@@ -47,7 +47,7 @@
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>{{$item->id}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->userSender->name}} {{$item->userSender->family}}</td>
                                             <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>

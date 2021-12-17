@@ -37,7 +37,7 @@
                                     @foreach($malis as $item)
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'%B %d، %Y  H:i')}}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{$item->description}}</td>
                                             <td>{{number_format($item->price)}}</td>
                                             @switch($item->status)
