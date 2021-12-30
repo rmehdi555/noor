@@ -65,6 +65,20 @@
                                         @enderror
                                     </div>
                                 </div>
+                                  <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-6 col-sm-6 control-label"
+                                           for="description">توضیحات :</label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <input type="text" name="description" id="description"
+                                         value="{{$exam->description}}"
+                                               class="form-control  @error('description') is-invalid @enderror" />
+                                        @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
                             </div>
 

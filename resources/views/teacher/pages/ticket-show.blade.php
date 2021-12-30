@@ -18,7 +18,7 @@
                             </div>
                         @endif
                         <h5>
-                            عنوان تیکت پشتیبانی :
+                            عنوان :
                             {{$ticket->title}}
                         </h5>
                         <div class="row">
@@ -63,7 +63,7 @@
 
                         </div>
 
-                            <h5>برای پاسخ به تیکت پشتیبانی اطلاعات زیر را وارد نمایید</h5>
+                            <h5>برای پاسخ اطلاعات زیر را وارد نمایید</h5>
 
 
                             <form class="form-horizontal" method="POST" action="{{ route('teacher.ticket.save.ans') }}" enctype="multipart/form-data">

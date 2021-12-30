@@ -19,6 +19,7 @@ class CreateClassRoomsTable extends Migration
             $table->bigInteger('field_id')->nullable();
             $table->bigInteger('field_parent_id')->nullable();
             $table->bigInteger('exam_id')->nullable();
+             $table->string('act_list_name')->default('act_list_public');
             $table->string('name')->nullable();
             $table->string('mark_type')->nullable();
             $table->bigInteger('mark_type_id')->default(1);

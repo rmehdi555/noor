@@ -17,8 +17,9 @@
                             </div>
                         @endif
 
+                        <a class="btn btn-info" href="{{ route('teacher.class.create') }}">ایجاد کلاس جدید </a>
 
-                        <br>
+                        <br><br>
                         @if(count($classes)>0)
                             <p class="bu-margin-bottom-30">لیست کلاس ها : </p>
                             <div class="table-responsive">
@@ -37,11 +38,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php $i=1@endphp
+                                    @php $i=1; @endphp
                                     @foreach($classes as $item)
+                                        @php
+                                            $typeTitle="قرآن آموز ها";
+                                            if($item->type=="teacher")
+                                                $typeTitle="معلم ها";
+                                        @endphp
+
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$item->fieldParentId->title}}</td>
+                                            <td>{{($item->parent_id==0)?$item->fieldId->title:$item->classRooms->title}}</td>
                                             <td>{{$item->fieldId->title}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->description}}</td>
@@ -50,25 +57,27 @@
                                             @switch($item->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">قرآن آموز ها</a>
-                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
+                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
                                                 @break
 
                                                 @case(2)
                                                 <td>درحال برگزاری</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">قرآن آموز ها</a>
-                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
+                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
                                                 @break
 
                                                 @case(4)
                                                 <td>آزمون</td>
-                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">قرآن آموز ها</a>
-                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
+                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
                                                 @break
 
                                                 @case(5)
                                                 <td>اتمام شده</td>
-                                                <td></td>
+                                                <td><a href="{{ route('teacher.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('teacher.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
+
                                                 @break
 
                                                 @default
@@ -80,25 +89,25 @@
 
                                         </tr>
 
-                                        @php $i++ @endphp
+                                        @php $i++; @endphp
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            @else
-                            <!-- Start: Inner main -->
-                                <section class="bu-inner-main">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="alert alert-primary m-1">
-                                                    هیچ رکوردی وجود ندارد
-                                                </div>
+                        @else
+                        <!-- Start: Inner main -->
+                            <section class="bu-inner-main">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-primary m-1">
+                                                هیچ رکوردی وجود ندارد
                                             </div>
                                         </div>
-
                                     </div>
-                                </section>
+
+                                </div>
+                            </section>
                         @endif
 
 

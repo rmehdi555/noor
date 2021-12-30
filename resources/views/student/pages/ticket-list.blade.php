@@ -17,13 +17,13 @@
                             </div>
                         @endif
 
-                            <a class="btn btn-info" href="{{ route('student.ticket.add') }}">ثبت تیکت جدید</a>
+                            <a class="btn btn-info" href="{{ route('student.ticket.add') }}">ثبت سخن جدید</a>
 
                         <br>
                             <br>
                             <hr>
                         @if(count($tickets)>0)
-                            <p class="bu-margin-bottom-30">لیست پشتیبانی های ثبت شده : </p>
+                            <p class="bu-margin-bottom-30">لیست سخن های ثبت شده : </p>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable">
                                     <thead>
@@ -31,7 +31,7 @@
                                         <th>#</th>
                                         <th>کد پیگیری</th>
                                         <th>تاریخ</th>
-                                        <th>عنوان تیکت</th>
+                                        <th>عنوان </th>
                                         <th>نام ارسال کننده </th>
                                         <th>نام دریافت کننده</th>
                                         <th>وضعیت</th>
@@ -85,7 +85,6 @@
 
 
                             @endif
-
 
                     </div>
                 </div>

@@ -69,8 +69,9 @@ class SiteDetailsController extends AdminController
      */
     public function show($siteDetails)
     {
+        $SID=900;
         $siteDetails=SiteDetails::find($siteDetails);
-        return view('admin.site-details.show',compact('siteDetails'));
+        return view('admin.site-details.show',compact('siteDetails','SID'));
     }
 
     /**
@@ -82,8 +83,9 @@ class SiteDetailsController extends AdminController
     public function edit($siteDetails)
     {
         //auth()->loginUsingId(1);
+        $SID=900;
         $siteDetails=SiteDetails::find($siteDetails);
-        return view('admin.site-details.edit',compact('siteDetails'));
+        return view('admin.site-details.edit',compact('siteDetails','SID'));
     }
 
     /**

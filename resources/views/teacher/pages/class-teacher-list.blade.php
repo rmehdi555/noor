@@ -42,7 +42,7 @@
                                     @foreach($classes as $item)
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$item->classRooms->fieldParentId->title}}</td>
+                                            <td>{{($item->field_parent_id==0)?$item->classRooms->fieldId->title:$item->classRooms->fieldParentId->title}}</td>
                                             <td>{{$item->classRooms->fieldId->title}}</td>
                                             <td>{{$item->classRooms->name}}</td>
 
@@ -70,7 +70,7 @@
                                                 @default
                                                 <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
                                             @endswitch
-                                            @if(isset($item->classRooms->exam))
+                                            @if(isset($item->classRooms->exam) and $item->classRooms->status!=5)
                                                 <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->start_exam,'H:i Y/m/d')}}</th>
                                                 <th>{{\App\Providers\MyProvider::show_date($item->classRooms->exam->end_exam,'H:i Y/m/d')}}</th>
                                                 <th>{{$item->classRooms->exam->title}}</th>

@@ -22,6 +22,8 @@
                             عنوان تیکت پشتیبانی :
                             {{$ticket->title}}
                         </h5>
+                            <p>نام ارسال کننده :  {{$ticket->userSender->name}} {{$ticket->userSender->family}}</p>
+                            <p>کد ارسال کننده : {{$ticket->userSender->user_name}}</p>
                         <div class="row">
 
                             <div class="mesgs">

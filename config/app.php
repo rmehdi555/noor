@@ -16,7 +16,7 @@ return [
 
     ],
     'bankPay' => [
-        'active'      =>  'test',
+        'active'      =>  'meli',
     ],
 
 
@@ -31,7 +31,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'ASSEN'),
+    'name' => env('APP_NAME', 'NOOR'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', true),
+    'debug' => (bool) env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------

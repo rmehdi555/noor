@@ -229,6 +229,42 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-6 padding-top-15">
+                                    <label class=" col-md-12 col-sm-12 control-label"
+                                           for="input-name">آزمون این کلاس را انتخاب کنید : </label>
+                                    <div class="col-md-12 col-sm-10">
+                                        <select name="exam_id" id="exam_id"
+                                                class="form-control  @error('exam_id') is-invalid @enderror" >
+                                            <option  value="0">هنوز آزمونی درنظر گرفته نشده</option>
+                                            @foreach($exams as $item)
+                                                <option  value="{{$item->id}}" >{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('exam_id')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 padding-top-15">
+                                    <label>نوع لیست ثبت فعالیت قرآن آموز ها را انتخاب نمایید :</label>
+                                    <div class="multiselect_div">
+                                        <select id="single-selection" name="act_list_name" class="form-control multiselect multiselect-custom" >
+                                            <option value="act_list_public">لیست عمومی</option>
+                                            <option value="act_list_hefz">لیست حفظ</option>
+                                            <option value="act_list_hefz_t"> لیست حفظ تخصصی</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
                             <div class="row">
 
                                 <div class="col-md-6 padding-top-15">

@@ -42,7 +42,7 @@ class TicketController extends StudentController
         $user=User::find($user->id);
         $recivers=Teachers::all();
            // dd($recivers);
-        $reciversAdmin=User::where('id','=',5)->get();
+        $reciversAdmin=User::where('id','=',5)->orWhere('id','=',2)->get();
         return view('student.pages.ticket-add', compact('recivers','reciversAdmin'));
     }
 

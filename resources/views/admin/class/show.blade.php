@@ -54,7 +54,7 @@
 
                                                 <select class="form-control js-example-basic-single" name="studentFieldId">
                                                     @foreach ($studentsRegister as $item)
-                                                        <option value="{{$item->id}}">{{$item->student->student_id}} : {{$item->student->name}} {{$item->student->family}} </option>
+                                                        <option value="{{$item->id}}">{{$item->student->student_id}} : {{$item->student->name}} {{$item->student->family}} - فرزند: {{$item->student->f_name}} </option>
                                                     @endforeach
                                                 </select>
 
@@ -76,7 +76,7 @@
 
                                                         <select class="form-control js-example-basic-single" name="teacher_id">
                                                             @foreach ($teachers as $item)
-                                                                <option value="{{$item->id}}">{{$item->teacher_id}} : {{$item->name}} {{$item->family}} </option>
+                                                                <option value="{{$item->id}}">{{$item->teacher_id}} : {{$item->name}} {{$item->family}}  - فرزند: {{$item->f_name}} </option>
                                                             @endforeach
                                                         </select>
 
@@ -110,79 +110,117 @@
                         @if(count($students)>0 and $classRooms->type=="student")
                             <p class="bu-margin-bottom-30">لیست قرآن آموزان این کلاس : </p>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>کد قرآن آموزی</th>
                                         <th>نام</th>
                                         <th>نام خانوادگی</th>
+                                        <th>نام پدر</th>
                                         <th>تاریخ ایجاد</th>
+                                        <th>وضعیت شرکت در آزمون</th>
+                                        <th>نمره تئوری</th>
+                                        <th>نمره عملی</th>
+                                        <th>نمره نهایی</th>
                                         <th>تنظیمات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php $i=1@endphp
+                                    @php $i=1;@endphp
                                     @foreach($students as $item)
                                         <tr>
                                             <td>{{$i}}</td>
+                                            <td>{{$item->student->student_id}}</td>
                                             <td>{{$item->student->name}}</td>
                                             <td>{{$item->student->family}}</td>
+                                            <td>{{$item->student->f_name}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
+                                            <td>{{($item->status==1)?'شرکت نکردن':'شرکت کرده است'}}</td>
+                                            <td>{{$item->t_mark}}</td>
+                                            <td>{{$item->a_mark}}</td>
+                                            <td>{{$item->mark}}</td>
                                             <td>
-
+                                                @if($classRooms->status==1 or $classRooms->status==2)
                                                 <form class="form-horizontal" method="POST" action="{{ route('admin.class.register.delete') }}">
                                                 @csrf
                                                     <input type="hidden" name="class_room_student_id" value="{{$item->id}}">
                                                     <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف قرآن آموز از کلاس</button>
 
                                                 </form>
+                                                @endif
+                                                    @if($classRooms->exam_id!=0)
+                                                        <form class="form-horizontal" method="POST" action="{{ route('admin.exams.show.result') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                            <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
+                                                            <input type="hidden" name="exams_id" value="{{$classRooms->exam_id}}">
+                                                            <input type="hidden" name="user_type" value="student">
+                                                            <button type="submit" class="btn btn-info">مشاهده نتایج آزمون و نمرات</button>
+                                                        </form>
+                                                    @endif
 
                                             </td>
-
-                                        @php $i++ @endphp
+                                        </tr>
+                                        @php $i++; @endphp
                                     @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                                  @elseif(count($teachersR)>0 and $classRooms->type=="teacher")
                                                 <p class="bu-margin-bottom-30">لیست معلم های این کلاس : </p>
                                                 <div class="table-responsive">
-                                                    <table class="table table-striped">
+                                                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                                         <thead>
                                                         <tr>
                                                             <th>#</th>
+                                                            <th>کد معلم القرآنی</th>
                                                             <th>نام</th>
                                                             <th>نام خانوادگی</th>
+                                                            <th>نام پدر</th>
                                                             <th>تاریخ ایجاد</th>
+                                                            <th>وضعیت شرکت در آزمون</th>
+                                                            <th>نمره تئوری</th>
+                                                            <th>نمره عملی</th>
                                                             <th>نمره نهایی</th>
                                                             <th>تنظیمات</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                        @php $i=1@endphp
+                                        @php $i=1 ;@endphp
                                         @foreach($teachersR as $item)
                                             <tr>
                                                 <td>{{$i}}</td>
+                                                <td>{{$item->teacher->teacher_id}}</td>
                                                 <td>{{$item->teacher->name}}</td>
                                                 <td>{{$item->teacher->family}}</td>
+                                                <td>{{$item->teacher->f_name}}</td>
                                                 <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
+                                                <td>{{($item->status==1)?'شرکت نکردن':'شرکت کرده است'}}</td>
+                                                <td>{{$item->t_mark}}</td>
+                                                <td>{{$item->a_mark}}</td>
                                                 <td>{{$item->mark}}</td>
                                                 <td>
+                                                    @if($classRooms->status==1 or $classRooms->status==2)
                                                     <form class="form-horizontal" method="POST" action="{{ route('admin.class.register.teacher.delete') }}">
                                                         @csrf
                                                         <input type="hidden" name="class_room_student_id" value="{{$item->id}}">
                                                         <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف معلم از کلاس</button>
-
                                                     </form>
+                                                    @endif
                                                     @if($classRooms->exam_id!=0)
                                                         <form class="form-horizontal" method="POST" action="{{ route('admin.exams.show.result') }}">
                                                             @csrf
                                                             <input type="hidden" name="class_rooms_teachers_id" value="{{$item->id}}">
                                                             <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
                                                             <input type="hidden" name="exams_id" value="{{$classRooms->exam_id}}">
+                                                            <input type="hidden" name="user_type" value="teacher">
                                                             <button type="submit" class="btn btn-info">مشاهده نتایج آزمون و نمرات</button>
                                                         </form>
                                                         @endif
                                                 </td>
-
-                                            @php $i++ @endphp
+                                            </tr>
+                                            @php $i++;@endphp
                                         @endforeach
 
                                     </tbody>

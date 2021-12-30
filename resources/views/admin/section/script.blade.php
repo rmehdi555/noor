@@ -117,23 +117,8 @@
 <script type="text/javascript">
 
 
-
-
-
-    var type = $("#question-type-select").val();
-    if(type=="test")
-    {
-        $(".question-type-test-div").show();
-        $(".question-type-adj-div").hide();
-        $(".question-type-test-q-div").hide();
-        $(".question-type-test-q-div-4").show();
-    }else{
-        $(".question-type-test-div").hide();
-        $(".question-type-adj-div").show();
-        $(".question-type-test-q-div").hide();
-    }
-    $("#question-type-select").change(function () {
-        var type = $(this).val();
+    $(document).ready(function() {
+        var type = $("#question-type-select").val();
         if(type=="test")
         {
             $(".question-type-test-div").show();
@@ -145,9 +130,22 @@
             $(".question-type-adj-div").show();
             $(".question-type-test-q-div").hide();
         }
+        $("#question-type-select").change(function () {
+            var type = $(this).val();
+            if(type=="test")
+            {
+                $(".question-type-test-div").show();
+                $(".question-type-adj-div").hide();
+                $(".question-type-test-q-div").hide();
+                $(".question-type-test-q-div-4").show();
+            }else{
+                $(".question-type-test-div").hide();
+                $(".question-type-adj-div").show();
+                $(".question-type-test-q-div").hide();
+            }
 
+        });
     });
-
     var id = $("#type-adj-number-select").val();
     $(".question-type-test-q-div").hide();
     $(".question-type-test-q-div-"+id).show();
@@ -163,6 +161,13 @@
         format: 'YYYY-MM-DD H:m:s',
         timePicker: {
             enabled: true,
+        },
+    });
+
+    $('.persian-datepicker').persianDatepicker({
+        format: 'YYYY-MM-DD',
+        timePicker: {
+            enabled: false,
         },
     });
 
@@ -222,6 +227,28 @@ function deleteFunction() {
 }
 
 
+    $(document).ready(function() {
+
+        $(document).on("keyup", ".exam-mark", function() {
+           examMarkSum();
+        });
+        $(document).on("keyup", "#exam-a-mark", function() {
+            examMarkSum();
+        });
+
+        function examMarkSum() {
+            var sum = 0;
+            $(".exam-mark").each(function(){
+                sum += +$(this).val();
+            });
+            //alert(sum);
+            $("#exam-t-mark").val(sum);
+            sum += +$("#exam-a-mark").val();
+            $("#exam-all-mark").val(sum);
+
+        }
+
+    });
 
 </script>
 

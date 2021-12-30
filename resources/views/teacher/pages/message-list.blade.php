@@ -16,8 +16,10 @@
                                 </ul>
                             </div>
                         @endif
+                            @if($user->teacher->type=="teacher")
 
                             <a class="btn btn-info" href="{{ route('teacher.message.add') }}">ثبت پیام جدید</a>
+                            @endif
 
                         <br>
                             <br>
@@ -30,7 +32,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>تاریخ</th>
-                                        <th>عنوان تیکت</th>
+                                        <th>عنوان </th>
                                         <th>نام ارسال کننده </th>
                                         <th>نام دریافت کننده</th>
                                         <th>تنظیمات</th>

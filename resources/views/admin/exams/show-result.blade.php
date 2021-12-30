@@ -64,12 +64,15 @@
                                     </div>
                                 </section>
                             @else
+                                @php $number_q=1;@endphp
                                 @foreach($exam->examsQuestions()->get() as $examsQuestion)
-                                    @if($examsQuestion->type=="test")
+                                    @if($examsQuestion->type=="test" and $examsQuestion->status!=0)
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-12 padding-top-15">
-                                                <label class="col-md-6 col-sm-6 control-label" for="title">عنوان
+                                                <label class="col-md-6 col-sm-6 control-label" for="title">{{$number_q}} -
+                                                    عنوان
+
                                                     : {{$examsQuestion->title}} ? ({{$examsQuestion->mark}}) نمره</label>
                                             </div>
                                         </div>
@@ -79,7 +82,7 @@
 
                                             <div class="row">
                                                 <div class="col-md-12 padding-top-15">
-                                                    <label class="col-md-6 col-sm-6 control-label" for="title">{{$i}}-
+                                                    <label class="col-md-6 col-sm-6 control-label" for="title">{{$number_q}}-
                                                         : {{$examsQuestionsOption->title}}</label>
 
                                                 </div>
@@ -103,7 +106,7 @@
                                                 <div class="col-md-12 col-sm-10">
                                                     <input type="hidden" name="flag_mark[]" value="{{$examsResponseTeachersArray[$examsQuestion->id]->id}}">
                                                     <input type="number" step="0.001" name="mark_{{$examsResponseTeachersArray[$examsQuestion->id]->id}}"
-                                                           class="form-control " value="{{empty($examsResponseTeachersArray[$examsQuestion->id]->mark)?$examsResponseTeachersArray[$examsQuestion->id]->t_mark:$examsResponseTeachersArray[$examsQuestion->id]->mark}}" required/>
+                                                           class="form-control exam-mark exam-mark-test" value="{{empty($examsResponseTeachersArray[$examsQuestion->id]->mark)?$examsResponseTeachersArray[$examsQuestion->id]->t_mark:$examsResponseTeachersArray[$examsQuestion->id]->mark}}" required/>
                                                 </div>
                                             </div>
 
@@ -116,19 +119,22 @@
                                             @endif
 
 
-
+                    @php $number_q++;@endphp
                                         @endif
+
                                 @endforeach
 
 
 
 
+
                                 @foreach($exam->examsQuestions()->get() as $examsQuestion)
-                                    @if($examsQuestion->type=="adj")
+                                    @if($examsQuestion->type=="adj" and $examsQuestion->status!=0)
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-12 padding-top-15">
-                                                    <label class="col-md-6 col-sm-6 control-label" for="title">عنوان
+                                                    <label class="col-md-6 col-sm-6 control-label" for="title">{{$number_q}} -
+                                                        عنوان
                                                         : {{$examsQuestion->title}} ? ({{$examsQuestion->mark}}) نمره</label>
                                                 </div>
                                             </div>
@@ -149,7 +155,7 @@
                                                             <div class="col-md-12 col-sm-10">
                                                                 <input type="hidden" name="flag_mark[]" value="{{$examsResponseTeachersArray[$examsQuestion->id]->id}}">
                                                                 <input type="number" step="0.001" name="mark_{{$examsResponseTeachersArray[$examsQuestion->id]->id}}"
-                                                                       class="form-control " value="{{empty($examsResponseTeachersArray[$examsQuestion->id]->mark)?$examsResponseTeachersArray[$examsQuestion->id]->t_mark:$examsResponseTeachersArray[$examsQuestion->id]->mark}}" required/>
+                                                                       class="form-control exam-mark exam-mark-adj" value="{{empty($examsResponseTeachersArray[$examsQuestion->id]->mark)?$examsResponseTeachersArray[$examsQuestion->id]->t_mark:$examsResponseTeachersArray[$examsQuestion->id]->mark}}" required/>
                                                             </div>
                                                         </div>
 
@@ -162,8 +168,9 @@
                                         @endif
 
 
-
+                @php $number_q++;@endphp
                                     @endif
+
                                 @endforeach
                             @endif
 
@@ -183,14 +190,14 @@
                     <div class="col-md-6 padding-top-15">
                         <label class="col-md-6 col-sm-6 control-label" for="title">نمره نهایی تئوری آزمون</label>
                         <div class="col-md-12 col-sm-10">
-                            <input type="number" step="0.001" name="t_mark"
+                            <input type="number" step="0.001" name="t_mark" id="exam-t-mark"
                                    class="form-control " value="{{$classRoomsTeachers->t_mark}}" />
                         </div>
                     </div>
                     <div class="col-md-6 padding-top-15">
                         <label class="col-md-6 col-sm-6 control-label" for="title">نمره نهایی عملی آزمون</label>
                         <div class="col-md-12 col-sm-10">
-                            <input type="number" step="0.001" name="a_mark"
+                            <input type="number" step="0.001" name="a_mark" id="exam-a-mark"
                                    class="form-control " value="{{$classRoomsTeachers->a_mark}}" />
                         </div>
                     </div>
@@ -200,7 +207,7 @@
                     <div class="col-md-6 padding-top-15">
                         <label class="col-md-6 col-sm-6 control-label" for="title">نمره نهایی مجموع آزمون</label>
                         <div class="col-md-12 col-sm-10">
-                            <input type="number" step="0.001" name="mark"
+                            <input type="number" step="0.001" name="mark" id="exam-all-mark"
                                    class="form-control " value="{{$classRoomsTeachers->mark}}" />
                         </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use Adlino\Locations\Facades\locations;
 use App\Cities;
+use App\ClassRoomsStudents;
 use App\Field;
 use App\Http\Controllers\Controller;
 use App\Payment;
@@ -25,8 +26,9 @@ class ClassController extends StudentController
     {
         $fields = Field::where('type','=','student')->get();
         $user=Auth::user();
-        $studentFields = StudentsFields::where([['user_id', '=',$user->id],['status','>',1]])->orderBy('id','desc')->get();
-        return view('student.pages.class-list', compact('fields', 'studentFields'));
+        $studentFields = StudentsFields::where([['user_id', '=',$user->id],['status','>',1],['status','<',3]])->orderBy('id','desc')->get();
+        $classes=ClassRoomsStudents::where([['student_id','=',$user->student->id],['status','>',0]])->orderBy('id','DESC')->get();
+        return view('student.pages.class-list', compact('fields', 'studentFields','classes'));
     }
     public function register()
     {

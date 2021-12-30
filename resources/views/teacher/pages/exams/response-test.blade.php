@@ -27,18 +27,38 @@
 
         </div>
     </section>
+    @if($countAdj>0)
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-primary m-1">
-                   لطفا با دقت به سوالات  پاسخ نمایید . لازم به ذکر میباشد بعد از پاسخ و کلیک به روی دکمه ثبت ، پاسخ ها در سیستم ثبت نهایی شده و قابل ویرایش نمی باشند .
+                   این آزمون دارای تعداد
+                        {{$countAdj}}
+                        سوال تشریحی نیز میباشد که بعد از دکمه ثبت در صفحه بعد قابل نمایش میباشند لذا حتما زمان را مدیریت کنید که به تمامی سوالات پاسخ دهید .
                     </div>
                 </div>
             </div>
 
         </div>
     </section>
+    @endif
+
+    @if(isset($exam->description) AND !empty($exam->description))
+    <section class="bu-inner-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-primary m-1">
+                  توضیحات آزمون : 
+                        {{$exam->description}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    @endif
 
 
 

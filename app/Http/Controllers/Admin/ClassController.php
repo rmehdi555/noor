@@ -51,6 +51,7 @@ class ClassController extends AdminController
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'mark_type_id'=>['required', 'numeric'],
+            'act_list_name'=>['required'],
         ]);
         $user=Auth::user();
         $field=Field::find($request->field_child);
@@ -76,7 +77,7 @@ class ClassController extends AdminController
         $classRoom=ClassRooms::create([
             'user_id'=>$request->teacher_id,
             'field_id' => $request->field_child,
-            'field_parent_id'=>$request->field_main,
+            'field_parent_id'=>$field->parent_id,
             'name'=>$request->name,
             'mark_type'=>$markType->type,
             'mark_type_id'=>$request->mark_type_id,
@@ -84,6 +85,7 @@ class ClassController extends AdminController
             'number_students'=>$request->number_students,
             'old'=>$request->old,
             'exam_id'=>$request->exam_id,
+            'act_list_name'=>$request->act_list_name,
             'city'=>$request->city,
             'province'=>$request->province,
             'address'=>$request->address,
@@ -124,6 +126,7 @@ class ClassController extends AdminController
             'province' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'mark_type_id'=>['required', 'numeric'],
+            'act_list_name'=>['required'],
         ]);
         $classRoom=ClassRooms::find($request->class_room_id);
         if(!isset($classRoom->id))
@@ -143,6 +146,7 @@ class ClassController extends AdminController
             $request->exam_id=0;
 
         $classRoom->update([
+            'user_id'=>$request->teacher_id,
             'name'=>$request->name,
             'mark_type'=>$markType->type,
             'mark_type_id'=>$request->mark_type_id,
@@ -150,6 +154,7 @@ class ClassController extends AdminController
             'number_students'=>$request->number_students,
             'old'=>$request->old,
             'exam_id'=>$request->exam_id,
+            'act_list_name'=>$request->act_list_name,
             'address'=>$request->address,
             'type'=>$request->type,
             'status' =>$request->status,

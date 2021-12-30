@@ -283,8 +283,7 @@ class StudentsController extends StudentController
     }
 
 
-    public
-    function checkCodeCookie($level = 1)
+    public function checkCodeCookie($level = 1)
     {
         $student_flag_cookie = Cookie::get('student_flag_cookie');
         if (!empty($student_flag_cookie)) {

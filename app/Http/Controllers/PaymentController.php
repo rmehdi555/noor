@@ -58,7 +58,8 @@ class PaymentController extends Controller
                     ]);
                     $user=User::find($payment->user_id);
                     StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
-                        'status'=>2
+                        'status'=>2,
+                        'student_id'=>$user->student->id,
                     ]);
                     Mali::create([
                         'user_id'=>$payment->user_id,
@@ -428,7 +429,8 @@ class PaymentController extends Controller
                 ]);
                 $user=User::find($payment->user_id);
                 StudentsFields::where([['user_id', '=',$user->id],['status','=',1],['payment_id','=',$payment->id]])->update([
-                    'status'=>2
+                    'status'=>2,
+                    'student_id'=>$user->student->id,
                 ]);
                 Mali::create([
                     'user_id'=>$payment->user_id,

@@ -56,7 +56,7 @@
                                     <div class="multiselect_div">
                                         <select id="single-selection" name="status" class="multiselect multiselect-custom form-control " >
                                             <option value="1">{{__('web/public.active')}}</option>
-                                            <option value="0" {{$examsQuestion->status?"selected":""}}>{{__('web/public.inactive')}}</option>
+                                            <option value="0" {{$examsQuestion->status?"":"selected"}}>{{__('web/public.inactive')}}</option>
                                         </select>
                                     </div>
                                 </div>

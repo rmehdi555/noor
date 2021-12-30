@@ -41,7 +41,21 @@
         </div>
     </section>
 
+    @if(isset($exam->description) AND !empty($exam->description))
+    <section class="bu-inner-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-primary m-1">
+                  توضیحات آزمون : 
+                        {{$exam->description}}
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    </section>
+    @endif
 
 
     <!-- Start: Inner main -->

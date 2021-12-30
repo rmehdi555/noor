@@ -31,6 +31,7 @@
                                         <th>تاریخ</th>
                                         <th>عنوان تیکت</th>
                                         <th>نام ارسال کننده </th>
+                                        <th>کد ارسال کننده </th>
                                         <th>نام دریافت کننده</th>
                                         <th>وضعیت</th>
                                         <th>تنظیمات</th>
@@ -50,6 +51,7 @@
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->userSender->name}} {{$item->userSender->family}}</td>
+                                            <td>{{$item->userSender->user_name}}</td>
                                             <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>
                                             @switch($item->status)
                                                 @case(1)

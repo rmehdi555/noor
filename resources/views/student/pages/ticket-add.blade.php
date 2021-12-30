@@ -26,7 +26,7 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-12 col-sm-6 control-label"
-                                               for="province">ابتدا دریافت کننده تیکت پشتیبانی را انتخاب کنید : <span
+                                               for="province">ابتدا دریافت کننده را انتخاب کنید : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-6">
 
@@ -47,7 +47,7 @@
                                 <div class="row">
                                     <div class="col-md-6 padding-top-15">
                                         <label class="col-md-12 col-sm-6 control-label"
-                                               for="province">عنوان تیکت پشتیبانی: <span
+                                               for="province">عنوان : <span
                                                     class="required">*</span></label>
                                         <div class="col-md-12 col-sm-6">
                                             <input type="text" name="title" id="title" value="{{old('title')}}"

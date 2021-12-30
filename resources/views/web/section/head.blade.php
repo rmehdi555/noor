@@ -63,7 +63,7 @@ $locale = App::getLocale();
 
 
     <!-- Main Stylesheet -->
-    <link type="text/css" href="{{asset('web/2020/assets/css/style-v-4.css')}}" rel="stylesheet" />
+    <link type="text/css" href="{{asset('web/2020/assets/css/style-v-5.css')}}" rel="stylesheet" />
 
     <style>
         img{

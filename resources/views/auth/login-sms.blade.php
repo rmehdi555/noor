@@ -24,7 +24,8 @@
         <div class="container ">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
-                    <h2 class="subtitle">{{__('web/public.login')}}</h2>
+                    <h4 class="subtitle">قرآنی عزیز برای ورود به پنل یا ادامه ثبت نام مشخصات ذیل را وارد نمایید</h4>
+                    <br>
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>

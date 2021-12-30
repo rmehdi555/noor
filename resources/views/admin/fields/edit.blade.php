@@ -107,8 +107,8 @@
                                     <label>{{__('admin/public.type')}} :</label>
                                     <div class="multiselect_div">
                                         <select id="single-selection" name="type" class="multiselect multiselect-custom" >
-                                            <option value="student">برای قرآن آموزها</option>
-                                            <option value="teacher" {{$item->type=="teacher"?"selected":""}}>برای معلم ها</option>
+                                            <option value="student" >برای قرآن آموزها</option>
+                                            <option value="teacher" {{$field->type=="teacher"?"selected":""}}>برای معلم ها</option>
                                         </select>
                                     </div>
                                 </div>

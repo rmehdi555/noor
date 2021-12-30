@@ -259,6 +259,19 @@
 
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 padding-top-15">
+                                    <label>نوع لیست ثبت فعالیت قرآن آموز ها را انتخاب نمایید :</label>
+                                    <div class="multiselect_div">
+                                        <select id="single-selection" name="act_list_name" class="multiselect multiselect-custom" >
+                                            <option value="act_list_public">لیست عمومی</option>
+                                            <option value="act_list_hefz">لیست حفظ</option>
+                                            <option value="act_list_hefz_t"> لیست حفظ تخصصی</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">

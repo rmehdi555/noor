@@ -56,7 +56,7 @@
 
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$item->fieldParentId->title}}</td>
+                                            <td>{{($item->parent_id==0)?$item->fieldId->title:$item->classRooms->title}}</td>
                                             <td>{{$item->fieldId->title}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->description}}</td>
@@ -65,25 +65,27 @@
                                             @switch($item->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
-                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a>
-                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
                                                 @break
 
                                                 @case(2)
                                                 <td>درحال برگزاری</td>
-                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a>
-                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
                                                 @break
 
                                                 @case(4)
                                                 <td>آزمون</td>
-                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a>
-                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-info">ویرایش </a></td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
                                                 @break
 
                                                 @case(5)
                                                 <td>اتمام شده</td>
-                                                <td></td>
+                                                <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
+
                                                 @break
 
                                                 @default

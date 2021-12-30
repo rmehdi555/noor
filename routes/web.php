@@ -302,6 +302,11 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
     Route::get('deposits/create','DepositsController@create')->name('student.deposits.create');
     Route::post('deposits/save','DepositsController@save')->name('student.deposits.save');
 
+    Route::get('exams/response/{id}','ExamsController@response')->name('student.exams.response');
+    Route::post('exams/response/test/save','ExamsController@responseTestSave')->name('student.exams.response.test.save');
+    Route::post('exams/response/adj/save','ExamsController@responseAdjSave')->name('student.exams.response.adj.save');
+
+
 });
 
 // end student  route
@@ -325,6 +330,8 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::get('class/register','ClassController@register')->name('teacher.class.register');
     Route::post('class/register/save','ClassController@registerSave')->name('teacher.class.register.save');
     Route::post('class/register/delete','ClassController@registerDelete')->name('teacher.class.register.delete');
+    Route::post('class/register/teacher/delete','ClassController@registerTeacherDelete')->name('teacher.class.register.teacher.delete');
+
 
     Route::get('class/list','ClassController@list')->name('teacher.class.list');
     Route::get('class/show/{id}','ClassController@show')->name('teacher.class.show');
@@ -376,6 +383,20 @@ Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher'
     Route::get('exams/response/{id}','ExamsController@response')->name('teacher.exams.response');
     Route::post('exams/response/test/save','ExamsController@responseTestSave')->name('teacher.exams.response.test.save');
     Route::post('exams/response/adj/save','ExamsController@responseAdjSave')->name('teacher.exams.response.adj.save');
+
+    Route::post('exams/show/result','ExamsController@showResult')->name('teacher.exams.show.result');
+    Route::post('exams/show/result/save','ExamsController@showResultSave')->name('teacher.exams.show.result.save');
+
+
+    Route::post('act/list/show','ActListController@actListShow')->name('teacher.act.list.show');
+    Route::get('act/list/show','ActListController@actListShow')->name('teacher.act.list.show');
+    Route::post('act/list/save','ActListController@actListSave')->name('teacher.act.list.save');
+    Route::post('act/list/delete','ActListController@actListDelete')->name('teacher.act.list.delete');
+
+
+
+
+
 });
 
 // end teacher  route

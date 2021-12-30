@@ -33,7 +33,9 @@
 
                         <div class="card ">
                             <article class="card-group-item">
-                                <header class="card-header" style="background-color : #fefe33"><h6 class="title">{{$user->name }}  {{$user->family}}<br>کد معلم القرآن : {{$user->teacher->teacher_id }} </h6></header>
+                                <header class="card-header" style="background-color : #fefe33"><img src="@if(empty($avatarImage)){{asset('web/2020/assets/img/theme/user-profile.png')}}@else{{asset($avatarImage->url)}}@endif" alt="Avatar" class="avatar">
+                                    <br>
+                                    <h6 class="title">{{$user->name }}  {{$user->family}}<br>کد معلم القرآن : {{$user->teacher->teacher_id }} </h6></header>
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.panel.print.details') }}" >چاپ کردن اطلاعات ثبت نامی</a>
@@ -67,7 +69,7 @@
                                     </li>
                                     @endif
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('teacher.ticket.list') }}" >پشتیبانی</a>
+                                        <a href="{{ route('teacher.ticket.list') }}" >سخنی با مدیریت یا طراح سایت</a>
                                     </li>
 
 

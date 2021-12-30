@@ -98,6 +98,13 @@ function deleteFunction() {
 
 <script type="text/javascript">
 
+    $('.persian-datepicker').persianDatepicker({
+        format: 'YYYY-MM-DD',
+        timePicker: {
+            enabled: false,
+        },
+    });
+
     $('.persian-datepicker-time').persianDatepicker({
         format: 'YYYY-MM-DD H:m:s',
         timePicker: {
@@ -111,6 +118,30 @@ function deleteFunction() {
             enabled: true,
         },
         altField: '#start-exam'
+    });
+    
+    
+    $(document).ready(function() {
+
+        $(document).on("keyup", ".exam-mark", function() {
+           examMarkSum();
+        });
+        $(document).on("keyup", "#exam-a-mark", function() {
+            examMarkSum();
+        });
+
+        function examMarkSum() {
+            var sum = 0;
+            $(".exam-mark").each(function(){
+                sum += +$(this).val();
+            });
+            //alert(sum);
+            $("#exam-t-mark").val(sum);
+            sum += +$("#exam-a-mark").val();
+            $("#exam-all-mark").val(sum);
+
+        }
+
     });
 
 </script>

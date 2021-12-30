@@ -39,7 +39,7 @@ class TicketController extends TeacherController
     {
         $user=Auth::user();
         $user=User::find($user->id);
-        $reciversAdmin=User::where('id','=',5)->get();
+        $reciversAdmin=User::where('id','=',5)->orWhere('id','=',2)->get();
         return view('teacher.pages.ticket-add', compact('reciversAdmin'));
     }
 

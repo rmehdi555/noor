@@ -9,7 +9,7 @@ class Exams extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'user_id','title','start_exam', 'end_exam','status'
+        'user_id','title','description','start_exam', 'end_exam','status'
     ];
 
     protected $dates = ['deleted_at'];
