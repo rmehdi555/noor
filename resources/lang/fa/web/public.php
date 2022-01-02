@@ -22,7 +22,7 @@ return [
     'edit' => 'ویرایش',
     'remove' => 'حذف',
     'create_product'=>'ایجاد محصول',
-    'description' => 'خلاصه',
+    'description' => 'توضیحات',
     'body' => 'متن',
     'price' => 'هزینه',
     'images' => 'عکس',

@@ -210,6 +210,13 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::post('exams/show/result/save','ExamsController@showResultSave')->name('admin.exams.show.result.save');
 
 
+    Route::post('act/list/show','ActListController@actListShow')->name('admin.act.list.show');
+    Route::get('act/list/show','ActListController@actListShow')->name('admin.act.list.show');
+    Route::post('act/list/save','ActListController@actListSave')->name('admin.act.list.save');
+    Route::post('act/list/delete','ActListController@actListDelete')->name('admin.act.list.delete');
+
+
+
 
 
 
@@ -220,7 +227,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
 
 
 // start auth route
-Route::middleware('language','visit')->namespace('Auth')->group(function (){
+Route::middleware('language')->namespace('Auth')->group(function (){
     // Authentication Routes...
     //Route::get('login', 'LoginController@showLoginForm')->name('login');
     //Route::post('login', 'LoginController@login');
@@ -260,7 +267,7 @@ Route::middleware('language','visit')->namespace('Auth')->group(function (){
 
 // start user  route
 
-Route::middleware('auth','language','visit')->namespace('User')->prefix('user')->group(function (){
+Route::middleware('auth','language')->namespace('User')->prefix('user')->group(function (){
     Route::get('panel','PanelController@index')->name('user.panel');
 });
 
@@ -268,7 +275,7 @@ Route::middleware('auth','language','visit')->namespace('User')->prefix('user')-
 
 // start student  route
 
-Route::middleware('auth','language','visit','checkStudent')->namespace('Student')->prefix('student')->group(function (){
+Route::middleware('auth','language','checkStudent')->namespace('Student')->prefix('student')->group(function (){
     Route::get('panel','PanelController@index')->name('student.panel');
     Route::post('level/1/save','PanelController@level1Save')->name('student.level.1.save');
     Route::get('payment','PaymentController@index')->name('student.payment.index');
@@ -312,7 +319,7 @@ Route::middleware('auth','language','visit','checkStudent')->namespace('Student'
 // end student  route
 // start teacher  route
 
-Route::middleware('auth','language','visit','checkTeacher')->namespace('Teacher')->prefix('teacher')->group(function (){
+Route::middleware('auth','language','checkTeacher')->namespace('Teacher')->prefix('teacher')->group(function (){
     Route::get('panel','PanelController@index')->name('teacher.panel');
     Route::post('level/1/save','PanelController@level1Save')->name('teacher.level.1.save');
     Route::post('level/2/save','PanelController@level2Save')->name('teacher.level.2.save');

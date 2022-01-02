@@ -1,5 +1,12 @@
-@extends('teacher.master')
+@extends('admin.master')
 @section('content')
+    <div id="main-content">
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="body">
     <section class="bu-inner-main">
         <div class="container">
             <div class="row">
@@ -43,7 +50,7 @@
                         <hr>
 
 
-                        <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.save') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('admin.act.list.save') }}">
                             @csrf
                             <input type="hidden" name="act_type" value="act_list_public">
                             <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
@@ -129,7 +136,7 @@
                                                                 <td>{{$item->mark}}</td>
                                                                 <td>{{$item->presence?'حاضر':'غایب'}}</td>
                                                                 <td>
-                                                                    <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.delete') }}">
+                                                                    <form class="form-horizontal" method="POST" action="{{ route('admin.act.list.delete') }}">
                                                                         @csrf
                                                                         <input type="hidden" name="act_id" value="{{$item->id}}">
                                                                         <input type="hidden" name="act_type" value="act_list_public">

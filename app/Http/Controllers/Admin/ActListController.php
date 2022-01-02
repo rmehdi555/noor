@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
-
+namespace App\Http\Controllers\Admin;
 
 use App\ActListHefz;
 use App\ActListHefzT;
@@ -14,7 +13,7 @@ use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ActListController extends TeacherController
+class ActListController extends AdminController
 {
     public function actListShow(Request $request)
     {
@@ -26,37 +25,37 @@ class ActListController extends TeacherController
         if(!isset($classRoomsStudents->id))
         {
             alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $classRooms=ClassRooms::find($request->class_rooms_id);
-        if(!isset($classRooms->id) or $user->id!=$classRooms->user_id)
+        if(!isset($classRooms->id))
         {
             alert()->error('کلاس انتخابی وجود ندارد',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $student=Students::find($classRoomsStudents->student_id);
         if(!isset($student->id))
         {
             alert()->error('قرآن آموز انتخابی وجود ندارد',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         switch ($classRooms->act_list_name)
         {
             case 'act_list_public':
                 $listPublics=ActListPublic::where('class_rooms_students_id','=',$classRoomsStudents->id)->orderBy('id','desc')->get();
-                return view('teacher.pages.act.list-public',compact('listPublics','classRooms','classRoomsStudents','student'));
+                return view('admin.act.list-public',compact('listPublics','classRooms','classRoomsStudents','student'));
                 break;
             case 'act_list_hefz':
                 $listHefz=ActListHefz::where('class_rooms_students_id','=',$classRoomsStudents->id)->orderBy('id','desc')->get();
-                return view('teacher.pages.act.list-hefz',compact('listHefz','classRooms','classRoomsStudents','student'));
+                return view('admin.act.list-hefz',compact('listHefz','classRooms','classRoomsStudents','student'));
                 break;
             case 'act_list_hefz_t':
                 $listHefzT=ActListHefzT::where('class_rooms_students_id','=',$classRoomsStudents->id)->orderBy('id','desc')->get();
-                return view('teacher.pages.act.list-hefz-t',compact('listHefzT','classRooms','classRoomsStudents','student'));
+                return view('admin.act.list-hefz-t',compact('listHefzT','classRooms','classRoomsStudents','student'));
                 break;
             default:
                 alert()->error('نوع لیست کلاس وجود ندارد',__('web/messages.alert'));
-                return redirect()->route('teacher.class.list');
+                return redirect()->route('admin.class.list');
         }
     }
 
@@ -81,19 +80,19 @@ class ActListController extends TeacherController
         if(!isset($classRoomsStudents->id))
         {
             alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $classRooms=ClassRooms::find($request->class_rooms_id);
-        if(!isset($classRooms->id)  or $user->id!=$classRooms->user_id)
+        if(!isset($classRooms->id) )
         {
             alert()->error('کلاس انتخابی وجود ندارد',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $student=Students::find($classRoomsStudents->student_id);
         if(!isset($student->id))
         {
             alert()->error('قرآن آموز انتخابی وجود ندارد',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         switch ($request->act_type)
         {
@@ -109,7 +108,7 @@ class ActListController extends TeacherController
                     'mark'=>$request->mark,
                     'presence'=>$request->presence,
                 ]);
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
                 break;
             case 'act_list_hefz':
                 $listHefz=ActListHefz::create([
@@ -129,7 +128,7 @@ class ActListController extends TeacherController
                     'mark'=>$request->mark,
                     'presence'=>$request->presence,
                 ]);
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
                 break;
             case 'act_list_hefz_t':
                 $listHefz=ActListHefzT::create([
@@ -159,11 +158,11 @@ class ActListController extends TeacherController
                     'mark'=>$request->mark,
                     'presence'=>$request->presence,
                 ]);
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
                 break;
             default:
                 alert()->error('نوع لیست کلاس وجود ندارد',__('web/messages.alert'));
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);}
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);}
     }
 
     public function actListDelete(Request $request)
@@ -177,37 +176,37 @@ class ActListController extends TeacherController
         if(!isset($classRoomsStudents->id))
         {
             alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $classRooms=ClassRooms::find($request->class_rooms_id);
-        if(!isset($classRooms->id)  or $user->id!=$classRooms->user_id)
+        if(!isset($classRooms->id) )
         {
             alert()->error('کلاس انتخابی وجود ندارد',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         $student=Students::find($classRoomsStudents->student_id);
         if(!isset($student->id))
         {
             alert()->error('قرآن آموز انتخابی وجود ندارد',__('web/messages.alert'));
-            return redirect()->route('teacher.class.list');
+            return redirect()->route('admin.class.list');
         }
         switch ($request->act_type)
         {
             case 'act_list_public':
                 ActListPublic::find($request->act_id)->delete();
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
                 break;
             case 'act_list_hefz':
                 ActListHefz::find($request->act_id)->delete();
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
                 break;
             case 'act_list_hefz_t':
                 ActListHefzT::find($request->act_id)->delete();
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
                 break;
             default:
                 alert()->error('نوع لیست کلاس وجود ندارد',__('web/messages.alert'));
-                return redirect()->route('teacher.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
+                return redirect()->route('admin.act.list.show',['class_rooms_students_id'=>$classRoomsStudents->id,'class_rooms_id'=>$classRooms->id]);
         }
     }
 }

@@ -133,14 +133,14 @@
                                             <td>{{$item->t_mark}}</td>
                                             <td>{{$item->a_mark}}</td>
                                             <td>{{$item->mark}}</td>
-                                            {{--<td> --}}
-                                                {{--<form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.show') }}">--}}
-                                                    {{--@csrf--}}
-                                                    {{--<input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">--}}
-                                                    {{--<input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">--}}
-                                                    {{--<button type="submit" class="btn btn-info">مشاهده لیست و درج فعالیت</button>--}}
-                                                {{--</form>--}}
-                                            {{--</td>--}}
+                                            <td>
+                                                <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.show') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                    <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
+                                                    <button type="submit" class="btn btn-info">مشاهده لیست و درج فعالیت</button>
+                                                </form>
+                                            </td>
                                             <td>
                                                 @if($classRooms->status==1 or $classRooms->status==2)
                                                     <form class="form-horizontal" method="POST" action="{{ route('teacher.class.register.delete') }}">

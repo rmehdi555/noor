@@ -3,6 +3,10 @@
         <div class="sidebar-scroll" style="overflow: hidden; width: auto; height: calc(100vh - 65px);">
             <nav id="leftsidebar-nav" class="sidebar-nav">
                 <ul id="main-menu" class="metismenu">
+                    @php
+                    if(!isset($SID) or empty($SID))
+                        $SID=100;
+                    @endphp
                     <li><a href="{{ route('admin.panel',['SID' => '100']) }}"><i
                                     class="icon-home"></i><span>{{__('admin/public.dashboard')}}</span></a></li>
                     {{--<li class="heading">App</li>--}}

@@ -45,43 +45,88 @@
 
                         <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.save') }}">
                             @csrf
-                            <input type="hidden" name="act_type" value="act_list_public">
+                            <input type="hidden" name="act_type" value="act_list_hefz">
                             <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
                             <input type="hidden" name="class_rooms_students_id" value="{{$classRoomsStudents->id}}">
-                                <div class="row">
-                                    <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-12 col-sm-6 control-label" for="date">تاریخ : <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-12 col-sm-6">
-                                            <input  name="date" id="date"  class="persian-datepicker form-control" required/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-12 col-sm-6 control-label" for="description">توضیح : <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-12 col-sm-6">
-                                            <input type="text" name="description" id="description"  class=" form-control" required/>
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label" for="date">تاریخ : <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <input  name="date" id="date"  class="persian-datepicker form-control" required/>
                                     </div>
                                 </div>
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label" for="description">توضیح : <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <input type="text" name="description" id="description"  class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره حفظ :
+                                    </label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <input type="number" step="0.001" name="mark_hefz" id="mark_hefz"  class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره ده درس :
+                                    </label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <input type="number" step="0.001" name="mark_dah_dars" id="mark_dah_dars"  class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 1 :
+                                    </label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <input type="number" step="0.001" name="mark_d1" id="mark_d1"  class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 1 :
+                                    </label>
+                                    <select id="single-selection" name="j_d1" class="form-control multiselect multiselect-custom"  >
+                                        @for($i=1;$i<=30;$i++)
+                                          <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 2 :
+                                    </label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <input type="number" step="0.001" name="mark_d2" id="mark_d1"  class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3 padding-top-15">
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 2 :
+                                    </label>
+                                    <select id="single-selection" name="j_d2" class="form-control multiselect multiselect-custom"  >
+                                        @for($i=1;$i<=30;$i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-4 padding-top-15">
                                     <label class="col-md-12 col-sm-6 control-label" for="mark">نمره :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
-                                        <input type="number" step="0.001" name="mark" id="mark"  class=" form-control" />
+                                        <input type="number" step="0.001" name="mark" id="mark"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4 padding-top-15">
                                     <label class="col-md-12 col-sm-4 control-label" for="presence">حاضر یا غایب :
                                     </label>
-
-
                                         <select id="single-selection" name="presence" class="form-control multiselect multiselect-custom"  >
                                             <option value="1">حاضر</option>
                                             <option value="0">غایب</option>
                                         </select>
-
                                 </div>
 
                                 <div class="col-md-4 padding-top-15">
@@ -105,7 +150,7 @@
 
 
 
-                            @if(count($listPublics)>0)
+                            @if(count($listHefz)>0)
                                                 <p class="bu-margin-bottom-30">لیست فعالیت های این قرآن آموز : </p>
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
@@ -114,6 +159,12 @@
                                                             <th>#</th>
                                                             <th>تاریخ</th>
                                                             <th>توضیح</th>
+                                                            <th>نمره حفظ</th>
+                                                            <th>نمره ده درس</th>
+                                                            <th>نمره درس 1</th>
+                                                            <th>جزء درس 1</th>
+                                                            <th>نمره درس 2</th>
+                                                            <th>جزء درس 2</th>
                                                             <th>نمره</th>
                                                             <th>حاضر یا غایب</th>
                                                             <th>تنظیمات</th>
@@ -121,18 +172,24 @@
                                                         </thead>
                                                         <tbody>
                                                         @php $i=1 ;@endphp
-                                                        @foreach($listPublics as $item)
+                                                        @foreach($listHefz as $item)
                                                             <tr>
                                                                 <td>{{$i}}</td>
                                                                 <td>{{\App\Providers\MyProvider::show_date($item->date,'Y-m-d')}}</td>
                                                                 <td>{{$item->description}}</td>
+                                                                <td>{{$item->mark_hefz}}</td>
+                                                                <td>{{$item->mark_dah_dars}}</td>
+                                                                <td>{{$item->mark_d1}}</td>
+                                                                <td>{{$item->j_d1}}</td>
+                                                                <td>{{$item->mark_d2}}</td>
+                                                                <td>{{$item->j_d2}}</td>
                                                                 <td>{{$item->mark}}</td>
                                                                 <td>{{$item->presence?'حاضر':'غایب'}}</td>
                                                                 <td>
                                                                     <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.delete') }}">
                                                                         @csrf
                                                                         <input type="hidden" name="act_id" value="{{$item->id}}">
-                                                                        <input type="hidden" name="act_type" value="act_list_public">
+                                                                        <input type="hidden" name="act_type" value="act_list_hefz">
                                                                         <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
                                                                         <input type="hidden" name="class_rooms_students_id" value="{{$classRoomsStudents->id}}">
                                                                         <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف </button>

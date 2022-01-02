@@ -11,10 +11,10 @@ class Visit extends Model
 
     public function getAllUser()
     {
-        //return static::all()->groupBy('ip')->count();
-        return DB::table('visits')
-            ->groupBy('ip')
-            ->count();
+        return static::all()->groupBy('ip')->count();
+//        return DB::table('visits')
+//            ->groupBy('ip')
+//            ->count();
     }
     public function getAllPage()
     {
