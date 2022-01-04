@@ -32,9 +32,10 @@
                                                             <th>نام </th>
                                                             <th>نام خانوادگی </th>
                                                             <th>نام پدر </th>
+                                                            <th>کد ملی </th>
                                                             {{--<th>کد معلم القرآنی</th>--}}
                                                             <th>نام صاحب کارت</th>
-                                                            <th>شماره کارت</th>
+                                                            <th>شماره حساب</th>
                                                             {{--<th>شماره شبا</th>--}}
                                                             <th>نام بانک</th>
                                                             <th>مجموع پرداختی به ریال</th>
@@ -58,9 +59,10 @@
                                                                 <td>{{$item->user->name}}</td>
                                                                 <td>{{$item->user->family}}</td>
                                                                 <td>{{isset($item->user->teacher->f_name)?$item->user->teacher->f_name:'-'}}</td>
+                                                                <td>{{isset($item->user->teacher->meli_number)?$item->user->teacher->meli_number:'-'}}</td>
                                                                 {{--<td>{{isset($item->user->teacher->teacher_id)?$item->user->teacher->teacher_id:'-'}}</td>--}}
                                                                 <td>{{$item->card_name}}</td>
-                                                                <td>{{$item->card_number}}</td>
+                                                                <td>{{$item->hesab_number}}</td>
                                                                 {{--<td>{{$item->sheba_number}}</td>--}}
                                                                 <td>{{$item->bank_name}}</td>
                                                                 <td>{{$item->totalSum}}</td>

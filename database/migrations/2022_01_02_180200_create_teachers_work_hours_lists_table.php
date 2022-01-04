@@ -27,6 +27,7 @@ class CreateTeachersWorkHoursListsTable extends Migration
             $table->string('k_price')->default(0);
             $table->string('totalSum')->default(0);
             $table->text('card_name')->nullable();
+            $table->text('hesab_number')->nullable();
             $table->text('card_number')->nullable();
             $table->text('sheba_number')->nullable();
             $table->text('bank_name')->nullable();

@@ -107,6 +107,7 @@ class WorkHoursController extends AdminController
             'k_price'=>$request->k_price,
             'totalSum'=>$request->totalSum,
             'card_name'=>$cardNumberBank->name,
+            'hesab_number'=>$cardNumberBank->hesab_number,
             'card_number'=>$cardNumberBank->card_number,
             'sheba_number'=>$cardNumberBank->sheba_number,
             'bank_name'=>$cardNumberBank->bank_name,

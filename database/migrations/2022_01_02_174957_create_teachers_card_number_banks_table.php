@@ -18,6 +18,7 @@ class CreateTeachersCardNumberBanksTable extends Migration
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('teacher_id')->nullable();
             $table->text('name')->nullable();
+            $table->text('hesab_number')->nullable();
             $table->text('card_number')->nullable();
             $table->text('sheba_number')->nullable();
             $table->text('bank_name')->nullable();

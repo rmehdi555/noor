@@ -60,8 +60,8 @@
                                 </label>
                             </div>
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label" for="date">شماره شبا :
-                                    {{$cardNumberBank->sheba_number}}
+                                <label class="col-md-12 col-sm-6 control-label" for="date">شماره حساب :
+                                    {{$cardNumberBank->hesab_number}}
                                 </label>
                             </div>
 

@@ -43,6 +43,7 @@
                                                             <th>نام پدر معلم</th>
                                                             <th>کد معلم القرآنی</th>
                                                             <th>نام صاحب کارت</th>
+                                                            <th>شماره حساب</th>
                                                             <th>شماره کارت</th>
                                                             <th>شماره شبا</th>
                                                             <th>نام بانک</th>
@@ -69,6 +70,7 @@
                                                                 <td>{{isset($item->user->teacher->f_name)?$item->user->teacher->f_name:'-'}}</td>
                                                                 <td>{{isset($item->user->teacher->teacher_id)?$item->user->teacher->teacher_id:'-'}}</td>
                                                                 <td>{{$item->card_name}}</td>
+                                                                <td>{{$item->hesab_number}}</td>
                                                                 <td>{{$item->card_number}}</td>
                                                                 <td>{{$item->sheba_number}}</td>
                                                                 <td>{{$item->bank_name}}</td>

@@ -19,17 +19,17 @@ class CardNumberBankController extends TeacherController
     {
         $request->validate([
             'name' => ['required'],
-            'card_number' => ['required'],
-            'bank_name' => ['required'],
+            'hesab_number' => ['required'],
         ]);
         $user=Auth::user();
         TeachersCardNumberBank::create([
             'user_id'=>$user->id,
             'teacher_id'=>$user->teacher->id,
             'name'=>$request->name,
+            'hesab_number'=>$request->hesab_number,
             'card_number'=>$request->card_number,
             'sheba_number'=>$request->sheba_number,
-            'bank_name'=>$request->bank_name,
+            'bank_name'=>'ملی',
             'status'=>1,
         ]);
         alert()->success('اطلاعات کارت با موفقیت ثبت شد .', __('web/messages.success'));

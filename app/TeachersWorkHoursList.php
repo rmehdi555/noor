@@ -15,7 +15,7 @@ class TeachersWorkHoursList extends Model
     use SoftDeletes;
     protected $fillable = ['user_id','teacher_id', 'name', 'description', 'price_hours','hours',
         'a_description','a_price','k_description','k_price','totalSum',
-        'card_name','card_number','sheba_number','bank_name','status'];
+        'hesab_number','card_name','card_number','sheba_number','bank_name','status'];
     protected $dates = ['deleted_at'];
 
     public function user()
