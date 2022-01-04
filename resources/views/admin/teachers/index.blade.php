@@ -62,11 +62,12 @@
                                     @foreach($teachers as $item)
                                         <tr class="gradeA">
                                             <td class="actions">
-
                                                 <form action="{{ route('teachers.destroy', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('teachers.show',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-show"
+                                                    <a href="{{ route('admin.class.list.teacher',$item->user_id) }}" class="btn btn-info">مشاهده لیست کلاس های این معلم</a>
+                                                    <a href="{{ route('admin.work.hours.show',$item->user_id) }}" class="btn btn-info">مشاهده لیست ساعت کارکرد این معلم</a>
+                                                    <a href="{{ route('teachers.show',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-show"
                                                    data-toggle="tooltip" data-original-title="{{__('admin/public.show')}}"><i class="icon-eye" aria-hidden="true"></i></a>
                                                 <a href="{{ route('teachers.edit',$item->id) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
                                                 data-toggle="tooltip" data-original-title="{{__('admin/public.edit')}}"><i class="icon-pencil" aria-hidden="true"></i></a>

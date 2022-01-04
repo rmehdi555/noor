@@ -13,12 +13,12 @@
 
                             </div>
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">فامیلی قرآن آموز :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">نام خانوادگی قرآن آموز :  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$student->family}}</label>
 
                             </div>
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">کد قرآن اموز :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">کد قرآن آموزی :  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$student->student_id}}</label>
 
                             </div>
@@ -30,12 +30,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">نام کلاس :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">عنوان کلاس :  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$classRooms->name}}</label>
 
                             </div>
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">توضیح :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">توضیحات کلاس:  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$classRooms->description}}</label>
 
                             </div>
@@ -137,6 +137,13 @@
                                                                         <input type="hidden" name="class_rooms_students_id" value="{{$classRoomsStudents->id}}">
                                                                         <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف </button>
                                                                     </form>
+                                                                    <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.edit') }}">
+                                                                        @csrf
+                                                                        <input type="hidden" name="act_id" value="{{$item->id}}">
+                                                                        <input type="hidden" name="act_type" value="act_list_hefz">
+                                                                        <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
+                                                                        <input type="hidden" name="class_rooms_students_id" value="{{$classRoomsStudents->id}}">
+                                                                        <button type="submit" class="btn btn-info">ویرایش </button>                                                                    </form>
                                                                 </td>
                                                             @php $i++;@endphp
                                                             </tr>

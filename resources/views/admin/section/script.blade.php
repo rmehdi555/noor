@@ -179,6 +179,11 @@
         altField: '#start-exam'
     });
 
+    $('.only-timepicker').persianDatepicker({
+        format: 'H:m:s',
+        onlyTimePicker: true
+    });
+
 
 
 </script>

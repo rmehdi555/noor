@@ -217,6 +217,27 @@ class MyProvider extends ServiceProvider
         }
     }
 
+    static function submission_date($end_date,$start_date,$type='min') {
+        $diff = strtotime($end_date) - strtotime($start_date);
+        switch ($type)
+        {
+            case 'min':
+                $diff = round($diff / 60,0,1);
+                break;
+            case 'hours':
+                $diff = round($diff / 3600,0,1);
+                break;
+            case 'day':
+                $diff = round($diff / 86400,0,1);
+                break;
+            default:
+                $diff = round($diff / 60,0,1);
+                break;
+
+        }
+        return $diff;
+    }
+
 
 
 }

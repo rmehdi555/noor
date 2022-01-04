@@ -13,12 +13,12 @@
 
                             </div>
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">فامیلی قرآن آموز :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">نام خانوادگی قرآن آموز :  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$student->family}}</label>
 
                             </div>
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">کد قرآن اموز :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">کد قرآن آموزی :  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$student->student_id}}</label>
 
                             </div>
@@ -30,12 +30,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">نام کلاس :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">عنوان کلاس :  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$classRooms->name}}</label>
 
                             </div>
                             <div class="col-md-3 padding-top-15">
-                                <label class="col-md-12 col-sm-6 control-label">توضیح :  </label>
+                                <label class="col-md-12 col-sm-6 control-label">توضیحات کلاس:  </label>
                                 <label class="col-md-12 col-sm-6 control-label">{{$classRooms->description}}</label>
 
                             </div>
@@ -98,32 +98,34 @@
 
                             <div class="row">
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 1 :
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره دوره 1 :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
                                         <input type="number" step="0.001" name="mark_d1" id="mark_d1"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 1 :
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">شماره جزء 1 :
                                     </label>
                                     <select id="single-selection" name="j_d1" class="form-control multiselect multiselect-custom"  >
+                                        <option value="NULL">هیچکدام</option>
                                         @for($i=1;$i<=30;$i++)
                                           <option value="{{$i}}">{{$i}}</option>
                                         @endfor
                                     </select>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 2 :
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره دوره 2 :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
                                         <input type="number" step="0.001" name="mark_d2" id="mark_d1"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 2 :
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">شماره جزء 2 :
                                     </label>
                                     <select id="single-selection" name="j_d2" class="form-control multiselect multiselect-custom"  >
+                                        <option value="NULL">هیچکدام</option>
                                         @for($i=1;$i<=30;$i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                         @endfor
@@ -132,32 +134,34 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 3 :
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره دوره 3 :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
                                         <input type="number" step="0.001" name="mark_d3" id="mark_d3"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 3 :
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">شماره جزء 3 :
                                     </label>
                                     <select id="single-selection" name="j_d3" class="form-control multiselect multiselect-custom"  >
+                                        <option value="NULL">هیچکدام</option>
                                         @for($i=1;$i<=30;$i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                         @endfor
                                     </select>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 4 :
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره دوره 4 :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
                                         <input type="number" step="0.001" name="mark_d4" id="mark_d4"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 4 :
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">شماره جزء 4 :
                                     </label>
                                     <select id="single-selection" name="j_d4" class="form-control multiselect multiselect-custom"  >
+                                        <option value="NULL">هیچکدام</option>
                                         @for($i=1;$i<=30;$i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                         @endfor
@@ -166,32 +170,34 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 5 :
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره دوره 5 :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
                                         <input type="number" step="0.001" name="mark_d5" id="mark_d5"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 5 :
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">شماره جزء 5 :
                                     </label>
                                     <select id="single-selection" name="j_d5" class="form-control multiselect multiselect-custom"  >
+                                        <option value="NULL">هیچکدام</option>
                                         @for($i=1;$i<=30;$i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                         @endfor
                                     </select>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره درس 6 :
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره دوره 6 :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
                                         <input type="number" step="0.001" name="mark_d6" id="mark_d6"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-3 padding-top-15">
-                                    <label class="col-md-12 col-sm-4 control-label" for="presence">جزء درس 6 :
+                                    <label class="col-md-12 col-sm-4 control-label" for="presence">شماره جزء 6 :
                                     </label>
                                     <select id="single-selection" name="j_d6" class="form-control multiselect multiselect-custom"  >
+                                        <option value="NULL">هیچکدام</option>
                                         @for($i=1;$i<=30;$i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                         @endfor
@@ -200,10 +206,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4 padding-top-15">
-                                    <label class="col-md-12 col-sm-6 control-label" for="mark">نمره :
+                                    <label class="col-md-12 col-sm-6 control-label" for="mark">صفحه حفظ تحویلی :
                                     </label>
                                     <div class="col-md-12 col-sm-6">
-                                        <input type="number" step="0.001" name="mark" id="mark"  class="form-control" />
+                                        <input type="number" step="0.001" name="s_h_t" id="s_h_t"  class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4 padding-top-15">
@@ -248,20 +254,20 @@
                                                             <th>نمره حفظ</th>
                                                             <th>نمره دو درس</th>
                                                             <th>نمره هشت درس</th>
-                                                            <th>نمره درس 1</th>
-                                                            <th>جزء درس 1</th>
-                                                            <th>نمره درس 2</th>
-                                                            <th>جزء درس 2</th>
-                                                            <th>نمره درس 3</th>
-                                                            <th>جزء درس 3</th>
-                                                            <th>نمره درس 4</th>
-                                                            <th>جزء درس 4</th>
-                                                            <th>نمره درس 5</th>
-                                                            <th>جزء درس 5</th>
-                                                            <th>نمره درس 6</th>
-                                                            <th>جزء درس 6</th>
+                                                            <th>نمره دوره 1</th>
+                                                            <th>شماره جزء 1</th>
+                                                            <th>نمره دوره 2</th>
+                                                            <th>شماره جزء 2</th>
+                                                            <th>نمره دوره 3</th>
+                                                            <th>شماره جزء 3</th>
+                                                            <th>نمره دوره 4</th>
+                                                            <th>شماره جزء 4</th>
+                                                            <th>نمره دوره 5</th>
+                                                            <th>شماره جزء 5</th>
+                                                            <th>نمره دوره 6</th>
+                                                            <th>شماره جزء 6</th>
                                                             <th>نمره حفظ تخصصی</th>
-                                                            <th>نمره</th>
+                                                            <th>صفحه حفظ تحویلی</th>
                                                             <th>حاضر یا غایب</th>
                                                             <th>تنظیمات</th>
                                                         </tr>
@@ -289,7 +295,7 @@
                                                                 <td>{{$item->mark_d6}}</td>
                                                                 <td>{{$item->j_d6}}</td>
                                                                 <td>{{$item->mark_hefz_t}}</td>
-                                                                <td>{{$item->mark}}</td>
+                                                                <td>{{$item->s_h_t}}</td>
                                                                 <td>{{$item->presence?'حاضر':'غایب'}}</td>
                                                                 <td>
                                                                     <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.delete') }}">
@@ -300,6 +306,13 @@
                                                                         <input type="hidden" name="class_rooms_students_id" value="{{$classRoomsStudents->id}}">
                                                                         <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف </button>
                                                                     </form>
+                                                                    <form class="form-horizontal" method="POST" action="{{ route('teacher.act.list.edit') }}">
+                                                                        @csrf
+                                                                        <input type="hidden" name="act_id" value="{{$item->id}}">
+                                                                        <input type="hidden" name="act_type" value="act_list_hefz">
+                                                                        <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
+                                                                        <input type="hidden" name="class_rooms_students_id" value="{{$classRoomsStudents->id}}">
+                                                                        <button type="submit" class="btn btn-info">ویرایش </button>                                                                    </form>
                                                                 </td>
                                                             @php $i++;@endphp
                                                             </tr>

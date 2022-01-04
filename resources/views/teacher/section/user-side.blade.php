@@ -62,6 +62,9 @@
                                         <a href="{{ route('teacher.practice.list') }}" >مشاهده فعالیت قرآن آموز ها</a>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.work.hours') }}" > ثبت ساعت کار</a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.methodOfLetter.list') }}" > شیوه نامه ها</a>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">

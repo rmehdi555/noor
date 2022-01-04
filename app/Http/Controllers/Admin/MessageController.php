@@ -104,6 +104,23 @@ class MessageController extends AdminController
         return view('admin.message.show', compact('message','SID'));
 
     }
+    public function delete(Request $request)
+    {
+        $user=Auth::user();
+        $user=User::find($user->id);
+        $message=Messages::find($request->id);
+        if(!isset($message->id))
+        {
+            alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
+            return redirect()->route('admin.message.list');
+        }
+
+        MessagesDetails::where('message_id','=',$message->id)->delete();
+        $message->delete();
+        alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
+        return redirect()->route('admin.message.list');
+
+    }
 
 
 }

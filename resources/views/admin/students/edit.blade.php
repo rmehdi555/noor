@@ -523,8 +523,10 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>تاریخ ثبت</th>
                                             <th>{{__('web/public.title_field')}}</th>
                                             <th>{{__('web/public.price')}}({{__('web/public.currency_name_IRR')}})</th>
+                                            <th>وضعیت</th>
                                             {{--<th>{{__('web/public.setting')}}</th>--}}
                                         </tr>
                                         </thead>
@@ -533,16 +535,37 @@
                                         @foreach($student->studentsFields as $item)
                                             <tr>
                                                 <td>{{$i}}</td>
+                                                <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
                                                 <td>{{$item->title}}</td>
                                                 <td>{{number_format($item->price)}}</td>
+                                                @switch($item->status)
+                                                    @case(1)
+                                                    <td>ثبت نام اولیه و پرداخت نشده</td>
+                                                    @break
+
+                                                    @case(2)
+                                                    <td>پرداخت شده و درانتظار تشکیل کلاس</td>
+                                                    @break
+
+                                                    @case(3)
+                                                    <td>در حال تحصیل</td>
+                                                    @break
+
+                                                    @case(5)
+                                                    <td>اتمام دوره</td>
+                                                    @break
+
+                                                    @default
+                                                    <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
+                                                @endswitch
                                                 {{--<td><a class="btn btn-danger btn-sm"--}}
-                                                       {{--href="{{ route('web.students.field.delete',$item->id) }}">{{__('web/public.delete')}}</a>--}}
+                                                {{--href="{{ route('web.students.field.delete',$item->id) }}">{{__('web/public.delete')}}</a>--}}
                                                 {{--</td>--}}
                                             </tr>
                                             @php $i++; $finalPrice+=$item->price; @endphp
                                         @endforeach
                                         <tr class="table-primary">
-                                            <td colspan='2'>{{__('web/public.price_final')}}
+                                            <td colspan='3'>{{__('web/public.price_final')}}
                                                 ({{__('web/public.currency_name_IRR')}}) :
                                             </td>
                                             <td colspan='2'>{{$finalPrice}}</td>

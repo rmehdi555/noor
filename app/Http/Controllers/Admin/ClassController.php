@@ -313,5 +313,21 @@ class ClassController extends AdminController
         return redirect()->route('admin.class.show',$classRoomsTracher->class_rooms_id);
     }
 
+    public function listTeacher(Request $request)
+    {
+        $SID=400;
+        $user=Auth::user();
+        $classes=ClassRooms::where('user_id','=',$request->id)->get();
+        if(count($classes)<1)
+        {
+            alert()->error(__('معلم انتخاب شده هیچ کلاسی ثبت نکرده است.'),__('web/messages.alert'));
+            return redirect()->route('teachers.index');
+        }
+        $fields = Field::all();
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        return view('admin.class.list', compact('fields','provinces','cities','classes','SID'));
+    }
+
 
 }

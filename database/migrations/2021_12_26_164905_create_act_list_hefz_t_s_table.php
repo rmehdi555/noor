@@ -39,7 +39,7 @@ class CreateActListHefzTSTable extends Migration
             $table->string('mark_d6')->nullable();
             $table->integer('j_d6')->nullable();
             $table->string('mark_hefz_t')->nullable();
-            $table->string('mark')->nullable();
+            $table->string('s_h_t')->nullable();
             $table->integer('presence')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();

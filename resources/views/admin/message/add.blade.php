@@ -59,6 +59,7 @@
                                                    class="form-control  @error('title') is-invalid @enderror" required/>
                                             @error('title')
                                             <span class="invalid-feedback" role="alert">
+
                                         <strong>{{ $message }}</strong>
                                     </span>
                                             @enderror
@@ -91,7 +92,7 @@
                                            for="province">متن : <span
                                                 class="required">*</span></label>
                                     <div class="col-md-12 col-sm-6">
-                                        <textarea name="description" rows="10" id="input-enquiry" class="form-control  @error('description') is-invalid @enderror"></textarea>
+                                        <textarea name="description" rows="10" id="input-enquiry" class="form-control  ckeditor @error('description') is-invalid @enderror"></textarea>
 
                                     </div>
                                 </div>

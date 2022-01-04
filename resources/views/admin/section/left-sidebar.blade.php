@@ -146,6 +146,9 @@
                             <li class="@if($SID==53 ) active @endif"><a
                                         href="{{ route('teachers.reports.specialization',['id'=>1,'SID' => '53']) }}">گزارش معلم ها </a>
                             </li>
+                            <li class="@if($SID==54 ) active @endif"><a
+                                        href="{{ route('admin.work.hours.list.show',['id'=>1,'SID' => '54']) }}">مشاهده لیست پرداختی ها </a>
+                            </li>
                             {{--<li class="@if($SID==41 ) active @endif"><a--}}
                             {{--href="{{ route('teachers.create',['SID' => '41']) }}">{{__('admin/public.teachers_add')}}</a>--}}
                             {{--</li>--}}

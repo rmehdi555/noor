@@ -55,7 +55,14 @@
                                                 @else
                                                 <td>{{$item->userReciver->name}} {{$item->userReciver->family}}</td>
                                             @endif
-                                            <td><a class="btn btn-info" href="{{ route('admin.message.show',$item->id) }}">نمایش پیام</a></td>
+                                            <td><a class="btn btn-info" href="{{ route('admin.message.show',$item->id) }}">نمایش پیام</a>
+
+                                                <form class="form-horizontal" method="POST" action="{{ route('admin.message.delete') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{$item->id}}">
+                                                    <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @php $i++ @endphp
                                     @endforeach

@@ -171,6 +171,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::get('message/show/{id}','MessageController@show')->name('admin.message.show');
     Route::get('message/add','MessageController@add')->name('admin.message.add');
     Route::post('message/save','MessageController@save')->name('admin.message.save');
+    Route::post('message/delete','MessageController@delete')->name('admin.message.delete');
 
     Route::resource('methodOfLetter','MethodOfLetterController');
     Route::resource('meeting','MeetingController');
@@ -191,6 +192,8 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::post('class/register/teacher/delete','ClassController@registerTeacherDelete')->name('admin.class.register.teacher.delete');
     Route::get('class/list','ClassController@list')->name('admin.class.list');
     Route::get('class/show/{id}','ClassController@show')->name('admin.class.show');
+
+    Route::get('class/list/teacher/{id}','ClassController@listTeacher')->name('admin.class.list.teacher');
 
 
     // آزمون
@@ -214,6 +217,18 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::get('act/list/show','ActListController@actListShow')->name('admin.act.list.show');
     Route::post('act/list/save','ActListController@actListSave')->name('admin.act.list.save');
     Route::post('act/list/delete','ActListController@actListDelete')->name('admin.act.list.delete');
+
+    Route::get('work/hours/show/{user_id}','WorkHoursController@show')->name('admin.work.hours.show');
+    Route::post('work/hours/list/create/save','WorkHoursController@listCreateSave')->name('admin.work.hours.list.create.save');
+    Route::get('work/hours/list/show','WorkHoursController@listShow')->name('admin.work.hours.list.show');
+    Route::post('work/hours/list/delete','WorkHoursController@listDelete')->name('admin.work.hours.list.delete');
+    Route::post('work/hours/list/pay','WorkHoursController@listPay')->name('admin.work.hours.list.pay');
+    Route::get('work/hours/list/show/pay','WorkHoursController@listShowPay')->name('admin.work.hours.list.show.pay');
+    Route::post('work/hours/list/show/details','WorkHoursController@listShowDetails')->name('admin.work.hours.list.show.details');
+
+
+
+
 
 
 
@@ -399,10 +414,17 @@ Route::middleware('auth','language','checkTeacher')->namespace('Teacher')->prefi
     Route::get('act/list/show','ActListController@actListShow')->name('teacher.act.list.show');
     Route::post('act/list/save','ActListController@actListSave')->name('teacher.act.list.save');
     Route::post('act/list/delete','ActListController@actListDelete')->name('teacher.act.list.delete');
+    Route::post('act/list/edit','ActListController@actListEdit')->name('teacher.act.list.edit');
+    Route::post('act/list/edit/save','ActListController@actListEditSave')->name('teacher.act.list.edit.save');
 
 
 
+    Route::get('card/number/bank/create','CardNumberBankController@create')->name('teacher.card.number.bank.create');
+    Route::post('card/number/bank/create/save','CardNumberBankController@createSave')->name('teacher.card.number.bank.create.save');
 
+    Route::get('work/hours','WorkHoursController@index')->name('teacher.work.hours');
+    Route::post('work/hours/create/save','WorkHoursController@createSave')->name('teacher.work.hours.create.save');
+    Route::post('work/hours/delete/save','WorkHoursController@deleteSave')->name('teacher.work.hours.delete.save');
 
 });
 
