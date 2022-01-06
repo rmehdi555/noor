@@ -255,6 +255,32 @@ function deleteFunction() {
 
     });
 
+
+    $(document).ready(function() {
+
+        $(document).on("keyup", "#a_price", function() {
+            workHoursSum();
+        });
+        $(document).on("keyup", "#k_price", function() {
+            workHoursSum();
+        });
+        $(document).on("keyup", "#price_hours", function() {
+            workHoursSum();
+        });
+        $(document).on("keyup", "#hours", function() {
+            workHoursSum();
+        });
+
+        function workHoursSum() {
+            var sum = 0;
+            sum = $("#hours").val()*$("#price_hours").val();
+            sum +=$("#a_price").val()-$("#k_price").val();
+            $("#totalSum").val(Math.ceil(sum));
+
+        }
+
+    });
+
 </script>
 
 
