@@ -1,4 +1,4 @@
-@extends('student.master')
+@extends('teacher.master')
 @section('content')
 
     <!-- Start: Inner main -->
@@ -18,9 +18,7 @@
                         @endif
 
 
-
-
-                        <form class="form-horizontal" method="POST" action="{{ route('student.deposits.save') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('teacher.deposits.save') }}">
                             @csrf
                             <p class="bu-margin-bottom-30">پرداختی جدید : </p>
                             <div class="row">

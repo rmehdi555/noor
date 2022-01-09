@@ -1,4 +1,4 @@
-@extends('student.master')
+@extends('teacher.master')
 @section('content')
 
     <!-- Start: Inner main -->
@@ -17,7 +17,7 @@
                             </div>
                         @endif
 
-                            <a class="btn btn-info" href="{{ route('student.deposits.create') }}">پرداخت جدید</a>
+                            <a class="btn btn-info" href="{{ route('teacher.deposits.create') }}">پرداخت جدید</a>
 
                             <br>
                             <br>

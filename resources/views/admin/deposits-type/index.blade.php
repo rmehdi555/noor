@@ -30,10 +30,11 @@
                                 <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                                     <thead>
                                     <tr>
-                                        <th>{{__('admin/public.id')}}</th>
+                                        <th>کد پرداختی</th>
                                         <th>{{__('admin/public.title')}}</th>
                                         <th>{{__('admin/public.type')}}</th>
                                         <th>{{__('admin/public.price')}} ریال</th>
+                                        <th>نوع کاربر</th>
                                         <th>{{__('admin/public.status')}}</th>
                                         <th>{{__('admin/public.actions')}}</th>
                                     </tr>
@@ -41,10 +42,12 @@
                                     <tbody>
                                     @foreach($allDepositsType as $item)
                                         <tr class="gradeA">
-                                            <td>{{$item->id}}</td>
+                                            <td>dti-{{$item->id}}</td>
                                             <td>{{\App\Providers\MyProvider::_text($item->title)}}</td>
                                             <td>@if($item->type=="amount")مبلغ توسط مدیر انتخاب شود@elseمبلغ توسط کاربر انتخاب شود@endif</td>
                                             <td>{{$item->price}}     </td>
+                                            <td>@if($item->user_type=="student")برای قرآن آموزان@elseبرای معلم القرآن ها@endif</td>
+
                                             <td>{{$item->status?__('admin/public.active'):__('admin/public.inactive')}}</td>
                                             <td class="actions">
 

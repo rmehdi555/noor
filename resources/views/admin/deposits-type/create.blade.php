@@ -26,6 +26,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group col-lg-4 col-md-12">
+                                    <label>نوع کاربر :</label>
+                                    <div class="multiselect_div">
+                                        <select id="single-selection" name="user_type" class="multiselect multiselect-custom" >
+                                            <option value="student">برای قرآن آموزان</option>
+                                            <option value="teacher">برای معلم القرآن ها</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label>{{__('admin/public.price')}}  ریال   :</label>
                                     <input type="text" name="price" class="form-control" value="0" required>

@@ -426,6 +426,13 @@ Route::middleware('auth','language','checkTeacher')->namespace('Teacher')->prefi
     Route::post('work/hours/create/save','WorkHoursController@createSave')->name('teacher.work.hours.create.save');
     Route::post('work/hours/delete/save','WorkHoursController@deleteSave')->name('teacher.work.hours.delete.save');
 
+    Route::get('deposits/create','DepositsController@create')->name('teacher.deposits.create');
+    Route::post('deposits/save','DepositsController@save')->name('teacher.deposits.save');
+
+    Route::get('mali/list','MaliController@list')->name('teacher.mali.list');
+
+
+
 });
 
 // end teacher  route
@@ -458,6 +465,8 @@ Route::get('payment/online/zarinpal/callback/teacher','PaymentController@payZari
 Route::get('payment/online/zarinpal/callback/noor','PaymentController@payZarinpalCallbackNoor')->name('web.payment.online.zarinpal.callback.noor');
 Route::get('payment/online/zarinpal/callback/student/class/register','PaymentController@payZarinpalCallbackStudentClassRegister')->name('payment.online.zarinpal.callback.student.class.register');
 Route::get('payment/online/zarinpal/callback/student/deposit','PaymentController@payZarinpalCallbackStudentDeposit')->name('payment.online.zarinpal.callback.student.deposit');
+Route::get('payment/online/zarinpal/callback/teacher/deposit','PaymentController@payZarinpalCallbackTeacherDeposit')->name('payment.online.zarinpal.callback.teacher.deposit');
+
 
 Route::post('payment/online/meli','PaymentController@payMeli')->name('web.payment.online.meli');
 Route::post('payment/online/meli/callback','PaymentController@payMeliCallback')->name('web.payment.online.meli.callback');
@@ -466,4 +475,6 @@ Route::post('payment/online/meli/callback/noor','PaymentController@payMeliCallba
 Route::get('payment/online/meli/callback/noor','PaymentController@payMeliCallbackNoor')->name('web.payment.online.meli.callback.noor.get');
 Route::post('payment/online/meli/callback/student/class/register','PaymentController@payMeliCallbackStudentClassRegister')->name('payment.online.meli.callback.student.class.register');
 Route::post('payment/online/meli/callback/student/deposit','PaymentController@payMeliCallbackStudentDeposit')->name('payment.online.meli.callback.student.deposit');
+Route::post('payment/online/meli/callback/teacher/deposit','PaymentController@payMeliCallbackTeacherDeposit')->name('payment.online.meli.callback.teacher.deposit');
+
 // end route payment

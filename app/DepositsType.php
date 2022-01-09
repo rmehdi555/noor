@@ -9,7 +9,7 @@ class DepositsType extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'price','type','title','status',
+        'price','user_type','type','title','status',
     ];
     protected $dates = ['deleted_at'];
 }

@@ -16,6 +16,7 @@ class CreateDepositsTable extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->string('price')->nullable();
+            $table->string('user_type')->default('student');
             $table->bigInteger('deposits_type_id')->default(0);
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('payment_id')->default(0);

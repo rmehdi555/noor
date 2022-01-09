@@ -43,6 +43,7 @@ class DepositsTypeController extends AdminController
     {
         DepositsType::create([
             'price'=>$request["price"],
+            'user_type'=>$request["user_type"],
             'type'=>$request["type"],
             'title'=>$request["title"],
             'status'=>$request["status"],
@@ -88,6 +89,7 @@ class DepositsTypeController extends AdminController
 
         $depositsType->update([
             'price'=>$request["price"],
+            'user_type'=>$request["user_type"],
             'type'=>$request["type"],
             'title'=>$request["title"],
             'status'=>$request["status"],

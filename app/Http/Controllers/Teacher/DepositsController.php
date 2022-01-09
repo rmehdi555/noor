@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers\Teacher;
 
 
 use App\Deposits;
@@ -10,13 +10,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SoapClient;
 
-class DepositsController extends StudentController
+class DepositsController extends TeacherController
 {
     public function create()
     {
         $user=Auth::user();
-        $depositsType = DepositsType::where([['status', '=',1],['user_type','=','student']])->orderBy('id','desc')->get();
-        return view('student.pages.deposits-create', compact('depositsType'));
+        $depositsType = DepositsType::where([['status', '=',1],['user_type','=','teacher']])->orderBy('id','desc')->get();
+        return view('teacher.pages.deposits-create', compact('depositsType'));
     }
     public function save( Request $request )
     {
@@ -29,13 +29,13 @@ class DepositsController extends StudentController
         if(!isset($depositsType->id))
         {
             alert()->error(__('خطا رخ داده است مجدد تلاش کنید'),__('web/messages.alert'));
-            return redirect()->route('student.deposits.create');
+            return redirect()->route('teacher.deposits.create');
         }
         if($depositsType->type=="amount")
         {
             $deposit= Deposits::create([
                 'price' => $depositsType->price,
-                'user_type'=>'student',
+                'user_type'=>'teacher',
                 'deposits_type_id' => $depositsType->id,
                 'user_id' => $user->id,
                 'payment_id' => 0,
@@ -48,7 +48,7 @@ class DepositsController extends StudentController
             ]);
             $deposit= Deposits::create([
                 'price' => $request->price,
-                'user_type'=>'student',
+                'user_type'=>'teacher',
                 'deposits_type_id' => $depositsType->id,
                 'user_id' => $user->id,
                 'payment_id' => 0,
@@ -59,9 +59,9 @@ class DepositsController extends StudentController
         }
 
         if (config('app.bankPay.active') == 'meli') {
-            $url='payment.online.meli.callback.student.deposit';
+            $url='payment.online.meli.callback.teacher.deposit';
         }else{
-            $url='payment.online.zarinpal.callback.student.deposit';
+            $url='payment.online.zarinpal.callback.teacher.deposit';
         }
 
         $payment=Payment::create([
@@ -69,7 +69,7 @@ class DepositsController extends StudentController
             'description' => $deposit->title,
             'user_id' => $user->id,
             'user_type' => $user->level,
-            'user_code' => $user->student->student_id,
+            'user_code' => $user->teacher->teacher_id,
             'email' => $user->email,
             'mobile' => $user->phone,
             'callbackURL'=>route($url),
@@ -110,7 +110,7 @@ class DepositsController extends StudentController
                 header("Location:$url");
             } else
                 alert()->error(__('web/messages.error_connect_bank'), __('web/messages.success'));
-            return redirect()->route('student.panel');
+            return redirect()->route('teacher.panel');
         } else {
 
             $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'; //Required

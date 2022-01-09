@@ -16,6 +16,7 @@ class CreateDepositsTypesTable extends Migration
         Schema::create('deposits_types', function (Blueprint $table) {
             $table->id();
             $table->string('price')->nullable();
+            $table->string('user_type')->default('student');
             $table->string('type')->nullable();
             $table->text('title')->nullable();
             $table->integer('status')->default(0);
