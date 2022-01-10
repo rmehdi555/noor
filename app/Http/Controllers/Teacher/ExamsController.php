@@ -548,7 +548,7 @@ class ExamsController extends TeacherController
             }
             $SID=410;
             //dd($exam->examsQuestions()[1]->examsQuestionsOptions()->get());
-            return view('teacher.pages.exams.show-result-teacher',compact('exam','examsResponseTeachers','classRoomsTeachers','examsResponseTeachersArray','SID'));
+            return view('teacher.pages.exams.show-result-teacher',compact('exam','examsResponseTeachers','classRoomsTeachers','examsResponseTeachersArray','classRooms','SID'));
 
 
         }elseif($request->user_type=='student')
@@ -579,7 +579,7 @@ class ExamsController extends TeacherController
             }
             $SID=410;
             //dd($exam->examsQuestions()[1]->examsQuestionsOptions()->get());
-            return view('teacher.pages.exams.show-result-student',compact('exam','examsResponseStudents','classRoomsStudents','examsResponseStudentsArray','SID'));
+            return view('teacher.pages.exams.show-result-student',compact('exam','examsResponseStudents','classRoomsStudents','examsResponseStudentsArray','classRooms','SID'));
 
 
         }else{

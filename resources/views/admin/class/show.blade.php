@@ -138,9 +138,33 @@
                                             <td>{{$item->student->f_name}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{($item->status==1)?'شرکت نکردن':'شرکت کرده است'}}</td>
-                                            <td>{{$item->t_mark}}</td>
-                                            <td>{{$item->a_mark}}</td>
-                                            <td>{{$item->mark}}</td>
+                                            @if($classRooms->mark_type=='grade')
+                                                <td style="min-width: 100px">
+                                                    <select id="question-type-select" name="t_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                        @foreach($classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                            <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->t_mark and $itemGrade->max_mark>=$item->t_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td style="min-width: 100px">
+                                                    <select id="question-type-select" name="a_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                        @foreach($classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                            <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->a_mark and $itemGrade->max_mark>=$item->a_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td style="min-width: 100px">
+                                                    <select id="question-type-select" name=mark" class="multiselect multiselect-custom form-control " disabled>
+                                                        @foreach($classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                            <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->mark and $itemGrade->max_mark>=$item->mark) selected @endif>{{$itemGrade->title}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            @else
+                                                <td>{{$item->t_mark}}</td>
+                                                <td>{{$item->a_mark}}</td>
+                                                <td>{{$item->mark}}</td>
+                                            @endif
                                             <td>
                                                 <form class="form-horizontal" method="POST" action="{{ route('admin.act.list.show') }}">
                                                     @csrf
@@ -206,9 +230,33 @@
                                                 <td>{{$item->teacher->f_name}}</td>
                                                 <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                                 <td>{{($item->status==1)?'شرکت نکردن':'شرکت کرده است'}}</td>
-                                                <td>{{$item->t_mark}}</td>
-                                                <td>{{$item->a_mark}}</td>
-                                                <td>{{$item->mark}}</td>
+                                                @if($classRooms->mark_type=='grade')
+                                                    <td style="min-width: 100px">
+                                                        <select id="question-type-select" name="t_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                            @foreach($classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->t_mark and $itemGrade->max_mark>=$item->t_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td style="min-width: 100px">
+                                                        <select id="question-type-select" name="a_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                            @foreach($classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->a_mark and $itemGrade->max_mark>=$item->a_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td style="min-width: 100px">
+                                                        <select id="question-type-select" name=mark" class="multiselect multiselect-custom form-control " disabled>
+                                                            @foreach($classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->mark and $itemGrade->max_mark>=$item->mark) selected @endif>{{$itemGrade->title}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                @else
+                                                    <td>{{$item->t_mark}}</td>
+                                                    <td>{{$item->a_mark}}</td>
+                                                    <td>{{$item->mark}}</td>
+                                                @endif
                                                 <td>
                                                     @if($classRooms->status==1 or $classRooms->status==2)
                                                     <form class="form-horizontal" method="POST" action="{{ route('admin.class.register.teacher.delete') }}">

@@ -95,7 +95,10 @@
                                             <th>عنوان رشته (اصلی)</th>
                                             <th>عنوان رشته (فرعی)</th>
                                             <th>نام</th>
+                                            <th>توضیحات</th>
                                             <th>وضعیت کلاس</th>
+                                            <th>نمره تئوری</th>
+                                            <th>نمره عملی</th>
                                             <th>نمره نهایی</th>
                                             <th>تاریخ شروع آزمون</th>
                                             <th>تاریخ پایان آزمون</th>
@@ -111,29 +114,66 @@
                                                 <td>{{($item->field_parent_id==0)?$item->classRooms->fieldId->title:$item->classRooms->fieldParentId->title}}</td>
                                                 <td>{{$item->classRooms->fieldId->title}}</td>
                                                 <td>{{$item->classRooms->name}}</td>
+                                                <td>{{$item->classRooms->description}}</td>
 
-                                                @switch($item->classRooms->status)
+
+                                            @switch($item->classRooms->status)
                                                     @case(1)
                                                     <td>ایجاد شده</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
                                                     <th>نمره نهایی ثبت نشده</th>
                                                     @break
 
                                                     @case(2)
                                                     <td>درحال برگزاری</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
                                                     <th>نمره نهایی ثبت نشده</th>
                                                     @break
 
                                                     @case(4)
                                                     <td>آزمون</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
                                                     <th>نمره نهایی ثبت نشده</th>
                                                     @break
 
                                                     @case(5)
                                                     <td>اتمام شده</td>
-                                                    <th>{{$item->mark}}</th>
+                                                    @if($item->classRooms->mark_type=='grade')
+                                                        <td style="min-width: 100px">
+                                                            <select id="question-type-select" name="t_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                                @foreach($item->classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                    <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->t_mark and $itemGrade->max_mark>=$item->t_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                        <td style="min-width: 100px">
+                                                            <select id="question-type-select" name="a_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                                @foreach($item->classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                    <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->a_mark and $itemGrade->max_mark>=$item->a_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                        <td style="min-width: 100px">
+                                                            <select id="question-type-select" name=mark" class="multiselect multiselect-custom form-control " disabled>
+                                                                @foreach($item->classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                    <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->mark and $itemGrade->max_mark>=$item->mark) selected @endif>{{$itemGrade->title}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                    @else
+                                                        <td>{{$item->t_mark}}</td>
+                                                        <td>{{$item->a_mark}}</td>
+                                                        <td>{{$item->mark}}</td>
+                                                    @endif
                                                     @break
 
                                                     @default
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
                                                     <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
                                                 @endswitch
                                                 @if(isset($item->classRooms->exam) and $item->classRooms->status!=5)

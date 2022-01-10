@@ -180,6 +180,40 @@
                                             </div>
 
                                         </div>
+                                                    @if($classRooms->mark_type=='grade')
+                                                        <div class="row">
+                                                            <div class="col-md-6 padding-top-15">
+                                                                <label class="col-md-6 col-sm-6 control-label" for="title">نمره نهایی تئوری آزمون</label>
+                                                                <div class="col-md-12 col-sm-10">
+                                                                    <select id="question-type-select" name="t_mark" class="multiselect multiselect-custom form-control " >
+                                                                        @foreach($classRooms->markType->markTypeGrade()->get() as $item)
+                                                                            <option value="{{$item->min_mark}}" @if($item->min_mark<=$classRoomsStudents->t_mark and $item->max_mark>=$classRoomsStudents->t_mark) selected @endif>{{$item->title}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 padding-top-15">
+                                                                <label class="col-md-6 col-sm-6 control-label" for="title">نمره نهایی عملی آزمون</label>
+                                                                <select id="question-type-select" name="a_mark" class="multiselect multiselect-custom form-control " >
+                                                                    @foreach($classRooms->markType->markTypeGrade()->get() as $item)
+                                                                        <option value="{{$item->min_mark}}" @if($item->min_mark<=$classRoomsStudents->a_mark and $item->max_mark>=$classRoomsStudents->a_mark) selected @endif>{{$item->title}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 padding-top-15">
+                                                                <label class="col-md-6 col-sm-6 control-label" for="title">نمره نهایی مجموع آزمون</label>
+                                                                <select id="question-type-select" name="mark" class="multiselect multiselect-custom form-control " >
+                                                                    @foreach($classRooms->markType->markTypeGrade()->get() as $item)
+                                                                        <option value="{{$item->min_mark}}" @if($item->min_mark<=$classRoomsStudents->mark and $item->max_mark>=$classRoomsStudents->mark) selected @endif>{{$item->title}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+                                                    @else
 
                                         <div class="row">
                                             <div class="col-md-6 padding-top-15">
@@ -208,7 +242,7 @@
                                             </div>
 
                                         </div>
-
+                                                    @endif
 
 
                                         <div class="row">

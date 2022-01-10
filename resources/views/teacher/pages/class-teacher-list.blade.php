@@ -74,9 +74,33 @@
 
                                                 @case(5)
                                                 <td>اتمام شده</td>
-                                                <th>{{$item->t_mark}}</th>
-                                                <th>{{$item->a_mark}}</th>
-                                                <th>{{$item->mark}}</th>
+                                                @if($item->classRooms->mark_type=='grade')
+                                                    <td style="min-width: 100px">
+                                                        <select id="question-type-select" name="t_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                            @foreach($item->classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->t_mark and $itemGrade->max_mark>=$item->t_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td style="min-width: 100px">
+                                                        <select id="question-type-select" name="a_mark" class="multiselect multiselect-custom form-control " disabled>
+                                                            @foreach($item->classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->a_mark and $itemGrade->max_mark>=$item->a_mark) selected @endif>{{$itemGrade->title}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td style="min-width: 100px">
+                                                        <select id="question-type-select" name=mark" class="multiselect multiselect-custom form-control " disabled>
+                                                            @foreach($item->classRooms->markType->markTypeGrade()->get() as $itemGrade)
+                                                                <option value="{{$itemGrade->min_mark}}" @if($itemGrade->min_mark<=$item->mark and $itemGrade->max_mark>=$item->mark) selected @endif>{{$itemGrade->title}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                @else
+                                                    <td>{{$item->t_mark}}</td>
+                                                    <td>{{$item->a_mark}}</td>
+                                                    <td>{{$item->mark}}</td>
+                                                @endif
                                                 @break
 
                                                 @default

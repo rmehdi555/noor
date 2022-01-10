@@ -10,6 +10,7 @@ use App\ExamsQuestions;
 use App\ExamsQuestionsOptions;
 use App\ExamsResponseStudents;
 use App\ExamsResponseTeachers;
+use App\MarkType;
 use App\Providers\MyProvider;
 use App\User;
 use Carbon\Carbon;
@@ -358,6 +359,7 @@ class ExamsController extends AdminController
                 alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
                 return redirect()->route('admin.class.list');
             }
+
             $exam=Exams::find($request->exams_id);
             if(!isset($exam->id))
             {
@@ -372,7 +374,7 @@ class ExamsController extends AdminController
             }
             $SID=410;
             //dd($exam->examsQuestions()[1]->examsQuestionsOptions()->get());
-            return view('admin.exams.show-result-teacher',compact('exam','examsResponseTeachers','classRoomsTeachers','examsResponseTeachersArray','SID'));
+            return view('admin.exams.show-result-teacher',compact('exam','examsResponseTeachers','classRoomsTeachers','examsResponseTeachersArray','classRooms','SID'));
 
 
         }elseif($request->user_type=='student')
@@ -389,6 +391,7 @@ class ExamsController extends AdminController
                 alert()->error('خطا در اطلاعات رخ داده مجدد تلاش کنید',__('web/messages.alert'));
                 return redirect()->route('admin.class.list');
             }
+
             $exam=Exams::find($request->exams_id);
             if(!isset($exam->id))
             {
@@ -403,7 +406,7 @@ class ExamsController extends AdminController
             }
             $SID=410;
             //dd($exam->examsQuestions()[1]->examsQuestionsOptions()->get());
-            return view('admin.exams.show-result-student',compact('exam','examsResponseStudents','classRoomsStudents','examsResponseStudentsArray','SID'));
+            return view('admin.exams.show-result-student',compact('exam','examsResponseStudents','classRoomsStudents','examsResponseStudentsArray','classRooms','SID'));
 
 
         }else{
