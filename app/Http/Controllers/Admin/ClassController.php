@@ -44,7 +44,7 @@ class ClassController extends AdminController
             'field_main' => ['required', 'numeric'],
             'field_child' => ['required','numeric'],
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:255'],
             'number_students' => ['required', 'string', 'max:255'],
             'old' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
@@ -119,7 +119,7 @@ class ClassController extends AdminController
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:255'],
             'number_students' => ['required', 'string', 'max:255'],
             'old' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],

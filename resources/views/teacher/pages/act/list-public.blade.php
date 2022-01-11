@@ -57,10 +57,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 padding-top-15">
-                                        <label class="col-md-12 col-sm-6 control-label" for="description">توضیح : <span class="required">*</span>
+                                        <label class="col-md-12 col-sm-6 control-label" for="description">توضیح :
                                         </label>
                                         <div class="col-md-12 col-sm-6">
-                                            <input type="text" name="description" id="description"  class=" form-control" required/>
+                                            <input type="text" name="description" id="description"  class=" form-control" />
                                         </div>
                                     </div>
                                 </div>

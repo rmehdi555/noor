@@ -56,11 +56,10 @@
                                 </div>
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-6 col-sm-6 control-label"
-                                           for="description">{{__('web/public.description')}} : <span
-                                                class="required">*</span></label>
+                                           for="description">{{__('web/public.description')}} :</label>
                                     <div class="col-md-12 col-sm-10">
                                         <input type="text" name="description" id="description" value="{{$classRoom->description}}"
-                                               class="form-control  @error('description') is-invalid @enderror" required/>
+                                               class="form-control  @error('description') is-invalid @enderror" />
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

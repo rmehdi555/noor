@@ -34,13 +34,13 @@
                                 <table class="table table-bordered table-hover js-basic-example dataTable">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>کد کلاس</th>
                                         <th>عنوان رشته (اصلی)</th>
                                         <th>عنوان رشته (فرعی)</th>
                                         <th>نام</th>
                                         <th>توضیحات</th>
-                                        {{--<th>آدرس</th>--}}
-                                        {{--<th>تاریخ ایجاد</th>--}}
+                                        <th>کد مغلم القرآن</th>
+                                        <th>نام و نام خانوادگی معلم القرآن</th>
                                         <th>وضعیت کلاس</th>
                                         <th>تنظیمات</th>
                                     </tr>
@@ -55,13 +55,13 @@
                                         @endphp
 
                                         <tr>
-                                            <td>{{$i}}</td>
+                                            <td>{{$item->id}}</td>
                                             <td>{{($item->parent_id==0)?$item->fieldId->title:$item->classRooms->title}}</td>
                                             <td>{{$item->fieldId->title}}</td>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->description}}</td>
-                                            {{--<td>{{$item->address}}</td>--}}
-                                            {{--<td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>--}}
+                                            <td >{{$item->name}}</td>
+                                            <td style="max-width: 100px; overflow-x: auto"> {{$item->description}}</td>
+                                            <td style="max-width: 100px; overflow-x: auto">{{$item->user->user_name}}</td>
+                                            <td>{{$item->user->name}} {{$item->user->family}}</td>
                                             @switch($item->status)
                                                 @case(1)
                                                 <td>ایجاد شده</td>
