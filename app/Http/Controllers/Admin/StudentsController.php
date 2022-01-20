@@ -234,7 +234,7 @@ class StudentsController extends  StudentController
         $student->forceDelete();
         $userD->forceDelete();
         alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
-        return redirect(route('teachers.index',['SID' => '50']));
+        return redirect(route('students.index',['SID' => '50']));
     }
 
 
