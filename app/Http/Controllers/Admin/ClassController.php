@@ -329,5 +329,23 @@ class ClassController extends AdminController
         return view('admin.class.list', compact('fields','provinces','cities','classes','SID'));
     }
 
-
+    public function delete(Request $request)
+    {
+        $classRoom=ClassRooms::find($request->class_room_id);
+        if(!isset($classRoom->id))
+        {
+            alert()->error(__('not_exist'));
+            return redirect()->route('admin.class.list');
+        }
+        $students=ClassRoomsStudents::where('class_rooms_id','=',$classRoom->id)->orderBy('id','DESC')->get();
+        $teachersR=ClassRoomsTeachers::where('class_rooms_id','=',$classRoom->id)->orderBy('id','DESC')->get();
+        if(count($students)>0 OR count($teachersR) >0)
+        {
+            alert()->error(__('ابتدا اعضای کلاس رو حذف کنید سپس کلاس رو حذف نمایید.'));
+            return redirect()->route('admin.class.list');
+        }
+        $classRoom->delete();
+        alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
+        return redirect()->route('admin.class.list');
+    }
 }

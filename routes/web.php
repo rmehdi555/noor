@@ -192,7 +192,7 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::post('class/register/teacher/delete','ClassController@registerTeacherDelete')->name('admin.class.register.teacher.delete');
     Route::get('class/list','ClassController@list')->name('admin.class.list');
     Route::get('class/show/{id}','ClassController@show')->name('admin.class.show');
-
+    Route::post('class/delete','ClassController@delete')->name('admin.class.delete');
     Route::get('class/list/teacher/{id}','ClassController@listTeacher')->name('admin.class.list.teacher');
 
 

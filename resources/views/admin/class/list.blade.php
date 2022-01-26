@@ -66,13 +66,27 @@
                                                 @case(1)
                                                 <td>ایجاد شده</td>
                                                 <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
-                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a>
+                                                    <form class="form-horizontal" method="POST" action="{{ route('admin.class.delete') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="class_room_id" value="{{$item->id}}">
+                                                        <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف کلاس</button>
+
+                                                    </form>
+                                                </td>
                                                 @break
 
                                                 @case(2)
                                                 <td>درحال برگزاری</td>
                                                 <td><a href="{{ route('admin.class.show',$item->id) }}" class="btn btn-info">{{$typeTitle}}</a><br>
-                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a></td>
+                                                    <a href="{{ route('admin.class.edit',$item->id) }}" class="btn btn-warning">ویرایش </a>
+                                                    <form class="form-horizontal" method="POST" action="{{ route('admin.class.delete') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="class_room_id" value="{{$item->id}}">
+                                                        <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف کلاس</button>
+
+                                                    </form>
+                                                </td>
                                                 @break
 
                                                 @case(4)

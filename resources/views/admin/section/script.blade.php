@@ -212,7 +212,7 @@ function deleteFunction() {
     event.preventDefault(); // prevent form submit
     var form = event.target.form; // storing the form
     swal({
-        title: "آیا از حذف مطمعن هستید؟",
+        title: "آیا از حذف مطمئن هستید؟",
         text: "درصورت تایید حذف دیگر دسترسی به آن نخواهید داشت.",
         type: "warning",
         showCancelButton: true,
