@@ -58,9 +58,7 @@
                                     {{--<li class="list-group-item d-flex justify-content-between align-items-center">--}}
                                         {{--<a href="{{ route('teacher.mali.list') }}" >مالی</a>--}}
                                     {{--</li>--}}
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('teacher.mali.list') }}" >امور مالی</a>
-                                    </li>
+
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.practice.list') }}" >مشاهده فعالیت قرآن آموز ها</a>
                                     </li>
@@ -74,6 +72,9 @@
                                         <a href="{{ route('teacher.meeting.list') }}" > جلسات</a>
                                     </li>
                                     @endif
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.mali.list') }}" >امور مالی</a>
+                                    </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.ticket.list') }}" >سخنی با مدیریت یا طراح سایت</a>
                                     </li>
