@@ -31,6 +31,7 @@
                                     <tr>
                                         <th>{{__('admin/public.id')}}</th>
                                         <th>کد پرداختی</th>
+                                        <th>تاریخ پرداختی</th>
                                         <th>{{__('admin/public.title')}}</th>
                                         <th>کد کاربری</th>
                                         <th>نام و نام خانوادگی</th>
@@ -42,6 +43,7 @@
                                         <tr class="gradeA">
                                             <td>{{$item->id}}</td>
                                             <td>dti-{{$item->deposits_type_id }}</td>
+                                            <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
                                             <td>{{\App\Providers\MyProvider::_text($item->title)}}</td>
                                             <td>{{$item->user->user_name}}</td>
                                             <td>{{$item->user->name}} {{$item->user->family}}</td>
