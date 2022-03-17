@@ -88,7 +88,48 @@
                                 </div>
 
 
-                                <div class="row">
+                            <div class="row">
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label"
+                                           for="province">سال: <span
+                                                class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <select name="year" id="year"
+                                                class="form-control  @error('field_main') is-invalid @enderror">
+                                            @for($i=1395;$i<1409;$i++)
+                                                <option class="year" id="year"
+                                                        value="{{$i}}">{{$i}}</option>
+                                            @endfor
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6 padding-top-15">
+                                    <label class="col-md-12 col-sm-6 control-label"
+                                           for="province">ماه : <span
+                                                class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-6">
+                                        <select name="month" id="month"
+                                                class="form-control  @error('field_main') is-invalid @enderror">
+                                            @for($i=1;$i<=12;$i++)
+                                                <option class="month" id="month"
+                                                        value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            <div class="row">
 
                                     <div class="col-md-6 padding-top-15">
 

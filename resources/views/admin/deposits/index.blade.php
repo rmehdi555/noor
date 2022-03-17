@@ -35,6 +35,8 @@
                                         <th>{{__('admin/public.title')}}</th>
                                         <th>کد کاربری</th>
                                         <th>نام و نام خانوادگی</th>
+                                        <th>سال</th>
+                                        <th>ماه</th>
                                         <th>{{__('admin/public.price')}} ریال</th>
                                     </tr>
                                     </thead>
@@ -47,6 +49,8 @@
                                             <td>{{\App\Providers\MyProvider::_text($item->title)}}</td>
                                             <td>{{$item->user->user_name}}</td>
                                             <td>{{$item->user->name}} {{$item->user->family}}</td>
+                                            <td>{{$item->year}}</td>
+                                            <td>{{$item->month}}</td>
                                             <td>{{$item->price}}     </td>
                                         </tr>
                                     @endforeach

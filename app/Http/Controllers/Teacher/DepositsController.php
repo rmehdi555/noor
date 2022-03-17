@@ -24,6 +24,8 @@ class DepositsController extends TeacherController
         $depositsType = DepositsType::where('status', '=',1)->orderBy('id','desc')->get();
         $request->validate([
             'deposits_type_id' => ['required', 'numeric'],
+            'year'=> ['required', 'numeric'],
+            'month'=> ['required', 'numeric'],
         ]);
         $depositsType=DepositsType::find($request->deposits_type_id);
         if(!isset($depositsType->id))
@@ -40,6 +42,8 @@ class DepositsController extends TeacherController
                 'user_id' => $user->id,
                 'payment_id' => 0,
                 'title' => $depositsType->title,
+                'year' => $request->year,
+                'month' => $request->month,
                 'status' => 0,
             ]);
         }else{
@@ -53,6 +57,8 @@ class DepositsController extends TeacherController
                 'user_id' => $user->id,
                 'payment_id' => 0,
                 'title' => $request->title,
+                'year' => $request->year,
+                'month' => $request->month,
                 'status' => 0,
             ]);
 

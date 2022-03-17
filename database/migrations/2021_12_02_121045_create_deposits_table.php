@@ -20,7 +20,9 @@ class CreateDepositsTable extends Migration
             $table->bigInteger('deposits_type_id')->default(0);
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('payment_id')->default(0);
-            $table->text('title')->nullable();
+            $table->text('title')->default('1400');
+            $table->string('month')->default('1');
+            $table->string('year')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
