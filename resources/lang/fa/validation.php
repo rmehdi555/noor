@@ -171,5 +171,8 @@ return array(
         'type'=>'نوع',
         'id'=>'کد',
         'specialization'=>'رشته مورد علاقه',
+        'new_password'=>'رمز عبور جدید',
+        'new_confirm_password'=>'تکرار رمز عبور جدید',
+        'current_password'=>'رمز عبور فعلی',
     ),
 );

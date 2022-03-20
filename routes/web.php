@@ -227,7 +227,8 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::post('work/hours/list/show/details','WorkHoursController@listShowDetails')->name('admin.work.hours.list.show.details');
 
 
-
+    Route::get('change-password', 'ChangePasswordController@index')->name('admin.change.password.index');;
+    Route::post('change-password', 'ChangePasswordController@store')->name('admin.change.password.store');
 
 
 
@@ -428,6 +429,7 @@ Route::middleware('auth','language','checkTeacher')->namespace('Teacher')->prefi
 
     Route::get('deposits/create','DepositsController@create')->name('teacher.deposits.create');
     Route::post('deposits/save','DepositsController@save')->name('teacher.deposits.save');
+    Route::get('deposits/student/show','DepositsController@studentShow')->name('teacher.deposits.student.show');
 
     Route::get('mali/list','MaliController@list')->name('teacher.mali.list');
 

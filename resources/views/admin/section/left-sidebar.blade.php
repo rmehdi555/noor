@@ -64,6 +64,9 @@
                             <li class="@if($SID==950 ) active @endif"><a
                                         href="{{ route('noors.index',['SID' => '950']) }}">{{__('admin/public.noors_list')}}</a>
                             </li>
+                            <li class="@if($SID==960 ) active @endif"><a
+                                        href="{{ route('admin.change.password.index',['SID' => '960']) }}">تغییر رمز عبور</a>
+                            </li>
                         </ul>
                     </li>
 

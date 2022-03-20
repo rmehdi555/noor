@@ -88,6 +88,11 @@
                                 </div>
 
 
+                            @php
+                            $year=(int)\App\Providers\MyProvider::show_date(now(),'Y');
+                            $month=(int)\App\Providers\MyProvider::show_date(now(),'m');
+                            @endphp
+
                             <div class="row">
                                 <div class="col-md-6 padding-top-15">
                                     <label class="col-md-12 col-sm-6 control-label"
@@ -96,9 +101,8 @@
                                     <div class="col-md-12 col-sm-6">
                                         <select name="year" id="year"
                                                 class="form-control  @error('field_main') is-invalid @enderror">
-                                            @for($i=1395;$i<1409;$i++)
-                                                <option class="year" id="year"
-                                                        value="{{$i}}">{{$i}}</option>
+                                            @for($i=$year+5;$i>=$year-5;$i--)
+                                                <option class="year" id="year"  value="{{$i}}" @php if($i==$year)echo "selected";@endphp>{{$i}}</option>
                                             @endfor
                                         </select>
 
@@ -114,7 +118,7 @@
                                         <select name="month" id="month"
                                                 class="form-control  @error('field_main') is-invalid @enderror">
                                             @for($i=1;$i<=12;$i++)
-                                                <option class="month" id="month"
+                                                <option class="month" id="month" @php if($i==$month)echo "selected";@endphp
                                                         value="{{$i}}">{{$i}}</option>
                                                 @endfor
                                         </select>
