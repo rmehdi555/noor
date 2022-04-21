@@ -71,6 +71,9 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.meeting.list') }}" > جلسات</a>
                                     </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('teacher.work.hours.list.show') }}" > مشاهده لیست پرداختی ها</a>
+                                    </li>
                                     @endif
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="{{ route('teacher.mali.list') }}" >امور مالی</a>

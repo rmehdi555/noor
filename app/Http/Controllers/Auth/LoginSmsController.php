@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Hash;
 
 class LoginSmsController extends Controller
 {
@@ -61,6 +62,7 @@ class LoginSmsController extends Controller
      */
     public function login(Request $request)
     {
+//        dd( Hash::make('12345678'));
 
         $this->validateLogin($request);
 

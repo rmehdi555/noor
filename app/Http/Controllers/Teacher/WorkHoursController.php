@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Teacher;
 use App\Providers\MyProvider;
 use App\TeachersCardNumberBank;
 use App\TeachersWorkHours;
+use App\TeachersWorkHoursList;
+use App\User;
 use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,6 +76,36 @@ class WorkHoursController extends TeacherController
         alert()->success('ساعت کارکرد با موفقیت حذف شد .', __('web/messages.success'));
         return redirect()->route('teacher.work.hours');
 
+    }
+
+
+    public function listShow(Request $request)
+    {
+        $user=Auth::user();
+        $teachersWorkHoursList=TeachersWorkHoursList::where([['user_id','=',$user->id],['status','=',5]])->get();
+        return view('teacher.pages.work-hours.list-show',compact('teachersWorkHoursList'));
+    }
+
+    public function listShowDetails(Request $request)
+    {
+        $user=Auth::user();
+        $teachersWorkHoursList=TeachersWorkHoursList::find($request->id);
+        if(!isset($teachersWorkHoursList->id) or empty($teachersWorkHoursList->id) or $teachersWorkHoursList->user_id!=$user->id)
+        {
+            alert()->error('خطا رخ داده است .',__('web/messages.alert'));
+            return redirect()->route('teacher.work.hours.list.show');
+        }
+
+        $workHours=TeachersWorkHours::where('teachers_work_hours_list_id','=',$teachersWorkHoursList->id)->get();
+
+        $user=User::find($teachersWorkHoursList->user_id);
+        $cardNumberBank=TeachersCardNumberBank::where('user_id','=',$user->id)->first();
+        if(!isset($cardNumberBank->id) or empty($cardNumberBank))
+        {
+            alert()->error('معلم هنوز شماره کارت بانکی خود را ثبت نکرده است .',__('web/messages.alert'));
+            return redirect()->route('teacher.work.hours.list.show');
+        }
+        return view('teacher.pages.work-hours.list-show-details',compact('workHours','user','cardNumberBank','teachersWorkHoursList'));
     }
 
 

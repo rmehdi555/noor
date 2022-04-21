@@ -11,10 +11,7 @@ class Visit extends Model
 
     public function getAllUser()
     {
-        return static::all()->groupBy('ip')->count();
-//        return DB::table('visits')
-//            ->groupBy('ip')
-//            ->count();
+        return ceil(static::count()/25);
     }
     public function getAllPage()
     {

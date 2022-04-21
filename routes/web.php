@@ -435,6 +435,13 @@ Route::middleware('auth','language','checkTeacher')->namespace('Teacher')->prefi
 
 
 
+    Route::get('work/hours/list/show','WorkHoursController@listShow')->name('teacher.work.hours.list.show');
+    Route::post('work/hours/list/show/details','WorkHoursController@listShowDetails')->name('teacher.work.hours.list.show.details');
+
+
+
+
+
 });
 
 // end teacher  route
