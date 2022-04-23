@@ -185,10 +185,15 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::post('class/create/save','ClassController@createSave')->name('admin.class.create.save');
     Route::get('class/edit/{id}','ClassController@edit')->name('admin.class.edit');
     Route::post('class/edit/save','ClassController@editSave')->name('admin.class.edit.save');
+
    //ثبت نام قران آموز ها در کلاس مدنظر
     Route::get('class/register','ClassController@register')->name('admin.class.register');
     Route::post('class/register/save','ClassController@registerSave')->name('admin.class.register.save');
     Route::post('class/register/delete','ClassController@registerDelete')->name('admin.class.register.delete');
+    Route::post('class/register/cancel','ClassController@registerCancel')->name('admin.class.register.cancel');
+    Route::get('class/register/report','ClassController@registerReport')->name('admin.class.register.report');
+
+
     Route::post('class/register/teacher/delete','ClassController@registerTeacherDelete')->name('admin.class.register.teacher.delete');
     Route::get('class/list','ClassController@list')->name('admin.class.list');
     Route::get('class/show/{id}','ClassController@show')->name('admin.class.show');
@@ -353,6 +358,7 @@ Route::middleware('auth','language','checkTeacher')->namespace('Teacher')->prefi
     Route::get('class/register','ClassController@register')->name('teacher.class.register');
     Route::post('class/register/save','ClassController@registerSave')->name('teacher.class.register.save');
     Route::post('class/register/delete','ClassController@registerDelete')->name('teacher.class.register.delete');
+    Route::post('class/register/cancel','ClassController@registerCancel')->name('teacher.class.register.cancel');
     Route::post('class/register/teacher/delete','ClassController@registerTeacherDelete')->name('teacher.class.register.teacher.delete');
 
 
@@ -429,7 +435,7 @@ Route::middleware('auth','language','checkTeacher')->namespace('Teacher')->prefi
 
     Route::get('deposits/create','DepositsController@create')->name('teacher.deposits.create');
     Route::post('deposits/save','DepositsController@save')->name('teacher.deposits.save');
-    Route::get('deposits/student/show','DepositsController@studentShow')->name('teacher.deposits.student.show');
+    Route::post('deposits/student/show','DepositsController@studentShow')->name('teacher.deposits.student.show');
 
     Route::get('mali/list','MaliController@list')->name('teacher.mali.list');
 

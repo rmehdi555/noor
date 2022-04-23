@@ -166,25 +166,41 @@
                                                 </form>
                                             </td>
                                             <td>
-                                                @if($classRooms->status==1 or $classRooms->status==2)
-                                                    <form class="form-horizontal" method="POST" action="{{ route('teacher.class.register.delete') }}">
-                                                        @csrf
-                                                        <input type="hidden" name="class_room_student_id" value="{{$item->id}}">
-                                                        <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف قرآن آموز از کلاس</button>
+                                                <form class="form-horizontal" method="POST" action="{{ route('teacher.deposits.student.show') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="user_id" value="{{$item->student->user_id}}">
+                                                    <button type="submit" class="btn btn-info">مشاهده پرداختی ها</button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                @if($item->status==6)
+                                                    قرآن آموز انصراف داده است
+                                                @else
+                                                    @if($classRooms->status==1 or $classRooms->status==2)
+                                                        <form class="form-horizontal" method="POST" action="{{ route('teacher.class.register.delete') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_room_student_id" value="{{$item->id}}">
+                                                            <button type="button" class="btn btn-danger" onclick="deleteFunction()">حذف قرآن آموز از کلاس</button>
 
-                                                    </form>
-                                                @endif
-                                                @if($classRooms->exam_id!=0)
-                                                    <form class="form-horizontal" method="POST" action="{{ route('teacher.exams.show.result') }}">
-                                                        @csrf
-                                                        <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
-                                                        <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
-                                                        <input type="hidden" name="exams_id" value="{{$classRooms->exam_id}}">
-                                                        <input type="hidden" name="user_type" value="student">
-                                                        <button type="submit" class="btn btn-info">مشاهده نتایج آزمون و نمرات</button>
-                                                    </form>
-                                                @endif
+                                                        </form>
+                                                        <form class="form-horizontal" method="POST" action="{{ route('teacher.class.register.cancel') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_room_student_id" value="{{$item->id}}">
+                                                            <button type="button" class="btn btn-danger" onclick="cancelFunction()">انصراف توسط قرآن آموز</button>
 
+                                                        </form>
+                                                    @endif
+                                                    @if($classRooms->exam_id!=0)
+                                                        <form class="form-horizontal" method="POST" action="{{ route('teacher.exams.show.result') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                            <input type="hidden" name="class_rooms_id" value="{{$classRooms->id}}">
+                                                            <input type="hidden" name="exams_id" value="{{$classRooms->exam_id}}">
+                                                            <input type="hidden" name="user_type" value="student">
+                                                            <button type="submit" class="btn btn-info">مشاهده نتایج آزمون و نمرات</button>
+                                                        </form>
+                                                     @endif
+                                                @endif
 
                                             </td>
 

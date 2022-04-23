@@ -93,6 +93,31 @@ function deleteFunction() {
             }
         });;
     }
+
+function cancelFunction() {
+    event.preventDefault(); // prevent form submit
+    var form = event.target.form; // storing the form
+    swal({
+        title: "آیا از انصراف مطمئن هستید؟",
+        text: "درصورت تایید انصراف دیگر دسترسی به آن نخواهید داشت.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "بله",
+        cancelButtonText: "نه",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    })
+        .then((isConfirm) => {
+            if (isConfirm) {
+                form.submit();          // submitting the form when user press yes
+            } else {
+                swal("انصراف", "شما منصرف شدین ", "error");
+            }
+        });;
+}
+
+
 </script>
 
 

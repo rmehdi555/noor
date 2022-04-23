@@ -5,6 +5,7 @@
  * status=2 در حال برگزاری
  * status=4 آزمون
  * status=5 اتمام رسیده
+ * status=6 انصراف داده
  */
 
 namespace App;

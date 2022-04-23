@@ -10,12 +10,14 @@ use App\Exams;
 use App\ExamsQuestions;
 use App\Field;
 use App\MarkType;
+use App\Providers\MyProvider;
 use App\Provinces;
 use App\StudentsFields;
 use App\Teachers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Hekmatinasser\Verta\Verta;
 
 /* class
  * status=1 تازه ایجاد شده
@@ -292,6 +294,31 @@ class ClassController extends AdminController
         alert()->success('حذف قرآن آموز از کلاس با موفقیت انجام شد', __('web/messages.success'));
         return redirect()->route('admin.class.show',$classRoomsStuden->class_rooms_id);
     }
+
+    public function registerCancel(Request $request)
+    {
+        $request->validate([
+            'class_room_student_id' => ['required', 'numeric'],
+        ]);
+        $user=Auth::user();
+        $classRoomsStuden=ClassRoomsStudents::find($request->class_room_student_id);
+        if(!isset($classRoomsStuden->id))
+        {
+            alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
+            return redirect()->route('admin.class.list');
+        }
+        $field=StudentsFields::find($classRoomsStuden->students_field_id);
+        if(!isset($field->id))
+        {
+            alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
+            return redirect()->route('admin.class.show',$classRoomsStuden->class_rooms_id);
+        }
+        $classRoomsStuden->update([
+            'status'=>6,
+        ]);
+        alert()->success('انصراف قرآن آموز از کلاس با موفقیت انجام شد', __('web/messages.success'));
+        return redirect()->route('admin.class.show',$classRoomsStuden->class_rooms_id);
+    }
     public function registerTeacherDelete(Request $request)
     {
         $request->validate([
@@ -347,5 +374,62 @@ class ClassController extends AdminController
         $classRoom->delete();
         alert()->success(__('web/messages.success_save_form'), __('web/messages.success'));
         return redirect()->route('admin.class.list');
+    }
+
+
+    public function registerReport(Request $request)
+    {
+        $request->validate([
+            'from' => ['nullable'],
+            'to' => ['nullable'],
+        ]);
+        if(isset($request->from))
+        {
+            $request->from=MyProvider::convert_phone_number($request->from);
+            $from=explode(' ',$request->from);
+            $from_date=explode('-',$from[0]);
+            $from_time=$from[1];
+            $from_date=Verta::getGregorian($from_date[0],$from_date[1],$from_date[2]);
+            $from_date=implode('-',$from_date);
+            $from=$from_date.' '.$from_time;
+        }
+        if(isset($request->to))
+        {
+            $request->to=MyProvider::convert_phone_number($request->to);
+            $to=explode(' ',$request->to);
+            $to_date=explode('-',$to[0]);
+            $to_time=$to[1];
+            $to_date=Verta::getGregorian($to_date[0],$to_date[1],$to_date[2]);
+            $to_date=implode('-',$to_date);
+            $to=$to_date.' '.$to_time;
+
+        }
+
+        if(isset($from) and isset($to))
+        {
+            $students=ClassRoomsStudents::whereBetween('created_at',[$from,$to])->orderBy('id','DESC')->get();
+        }
+        if(isset($from) and !isset($to))
+        {
+            $students=ClassRoomsStudents::where('created_at','>=',$from)->orderBy('id','DESC')->get();
+        }
+        if(!isset($from) and isset($to))
+        {
+            $students=ClassRoomsStudents::where('created_at','=<',$to)->orderBy('id','DESC')->get();
+        }
+        if(!isset($from) and !isset($to))
+        {
+            $students=ClassRoomsStudents::all();
+        }
+
+        $SID=411;
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+
+        return view('admin.class.register-report', compact('students','provinces','cities','SID'));
+
+
+
+
     }
 }

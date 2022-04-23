@@ -56,6 +56,10 @@
                                                 <td>اتمام دوره</td>
                                                 @break
 
+                                                @case(5)
+                                                <td>انصراف داده</td>
+                                                @break
+
                                                 @default
                                                 <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
                                             @endswitch
@@ -168,6 +172,12 @@
                                                         <td>{{$item->a_mark}}</td>
                                                         <td>{{$item->mark}}</td>
                                                     @endif
+                                                    @break
+                                                    @case(6)
+                                                    <td>انصراف داده</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <th>انصراف داده</th>
                                                     @break
 
                                                     @default

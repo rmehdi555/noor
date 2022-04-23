@@ -301,6 +301,32 @@ class ClassController extends TeacherController
         alert()->success('حذف قرآن آموز از کلاس با موفقیت انجام شد', __('web/messages.success'));
         return redirect()->route('teacher.class.show',$classRoomsStuden->class_rooms_id);
     }
+
+
+    public function registerCancel(Request $request)
+    {
+        $request->validate([
+            'class_room_student_id' => ['required', 'numeric'],
+        ]);
+        $user=Auth::user();
+        $classRoomsStuden=ClassRoomsStudents::find($request->class_room_student_id);
+        if(!isset($classRoomsStuden->id))
+        {
+            alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
+            return redirect()->route('teacher.class.list');
+        }
+        $field=StudentsFields::find($classRoomsStuden->students_field_id);
+        if(!isset($field->id))
+        {
+            alert()->error(__('قرآن آموز به درستی انتخاب نشده'),__('web/messages.alert'));
+            return redirect()->route('teacher.class.show',$classRoomsStuden->class_rooms_id);
+        }
+        $classRoomsStuden->update([
+            'status'=>6,
+        ]);
+        alert()->success('انصراف قرآن آموز از کلاس با موفقیت انجام شد', __('web/messages.success'));
+        return redirect()->route('teacher.class.show',$classRoomsStuden->class_rooms_id);
+    }
     public function registerTeacherDelete(Request $request)
     {
         $request->validate([

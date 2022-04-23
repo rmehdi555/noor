@@ -1,10 +1,11 @@
-@extends('admin.master')
+@extends('teacher.master')
 @section('content')
-    <div id="main-content">
-        <div class="container-fluid">
-            <div class="block-header">
-
-            </div>
+    <section class="bu-inner-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bu-inner-main-form">
+                        <br>
 
             <section class="bu-inner-main">
         <div class="container">
@@ -230,17 +231,18 @@
                                 @endif
 
 
-                            </div>
                     </div>
                 </div>
             </div>
-    </section>
-    <!-- Start: Inner main -->
+        </div>
+            </section>
+                        <!-- Start: Inner main -->
 
 
 
 
 
 @endsection
+
 
 

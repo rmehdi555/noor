@@ -83,6 +83,9 @@
                             <li class="@if($SID==410 ) active @endif"><a
                                         href="{{ route('admin.exams.list',['SID' => '410']) }}">مدیریت آزمون ها</a>
                             </li>
+                            <li class="@if($SID==411 ) active @endif"><a
+                                        href="{{ route('admin.class.register.report',['SID' => '411']) }}">گزارش ثبت نامی و انصرافی قرآن آموز ها</a>
+                            </li>
                         </ul>
                     </li>
 

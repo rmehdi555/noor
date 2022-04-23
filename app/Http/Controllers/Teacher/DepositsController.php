@@ -151,7 +151,15 @@ class DepositsController extends TeacherController
 
         }
     }
-
+    public function studentShow(Request $request)
+    {
+        $request->validate([
+            'user_id' => ['required', 'numeric', 'exists:users,id'],
+        ]);
+        $SID=$request->SID;
+        $allDeposits=Deposits::where([['user_id','=',$request['user_id']],['status','=',1]])->get();
+        return view('teacher.pages.deposits-student-show',compact('allDeposits'));
+    }
 
 
 
