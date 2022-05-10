@@ -114,6 +114,7 @@ class DepositsController extends TeacherController
                     'status' => '2',
                 ]);
                 header("Location:$url");
+                exit();
             } else
                 alert()->error(__('web/messages.error_connect_bank'), __('web/messages.success'));
             return redirect()->route('teacher.panel');
