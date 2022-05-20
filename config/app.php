@@ -194,7 +194,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-        Hekmatinasser\Verta\VertaServiceProvider::class,
         Adlino\Locations\LocationsServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
 

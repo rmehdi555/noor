@@ -9,3 +9,4 @@ public/hot
 .env
 .git/
 .idea/
+/vendor/*

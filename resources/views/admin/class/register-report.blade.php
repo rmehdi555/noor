@@ -101,7 +101,9 @@
                                         <th>نام خانوادگی</th>
                                         <th>نام پدر</th>
                                         <th>تاریخ ایجاد</th>
+                                        <th>نام درس</th>
                                         <th>نام کلاس</th>
+                                        <th>کد معلم</th>
                                         <th>نام معلم</th>
                                         <th>وضعیت</th>
 
@@ -117,7 +119,9 @@
                                             <td>{{$item->student->family}}</td>
                                             <td>{{$item->student->f_name}}</td>
                                             <td>{{\App\Providers\MyProvider::show_date($item->created_at,'H:i Y/m/d')}}</td>
+                                            <td>{{$item->classRooms->fieldid->title}}</td>
                                             <td>{{$item->classRooms->name}}</td>
+                                            <td>{{$item->teacher->teacher_id}}</td>
                                             <td>{{$item->teacher->name}} {{$item->teacher->f_name}}</td>
 
 

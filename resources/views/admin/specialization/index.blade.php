@@ -24,10 +24,10 @@
                         <div class="header">
                             <h2>{{__('admin/public.specialization_list')}}</h2>
                         </div>
-                        <div class="body"
+                        <div class="body">
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                     <tr>
                                         <th>{{__('admin/public.id')}}</th>

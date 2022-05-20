@@ -179,7 +179,6 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::resource('depositsType','DepositsTypeController');
     Route::resource('deposits','DepositsController');
 
-
     //ایجاد کلاس جدید توسط ادمین
     Route::get('class/create','ClassController@create')->name('admin.class.create');
     Route::post('class/create/save','ClassController@createSave')->name('admin.class.create.save');
@@ -333,6 +332,9 @@ Route::middleware('auth','language','checkStudent')->namespace('Student')->prefi
     Route::get('exams/response/{id}','ExamsController@response')->name('student.exams.response');
     Route::post('exams/response/test/save','ExamsController@responseTestSave')->name('student.exams.response.test.save');
     Route::post('exams/response/adj/save','ExamsController@responseAdjSave')->name('student.exams.response.adj.save');
+
+    Route::get('act/list/show','ActListController@actListShow')->name('student.act.list.show');
+
 
 
 });

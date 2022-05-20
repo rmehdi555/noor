@@ -382,6 +382,8 @@ class ClassController extends AdminController
         $request->validate([
             'from' => ['nullable'],
             'to' => ['nullable'],
+            'teacher_id' => ['nullable'],
+            'field_id' => ['nullable'],
         ]);
         if(isset($request->from))
         {
@@ -407,19 +409,21 @@ class ClassController extends AdminController
 
         if(isset($from) and isset($to))
         {
-            $students=ClassRoomsStudents::whereBetween('created_at',[$from,$to])->orderBy('id','DESC')->get();
+            $students=ClassRoomsStudents::whereBetween('created_at',[$from,$to]);
         }
         if(isset($from) and !isset($to))
         {
-            $students=ClassRoomsStudents::where('created_at','>=',$from)->orderBy('id','DESC')->get();
+            $students=ClassRoomsStudents::where('created_at','>=',$from);
         }
         if(!isset($from) and isset($to))
         {
-            $students=ClassRoomsStudents::where('created_at','=<',$to)->orderBy('id','DESC')->get();
+            $students=ClassRoomsStudents::where('created_at','=<',$to);
         }
         if(!isset($from) and !isset($to))
         {
             $students=ClassRoomsStudents::all();
+        }else{
+            $students=$students->orderBy('id','DESC')->get();
         }
 
         $SID=411;
