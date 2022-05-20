@@ -103,6 +103,7 @@
                                             <th>وضعیت کلاس</th>
                                             <th>نمره تئوری</th>
                                             <th>نمره عملی</th>
+                                            <th>نمرات فعالیت کلاسی</th>
                                             <th>نمره نهایی</th>
                                             <th>تاریخ شروع آزمون</th>
                                             <th>تاریخ پایان آزمون</th>
@@ -126,6 +127,14 @@
                                                     <td>ایجاد شده</td>
                                                     <td>-</td>
                                                     <td>-</td>
+                                                    <td>
+                                                        <form class="form-horizontal" method="GET" action="{{ route('student.act.list.show') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                            <input type="hidden" name="class_rooms_id" value="{{$item->classRooms->id}}">
+                                                            <button type="submit" class="btn btn-info">مشاهده نمرات فعالیت</button>
+                                                        </form>
+                                                    </td>
                                                     <th>نمره نهایی ثبت نشده</th>
                                                     @break
 
@@ -133,6 +142,14 @@
                                                     <td>درحال برگزاری</td>
                                                     <td>-</td>
                                                     <td>-</td>
+                                                    <td>
+                                                        <form class="form-horizontal" method="GET" action="{{ route('student.act.list.show') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                            <input type="hidden" name="class_rooms_id" value="{{$item->classRooms->id}}">
+                                                            <button type="submit" class="btn btn-info">مشاهده نمرات فعالیت</button>
+                                                        </form>
+                                                    </td>
                                                     <th>نمره نهایی ثبت نشده</th>
                                                     @break
 
@@ -140,6 +157,14 @@
                                                     <td>آزمون</td>
                                                     <td>-</td>
                                                     <td>-</td>
+                                                    <td>
+                                                        <form class="form-horizontal" method="GET" action="{{ route('student.act.list.show') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                            <input type="hidden" name="class_rooms_id" value="{{$item->classRooms->id}}">
+                                                            <button type="submit" class="btn btn-info">مشاهده نمرات فعالیت</button>
+                                                        </form>
+                                                    </td>
                                                     <th>نمره نهایی ثبت نشده</th>
                                                     @break
 
@@ -160,6 +185,14 @@
                                                                 @endforeach
                                                             </select>
                                                         </td>
+                                                        <td>
+                                                            <form class="form-horizontal" method="GET" action="{{ route('student.act.list.show') }}">
+                                                                @csrf
+                                                                <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                                <input type="hidden" name="class_rooms_id" value="{{$item->classRooms->id}}">
+                                                                <button type="submit" class="btn btn-info">مشاهده نمرات فعالیت</button>
+                                                            </form>
+                                                        </td>
                                                         <td style="min-width: 100px">
                                                             <select id="question-type-select" name=mark" class="multiselect multiselect-custom form-control " disabled>
                                                                 @foreach($item->classRooms->markType->markTypeGrade()->get() as $itemGrade)
@@ -170,6 +203,14 @@
                                                     @else
                                                         <td>{{$item->t_mark}}</td>
                                                         <td>{{$item->a_mark}}</td>
+                                                        <td>
+                                                            <form class="form-horizontal" method="GET" action="{{ route('student.act.list.show') }}">
+                                                                @csrf
+                                                                <input type="hidden" name="class_rooms_students_id" value="{{$item->id}}">
+                                                                <input type="hidden" name="class_rooms_id" value="{{$item->classRooms->id}}">
+                                                                <button type="submit" class="btn btn-info">مشاهده نمرات فعالیت</button>
+                                                            </form>
+                                                        </td>
                                                         <td>{{$item->mark}}</td>
                                                     @endif
                                                     @break
@@ -177,10 +218,12 @@
                                                     <td>انصراف داده</td>
                                                     <td>-</td>
                                                     <td>-</td>
+                                                    <td>-</td>
                                                     <th>انصراف داده</th>
                                                     @break
 
                                                     @default
+                                                    <td>-</td>
                                                     <td>-</td>
                                                     <td>-</td>
                                                     <td>-</td>
@@ -192,6 +235,7 @@
                                                     <th>{{$item->classRooms->exam->title}}</th>
                                                     <td><a href="{{ route('student.exams.response',$item->id) }}" class="btn btn-info">شرکت در آزمون</a></td>
                                                 @else
+                                                    <td>-</td>
                                                     <td>-</td>
                                                     <td>-</td>
                                                     <td>-</td>

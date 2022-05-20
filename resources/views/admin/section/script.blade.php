@@ -35,6 +35,128 @@
 <script src="{{asset('admin/2020/rtl/assets/js/pages/forms/advanced-form-elements.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @yield('script')
+
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $('.ckeditor1').each(function(e){
+            CKEDITOR.replace( this.id, {
+                // Use named CKFinder browser route
+                filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}',
+                // Use named CKFinder connector route
+                filebrowserUploadUrl: '{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files',
+                filebrowserWindowWidth: '1000',
+                filebrowserWindowHeight: '700',
+            });
+
+        });
+        var editor = CKEDITOR.replace( 'ckfinder' );
+        CKFinder.setupCKEditor( editor );
+    });
+
+
+
+function deleteFunction() {
+    event.preventDefault(); // prevent form submit
+    var form = event.target.form; // storing the form
+    swal({
+        title: "آیا از حذف مطمئن هستید؟",
+        text: "درصورت تایید حذف دیگر دسترسی به آن نخواهید داشت.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "بله",
+        cancelButtonText: "نه",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function(isConfirm){
+        if (isConfirm) {
+            form.submit();          // submitting the form when user press yes
+        } else {
+         swal("انصراف", "شما از حذف کردن منصرف شدین ", "error");
+        }
+    });
+}
+
+
+    function cancelFunction() {
+        event.preventDefault(); // prevent form submit
+        var form = event.target.form; // storing the form
+        swal({
+                title: "آیا از انصراف مطمئن هستید؟",
+                text: "درصورت تایید انصراف دیگر دسترسی به آن نخواهید داشت.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "بله",
+                cancelButtonText: "نه",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    form.submit();          // submitting the form when user press yes
+                } else {
+                    swal("انصراف", "شما منصرف شدین ", "error");
+                }
+            });
+    }
+
+
+    $(document).ready(function() {
+
+        $(document).on("keyup", ".exam-mark", function() {
+           examMarkSum();
+        });
+        $(document).on("keyup", "#exam-a-mark", function() {
+            examMarkSum();
+        });
+
+        function examMarkSum() {
+            var sum = 0;
+            $(".exam-mark").each(function(){
+                sum += +$(this).val();
+            });
+            //alert(sum);
+            $("#exam-t-mark").val(sum);
+            sum += +$("#exam-a-mark").val();
+            $("#exam-all-mark").val(sum);
+
+        }
+
+    });
+
+
+    $(document).ready(function() {
+
+        $(document).on("keyup", "#a_price", function() {
+            workHoursSum();
+        });
+        $(document).on("keyup", "#k_price", function() {
+            workHoursSum();
+        });
+        $(document).on("keyup", "#price_hours", function() {
+            workHoursSum();
+        });
+        $(document).on("keyup", "#hours", function() {
+            workHoursSum();
+        });
+
+        function workHoursSum() {
+            var sum = 0;
+            sum = $("#hours").val()*$("#price_hours").val();
+            sum +=$("#a_price").val()-$("#k_price").val();
+            $("#totalSum").val(Math.ceil(sum));
+
+        }
+
+    });
+
+</script>
+
+
 <script>
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
@@ -185,125 +307,6 @@
     });
 
 
-
-</script>
-<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
-
-<script type="text/javascript">
-    $(function(){
-        $('.ckeditor1').each(function(e){
-            CKEDITOR.replace( this.id, {
-                // Use named CKFinder browser route
-                filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}',
-                // Use named CKFinder connector route
-                filebrowserUploadUrl: '{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files',
-                filebrowserWindowWidth: '1000',
-                filebrowserWindowHeight: '700',
-            });
-
-        });
-        var editor = CKEDITOR.replace( 'ckfinder' );
-        CKFinder.setupCKEditor( editor );
-    });
-
-
-
-function deleteFunction() {
-    event.preventDefault(); // prevent form submit
-    var form = event.target.form; // storing the form
-    swal({
-        title: "آیا از حذف مطمئن هستید؟",
-        text: "درصورت تایید حذف دیگر دسترسی به آن نخواهید داشت.",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "بله",
-        cancelButtonText: "نه",
-        closeOnConfirm: false,
-        closeOnCancel: false
-    },
-    function(isConfirm){
-        if (isConfirm) {
-            form.submit();          // submitting the form when user press yes
-        } else {
-         swal("انصراف", "شما از حذف کردن منصرف شدین ", "error");
-        }
-    });
-}
-
-
-    function cancelFunction() {
-        event.preventDefault(); // prevent form submit
-        var form = event.target.form; // storing the form
-        swal({
-                title: "آیا از انصراف مطمئن هستید؟",
-                text: "درصورت تایید انصراف دیگر دسترسی به آن نخواهید داشت.",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "بله",
-                cancelButtonText: "نه",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-            function(isConfirm){
-                if (isConfirm) {
-                    form.submit();          // submitting the form when user press yes
-                } else {
-                    swal("انصراف", "شما منصرف شدین ", "error");
-                }
-            });
-    }
-
-
-    $(document).ready(function() {
-
-        $(document).on("keyup", ".exam-mark", function() {
-           examMarkSum();
-        });
-        $(document).on("keyup", "#exam-a-mark", function() {
-            examMarkSum();
-        });
-
-        function examMarkSum() {
-            var sum = 0;
-            $(".exam-mark").each(function(){
-                sum += +$(this).val();
-            });
-            //alert(sum);
-            $("#exam-t-mark").val(sum);
-            sum += +$("#exam-a-mark").val();
-            $("#exam-all-mark").val(sum);
-
-        }
-
-    });
-
-
-    $(document).ready(function() {
-
-        $(document).on("keyup", "#a_price", function() {
-            workHoursSum();
-        });
-        $(document).on("keyup", "#k_price", function() {
-            workHoursSum();
-        });
-        $(document).on("keyup", "#price_hours", function() {
-            workHoursSum();
-        });
-        $(document).on("keyup", "#hours", function() {
-            workHoursSum();
-        });
-
-        function workHoursSum() {
-            var sum = 0;
-            sum = $("#hours").val()*$("#price_hours").val();
-            sum +=$("#a_price").val()-$("#k_price").val();
-            $("#totalSum").val(Math.ceil(sum));
-
-        }
-
-    });
 
 </script>
 

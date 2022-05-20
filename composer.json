@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "adlino/locations": "^0.0.1",
-        "ckfinder/ckfinder-laravel-package": "v3.5.1.6",
+        "ckfinder/ckfinder-laravel-package": "^3.5",
         "cviebrock/eloquent-sluggable": "^7.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",

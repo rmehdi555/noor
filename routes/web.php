@@ -474,6 +474,7 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 
 
 
+
 // start route payment
 
 Route::get('payment/online/zarinpal','PaymentController@payZarinpal')->name('web.payment.online.zarinpal');

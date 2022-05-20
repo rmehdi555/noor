@@ -35,7 +35,8 @@ class ActListController extends StudentController
             return redirect()->route('student.class.list');
         }
         $student=Students::find($classRoomsStudents->student_id);
-        if(!isset($student->id) or $user->id!=$student->id)
+    
+        if(!isset($student->id) or $user->student->id!=$student->id)
         {
             alert()->error('قرآن آموز انتخابی وجود ندارد',__('web/messages.alert'));
             return redirect()->route('student.class.list');
