@@ -59,6 +59,79 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <label class=" control-label"
+                                                   for="input-name">{{__('web/public.select_field_main')}} : <span class="required">*</span> </label>
+                                            <div class="col-md-10 col-sm-9">
+                                                <select name="field_main" id="select-field-main"
+                                                        class="form-control  @error('field_main') is-invalid @enderror">
+                                                    <option selected value="0">همه</option>
+                                                    @foreach($fields as $item)
+                                                        @if($item->parent_id==0)
+                                                            <option class="option-field-main"
+                                                                    id="option-field-main-{{$item->id}}"
+                                                                    value="{{$item->id}}">{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                                @error('field_main')
+                                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <label class=" control-label"
+                                                   for="input-name">{{__('web/public.select_field_child')}} : <span class="required">*</span></label>
+                                            <div class="col-md-10 col-sm-9">
+                                                <select name="field_id" id="select-field-child"
+                                                        class="form-control  @error('field_main') is-invalid @enderror" required >
+
+                                                    <option selected value="0">همه</option>
+                                                    @foreach($fields as $item)
+                                                        @if($item->parent_id!=0 OR !isset($item->children[1]))
+                                                            <option class="option-field-child option-field-child-{{$item->parent_id==0?$item->id:$item->parent_id}}"
+                                                                    id="option-field-child-{{$item->id}}"
+                                                                    value="{{$item->id}}" >{{\App\Providers\MyProvider::_text($item->title)}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                                @error('field_child')
+                                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <label class=" control-label"
+                                                   for="input-name">انتخاب معلم : <span class="required"></span></label>
+                                            <div class="col-md-10 col-sm-9">
+                                                <select name="teacher_id" id="select-teacher_id-child"
+                                                        class="form-control  @error('teacher_id') is-invalid @enderror" required >
+
+                                                    <option selected value="0">همه</option>
+                                                    @foreach($teachers as $item)
+                                                            <option class=""
+                                                                    value="{{$item->id}}" >{{\App\Providers\MyProvider::_text($item->name)}} {{\App\Providers\MyProvider::_text($item->family)}} - {{$item->teacher_id}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('teacher_id')
+                                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                     <div class="row">
                                         <div class="col-md-6 padding-top-15">
                                             <label class="col-md-12 col-sm-6 control-label"
@@ -122,7 +195,7 @@
                                             <td>{{$item->classRooms->fieldid->title}}</td>
                                             <td>{{$item->classRooms->name}}</td>
                                             <td>{{$item->teacher->teacher_id}}</td>
-                                            <td>{{$item->teacher->name}} {{$item->teacher->f_name}}</td>
+                                            <td>{{$item->teacher->name}} {{$item->teacher->family}} - {{$item->teacher->f_name}}</td>
 
 
                                             @switch($item->status)

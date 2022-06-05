@@ -421,16 +421,40 @@ class ClassController extends AdminController
         }
         if(!isset($from) and !isset($to))
         {
-            $students=ClassRoomsStudents::all();
+            if(!isset($request->teacher_id) and !isset($request->field_id) OR ($request->teacher_id==0 and $request->field_id==0))
+            {
+                $students=ClassRoomsStudents::all();
+            }else{
+                if(isset($request->teacher_id) and $request->teacher_id!=0)
+                {
+                    $students=ClassRoomsStudents::where('teacher_id','=',$request->teacher_id);
+                }
+                if(isset($request->field_id) and $request->field_id!=0)
+                {
+                    $students=ClassRoomsStudents::where('field_id','=',$request->field_id);
+                }
+                $students=$students->orderBy('id','DESC')->get();
+            }
+
         }else{
+            if(isset($request->teacher_id) and $request->teacher_id!=0)
+            {
+                $students=ClassRoomsStudents::where('teacher_id','=',$request->teacher_id);
+            }
+            if(isset($request->field_id) and $request->field_id!=0)
+            {
+                $students=ClassRoomsStudents::where('field_id','=',$request->field_id);
+            }
             $students=$students->orderBy('id','DESC')->get();
         }
 
         $SID=411;
         $provinces = Provinces::all();
         $cities = Cities::all();
+        $fields = Field::all();
+        $teachers = Teachers::all();
 
-        return view('admin.class.register-report', compact('students','provinces','cities','SID'));
+        return view('admin.class.register-report', compact('students','provinces','cities','fields','teachers','SID'));
 
 
 
