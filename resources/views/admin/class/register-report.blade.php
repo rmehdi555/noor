@@ -215,13 +215,12 @@
                                                 <td>اتمام شده</td>
                                                 @break
                                                 @case(6)
-                                                <td>انصراف داده</td>
-
+                                                <td>انصرافی</td>
                                                 @break
 
                                                 @default
 
-                                                <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
+                                                <td>انصرافی</td>
                                             @endswitch
                                         </tr>
                                         @php $i++; @endphp

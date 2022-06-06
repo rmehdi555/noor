@@ -384,6 +384,7 @@ class ClassController extends AdminController
             'to' => ['nullable'],
             'teacher_id' => ['nullable'],
             'field_id' => ['nullable'],
+            'cancel' => ['nullable'],
         ]);
         if(isset($request->from))
         {
