@@ -440,11 +440,11 @@ class ClassController extends AdminController
         }else{
             if(isset($request->teacher_id) and $request->teacher_id!=0)
             {
-                $students=ClassRoomsStudents::where('teacher_id','=',$request->teacher_id);
+                $students=$students->where('teacher_id','=',$request->teacher_id);
             }
             if(isset($request->field_id) and $request->field_id!=0)
             {
-                $students=ClassRoomsStudents::where('field_id','=',$request->field_id);
+                $students=$students->where('field_id','=',$request->field_id);
             }
             $students=$students->orderBy('id','DESC')->get();
         }

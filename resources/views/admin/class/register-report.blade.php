@@ -149,9 +149,12 @@
                                                 <div class="pull-right">
                                                     <input type="submit" class="btn btn-primary"
                                                            value="فیلتر شود">
+                                                    <a class="btn btn-danger"
+                                                       href="{{ route('admin.class.register.report',['SID' => '411']) }}">حذف فیلتر ها</a>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                             </form>
