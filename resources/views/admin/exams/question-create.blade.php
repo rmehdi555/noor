@@ -51,8 +51,8 @@
                                     <label>نوع سوال را انتخاب نمایید :</label>
                                     <div class="multiselect_div">
                                         <select id="question-type-select" name="type" class="multiselect multiselect-custom form-control " >
-                                            <option value="adj">تشریحی</option>
                                             <option value="test">تستی</option>
+                                            <option value="adj">تشریحی</option>
                                         </select>
                                     </div>
                                 </div>
