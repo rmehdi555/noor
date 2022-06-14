@@ -73,7 +73,7 @@
                         @if(count($examQuestions)>0)
                             <p class="bu-margin-bottom-30">لیست سوال ها : </p>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover js-basic-example dataTable">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                     <tr>
                                         <th>#</th>
