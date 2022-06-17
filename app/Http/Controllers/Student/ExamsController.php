@@ -43,7 +43,7 @@ class ExamsController extends StudentController
             alert()->error('هنوز زمان شروع آزمون فرانرسیده است .',__('web/messages.alert'));
             return redirect()->route('student.class.list');
         }
-        if($exam->end_exam<now())
+        if($exam->end_exam<now().'-5 minutes')
         {
             alert()->error('زمان آزمون به اتمام رسیده است .',__('web/messages.alert'));
             return redirect()->route('student.class.list');
