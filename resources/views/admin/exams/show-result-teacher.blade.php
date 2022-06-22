@@ -44,7 +44,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="alert alert-primary m-1">
-                                                                            آزمون هیچ سوالی نداره
+                                                                            آزمون هیچ سوالی ندارد
                                                                         </div>
                                                                     </div>
                                                                 </div>

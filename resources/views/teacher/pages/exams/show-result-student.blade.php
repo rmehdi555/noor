@@ -54,7 +54,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="alert alert-primary m-1">
-                                                    آزمون هیچ سوالی نداره
+                                                    آزمون هیچ سوالی ندارد
                                                 </div>
                                             </div>
                                         </div>
@@ -79,31 +79,31 @@
                                 @foreach($exam->examsQuestions()->get() as $examsQuestion)
                                     @if($examsQuestion->type=="test" and $examsQuestion->status!=0)
                                         <hr>
-                                        <div class="row">                                            
+                                        <div class="row">
                                                 <label class="col-md-12 col-sm-12 control-label" for="title">{{$number_q}} -
                                                     عنوان
 
-                                                    : {{$examsQuestion->title}} ? ({{$examsQuestion->mark}}) نمره</label>                                            
+                                                    : {{$examsQuestion->title}} ? ({{$examsQuestion->mark}}) نمره</label>
                                         </div>
                                         @php $i=1;@endphp
 
                                         @foreach($examsQuestion->examsQuestionsOptions()->get() as $examsQuestionsOption)
 
-                                            <div class="row">                                               
+                                            <div class="row">
                                                     <label class="col-md-12 col-sm-12 control-label" for="title">{{$i}}-
                                                         : {{$examsQuestionsOption->title}}</label>
-                                                
+
                                             </div>
                                             @php $i++;@endphp
                                         @endforeach
-                                        <div class="row">                                          
+                                        <div class="row">
                                                 <label class="col-md-12 col-sm-12 control-label" for="title">پاسخ صحیح
                                                     : {{$examsQuestion->response}} </label>
                                             </div>
                                             @if(isset($examsResponseStudentsArray[$examsQuestion->id]) and !empty($examsResponseStudentsArray[$examsQuestion->id]))
-                                            <div class="row">                                           
+                                            <div class="row">
                                                     <label class="col-md-12 col-sm-12 control-label" for="title">پاسخ شرکت کننده :  {{$examsResponseStudentsArray[$examsQuestion->id]->response}} </label>
-                                                
+
                                             </div>
                                         <div class="row">
                                             <div class="col-md-6 padding-top-15">
@@ -121,7 +121,7 @@
                                         <div class="row">
                                             <label class="col-md-6 col-sm-6 control-label" for="title">پاسخی از سمت شرکت کننده ثبت نشده </label>
                                         </div>
-               
+
                     @endif
 
 

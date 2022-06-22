@@ -37,7 +37,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="alert alert-primary m-1">
-                                                    آزمون هیچ سوالی نداره
+                                                    آزمون هیچ سوالی ندارد
                                                 </div>
                                             </div>
                                         </div>
@@ -67,7 +67,7 @@
                                                     عنوان
 
                                                     : {{$examsQuestion->title}} ? ({{$examsQuestion->mark}}) نمره</label>
-                                           
+
                                         </div>
                                         @php $i=1;@endphp
 
@@ -76,13 +76,14 @@
                                             <div class="row">
                                                     <label class="col-md-12 col-sm-12 control-label" for="title">{{$i}}-
                                                         : {{$examsQuestionsOption->title}}</label>
-                                                
+
                                             </div>
                                             @php $i++;@endphp
                                         @endforeach
                                         <div class="row">
                                                 <label class="col-md-12 col-sm-12 control-label" for="title">پاسخ صحیح
                                                     : {{$examsQuestion->response}} </label>
+                                        </div>
                                             @if(isset($examsResponseTeachersArray[$examsQuestion->id]) and !empty($examsResponseTeachersArray[$examsQuestion->id]))
                                                 <div class="row">
                                                     <label class="col-md-12 col-sm-12 control-label" for="title">پاسخ شرکت کننده :  {{$examsResponseTeachersArray[$examsQuestion->id]->response}} </label>
