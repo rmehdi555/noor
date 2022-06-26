@@ -10,6 +10,7 @@ use App\Provinces;
 use App\Students;
 use App\StudentsDeleted;
 use App\StudentsDocuments;
+use App\StudentsFields;
 use App\User;
 use App\UsersDeleted;
 use function GuzzleHttp\default_ca_bundle;
@@ -235,6 +236,26 @@ class StudentsController extends  StudentController
         $userD->forceDelete();
         alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
         return redirect(route('students.index',['SID' => '50']));
+    }
+
+
+
+
+    public function acceptField($id)
+    {
+        $item=StudentsFields::find($id);
+        if(!isset($item->id))
+        {
+            alert()->error('خطا در یافتن رکورد ', __('web/messages.error'));
+            return redirect(route('students.index',['SID' => '50']));
+        }
+
+        $item->update([
+            'status' => 2,
+        ]);
+        alert()->success(__('admin/messages.success_save_form'), __('web/messages.success'));
+        return redirect(route('students.index',['SID' => '50']));
+
     }
 
 

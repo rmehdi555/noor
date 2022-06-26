@@ -523,11 +523,14 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>کد </th>
                                             <th>تاریخ ثبت</th>
                                             <th>{{__('web/public.title_field')}}</th>
                                             <th>{{__('web/public.price')}}({{__('web/public.currency_name_IRR')}})</th>
                                             <th>وضعیت</th>
-                                            {{--<th>{{__('web/public.setting')}}</th>--}}
+                                            @if($student->user->status==2)
+                                               <th>{{__('web/public.setting')}}</th>
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -535,6 +538,7 @@
                                         @foreach($student->studentsFields as $item)
                                             <tr>
                                                 <td>{{$i}}</td>
+                                                <td>{{$item->id}}</td>
                                                 <td>{{\App\Providers\MyProvider::show_date($item->created_at,'Y-n-j')}}</td>
                                                 <td>{{$item->title}}</td>
                                                 <td>{{number_format($item->price)}}</td>
@@ -558,14 +562,17 @@
                                                     @default
                                                     <td>نامشخص میباشد به ادمین سایت اطلاع داده شود</td>
                                                 @endswitch
-                                                {{--<td><a class="btn btn-danger btn-sm"--}}
-                                                {{--href="{{ route('web.students.field.delete',$item->id) }}">{{__('web/public.delete')}}</a>--}}
-                                                {{--</td>--}}
+                                                @if($student->user->status==2 and $item->status==1)
+                                                    <td><a class="btn btn-info btn-sm"
+                                                    href="{{ route('admin.students.field.accept',$item->id) }}">تایید پرداخت</a>
+                                                    </td>
+                                                @endif
+
                                             </tr>
                                             @php $i++; $finalPrice+=$item->price; @endphp
                                         @endforeach
                                         <tr class="table-primary">
-                                            <td colspan='3'>{{__('web/public.price_final')}}
+                                            <td colspan='4'>{{__('web/public.price_final')}}
                                                 ({{__('web/public.currency_name_IRR')}}) :
                                             </td>
                                             <td colspan='2'>{{$finalPrice}}</td>
