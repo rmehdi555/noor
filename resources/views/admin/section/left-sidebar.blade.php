@@ -130,6 +130,9 @@
                             <li class="@if($SID==41 ) active @endif"><a
                                         href="{{ route('students.reports',['SID' => '41']) }}">{{__('admin/public.students_reports')}}</a>
                             </li>
+                            <li class="@if($SID==42 ) active @endif"><a
+                                        href="{{ route('admin.students.register.report',['SID' => '42']) }}">گزارش ثبت نامی قرآن آموز ها</a>
+                            </li>
                             {{--<li class="@if($SID==41 ) active @endif"><a--}}
                             {{--href="{{ route('students.create',['SID' => '41']) }}">{{__('admin/public.students_add')}}</a>--}}
                             {{--</li>--}}

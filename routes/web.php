@@ -145,6 +145,8 @@ Route::middleware('auth','checkAdmin')->namespace('Admin')->prefix('admin')->gro
     Route::post('/students/add/file/{id}','StudentsController@addFile')->name('students.add.file');
     Route::get('/students/field/accept/{id}','StudentsController@acceptField')->name('admin.students.field.accept');
     Route::get('/reports/students','StudentsController@reports')->name('students.reports');
+    Route::get('students/register/report','StudentsController@registerReport')->name('admin.students.register.report');
+
     Route::resource('teachers','TeachersController');
     Route::post('/teachers/add/file/{id}','TeachersController@addFile')->name('teachers.add.file');
     Route::get('/reports/teachers/specialization','TeachersController@reportsSpecialization')->name('teachers.reports.specialization');

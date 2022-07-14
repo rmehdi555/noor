@@ -6,6 +6,7 @@ use App\Cities;
 use App\Field;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Student\StudentController;
+use App\Providers\MyProvider;
 use App\Provinces;
 use App\Students;
 use App\StudentsDeleted;
@@ -16,6 +17,7 @@ use App\UsersDeleted;
 use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Hekmatinasser\Verta\Verta;
 
 class StudentsController extends  StudentController
 {
@@ -257,6 +259,84 @@ class StudentsController extends  StudentController
         return redirect(route('students.index',['SID' => '50']));
 
     }
+
+    public function registerReport(Request $request)
+    {
+        $request->validate([
+            'from' => ['nullable'],
+            'to' => ['nullable'],
+            'field_id' => ['nullable'],
+            'cancel' => ['nullable'],
+        ]);
+        if(isset($request->from))
+        {
+            $request->from=MyProvider::convert_phone_number($request->from);
+            $from=explode(' ',$request->from);
+            $from_date=explode('-',$from[0]);
+            $from_time=$from[1];
+            $from_date=Verta::getGregorian($from_date[0],$from_date[1],$from_date[2]);
+            $from_date=implode('-',$from_date);
+            $from=$from_date.' '.$from_time;
+        }
+        if(isset($request->to))
+        {
+            $request->to=MyProvider::convert_phone_number($request->to);
+            $to=explode(' ',$request->to);
+            $to_date=explode('-',$to[0]);
+            $to_time=$to[1];
+            $to_date=Verta::getGregorian($to_date[0],$to_date[1],$to_date[2]);
+            $to_date=implode('-',$to_date);
+            $to=$to_date.' '.$to_time;
+
+        }
+
+        if(isset($from) and isset($to))
+        {
+            $students=StudentsFields::whereBetween('created_at',[$from,$to]);
+        }
+        if(isset($from) and !isset($to))
+        {
+            $students=StudentsFields::where('created_at','>=',$from);
+        }
+        if(!isset($from) and isset($to))
+        {
+            $students=StudentsFields::where('created_at','=<',$to);
+        }
+        if(!isset($from) and !isset($to))
+        {
+            if(!isset($request->teacher_id) and !isset($request->field_id) OR ($request->teacher_id==0 and $request->field_id==0))
+            {
+                $students=StudentsFields::where('student_id','!=',null)->where('student_id','!=',0)->get();
+            }else{
+                if(isset($request->field_id) and $request->field_id!=0)
+                {
+                    $students=StudentsFields::where('field_id','=',$request->field_id);
+                }
+                $students=$students->where('student_id','!=',null)->where('student_id','!=',0);
+                $students=$students->orderBy('id','DESC')->get();
+            }
+
+        }else{
+            if(isset($request->field_id) and $request->field_id!=0)
+            {
+                $students=$students->where('field_id','=',$request->field_id);
+            }
+            $students=$students->where('student_id','!=',null)->where('student_id','!=',0);
+            $students=$students->orderBy('id','DESC')->get();
+        }
+
+        $SID=42;
+        $provinces = Provinces::all();
+        $cities = Cities::all();
+        $fields = Field::all();
+
+        return view('admin.students.register-report', compact('students','provinces','cities','fields','SID'));
+
+
+
+
+    }
+
 
 
 

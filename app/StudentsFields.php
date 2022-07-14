@@ -1,7 +1,7 @@
 <?php
 /*
  *
- * status=1 درخواست خرید
+ * status=1 پرداخت نکرده
  * status=2 پرداخت شده
  * status=3 درحال تحصیل
  * status=5   اتمام کلاس
@@ -34,5 +34,14 @@ class StudentsFields extends Model
             $check_code = static::where('flag_cookie','=',$code)->get();
         } while (!$check_code->isEmpty());
         return $code;
+    }
+
+    public function fieldid()
+    {
+        return $this->hasOne(Field::class,'id','field_id');
+    }
+    public function fieldParentId()
+    {
+        return $this->hasOne(Field::class,'id','field_parent_id');
     }
 }
