@@ -188,6 +188,7 @@
                                     <tbody>
                                     @php $i=1;@endphp
                                     @foreach($students as $item)
+                                    @if(isset($item->teacher))
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>{{$item->student->student_id}}</td>
@@ -227,7 +228,9 @@
                                             @endswitch
                                         </tr>
                                         @php $i++; @endphp
+                                        @endif
                                     @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
